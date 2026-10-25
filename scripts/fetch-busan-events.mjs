@@ -1,85 +1,61 @@
-// 부산 공공데이터 → data/busan-events.json
+// 한국문화정보원 '한눈에보는문화정보조회서비스' → data/busan-events.json (부산 지역만)
 // 실행: BUSAN_API_KEY=발급키 node scripts/fetch-busan-events.mjs   (Node 20 이상, 외부 패키지 없음)
 import { writeFile, mkdir } from 'node:fs/promises';
 
 const KEY = process.env.BUSAN_API_KEY;
 if (!KEY) { console.error('BUSAN_API_KEY 환경변수가 없습니다.'); process.exit(1); }
 
-const DAYS_AHEAD = 61;          // 오늘부터 약 2달 뒤까지
-const POSTER_ONLY = false;      // true면 포스터 이미지가 있는 행사만 (문화 공연·전시 API는 이미지 필드가 없어 대부분 빠집니다)
+const DAYS_AHEAD = 61;        // 오늘부터 약 2달 뒤까지
+const POSTER_ONLY = false;    // true면 포스터 이미지가 있는 행사만
+const WITH_DETAIL = true;     // 행사별 상세(요금·문의처·소개) 추가 조회
+const BASE = 'https://apis.data.go.kr/B553457/cultureinfo';
 const OUT = 'data/busan-events.json';
-const BASE = 'https://apis.data.go.kr/6260000';
-
-// 요청주소는 공공데이터포털 > 마이페이지 > 활용신청 현황 > 각 API 상세의 '요청주소'와 같아야 합니다.
-// ✔ = 포털 문서에서 확인됨, ? = 같은 규칙으로 추정 (첫 실행 로그에서 실패하면 요청주소로 바꿔 주세요)
-const SOURCES = [
-  { name: '부산축제정보', type: 'festival', cat: '행사', url: `${BASE}/FestivalService/getFestivalKr` },                          // ✔
-  { name: '문화 기타장르', type: 'culture', cat: '공연', url: `${BASE}/BusanCultureEtcDetailService/getBusanCultureEtcDetail` },    // ✔
-  { name: '문화 연극', type: 'culture', cat: '공연', url: `${BASE}/BusanCultureDramaDetailService/getBusanCultureDramaDetail` },    // ?
-  { name: '문화 뮤지컬', type: 'culture', cat: '공연', url: `${BASE}/BusanCultureMusicalDetailService/getBusanCultureMusicalDetail` }, // ?
-  { name: '문화 클래식', type: 'culture', cat: '공연', url: `${BASE}/BusanCultureClassicDetailService/getBusanCultureClassicDetail` }, // ?
-  { name: '문화 전시', type: 'culture', cat: '전시', url: `${BASE}/BusanCultureExhibitDetailService/getBusanCultureExhibitDetail` },  // ?
-];
+const SERVICE_TYPES = { A: '공연/전시', B: '행사/축제', C: '교육/체험' };
 
 const p2 = n => String(n).padStart(2, '0');
-const kst = () => new Date(Date.now() + 9 * 3600e3);
-const isoDay = d => `${d.getUTCFullYear()}-${p2(d.getUTCMonth() + 1)}-${p2(d.getUTCDate())}`;
-const ymd = (y, m, d) => `${y}-${p2(m)}-${p2(d)}`;
-const today = isoDay(kst());
-const until = isoDay(new Date(kst().getTime() + DAYS_AHEAD * 864e5));
-const clean = s => (s == null ? '' : String(s)).replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/[ \t]+/g, ' ').trim();
+const kst = (add = 0) => new Date(Date.now() + 9 * 3600e3 + add * 864e5);
+const ymd = d => `${d.getUTCFullYear()}${p2(d.getUTCMonth() + 1)}${p2(d.getUTCDate())}`;
+const dash = s => (s && s.length >= 8 ? `${s.slice(0, 4)}-${s.slice(4, 6)}-${s.slice(6, 8)}` : '');
+const FROM = ymd(kst()), TO = ymd(kst(DAYS_AHEAD));
+const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-function findItems(j) {
-  let out = null;
-  (function walk(o) {
-    if (out || !o || typeof o !== 'object') return;
-    if (Array.isArray(o)) { if (o.length && typeof o[0] === 'object') { out = o; return; } o.forEach(walk); return; }
-    for (const k of Object.keys(o)) {
-      if (k === 'item' && o[k] && typeof o[k] === 'object' && !Array.isArray(o[k])) { out = [o[k]]; return; }
-      walk(o[k]);
-    }
-  })(j);
-  return out || [];
-}
-function findKey(j, key) {
-  if (!j || typeof j !== 'object') return undefined;
-  if (key in j) return j[key];
-  for (const v of Object.values(j)) { const r = findKey(v, key); if (r !== undefined) return r; }
+const decode = s => s.replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&');
+const tag = (xml, name) => { const m = xml.match(new RegExp(`<${name}>([\\s\\S]*?)</${name}>`, 'i')); return m ? decode(m[1]).trim() : ''; };
+const pick = (xml, ...names) => { for (const n of names) { const v = tag(xml, n); if (v) return v; } return ''; };
+const clean = s => decode(s || '').replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, ' ').replace(/[ \t]+/g, ' ').replace(/\n\s*\n+/g, '\n').trim();
+
+async function call(op, params) {
+  const q = new URLSearchParams({ serviceKey: KEY, ...params });
+  const res = await fetch(`${BASE}/${op}?${q}`);
+  const text = await res.text();
+  const gw = text.match(/"errMsg"\s*:\s*"([^"]+)"/) || text.match(/<errMsg>([^<]+)<\/errMsg>/);
+  if (gw) throw new Error(`${gw[1]} ${(text.match(/returnAuthMsg"?\s*[:>]\s*"?([^"<]+)/) || [])[1] || ''}`.trim());
+  if (!res.ok) throw new Error(`HTTP ${res.status}: ${text.replace(/\s+/g, ' ').slice(0, 200)}`);
+  const code = tag(text, 'resultCode');
+  if (code && !['00', '0000', '0'].includes(code)) throw new Error(`API 오류 ${code}: ${tag(text, 'resultMsg')}`);
+  return text;
 }
 
-async function fetchAll(src) {
+async function listArea(tp) {
   const rows = [];
-  for (let page = 1; page <= 50; page++) {
-    const q = new URLSearchParams({ serviceKey: KEY, pageNo: page, numOfRows: 100, resultType: 'json' });
-    const res = await fetch(`${src.url}?${q}`);
-    const text = await res.text();
-    let j; try { j = JSON.parse(text); } catch { throw new Error(`JSON 아님 (HTTP ${res.status}): ${text.slice(0, 160)}`); }
-    const code = findKey(j, 'resultCode') ?? findKey(j, 'code');
-    if (code && !['00', '0', 'INFO-000'].includes(String(code))) throw new Error(`API 오류 ${code}: ${findKey(j, 'resultMsg') ?? findKey(j, 'message') ?? ''}`);
-    const items = findItems(j);
-    if (page === 1 && !items.length) console.log(`  ↳ ${src.name} 응답 (HTTP ${res.status}): ${text.replace(/\s+/g, ' ').slice(0, 400)}`);
+  for (let page = 1; page <= 30; page++) {
+    const xml = await call('area2', { PageNo: page, numOfrows: 100, sido: '부산', from: FROM, to: TO, serviceTp: tp, sortStdr: 1 });
+    const items = xml.match(/<item>[\s\S]*?<\/item>/g) || [];
+    if (page === 1 && !items.length) console.log(`  ↳ ${SERVICE_TYPES[tp]} 응답: ${xml.replace(/\s+/g, ' ').slice(0, 300)}`);
     rows.push(...items);
-    const total = Number(findKey(j, 'totalCount') || 0);
-    if (!items.length || items.length < 100 || (total && rows.length >= total)) break;
+    const total = Number(tag(xml, 'totalCount') || 0);
+    if (items.length < 100 || (total && rows.length >= total)) break;
+    await sleep(150);
   }
   return rows;
 }
 
-function parseRange(s) {
-  s = clean(s); if (!s) return null;
-  const full = [...s.matchAll(/(20\d{2})\s*[.\-\/년]\s*(\d{1,2})\s*[.\-\/월]\s*(\d{1,2})/g)];
-  if (!full.length) return null;
-  const y = +full[0][1], m = +full[0][2], start = ymd(y, m, +full[0][3]);
-  let end = start;
-  if (full.length > 1) end = ymd(+full[1][1], +full[1][2], +full[1][3]);
-  else {
-    const rest = s.slice(full[0].index + full[0][0].length);
-    const r = rest.match(/^[^~∼–]*?[~∼–]\s*(?:(\d{1,2})\s*[.\/월]\s*)?(\d{1,2})\s*[.일]?/);
-    if (r) { const mo = r[1] ? +r[1] : m; end = ymd(mo < m ? y + 1 : y, mo, +r[2]); }
-  }
-  return { start, end: end < start ? start : end };
+function catOf(realm, tp) {
+  if (/전시/.test(realm)) return '전시';
+  if (/교육|체험/.test(realm) || tp === 'C') return '교육';
+  if (/행사|축제/.test(realm) || tp === 'B') return '행사';
+  return '공연';
 }
-const firstTimes = s => { const t = [...clean(s).matchAll(/([01]?\d|2[0-3])\s*:\s*([0-5]\d)/g)].map(x => `${p2(x[1])}:${x[2]}`); return [t[0] || '00:00', t[1] || '23:59']; };
 function feeOf(s) {
   s = clean(s);
   if (!s) return { fee: '요금 문의', feeText: '' };
@@ -87,56 +63,60 @@ function feeOf(s) {
   return { fee: '유료', feeText: s };
 }
 
-function fromFestival(r, src) {
-  const range = parseRange(r.USAGE_DAY) || parseRange(r.USAGE_DAY_WEEK_AND_TIME) || parseRange(r.TITLE) || parseRange(r.SUBTITLE);
-  if (!range) return null;
-  const [t0, t1] = firstTimes(r.USAGE_DAY_WEEK_AND_TIME);
-  const gugun = clean(r.GUGUN_NM);
-  return {
-    id: `fes-${r.UC_SEQ}`, src: src.name, cat: src.cat,
-    title: clean(r.MAIN_TITLE || r.TITLE), start: `${range.start}T${t0}`, end: `${range.end}T${t1}`,
-    place: [gugun, clean(r.MAIN_PLACE || r.PLACE || r.ADDR1)].filter(Boolean).join(' · '), gugun,
-    ...feeOf(r.USAGE_AMOUNT), desc: clean(r.ITEMCNTNTS).slice(0, 700),
-    poster: r.MAIN_IMG_NORMAL || r.MAIN_IMG_THUMB || null, tel: clean(r.CNTCT_TEL), homepage: clean(r.HOMEPAGE_URL),
-  };
-}
-function fromCulture(r, src) {
-  const st = clean(r.op_st_dt).slice(0, 10), ed = clean(r.op_ed_dt).slice(0, 10) || st;
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(st)) return null;
-  const [t0] = firstTimes(r.showtime);
-  const desc = [['관람회차', r.showtime], ['런타임', r.runtime], ['관람연령', r.rating], ['출연', r.casting], ['기획', r.enterprise], ['가격', r.price]]
-    .map(([k, v]) => (clean(v) && clean(v) !== 'null' ? `${k}: ${clean(v)}` : '')).filter(Boolean).join('\n');
-  return {
-    id: `cul-${r.res_no}`, src: src.name, cat: src.cat, title: clean(r.title),
-    start: `${st}T${t0}`, end: `${ed}T23:59`, place: clean(r.place_nm), gugun: '',
-    ...feeOf(r.price), desc, poster: null, tel: '', homepage: clean(r.dabom_url),
-  };
-}
-
-const report = [], events = [], seen = new Set();
-for (const src of SOURCES) {
+const seen = new Map(), report = [];
+for (const tp of Object.keys(SERVICE_TYPES)) {
   try {
-    const rows = await fetchAll(src);
+    const rows = await listArea(tp);
     let n = 0;
-    for (const r of rows) {
-      const e = src.type === 'festival' ? fromFestival(r, src) : fromCulture(r, src);
-      if (!e || !e.title) continue;
-      if (e.end.slice(0, 10) < today || e.start.slice(0, 10) > until) continue;
-      if (POSTER_ONLY && !e.poster) continue;
-      const k = `${e.title}|${e.start.slice(0, 10)}`;
-      if (seen.has(k)) continue;
-      seen.add(k); events.push(e); n++;
+    for (const x of rows) {
+      const seq = pick(x, 'seq');
+      const area = pick(x, 'area', 'sido');
+      if (!seq || seen.has(seq) || (area && !/부산/.test(area))) continue;
+      const st = dash(pick(x, 'startDate')), ed = dash(pick(x, 'endDate')) || st;
+      if (!st || ed < dash(FROM) || st > dash(TO)) continue;
+      const realm = pick(x, 'realmName');
+      const gugun = pick(x, 'sigungu');
+      seen.set(seq, {
+        id: `kcis-${seq}`, seq, src: '한국문화정보원 문화포털', cat: catOf(realm, tp), realm,
+        title: pick(x, 'title'), start: `${st}T00:00`, end: `${ed}T23:59`,
+        place: [gugun, pick(x, 'place')].filter(Boolean).join(' · '), gugun,
+        fee: '요금 문의', feeText: '', desc: '', poster: pick(x, 'thumbnail', 'imgUrl') || null, tel: '', homepage: '',
+      });
+      n++;
     }
-    report.push({ name: src.name, ok: true, fetched: rows.length, kept: n });
-    console.log(`✔ ${src.name}: ${rows.length}건 조회 → ${n}건 반영`);
+    report.push({ name: SERVICE_TYPES[tp], ok: true, fetched: rows.length, kept: n });
+    console.log(`✔ ${SERVICE_TYPES[tp]}: ${rows.length}건 조회 → ${n}건 반영`);
   } catch (err) {
-    report.push({ name: src.name, ok: false, error: String(err.message || err) });
-    console.warn(`✖ ${src.name}: ${err.message || err}`);
+    report.push({ name: SERVICE_TYPES[tp], ok: false, error: String(err.message || err) });
+    console.warn(`✖ ${SERVICE_TYPES[tp]}: ${err.message || err}`);
   }
 }
-
 if (report.every(r => !r.ok)) { console.error('모든 API 호출이 실패해 기존 파일을 유지합니다.'); process.exit(1); }
+
+let events = [...seen.values()];
+if (WITH_DETAIL) {
+  let ok = 0, fail = 0;
+  for (const e of events.slice(0, 800)) {
+    try {
+      const xml = await call('detail2', { seq: e.seq });
+      const it = (xml.match(/<item>[\s\S]*?<\/item>/) || [xml])[0];
+      Object.assign(e, feeOf(pick(it, 'price')));
+      e.desc = clean(pick(it, 'contents1', 'contents')).slice(0, 700);
+      e.tel = pick(it, 'phone');
+      e.homepage = pick(it, 'url', 'placeUrl');
+      e.poster = e.poster || pick(it, 'imgUrl', 'thumbnail') || null;
+      const addr = pick(it, 'placeAddr');
+      if (addr && !e.gugun) e.place = e.place ? `${e.place}\n${addr}` : addr;
+      ok++;
+    } catch { fail++; }
+    await sleep(80);
+  }
+  console.log(`상세 조회: ${ok}건 성공, ${fail}건 실패`);
+}
+if (POSTER_ONLY) events = events.filter(e => e.poster);
 events.sort((a, b) => (a.start < b.start ? -1 : 1));
+events.forEach(e => delete e.seq);
+
 await mkdir('data', { recursive: true });
-await writeFile(OUT, JSON.stringify({ generatedAt: new Date().toISOString(), range: { from: today, to: until }, sources: report, events }, null, 1));
-console.log(`저장: ${OUT} (${events.length}건, ${today} ~ ${until})`);
+await writeFile(OUT, JSON.stringify({ generatedAt: new Date().toISOString(), range: { from: dash(FROM), to: dash(TO) }, sources: report, events }, null, 1));
+console.log(`저장: ${OUT} (${events.length}건, ${dash(FROM)} ~ ${dash(TO)})`);
