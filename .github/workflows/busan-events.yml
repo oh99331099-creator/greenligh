@@ -10,12 +10,18 @@ permissions:
 
 jobs:
   update:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
         with:
           node-version: 22
+      - name: 연결 테스트
+        continue-on-error: true
+        run: |
+          U="apis.data.go.kr/B553457/cultureinfo/area2?serviceKey=${{ secrets.BUSAN_API_KEY }}&PageNo=1&numOfrows=1&sido=%EB%B6%80%EC%82%B0"
+          curl -sS -o /dev/null -w "https → HTTP %{http_code}\n" --max-time 30 "https://$U" || echo "https 연결 실패"
+          curl -sS -o /dev/null -w "http  → HTTP %{http_code}\n" --max-time 30 "http://$U" || echo "http 연결 실패"
       - name: 부산 공공데이터 수집
         run: node scripts/fetch-busan-events.mjs
         env:
