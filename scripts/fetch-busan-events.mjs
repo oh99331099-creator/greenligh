@@ -17,6 +17,7 @@ const kst = (add = 0) => new Date(Date.now() + 9 * 3600e3 + add * 864e5);
 const ymd = d => `${d.getUTCFullYear()}${p2(d.getUTCMonth() + 1)}${p2(d.getUTCDate())}`;
 const dash = s => (s && s.length >= 8 ? `${s.slice(0, 4)}-${s.slice(4, 6)}-${s.slice(6, 8)}` : '');
 const FROM = ymd(kst()), TO = ymd(kst(DAYS_AHEAD));
+let usedBase = null;
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 const decode = s => s.replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&');
@@ -26,8 +27,18 @@ const clean = s => decode(s || '').replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+
 
 async function call(op, params) {
   const q = new URLSearchParams({ serviceKey: KEY, ...params });
-  const res = await fetch(`${BASE}/${op}?${q}`);
-  const text = await res.text();
+  let res, text, errs = [];
+  for (const base of [BASE, BASE.replace('https://', 'http://')]) {
+    for (let t = 0; t < 2 && !res; t++) {
+      try {
+        const r = await fetch(`${base}/${op}?${q}`, { signal: AbortSignal.timeout(20000), headers: { 'User-Agent': 'Mozilla/5.0 (greenlight-busan-bot)', Accept: 'application/xml,text/xml,*/*' } });
+        text = await r.text(); res = r;
+        if (!usedBase) { usedBase = base; console.log(`  (연결: ${base.split('://')[0]})`); }
+      } catch (e) { errs.push(`${base.split('://')[0]}: ${e.name === 'TimeoutError' ? '응답 시간 초과(20초)' : e.message} ${e.cause?.code || ''} ${e.cause?.message || ''}`.trim()); await sleep(1000); }
+    }
+    if (res) break;
+  }
+  if (!res) throw new Error('연결 실패 → ' + errs.join(' | '));
   const gw = text.match(/"errMsg"\s*:\s*"([^"]+)"/) || text.match(/<errMsg>([^<]+)<\/errMsg>/);
   if (gw) throw new Error(`${gw[1]} ${(text.match(/returnAuthMsg"?\s*[:>]\s*"?([^"<]+)/) || [])[1] || ''}`.trim());
   if (!res.ok) throw new Error(`HTTP ${res.status}: ${text.replace(/\s+/g, ' ').slice(0, 200)}`);
