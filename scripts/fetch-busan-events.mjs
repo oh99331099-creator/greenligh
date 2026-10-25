@@ -1,4 +1,4 @@
-// 한국문화정보원 '한눈에보는문화정보조회서비스' → data/busan-events.json (부산 지역만)
+// 한국문화정보원 '한눈에보는문화정보조회서비스' + 한국관광공사 '국문 관광정보 서비스_GW' → data/busan-events.json (부산 지역만)
 // 실행: BUSAN_API_KEY=발급키 node scripts/fetch-busan-events.mjs   (Node 20 이상, 외부 패키지 없음)
 import { writeFile, mkdir } from 'node:fs/promises';
 import { execFile } from 'node:child_process';
@@ -116,7 +116,6 @@ for (const tp of Object.keys(SERVICE_TYPES)) {
     console.warn(`✖ ${SERVICE_TYPES[tp]}: ${err.message || err}`);
   }
 }
-if (report.every(r => !r.ok)) { console.error('모든 API 호출이 실패해 기존 파일을 유지합니다.'); process.exit(1); }
 
 let events = [...seen.values()];
 if (WITH_DETAIL) {
@@ -138,6 +137,74 @@ if (WITH_DETAIL) {
   }
   console.log(`상세 조회: ${ok}건 성공, ${fail}건 실패`);
 }
+
+// ── 한국관광공사 국문 관광정보 서비스_GW: 행사·축제 (부산 lDongRegnCd=26) ──
+const KTO = 'https://apis.data.go.kr/B551011/KorService2';
+async function kto(op, params) {
+  const q = new URLSearchParams({ serviceKey: KEY, MobileOS: 'WEB', MobileApp: 'greenlight', _type: 'json', ...params });
+  const r = await get(`${KTO}/${op}?${q}`);
+  const gw = r.text.match(/"errMsg"\s*:\s*"([^"]+)"/) || r.text.match(/<errMsg>([^<]+)<\/errMsg>/) || r.text.match(/<returnAuthMsg>([^<]+)</);
+  if (gw) throw new Error(gw[1]);
+  let j; try { j = JSON.parse(r.text); } catch { throw new Error(`HTTP ${r.status}: ${r.text.replace(/\s+/g, ' ').slice(0, 200)}`); }
+  const h = (j.response && j.response.header) || {};
+  if (h.resultCode && h.resultCode !== '0000') throw new Error(`API 오류 ${h.resultCode}: ${h.resultMsg}`);
+  const b = (j.response && j.response.body) || {};
+  const it = b.items && b.items.item;
+  return { items: Array.isArray(it) ? it : it ? [it] : [], total: Number(b.totalCount || 0) };
+}
+const ktoEvents = [];
+try {
+  const rows = [];
+  for (let page = 1; page <= 10; page++) {
+    const { items, total } = await kto('searchFestival2', { numOfRows: 100, pageNo: page, arrange: 'A', eventStartDate: FROM, eventEndDate: TO, lDongRegnCd: '26' });
+    rows.push(...items);
+    if (items.length < 100 || rows.length >= total) break;
+    await sleep(150);
+  }
+  for (const x of rows) {
+    const st = dash(String(x.eventstartdate || '')), ed = dash(String(x.eventenddate || '')) || st;
+    if (!st || ed < dash(FROM) || st > dash(TO)) continue;
+    const addr = clean(x.addr1);
+    if (addr && !/부산/.test(addr)) continue;
+    const gugun = (addr.match(/부산(?:광역시)?\s+(\S+?[구군])(?:\s|$)/) || [])[1] || '';
+    ktoEvents.push({ id: `kto-${x.contentid}`, cid: x.contentid, src: '한국관광공사', cat: '행사', realm: '축제',
+      title: clean(x.title), start: `${st}T00:00`, end: `${ed}T23:59`,
+      place: addr.replace(/^부산(광역시)?\s*/, ''), gugun, fee: '요금 문의', feeText: '', desc: '',
+      poster: x.firstimage || x.firstimage2 || null, tel: clean(x.tel), homepage: '' });
+  }
+  let ok = 0;
+  for (const e of ktoEvents.slice(0, 150)) {   // 개발계정 하루 1,000회 제한 → 상세는 최대 150건
+    try {
+      const a = (await kto('detailIntro2', { contentId: e.cid, contentTypeId: 15 })).items[0] || {};
+      Object.assign(e, feeOf(a.usetimefestival));
+      if (clean(a.eventplace)) e.place = [e.gugun, clean(a.eventplace)].filter(Boolean).join(' · ');
+      const t = clean(a.playtime).match(/([01]?\d|2[0-3])\s*:\s*([0-5]\d)/);
+      if (t) e.start = `${e.start.slice(0, 11)}${p2(t[1])}:${t[2]}`;
+      e.tel = e.tel || clean(a.sponsor1tel);
+      const c = (await kto('detailCommon2', { contentId: e.cid })).items[0] || {};
+      e.desc = clean(c.overview).slice(0, 700);
+      e.homepage = (String(c.homepage || '').match(/https?:\/\/[^\s"'<>]+/) || [])[0] || '';
+      ok++;
+    } catch {}
+    await sleep(80);
+  }
+  report.push({ name: '한국관광공사 행사·축제', ok: true, fetched: rows.length, kept: ktoEvents.length });
+  console.log(`✔ 한국관광공사 행사·축제: ${rows.length}건 조회 → ${ktoEvents.length}건 (상세 ${ok}건)`);
+} catch (err) {
+  report.push({ name: '한국관광공사 행사·축제', ok: false, error: String(err.message || err) });
+  console.warn(`✖ 한국관광공사 행사·축제: ${err.message || err}  ← 활용신청 승인 전이면 정상입니다. 나머지 데이터는 그대로 저장됩니다.`);
+}
+// 같은 행사 합치기 (제목이 같고 기간이 겹치면 하나로, 빈 정보는 서로 채움)
+const norm = t => (t || '').replace(/\[[^\]]*\]|\([^)]*\)|[\s\p{P}\p{S}]/gu, '').toLowerCase();
+let merged = 0;
+for (const k of ktoEvents) {
+  const nk = norm(k.title);
+  const dup = nk.length >= 4 && events.find(e => { const ne = norm(e.title); return ne.length >= 4 && (ne === nk || ne.includes(nk) || nk.includes(ne)) && e.start.slice(0, 10) <= k.end.slice(0, 10) && k.start.slice(0, 10) <= e.end.slice(0, 10); });
+  if (dup) { for (const f of ['poster', 'desc', 'tel', 'homepage', 'feeText']) if (!dup[f] && k[f]) dup[f] = k[f]; if (dup.fee === '요금 문의' && k.fee !== '요금 문의') dup.fee = k.fee; merged++; }
+  else { delete k.cid; events.push(k); }
+}
+if (merged) console.log(`중복 합침: ${merged}건`);
+if (report.every(r => !r.ok)) { console.error('모든 API 호출이 실패해 기존 파일을 유지합니다.'); process.exit(1); }
 if (POSTER_ONLY) events = events.filter(e => e.poster);
 events.sort((a, b) => (a.start < b.start ? -1 : 1));
 events.forEach(e => delete e.seq);
