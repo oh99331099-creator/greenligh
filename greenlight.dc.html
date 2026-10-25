@@ -51,13 +51,13 @@ header[data-scrolled="true"] [data-hrow]{height:56px!important}
 @media (max-width:760px){[data-hen],[data-hsep]{display:none}}
 @media (max-width:760px){[data-gnb]{display:none!important}}
 @media (max-width:760px){[data-uopt],[data-ulinks]{display:none!important}[data-hrow],[data-urow]{padding:0 20px!important}}
-@media (max-width:980px){[data-slide]{grid-template-columns:1fr!important}[data-slide] [data-sart]{order:-1;padding:28px 28px 0!important}[data-sctrl]{justify-content:center!important}}
+@media (max-width:980px){[data-slide]{grid-template-columns:1fr!important;height:auto!important;min-height:380px}[data-slide] [data-sart]{order:-1;padding:28px 28px 0!important}[data-sctrl]{justify-content:center!important}}
 @media (max-width:760px){h2{font-size:22px!important}[data-slide] [data-stitle]{font-size:26px!important}}
 [data-flink]{background:linear-gradient(currentColor,currentColor) left bottom/0 1px no-repeat;transition:background-size .25s ease;text-decoration:none!important}[data-flink]:hover{background-size:100% 1px}
 [data-flabel]{display:block;font-size:11px;font-weight:600;letter-spacing:.14em;color:#777;margin-bottom:12px}
 @media (max-width:980px){[data-fgrid]{grid-template-columns:1fr 1fr!important}}@media (max-width:760px){[data-fgrid]{grid-template-columns:1fr!important;gap:32px!important}}
-[data-ccell]:hover{background:#FAFAF7!important}[data-ccell]:focus-visible{outline:2px solid #1A1A1A;outline-offset:-2px}[data-cchip]:hover{filter:brightness(.95)}[data-ccount]{display:none}
-@media (max-width:760px){[data-ccell]{min-height:64px!important;padding:6px 4px!important}[data-cchip]{display:none!important}[data-ccount]{display:block}}
+[data-ccell]:hover{background:#FAFAF7!important}[data-ccell]:focus-visible{outline:2px solid #1A1A1A;outline-offset:-2px}[data-cbar]:hover{filter:brightness(.94)}[data-ccount]{display:none}
+@media (max-width:760px){[data-cweek]{min-height:64px!important;grid-template-rows:64px!important}[data-ccell]{padding:6px 4px!important;flex-direction:column}[data-cbar]{display:none!important}[data-ccount]{display:block}}
 </style>
 </helmet>
 <a href="#main" style="position:absolute;left:-9999px;top:0;background:#1A1A1A;color:#fff;padding:8px 14px;font-size:14px;z-index:100" style-focus="left:0">본문 바로가기</a>
@@ -143,10 +143,10 @@ header[data-scrolled="true"] [data-hrow]{height:56px!important}
 <section data-screen-label="메인 비주얼·서비스" style="max-width:1320px;margin:0 auto;padding:32px 48px 0;display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start">
   <div style="flex:999 1 600px;min-width:0" data-hero="1">
     <sc-for list="{{ slideList }}" as="sl" hint-placeholder-count="1">
-      <div data-slide="1" style="border-radius:22px;overflow:hidden;background:{{ sl.bg }};color:{{ sl.fg }};min-height:360px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);position:relative">
+      <div data-slide="1" style="border-radius:22px;overflow:hidden;background:{{ sl.bg }};color:{{ sl.fg }};height:380px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);position:relative">
         <div style="padding:44px 52px 76px;display:flex;flex-direction:column;justify-content:center;gap:16px">
           <span style="font-size:13px;font-weight:700;letter-spacing:.04em;color:{{ sl.kickerFg }};display:flex;align-items:center;gap:8px">{{ sl.kicker }}</span>
-          <span data-stitle="1" style="font-size:34px;font-weight:800;line-height:1.28;letter-spacing:-.03em;word-break:keep-all;text-wrap:pretty">{{ sl.title }}</span>
+          <span data-stitle="1" style="font-size:34px;font-weight:800;line-height:1.28;letter-spacing:-.03em;word-break:keep-all;text-wrap:pretty;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ sl.title }}</span>
           <sc-if value="{{ sl.isEvent }}" hint-placeholder-val="{{ false }}"><span style="display:flex;gap:16px;flex-wrap:wrap;font-size:15px;opacity:.9"><span style="display:flex;align-items:center;gap:6px"><span class="material-symbols-outlined" style="font-size:19px">calendar_today</span>{{ sl.date }}</span><span style="display:flex;align-items:center;gap:6px"><span class="material-symbols-outlined" style="font-size:19px">location_on</span>{{ sl.place }}</span><span style="display:flex;align-items:center;gap:6px"><span class="material-symbols-outlined" style="font-size:19px">sell</span>{{ sl.fee }}</span></span></sc-if>
           <sc-if value="{{ sl.isBrand }}" hint-placeholder-val="{{ true }}"><span style="font-size:16px;line-height:1.6;opacity:.85">{{ sl.sub }}</span></sc-if>
           <sc-if value="{{ sl.isEvent }}" hint-placeholder-val="{{ false }}"><button onClick="{{ sl.open }}" style="align-self:flex-start;margin-top:6px;font:inherit;font-size:15px;font-weight:700;background:{{ sl.btnBg }};color:{{ sl.btnFg }};border:0;border-radius:999px;padding:12px 24px;cursor:pointer;display:flex;align-items:center;gap:6px">자세히 보기<span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span></button></sc-if>
@@ -168,7 +168,7 @@ header[data-scrolled="true"] [data-hrow]{height:56px!important}
       </div>
     </sc-for>
   </div>
-  <div data-screen-label="서비스 바로가기" style="flex:1 1 340px;align-self:stretch;min-height:360px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(150px,1fr));gap:12px">
+  <div data-screen-label="서비스 바로가기" style="flex:1 1 340px;align-self:stretch;height:380px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(150px,1fr));gap:12px">
     <a data-tile="1" href="#calendar" style="border-radius:18px;background:#F3F5EF;padding:22px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;text-decoration:none"><span class="material-symbols-outlined" style="font-size:42px;color:#1E3A0C">calendar_month</span><span style="font-size:15px;font-weight:700;line-height:1.35">문화캘린더</span></a>
     <a data-tile="1" href="#events" style="border-radius:18px;background:#F3F5EF;padding:22px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;text-decoration:none"><span class="material-symbols-outlined" style="font-size:42px;color:#1E3A0C">search</span><span style="font-size:15px;font-weight:700;line-height:1.35">행사<br>통합검색</span></a>
     <a data-tile="1" href="#notice" style="border-radius:18px;background:#F3F5EF;padding:22px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;text-decoration:none"><span class="material-symbols-outlined" style="font-size:42px;color:#1E3A0C">campaign</span><span style="font-size:15px;font-weight:700;line-height:1.35">공지사항</span></a>
@@ -182,8 +182,6 @@ header[data-scrolled="true"] [data-hrow]{height:56px!important}
   <div style="flex:999 1 600px;min-width:0">
     <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:22px;padding-bottom:18px;border-bottom:2px solid #1A1A1A">
       <h2 style="margin:0;font-size:30px;font-weight:800;letter-spacing:-.04em">부산 문화콘텐츠</h2>
-      <a href="#events" onClick="{{ qWeek }}" style="font-size:14px;font-weight:600;color:#1A1A1A;border:1px solid #CFCFCF;border-radius:999px;padding:6px 14px;text-decoration:none;white-space:nowrap" style-hover="border-color:#1A1A1A;text-decoration:none;color:#1A1A1A">이번 주 행사 {{ weekCount }}건</a>
-      <span style="margin-left:auto;display:flex;align-items:center;gap:6px;font-size:16px;color:#777"><span class="material-symbols-outlined" style="font-size:22px">today</span>공공데이터(문화포털·한국관광공사) · {{ updatedLabel }} · {{ count }}건</span>
     </div>
     <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid #CFCFCF;border-radius:4px;overflow:hidden;margin-bottom:40px">
       <label style="position:relative;display:flex;align-items:center;border-right:1px solid #CFCFCF;min-width:0"><span style="position:absolute;left:-9999px">분류</span><select value="{{ catSel }}" onChange="{{ setCatSel }}" style="font:inherit;font-size:17px;color:#444;appearance:none;-webkit-appearance:none;border:0;background:transparent;width:100%;height:60px;padding:0 48px 0 22px;cursor:pointer;outline:none"><option value="전체">전체</option><option value="공연">공연</option><option value="전시">전시</option><option value="행사">행사</option><option value="교육">교육</option><option value="모임">모임</option></select><span class="material-symbols-outlined" style="position:absolute;right:16px;pointer-events:none;color:#444">expand_more</span></label>
@@ -211,15 +209,8 @@ header[data-scrolled="true"] [data-hrow]{height:56px!important}
   <div style="display:flex;align-items:flex-end;gap:16px 24px;flex-wrap:wrap;padding-bottom:18px;border-bottom:2px solid #1A1A1A">
     <div style="display:flex;flex-direction:column;gap:10px">
       <h2 style="margin:0;font-size:30px;font-weight:800;letter-spacing:-.04em">행사 캘린더</h2>
-      <div style="display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:#555">
-        <span style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:2px;background:#E4EADB;border:1px solid #C9D3BC"></span>부산 문화콘텐츠 (자동 수집)</span>
-        <span style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:2px;background:#1A1A1A"></span>직접 등록</span>
-      </div>
     </div>
     <div style="margin-left:auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
-      <div role="group" aria-label="표시할 항목" style="display:flex;border:1px solid #CFCFCF;border-radius:999px;padding:3px">
-        <sc-for list="{{ calSrcs }}" as="o" hint-placeholder-count="3"><button onClick="{{ o.set }}" style="font:inherit;font-size:13px;font-weight:600;padding:6px 14px;border:0;border-radius:999px;cursor:pointer;background:{{ o.bg }};color:{{ o.fg }}">{{ o.t }}</button></sc-for>
-      </div>
       <div style="display:flex;align-items:center;gap:4px">
         <button onClick="{{ prevMonth }}" aria-label="이전 달" style="font:inherit;width:36px;height:36px;border:0;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#1A1A1A"><span class="material-symbols-outlined" style="font-size:22px">chevron_left</span></button>
         <b style="min-width:112px;text-align:center;font-size:18px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums">{{ monthLabel }}</b>
@@ -231,31 +222,28 @@ header[data-scrolled="true"] [data-hrow]{height:56px!important}
   <div style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-bottom:1px solid #E3E4DF">
     <sc-for list="{{ weekdays }}" as="w" hint-placeholder-count="7"><span style="padding:12px 10px;font-size:12px;font-weight:600;color:{{ w.c }}">{{ w.t }}</span></sc-for>
   </div>
-  <div data-cgrid="1" style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-left:1px solid #E3E4DF">
-    <sc-for list="{{ calCells }}" as="c" hint-placeholder-count="35">
-      <div data-ccell="1" role="button" tabindex="0" onClick="{{ c.set }}" aria-label="{{ c.aria }}" style="min-height:118px;padding:8px 8px 10px;border-right:1px solid #E3E4DF;border-bottom:1px solid #E3E4DF;background:{{ c.bg }};box-shadow:{{ c.ring }};display:flex;flex-direction:column;gap:4px;cursor:pointer;min-width:0;opacity:{{ c.op }}">
-        <span style="display:flex;align-items:center;justify-content:space-between;gap:4px"><span style="width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:{{ c.fw }};color:{{ c.fg }};background:{{ c.numBg }};font-variant-numeric:tabular-nums">{{ c.d }}</span><span data-ccount="1" style="font-size:11px;color:#555">{{ c.countLabel }}</span></span>
-        <sc-for list="{{ c.chips }}" as="ch" hint-placeholder-count="0"><button data-cchip="1" onClick="{{ ch.open }}" title="{{ ch.t }}" style="font:inherit;text-align:left;font-size:11.5px;line-height:1.35;padding:3px 6px;border:0;border-radius:4px;background:{{ ch.bg }};color:{{ ch.fg }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;min-width:0">{{ ch.t }}</button></sc-for>
-        <sc-if value="{{ c.hasMore }}" hint-placeholder-val="{{ false }}"><span data-cchip="1" style="font-size:11px;color:#777;padding:0 2px">+{{ c.more }}건 더보기</span></sc-if>
+  <div data-cgrid="1" style="border-left:1px solid #E3E4DF">
+    <sc-for list="{{ calWeeks }}" as="wk" hint-placeholder-count="5">
+      <div data-cweek="1" style="position:relative;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));grid-template-rows:36px repeat(3,26px) 24px;min-height:118px;border-bottom:1px solid #E3E4DF">
+        <sc-for list="{{ wk.days }}" as="c" hint-placeholder-count="7">
+          <div data-ccell="1" role="button" tabindex="0" onClick="{{ c.open }}" aria-label="{{ c.aria }}" style="grid-column:{{ c.col }};grid-row:1 / -1;border-right:1px solid #E3E4DF;background:{{ c.bg }};padding:8px;cursor:pointer;min-width:0;display:flex;justify-content:space-between;align-items:flex-start">
+            <span style="width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:{{ c.fw }};color:{{ c.fg }};background:{{ c.numBg }};opacity:{{ c.op }};font-variant-numeric:tabular-nums">{{ c.d }}</span>
+            <span data-ccount="1" style="font-size:11px;color:#555">{{ c.countLabel }}</span>
+          </div>
+        </sc-for>
+        <sc-for list="{{ wk.bars }}" as="b" hint-placeholder-count="0">
+          <button data-cbar="1" onClick="{{ b.open }}" title="{{ b.full }}" style="font:inherit;position:relative;z-index:1;grid-column:{{ b.col }};grid-row:{{ b.row }};margin:2px {{ b.mr }} 2px {{ b.ml }};padding:0 8px;height:22px;border:0;border-radius:{{ b.radius }};background:{{ b.bg }};color:{{ b.fg }};opacity:{{ b.op }};font-size:11.5px;font-weight:500;line-height:22px;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;min-width:0">{{ b.t }}</button>
+        </sc-for>
+        <sc-for list="{{ wk.mores }}" as="mo" hint-placeholder-count="0">
+          <button data-cbar="1" onClick="{{ mo.open }}" style="font:inherit;position:relative;z-index:1;grid-column:{{ mo.col }};grid-row:5;justify-self:start;margin:0 6px;padding:0 4px;height:20px;border:0;background:transparent;color:#555;font-size:11px;font-weight:600;cursor:pointer">+{{ mo.n }}건</button>
+        </sc-for>
       </div>
     </sc-for>
   </div>
-  <div style="padding:24px 0 8px;display:flex;align-items:baseline;gap:10px"><b style="font-size:17px">{{ selLabel }}</b><span style="font-size:14px;color:#666">{{ dayCount }}건</span></div>
-  <ul style="list-style:none;margin:0;padding:0;border-top:1px solid #DADADA">
-    <sc-for list="{{ dayList }}" as="e" hint-placeholder-count="2">
-      <li style="border-bottom:1px solid #EDEDED"><button onClick="{{ e.open }}" style="font:inherit;width:100%;text-align:left;border:0;background:#fff;padding:16px 4px;cursor:pointer;display:grid;grid-template-columns:auto 64px minmax(0,1fr) auto;gap:16px;align-items:center;color:#1A1A1A">
-        <span style="font-size:11px;font-weight:700;padding:3px 7px;border-radius:4px;background:{{ e.srcBg }};color:{{ e.srcFg }};white-space:nowrap">{{ e.srcShort }}</span>
-        <b style="font-size:14px;color:#2F5D0B">{{ e.cat }}</b>
-        <span style="min-width:0"><span style="display:block;font-size:16px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ e.title }}</span><span style="display:block;font-size:13px;color:#666;margin-top:3px">{{ e.timeText }} · {{ e.place }}</span></span>
-        <span style="font-size:12px;font-weight:700;padding:4px 8px;background:{{ e.sBg }};color:{{ e.sFg }};border:1px solid {{ e.sBd }}">{{ e.status }}</span>
-      </button></li>
-    </sc-for>
-  </ul>
-  <sc-if value="{{ noDay }}" hint-placeholder-val="{{ false }}"><div style="padding:40px 0;text-align:center;color:#666;border-bottom:1px solid #EDEDED">선택한 날짜에 등록된 행사가 없습니다.</div></sc-if>
 </section>
 
 <section id="notice" data-screen-label="공지사항" style="max-width:1320px;margin:0 auto;padding:120px 48px 120px;scroll-margin-top:80px;display:flex;flex-wrap:wrap;gap:48px;align-items:flex-start">
-  <div style="flex:2 1 520px;min-width:0">
+  <div style="flex:1 1 100%;min-width:0">
     <div style="display:flex;align-items:center;padding-bottom:18px;border-bottom:2px solid #1A1A1A"><h2 style="margin:0;font-size:30px;font-weight:800;letter-spacing:-.04em">공지사항</h2><a href="#" aria-label="공지사항 더보기" style="margin-left:auto;display:flex;color:#1A1A1A;text-decoration:none"><span class="material-symbols-outlined" style="font-size:34px">add</span></a></div>
     <ul style="list-style:none;margin:0;padding:6px 0 0">
       <li style="padding:20px 0;border-bottom:1px solid #EDEDED"><a href="#" style="display:block;font-size:17px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">10월 운영시간 변경 안내 (매주 월요일 휴관)</a><span style="display:block;font-size:15px;color:#777;margin-top:6px">2026-10-10</span></li>
@@ -264,18 +252,6 @@ header[data-scrolled="true"] [data-hrow]{height:56px!important}
       <li style="padding:20px 0;border-bottom:1px solid #EDEDED"><a href="#" style="display:block;font-size:17px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">추석 연휴 휴관 안내 (10.5–10.7)</a><span style="display:block;font-size:15px;color:#777;margin-top:6px">2026-09-22</span></li>
       <li style="padding:20px 0"><a href="#" style="display:block;font-size:17px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">개인정보처리방침 개정 안내</a><span style="display:block;font-size:15px;color:#777;margin-top:6px">2026-09-15</span></li>
     </ul>
-  </div>
-  <div style="flex:1 1 340px;min-width:0">
-    <div data-screen-label="스튜디오 아카이브" style="background:#F3F5EF;border-radius:6px;padding:32px 30px">
-      <a href="#notice" style="display:flex;align-items:center;text-decoration:none"><b style="font-size:26px;letter-spacing:-.04em">스튜디오 아카이브</b><span class="material-symbols-outlined" style="margin-left:auto;font-size:30px">chevron_right</span></a>
-      <p style="margin:10px 0 22px;font-size:16px;line-height:1.6;color:#555">지난 행사의 사진과 기록을 한데 모아 보여드립니다.</p>
-      <div style="display:flex;align-items:center;background:#fff;border:1px solid #1E3A0C;border-radius:4px;height:50px;padding:0 8px 0 18px"><input placeholder="기록을 검색해 보세요" style="font:inherit;font-size:16px;flex:1;min-width:0;border:0;outline:none;background:transparent"><span class="material-symbols-outlined" style="font-size:28px;color:#1E3A0C;padding:0 8px">search</span></div>
-      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:24px;text-align:center">
-        <a href="#" style="display:flex;flex-direction:column;align-items:center;gap:10px;text-decoration:none"><span style="width:76px;height:76px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:36px;color:#1E3A0C">photo_library</span></span><span style="font-size:15px;font-weight:700;color:#1E3A0C">행사 사진</span></a>
-        <a href="#" style="display:flex;flex-direction:column;align-items:center;gap:10px;text-decoration:none"><span style="width:76px;height:76px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:36px;color:#1E3A0C">movie</span></span><span style="font-size:15px;font-weight:700;color:#1E3A0C">영상 기록</span></a>
-        <a href="#" style="display:flex;flex-direction:column;align-items:center;gap:10px;text-decoration:none"><span style="width:76px;height:76px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:36px;color:#1E3A0C">description</span></span><span style="font-size:15px;font-weight:700;color:#1E3A0C">결과 자료</span></a>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -350,6 +326,24 @@ header[data-scrolled="true"] [data-hrow]{height:56px!important}
 </div>
 </sc-for>
 
+<sc-if value="{{ dayPopOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;padding:24px">
+  <div onClick="{{ closeDayPop }}" style="position:absolute;inset:0;background:rgba(0,0,0,.4)"></div>
+  <div data-screen-label="날짜별 행사" role="dialog" aria-label="{{ selLabel }}" style="position:relative;width:min(520px,100%);max-height:80vh;display:flex;flex-direction:column;background:#fff;border-radius:10px;box-shadow:0 24px 60px rgba(0,0,0,.25);overflow:hidden">
+    <div style="display:flex;align-items:baseline;gap:10px;padding:20px 22px 14px;border-bottom:1px solid #EDEDED"><b style="font-size:18px;letter-spacing:-.02em">{{ selLabel }}</b><span style="font-size:13px;color:#777">{{ dayCount }}건</span><button onClick="{{ closeDayPop }}" aria-label="닫기" style="font:inherit;margin-left:auto;border:0;background:transparent;font-size:18px;cursor:pointer;line-height:1">✕</button></div>
+    <ul style="list-style:none;margin:0;padding:6px 0;overflow:auto">
+      <sc-for list="{{ dayList }}" as="e" hint-placeholder-count="3">
+        <li><button onClick="{{ e.open }}" style="font:inherit;width:100%;text-align:left;border:0;background:#fff;padding:12px 22px;cursor:pointer;display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:center;color:#1A1A1A" style-hover="background:#F6F7F4">
+          <span style="width:8px;height:32px;border-radius:2px;background:{{ e.srcBg }}"></span>
+          <span style="min-width:0"><span style="display:block;font-size:15px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ e.title }}</span><span style="display:block;font-size:12px;color:#777;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ e.cat }} · {{ e.dateText }} · {{ e.place }}</span></span>
+        </button></li>
+      </sc-for>
+    </ul>
+    <sc-if value="{{ noDay }}" hint-placeholder-val="{{ false }}"><div style="padding:32px 22px;text-align:center;color:#777;font-size:14px">이 날짜에 등록된 행사가 없습니다.</div></sc-if>
+  </div>
+</div>
+</sc-if>
+
 <sc-if value="{{ loginOpen }}" hint-placeholder-val="{{ false }}">
 <div style="position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;padding:24px">
   <div onClick="{{ closeLogin }}" style="position:absolute;inset:0;background:rgba(0,0,0,.45)"></div>
@@ -406,9 +400,9 @@ class Component extends DCLogic {
   KEY = 'gl.busan.local.v1'; AKEY = 'gl.one.admin';
   MENU = [
     { id: 'calendar', t: '행사 캘린더', en: 'CALENDAR', desc: '자동으로 모은 부산 문화콘텐츠와 직접 등록한 행사를 한 달력에서 확인하세요.', items: [{ t: '이번 달 캘린더', h: '#calendar', today: true }, { t: '부산 문화콘텐츠 목록', h: '#events', period: '2개월' }, { t: '이번 주 행사', h: '#events', period: '이번 주' }, { t: '공연', h: '#events', cat: '공연' }, { t: '전시', h: '#events', cat: '전시' }, { t: '축제·행사', h: '#events', cat: '행사' }] },
-    { id: 'notice', t: '공지 사항', en: 'NEWS', desc: '운영 변경, 모집 소식 등 스튜디오의 새 소식을 알려드립니다.', items: [{ t: '공지사항', h: '#notice' }, { t: '스튜디오 아카이브', h: '#notice' }, { t: '행사 사진·영상', h: '#notice' }] },
+    { id: 'notice', t: '공지 사항', en: 'NEWS', desc: '운영 변경, 모집 소식 등 스튜디오의 새 소식을 알려드립니다.', items: [{ t: '공지사항', h: '#notice' }] },
   ];
-  state = { remote: false, loginOpen: false, pw: '', loginErr: '', saving: false, calM: 0, calSrc: '전체', pub: [], copied: false, searchOpen: false, events: [], api: [], updatedAt: null, loadErr: false, isAdmin: false, menuOpen: false, scrolled: false, active: '', mega: -1, acc: 0, fs: 1, lang: 'KOR', cat: '전체', fee: '전체 요금', period: '2개월', q: '', sel: '', off: 0, slide: 0, paused: false, modalId: null, formOpen: false, f: null, err: '' };
+  state = { dayPop: false, remote: false, loginOpen: false, pw: '', loginErr: '', saving: false, calM: 0, calSrc: '전체', pub: [], copied: false, searchOpen: false, events: [], api: [], updatedAt: null, loadErr: false, isAdmin: false, menuOpen: false, scrolled: false, active: '', mega: -1, acc: 0, fs: 1, lang: 'KOR', cat: '전체', fee: '전체 요금', period: '2개월', q: '', sel: '', off: 0, slide: 0, paused: false, modalId: null, formOpen: false, f: null, err: '' };
   componentWillUnmount() { clearInterval(this.timer); window.removeEventListener('scroll', this.onScroll); }
   applyFont() { const f = { 'Wanted Sans': 'wanted', '제목 명조(에디토리얼)': 'editorial', 'Pretendard': 'pretendard' }[this.props.fontStyle ?? 'Wanted Sans'] || 'wanted'; if (document.body.dataset.font !== f) document.body.dataset.font = f; }
   componentDidUpdate() { this.applyFont(); const want = this.props.sampleData ? 'data/busan-events.sample.json' : 'data/busan-events.json'; if (this._src && this._src !== want) this.loadApi(); const z = [0.9, 1, 1.12][this.state.fs]; if (this._fs !== z) { this._fs = z; document.body.style.zoom = z; } }
@@ -508,18 +502,36 @@ class Component extends DCLogic {
     const gStart = new Date(mFirst); gStart.setDate(1 - mFirst.getDay());
     const nCells = Math.ceil((mFirst.getDay() + mDays) / 7) * 7, todayK = this.iso(now);
     const span = e => (new Date((e.end || e.start).slice(0, 10)) - new Date(e.start.slice(0, 10))) / 864e5;
-    const calCells = Array.from({ length: nCells }, (_, i) => {
-      const d = new Date(gStart); d.setDate(gStart.getDate() + i);
-      const k = this.iso(d), inM = d.getMonth() === mFirst.getMonth(), sel = k === s.sel, td = k === todayK, dw = d.getDay();
-      const evs = calPool.filter(e => e.start.slice(0, 10) <= k && (e.end || e.start).slice(0, 10) >= k).sort((a, b) => (isAuto(a) - isAuto(b)) || (span(a) - span(b)));
-      return { key: k, d: d.getDate(), aria: `${d.getMonth() + 1}월 ${d.getDate()}일 행사 ${evs.length}건`, op: inM ? 1 : 0.38,
-        bg: sel ? '#F6F7F4' : '#fff', ring: sel ? 'inset 0 0 0 2px #1A1A1A' : 'none', fw: td ? 700 : 500,
-        fg: td ? '#fff' : dw === 0 ? '#C0392B' : dw === 6 ? '#2C5AA0' : '#1A1A1A', numBg: td ? '#1A1A1A' : 'transparent',
-        countLabel: evs.length ? `${evs.length}건` : '',
-        chips: evs.slice(0, 3).map(e => ({ key: e.id, t: e.title, bg: isAuto(e) ? '#E4EADB' : '#1A1A1A', fg: isAuto(e) ? '#1E3A0C' : '#fff', open: ev => { ev.stopPropagation(); this.setState({ sel: k, modalId: e.id }); } })),
-        hasMore: evs.length > 3, more: evs.length - 3, set: () => this.setState({ sel: k }) };
+    const dIdx = k => Math.round((new Date(k + 'T00:00') - gStart) / 864e5);
+    const calWeeks = Array.from({ length: nCells / 7 }, (_, w) => {
+      const ws = w * 7, we = ws + 6;
+      const days = Array.from({ length: 7 }, (_, j) => {
+        const d = new Date(gStart); d.setDate(gStart.getDate() + ws + j);
+        const k = this.iso(d), inM = d.getMonth() === mFirst.getMonth(), td = k === todayK, dw = d.getDay();
+        const n = calPool.filter(e => e.start.slice(0, 10) <= k && (e.end || e.start).slice(0, 10) >= k).length;
+        return { key: k, col: String(j + 1), d: d.getDate(), aria: `${d.getMonth() + 1}월 ${d.getDate()}일 행사 ${n}건`, op: inM ? 1 : 0.35,
+          bg: inM ? '#fff' : '#FBFBF9', fw: td ? 700 : 500, fg: td ? '#fff' : dw === 0 ? '#C0392B' : dw === 6 ? '#2C5AA0' : '#1A1A1A', numBg: td ? '#1A1A1A' : 'transparent',
+          countLabel: n ? `${n}건` : '', open: () => this.setState({ sel: k, dayPop: true }) };
+      });
+      const segs = calPool.map(e => {
+        const a = dIdx(e.start.slice(0, 10)), b = dIdx((e.end || e.start).slice(0, 10));
+        if (b < ws || a > we) return null;
+        return { e, s: Math.max(a, ws) - ws, t: Math.min(b, we) - ws, contL: a < ws, contR: b > we, len: b - a };
+      }).filter(Boolean).sort((x, y) => (isAuto(x.e) - isAuto(y.e)) || (x.len - y.len) || (x.s - y.s));
+      const lanes = [[], [], []], hidden = Array(7).fill(0), bars = [];
+      for (const g of segs) {
+        const li = lanes.findIndex(L => L.every(o => g.t < o.s || g.s > o.t));
+        if (li < 0) { for (let j = g.s; j <= g.t; j++) hidden[j]++; continue; }
+        lanes[li].push(g);
+        const auto = isAuto(g.e), ok = new Date(gStart.getTime() + (ws + g.s) * 864e5).getMonth() === mFirst.getMonth() || new Date(gStart.getTime() + (ws + g.t) * 864e5).getMonth() === mFirst.getMonth();
+        bars.push({ key: g.e.id + '-' + w, col: `${g.s + 1} / ${g.t + 2}`, row: String(li + 2), t: (g.contL ? '‹ ' : '') + g.e.title, full: g.e.title,
+          ml: g.contL ? '0' : '6px', mr: g.contR ? '0' : '6px', radius: `${g.contL ? 0 : 4}px ${g.contR ? 0 : 4}px ${g.contR ? 0 : 4}px ${g.contL ? 0 : 4}px`,
+          bg: auto ? '#E4EADB' : '#1A1A1A', fg: auto ? '#1E3A0C' : '#fff', op: ok ? 1 : 0.45, open: ev => { ev.stopPropagation(); this.setState({ modalId: g.e.id }); } });
+      }
+      const mores = hidden.map((n, j) => n ? { key: w + '-' + j, col: String(j + 1), n, open: ev => { ev.stopPropagation(); this.setState({ sel: days[j].key, dayPop: true }); } } : null).filter(Boolean);
+      return { key: 'w' + w, days, bars, mores };
     });
-    const dayList = calPool.filter(e => e.start.slice(0, 10) <= s.sel && (e.end || e.start).slice(0, 10) >= s.sel).map(e => ({ ...e, srcShort: isAuto(e) ? '자동' : '직접', srcBg: isAuto(e) ? '#E4EADB' : '#1A1A1A', srcFg: isAuto(e) ? '#1E3A0C' : '#fff' }));
+    const dayList = calPool.filter(e => e.start.slice(0, 10) <= s.sel && (e.end || e.start).slice(0, 10) >= s.sel).map(e => ({ ...e, open: () => this.setState({ modalId: e.id, dayPop: false }), srcShort: isAuto(e) ? '자동' : '직접', srcBg: isAuto(e) ? '#E4EADB' : '#1A1A1A', srcFg: isAuto(e) ? '#1E3A0C' : '#fff' }));
     const selD = s.sel ? new Date(s.sel + 'T00:00') : now;
     const m = all.find(e => e.id === s.modalId);
     const f = s.f || this.blank();
@@ -557,7 +569,7 @@ class Component extends DCLogic {
       slideList: [slides[si]], slideNo: String(si + 1), slideTotal: String(slides.length), slidePct: `${((si + 1) / slides.length) * 100}%`,
       dots: slides.map((sl, i) => ({ key: sl.key, w: i === si ? '28px' : '8px', bg: i === si ? (sl.fg === '#fff' ? '#B3F945' : '#1E3A0C') : (slides[si].fg === '#fff' ? 'rgba(255,255,255,.4)' : 'rgba(30,58,12,.25)'), label: `${i + 1}번 슬라이드`, go: () => this.setState({ slide: i }) })),
       prevSlide: () => this.setState({ slide: s.slide - 1 }), nextSlide: () => this.setState({ slide: s.slide + 1 }), togglePause: () => this.setState({ paused: !s.paused }), pauseIcon: s.paused ? 'play_arrow' : 'pause', pauseLabel: s.paused ? '재생' : '일시정지',
-      calCells, weekdays: D.map((t, i) => ({ key: t, t, c: i === 0 ? '#C0392B' : i === 6 ? '#2C5AA0' : '#777' })),
+      calWeeks, dayPopOpen: !!s.dayPop, closeDayPop: () => this.setState({ dayPop: false }), weekdays: D.map((t, i) => ({ key: t, t, c: i === 0 ? '#C0392B' : i === 6 ? '#2C5AA0' : '#777' })),
       monthLabel: `${mFirst.getFullYear()}년 ${mFirst.getMonth() + 1}월`, prevMonth: () => this.setState({ calM: s.calM - 1 }), nextMonth: () => this.setState({ calM: s.calM + 1 }), goToday: () => this.setState({ calM: 0, sel: this.iso(now) }),
       calSrcs: ['전체', '부산 문화콘텐츠', '직접 등록'].map(t => ({ key: t, t, bg: s.calSrc === t ? '#1A1A1A' : 'transparent', fg: s.calSrc === t ? '#fff' : '#555', set: () => this.setState({ calSrc: t }) })),
       exportManual: () => this.exportManual(), manualCount: s.events.length,
