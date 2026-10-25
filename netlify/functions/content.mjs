@@ -21,7 +21,8 @@ export default async (req) => {
     }
     const events = (await store.get('events', { type: 'json' })) || [];
     const settings = (await store.get('settings', { type: 'json' })) || null;
-    return json({ events, settings });
+    const notices = (await store.get('notices', { type: 'json' })) || [];
+    return json({ events, settings, notices });
   }
 
   if (req.method !== 'POST') return json({ error: 'method not allowed' }, 405);
@@ -42,10 +43,32 @@ export default async (req) => {
 
   if (body.action === 'login') return json({ ok: true });
 
+  if (body.action === 'saveNotice') {
+    let notices = (await store.get('notices', { type: 'json' })) || [];
+    const n = { ...(body.notice || {}) };
+    n.images = (await Promise.all((n.images || []).slice(0, 6).map(saveImg))).filter(Boolean);
+    if (!n.id) n.id = 'n-' + Date.now().toString(36);
+    if (!n.date) n.date = new Date().toISOString().slice(0, 10);
+    n.updatedAt = new Date().toISOString();
+    notices = notices.some(x => x.id === n.id) ? notices.map(x => (x.id === n.id ? n : x)) : [n, ...notices];
+    await store.setJSON('notices', notices);
+    return json({ ok: true, notices });
+  }
+
+  if (body.action === 'deleteNotice') {
+    let notices = (await store.get('notices', { type: 'json' })) || [];
+    const gone = notices.find(x => x.id === body.id);
+    notices = notices.filter(x => x.id !== body.id);
+    await store.setJSON('notices', notices);
+    if (gone) for (const u of gone.images || []) { const k = String(u || '').split('img=')[1]; if (k) await store.delete('img/' + k); }
+    return json({ ok: true, notices });
+  }
+
   if (body.action === 'settings') {
     const s = body.settings || {};
     const slides = await Promise.all((s.slides || []).slice(0, 10).map(async x => ({ ...x, img: await saveImg(x.img) })));
-    const settings = { order: Array.isArray(s.order) ? s.order : ['events', 'calendar', 'notice'], autoSlides: s.autoSlides !== false, slides, updatedAt: new Date().toISOString() };
+    const L = s.links || {}; const clean = v => String(v || '').trim().slice(0, 300);
+    const settings = { order: Array.isArray(s.order) ? s.order : ['events', 'calendar', 'notice'], autoSlides: s.autoSlides !== false, slides, links: { email: clean(L.email), instagram: clean(L.instagram), kakao: clean(L.kakao) }, updatedAt: new Date().toISOString() };
     await store.setJSON('settings', settings);
     return json({ ok: true, settings });
   }
