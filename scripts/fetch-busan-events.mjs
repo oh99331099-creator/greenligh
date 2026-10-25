@@ -3,8 +3,9 @@
 import { writeFile, mkdir } from 'node:fs/promises';
 import { execFile } from 'node:child_process';
 
-const KEY = process.env.BUSAN_API_KEY;
+const KEY = (process.env.BUSAN_API_KEY || '').trim().replace(/^["']|["']$/g, '');
 if (!KEY) { console.error('BUSAN_API_KEY 환경변수가 없습니다.'); process.exit(1); }
+console.log(`인증키 확인: 길이 ${KEY.length}자, 앞 4자리 ${KEY.slice(0, 4)}…, 끝 4자리 …${KEY.slice(-4)}`);
 
 const DAYS_AHEAD = 61;        // 오늘부터 약 2달 뒤까지
 const POSTER_ONLY = false;    // true면 포스터 이미지가 있는 행사만
