@@ -1,6 +1,7 @@
 // 한국문화정보원 '한눈에보는문화정보조회서비스' → data/busan-events.json (부산 지역만)
 // 실행: BUSAN_API_KEY=발급키 node scripts/fetch-busan-events.mjs   (Node 20 이상, 외부 패키지 없음)
 import { writeFile, mkdir } from 'node:fs/promises';
+import { execFile } from 'node:child_process';
 
 const KEY = process.env.BUSAN_API_KEY;
 if (!KEY) { console.error('BUSAN_API_KEY 환경변수가 없습니다.'); process.exit(1); }
@@ -25,20 +26,32 @@ const tag = (xml, name) => { const m = xml.match(new RegExp(`<${name}>([\\s\\S]*
 const pick = (xml, ...names) => { for (const n of names) { const v = tag(xml, n); if (v) return v; } return ''; };
 const clean = s => decode(s || '').replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, ' ').replace(/[ \t]+/g, ' ').replace(/\n\s*\n+/g, '\n').trim();
 
+function curl(url) {
+  return new Promise((resolve, reject) => {
+    execFile('curl', ['-sS', '-L', '--max-time', '30', '--retry', '2', '--retry-delay', '2', '-A', 'Mozilla/5.0 (greenlight-busan-bot)', '-H', 'Accept: application/xml,text/xml,*/*', '-w', '\n__HTTP__%{http_code}', url],
+      { maxBuffer: 64 * 1024 * 1024 }, (err, stdout, stderr) => {
+        if (err) return reject(new Error((stderr || err.message).trim().slice(0, 200)));
+        const k = stdout.lastIndexOf('\n__HTTP__');
+        resolve({ status: Number(stdout.slice(k + 9)), text: stdout.slice(0, k) });
+      });
+  });
+}
+async function get(url) {
+  try { return await curl(url); }
+  catch (e1) {
+    try { const r = await fetch(url, { signal: AbortSignal.timeout(30000) }); return { status: r.status, text: await r.text() }; }
+    catch (e2) { throw new Error(`curl: ${e1.message} / fetch: ${e2.message} ${e2.cause?.code || ''}`.trim()); }
+  }
+}
 async function call(op, params) {
   const q = new URLSearchParams({ serviceKey: KEY, ...params });
-  let res, text, errs = [];
+  let r = null; const errs = [];
   for (const base of [BASE, BASE.replace('https://', 'http://')]) {
-    for (let t = 0; t < 2 && !res; t++) {
-      try {
-        const r = await fetch(`${base}/${op}?${q}`, { signal: AbortSignal.timeout(20000), headers: { 'User-Agent': 'Mozilla/5.0 (greenlight-busan-bot)', Accept: 'application/xml,text/xml,*/*' } });
-        text = await r.text(); res = r;
-        if (!usedBase) { usedBase = base; console.log(`  (연결: ${base.split('://')[0]})`); }
-      } catch (e) { errs.push(`${base.split('://')[0]}: ${e.name === 'TimeoutError' ? '응답 시간 초과(20초)' : e.message} ${e.cause?.code || ''} ${e.cause?.message || ''}`.trim()); await sleep(1000); }
-    }
-    if (res) break;
+    try { r = await get(`${base}/${op}?${q}`); if (!usedBase) { usedBase = base; console.log(`  (연결 성공: ${base.split('://')[0]})`); } break; }
+    catch (e) { errs.push(`${base.split('://')[0]} → ${e.message}`); }
   }
-  if (!res) throw new Error('연결 실패 → ' + errs.join(' | '));
+  if (!r) throw new Error('연결 실패 | ' + errs.join(' | '));
+  const res = { ok: r.status >= 200 && r.status < 300, status: r.status }, text = r.text;
   const gw = text.match(/"errMsg"\s*:\s*"([^"]+)"/) || text.match(/<errMsg>([^<]+)<\/errMsg>/);
   if (gw) throw new Error(`${gw[1]} ${(text.match(/returnAuthMsg"?\s*[:>]\s*"?([^"<]+)/) || [])[1] || ''}`.trim());
   if (!res.ok) throw new Error(`HTTP ${res.status}: ${text.replace(/\s+/g, ' ').slice(0, 200)}`);
@@ -131,3 +144,4 @@ events.forEach(e => delete e.seq);
 await mkdir('data', { recursive: true });
 await writeFile(OUT, JSON.stringify({ generatedAt: new Date().toISOString(), range: { from: dash(FROM), to: dash(TO) }, sources: report, events }, null, 1));
 console.log(`저장: ${OUT} (${events.length}건, ${dash(FROM)} ~ ${dash(TO)})`);
+// END OF FILE — 이 줄이 보이면 전체가 제대로 붙여 넣어진 것입니다.
