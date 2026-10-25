@@ -20,7 +20,8 @@ export default async (req) => {
       return new Response(hit.data, { headers: { 'content-type': (hit.metadata && hit.metadata.type) || 'image/jpeg', 'cache-control': 'public, max-age=31536000, immutable' } });
     }
     const events = (await store.get('events', { type: 'json' })) || [];
-    return json({ events });
+    const settings = (await store.get('settings', { type: 'json' })) || null;
+    return json({ events, settings });
   }
 
   if (req.method !== 'POST') return json({ error: 'method not allowed' }, 405);
@@ -30,18 +31,27 @@ export default async (req) => {
   const body = await req.json().catch(() => ({}));
   let events = (await store.get('events', { type: 'json' })) || [];
 
+  const saveImg = async (d) => {
+    if (typeof d !== 'string' || !d.startsWith('data:')) return d || null;
+    const m = d.match(/^data:([^;]+);base64,(.*)$/);
+    if (!m) return null;
+    const key = crypto.randomUUID();
+    await store.set('img/' + key, new Blob([Buffer.from(m[2], 'base64')], { type: m[1] }), { metadata: { type: m[1] } });
+    return '/api/content?img=' + key;
+  };
+
   if (body.action === 'login') return json({ ok: true });
+
+  if (body.action === 'settings') {
+    const s = body.settings || {};
+    const slides = await Promise.all((s.slides || []).slice(0, 10).map(async x => ({ ...x, img: await saveImg(x.img) })));
+    const settings = { order: Array.isArray(s.order) ? s.order : ['events', 'calendar', 'notice'], autoSlides: s.autoSlides !== false, slides, updatedAt: new Date().toISOString() };
+    await store.setJSON('settings', settings);
+    return json({ ok: true, settings });
+  }
 
   if (body.action === 'save') {
     const e = { ...(body.event || {}) };
-    const saveImg = async (d) => {
-      if (typeof d !== 'string' || !d.startsWith('data:')) return d || null;
-      const m = d.match(/^data:([^;]+);base64,(.*)$/);
-      if (!m) return null;
-      const key = crypto.randomUUID();
-      await store.set('img/' + key, new Blob([Buffer.from(m[2], 'base64')], { type: m[1] }), { metadata: { type: m[1] } });
-      return '/api/content?img=' + key;
-    };
     e.poster = await saveImg(e.poster);
     e.images = (await Promise.all((e.images || []).slice(0, 4).map(saveImg))).filter(Boolean);
     if (!e.id) e.id = 'm-' + Date.now().toString(36);
