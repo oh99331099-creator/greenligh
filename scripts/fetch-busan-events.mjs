@@ -57,6 +57,7 @@ async function fetchAll(src) {
     const code = findKey(j, 'resultCode') ?? findKey(j, 'code');
     if (code && !['00', '0', 'INFO-000'].includes(String(code))) throw new Error(`API 오류 ${code}: ${findKey(j, 'resultMsg') ?? findKey(j, 'message') ?? ''}`);
     const items = findItems(j);
+    if (page === 1 && !items.length) console.log(`  ↳ ${src.name} 응답 (HTTP ${res.status}): ${text.replace(/\s+/g, ' ').slice(0, 400)}`);
     rows.push(...items);
     const total = Number(findKey(j, 'totalCount') || 0);
     if (!items.length || items.length < 100 || (total && rows.length >= total)) break;
