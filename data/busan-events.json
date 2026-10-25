@@ -1,1 +1,46 @@
-{"generatedAt":null,"range":null,"sources":[],"events":[]}
+{
+ "generatedAt": "2026-10-25T07:08:38.552Z",
+ "range": {
+  "from": "2026-10-25",
+  "to": "2026-12-25"
+ },
+ "sources": [
+  {
+   "name": "부산축제정보",
+   "ok": true,
+   "fetched": 0,
+   "kept": 0
+  },
+  {
+   "name": "문화 기타장르",
+   "ok": true,
+   "fetched": 0,
+   "kept": 0
+  },
+  {
+   "name": "문화 연극",
+   "ok": true,
+   "fetched": 0,
+   "kept": 0
+  },
+  {
+   "name": "문화 뮤지컬",
+   "ok": true,
+   "fetched": 0,
+   "kept": 0
+  },
+  {
+   "name": "문화 클래식",
+   "ok": true,
+   "fetched": 0,
+   "kept": 0
+  },
+  {
+   "name": "문화 전시",
+   "ok": true,
+   "fetched": 0,
+   "kept": 0
+  }
+ ],
+ "events": []
+}
