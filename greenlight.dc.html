@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="icon" href="assets/logo.jpg">
+<meta property="og:title" content="그린라이트 스튜디오 공식 홈페이지">
+<meta property="og:image" content="assets/logo.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{height:auto!important}body>div,body>div>div,x-dc,x-dc>div{height:auto!important;min-height:100%;overflow:visible!important}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:#fff;color:#1A1A1A;font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#1A1A1A;text-decoration:none}a:hover{color:#1E3A0C;text-decoration:underline}
+@keyframes glFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+[data-hero] [data-slide]{animation:glFade .45s ease}
+@keyframes glMega{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+@keyframes glDrawer{from{transform:translateX(100%)}to{transform:none}}
+[data-mega]{animation:glMega .22s ease}[data-drawer]{animation:glDrawer .28s cubic-bezier(.2,.7,.2,1)}
+[data-gnb] a{position:relative}[data-gnb] a::after{content:"";position:absolute;left:22px;right:22px;bottom:0;height:3px;border-radius:3px 3px 0 0;background:#B3F945;transform:scaleX(0);transition:transform .25s ease}[data-gnb] a:hover::after,[data-gnb] a[data-active="true"]::after{transform:scaleX(1)}
+[data-hrow]{transition:height .25s ease}[data-hlogo] img{transition:width .25s ease,height .25s ease}
+header[data-scrolled="true"]{box-shadow:0 8px 24px rgba(0,0,0,.18)}header[data-scrolled="true"] [data-hrow]{height:64px!important}header[data-scrolled="true"] [data-hlogo] img{width:36px!important;height:36px!important}
+[data-status="on"]{background:#B3F945;box-shadow:0 0 0 3px rgba(179,249,69,.22)}[data-status="off"]{background:#7A8275}
+[data-lang]{font:inherit;font-size:12px;background:transparent;border:0;padding:0;cursor:pointer;color:rgba(255,255,255,.55)}[data-lang][data-on="true"]{color:#fff;font-weight:700}
+[data-fs]{font:inherit;font-size:12px;width:24px;height:22px;border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;border-radius:4px;cursor:pointer;padding:0}[data-fs]:hover{background:rgba(255,255,255,.12)}
+[data-burger] span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;transition:transform .25s ease,opacity .2s ease}[data-burger][data-open="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}[data-burger][data-open="true"] span:nth-child(2){opacity:0}[data-burger][data-open="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+[data-gnb] a:focus-visible,[data-burger]:focus-visible,[data-mega] a:focus-visible,[data-drawer] a:focus-visible,[data-drawer] button:focus-visible{outline:2px solid #B3F945;outline-offset:-4px;border-radius:8px}
+[data-chip]:hover,[data-chip]:focus-visible{background:#B3F945!important;color:#1E3A0C!important;border-color:#B3F945!important}
+[data-chip]:focus-visible,[data-tile]:focus-visible{outline:2px solid #B3F945;outline-offset:2px}
+[data-tile]{transition:transform .2s ease,box-shadow .2s ease}[data-tile]:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(30,58,12,.12);text-decoration:none}
+@media (max-width:1200px){[data-gnb] a{width:auto!important;padding:0 18px!important}}
+@media (max-width:1100px){[data-hdiv],[data-mega]{display:none!important}[data-gnb] a{padding:0 12px!important;font-size:15.5px!important}[data-hrow]{gap:12px!important}[data-hlogo] span span:last-child{display:none}}
+@media (max-width:760px){[data-gnb]{display:none!important}}
+@media (max-width:760px){[data-uopt],[data-ulinks]{display:none!important}[data-hrow],[data-urow]{padding:0 20px!important}}
+@media (max-width:980px){[data-slide]{grid-template-columns:1fr!important}[data-slide] [data-sart]{order:-1;padding:28px 28px 0!important}[data-sctrl]{justify-content:center!important}}
+@media (max-width:760px){h2{font-size:22px!important}[data-slide] [data-stitle]{font-size:26px!important}}
+</style>
+</helmet>
+<a href="#main" style="position:absolute;left:-9999px;top:0;background:#1A1A1A;color:#fff;padding:8px 14px;font-size:14px;z-index:100" style-focus="left:0">본문 바로가기</a>
+
+<header data-screen-label="헤더" data-scrolled="{{ scrolled }}" onMouseLeave="{{ closeMega }}" style="position:sticky;top:-36px;z-index:50;background:#1E3A0C;color:#fff;border-bottom:1px solid rgba(0,0,0,.25);transition:box-shadow .25s ease">
+  <div data-screen-label="상단 유틸" onMouseEnter="{{ closeMega }}" style="background:#0F2005">
+    <div data-urow="1" style="max-width:1320px;margin:0 auto;padding:0 48px;height:36px;display:flex;align-items:center;gap:16px;font-size:12.5px;color:rgba(255,255,255,.7)">
+      <span style="display:flex;align-items:center;gap:8px;white-space:nowrap"><span data-status="{{ openState }}" style="width:7px;height:7px;border-radius:50%"></span><b style="color:#fff;font-weight:600">{{ openLabel }}</b><span>화–일 10:00–20:00 · 월요일 휴관</span></span>
+      <div data-hside="1" style="margin-left:auto;display:flex;align-items:center;gap:20px;white-space:nowrap">
+        <span data-uopt="1" style="display:flex;align-items:center;gap:6px">글자 크기<button data-fs="1" onClick="{{ fsDown }}" aria-label="글자 작게">가-</button><button data-fs="1" onClick="{{ fsUp }}" aria-label="글자 크게">가+</button></span>
+        <span data-uopt="1" style="display:flex;align-items:center;gap:6px"><button data-lang="1" data-on="{{ isKor }}" onClick="{{ setKor }}">KOR</button><span style="color:rgba(255,255,255,.3)">/</span><button data-lang="1" data-on="{{ isEng }}" onClick="{{ setEng }}">ENG</button></span>
+        <span data-ulinks="1" style="display:flex;align-items:center;gap:16px"><a href="#" style="color:rgba(255,255,255,.85)" style-hover="color:#fff">로그인</a><a href="#" style="color:rgba(255,255,255,.85)" style-hover="color:#fff">회원가입</a><a href="#guide" style="color:rgba(255,255,255,.85)" style-hover="color:#fff">이용안내</a><a href="#guide" style="color:rgba(255,255,255,.85)" style-hover="color:#fff">문의하기</a></span>
+      </div>
+    </div>
+  </div>
+  <div data-hrow="1" style="max-width:1320px;margin:0 auto;padding:0 48px;height:86px;display:flex;align-items:center;gap:24px">
+    <div onMouseEnter="{{ closeMega }}" style="flex:1 1 0;min-width:0;display:flex">
+      <a data-hlogo="1" href="#main" style="display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none" style-hover="text-decoration:none;color:#fff">
+        <img src="assets/logo.jpg" alt="그린라이트 로고" style="width:44px;height:44px;object-fit:cover;display:block;border-radius:9px">
+        <span style="display:flex;flex-direction:column;line-height:1.1"><span style="font-size:21px;font-weight:800;letter-spacing:-.03em;white-space:nowrap">그린라이트</span><span style="font-size:10px;font-weight:600;color:rgba(255,255,255,.6);letter-spacing:.14em;margin-top:5px;text-transform:uppercase;white-space:nowrap">Greenlight Studio</span></span>
+      </a>
+    </div>
+    <nav data-gnb="1" aria-label="주 메뉴" style="display:flex;align-self:stretch">
+      <sc-for list="{{ gnb }}" as="n" hint-placeholder-count="5"><a href="{{ n.h }}" data-active="{{ n.active }}" onMouseEnter="{{ n.enter }}" onFocus="{{ n.enter }}" onClick="{{ n.click }}" style="width:128px;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:600;letter-spacing:-.02em;color:#fff;text-decoration:none;white-space:nowrap" style-hover="color:#fff;text-decoration:none">{{ n.t }}</a></sc-for>
+    </nav>
+    <div onMouseEnter="{{ closeMega }}" style="flex:1 1 0;min-width:0;display:flex;align-items:center;justify-content:flex-end;gap:16px">
+      <sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ false }}"><button onClick="{{ openNew }}" style="font:inherit;font-size:14px;font-weight:700;display:flex;align-items:center;gap:6px;color:#1E3A0C;background:#B3F945;border:0;border-radius:999px;padding:9px 16px;cursor:pointer;white-space:nowrap"><span class="material-symbols-outlined" style="font-size:18px">edit_calendar</span>일정 등록</button></sc-if>
+      <span data-hdiv="1" style="width:1px;height:24px;background:rgba(255,255,255,.25)"></span>
+      <button data-burger="1" data-open="{{ menuOpen }}" onClick="{{ toggleMenu }}" aria-label="전체메뉴" aria-expanded="{{ menuOpen }}" style="font:inherit;width:44px;height:44px;border:0;background:transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:0"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <sc-for list="{{ megaList }}" as="mg" hint-placeholder-count="0">
+  <div data-mega="1" data-screen-label="메가 메뉴" style="position:absolute;left:0;right:0;top:100%;background:#fff;color:#1A1A1A;border-top:3px solid #B3F945;box-shadow:0 20px 40px rgba(0,0,0,.14)">
+    <div style="max-width:1320px;margin:0 auto;padding:36px 48px 40px;display:grid;grid-template-columns:240px minmax(0,1fr) 300px;gap:48px">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <span style="font-size:12px;font-weight:700;letter-spacing:.14em;color:#2F5D0B">{{ mg.no }} · {{ mg.en }}</span>
+        <b style="font-size:26px;font-weight:800;letter-spacing:-.03em">{{ mg.t }}</b>
+        <p style="margin:0;font-size:14px;line-height:1.65;color:#555;word-break:keep-all">{{ mg.desc }}</p>
+        <a href="{{ mg.h }}" onClick="{{ closeMega }}" style="margin-top:auto;padding-top:16px;display:inline-flex;align-items:center;gap:4px;font-size:14px;font-weight:700;color:#1E3A0C;text-decoration:none" style-hover="color:#2F5D0B;text-decoration:none">전체 보기<span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span></a>
+      </div>
+      <ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px;align-content:start">
+        <sc-for list="{{ mg.items }}" as="it" hint-placeholder-count="4"><li><a href="{{ it.h }}" onClick="{{ it.go }}" style="display:flex;align-items:center;gap:8px;padding:15px 4px;border-bottom:1px solid #EDEDED;font-size:16px;font-weight:600;color:#1A1A1A;text-decoration:none" style-hover="color:#2F5D0B;text-decoration:none;border-bottom-color:#2F5D0B"><span class="material-symbols-outlined" style="font-size:18px;color:#2F5D0B">chevron_right</span>{{ it.t }}</a></li></sc-for>
+      </ul>
+      <sc-if value="{{ mg.hasRec }}" hint-placeholder-val="{{ true }}">
+        <button onClick="{{ mg.rec.open }}" style="font:inherit;align-self:start;display:grid;grid-template-columns:92px minmax(0,1fr);gap:16px;background:#F3F5EF;border:0;border-radius:14px;padding:16px;text-align:left;cursor:pointer;color:#1A1A1A" style-hover="background:#E9EEE2">
+          <sc-if value="{{ mg.rec.hasPoster }}" hint-placeholder-val="{{ false }}"><img src="{{ mg.rec.poster }}" alt="{{ mg.rec.title }}" style="width:92px;aspect-ratio:3/4;object-fit:cover;border-radius:8px;display:block"></sc-if>
+          <sc-if value="{{ mg.rec.noPoster }}" hint-placeholder-val="{{ true }}"><span style="width:92px;aspect-ratio:3/4;border-radius:8px;background:#1E3A0C;color:#B3F945;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:36px">{{ mg.rec.icon }}</span></span></sc-if>
+          <span style="display:flex;flex-direction:column;gap:6px;min-width:0">
+            <span style="align-self:flex-start;font-size:11px;font-weight:800;color:#1E3A0C;background:#B3F945;border-radius:999px;padding:3px 9px">추천 {{ mg.rec.cat }}</span>
+            <b style="font-size:16px;line-height:1.4;letter-spacing:-.02em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;word-break:keep-all">{{ mg.rec.title }}</b>
+            <span style="font-size:13px;color:#555;line-height:1.5">{{ mg.rec.dateText }}<br>{{ mg.rec.place }}</span>
+          </span>
+        </button>
+      </sc-if>
+    </div>
+  </div>
+  </sc-for>
+</header>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:80;display:flex;justify-content:flex-end">
+  <div onClick="{{ closeMenu }}" style="position:absolute;inset:0;background:rgba(10,20,5,.55)"></div>
+  <div data-drawer="1" data-screen-label="전체메뉴" role="dialog" aria-label="전체메뉴" style="position:relative;width:min(440px,100%);height:100%;background:#1E3A0C;color:#fff;display:flex;flex-direction:column;box-shadow:-12px 0 40px rgba(0,0,0,.3)">
+    <div style="height:72px;padding:0 24px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,.12)">
+      <img src="assets/logo.jpg" alt="" style="width:34px;height:34px;object-fit:cover;border-radius:7px;display:block">
+      <b style="font-size:18px;letter-spacing:-.03em">전체메뉴</b>
+      <button data-burger="1" data-open="true" onClick="{{ closeMenu }}" aria-label="전체메뉴 닫기" style="font:inherit;margin-left:auto;width:44px;height:44px;border:0;background:transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:0"><span></span><span></span><span></span></button>
+    </div>
+    <div style="flex:1;overflow:auto;padding:4px 24px 16px">
+      <sc-for list="{{ drawerMenu }}" as="d" hint-placeholder-count="5">
+        <div style="border-bottom:1px solid rgba(255,255,255,.12)">
+          <button onClick="{{ d.toggle }}" aria-expanded="{{ d.open }}" style="font:inherit;width:100%;display:flex;align-items:center;justify-content:space-between;padding:20px 0;font-size:19px;font-weight:700;letter-spacing:-.02em;color:#fff;background:transparent;border:0;cursor:pointer;text-align:left">{{ d.t }}<span class="material-symbols-outlined" style="font-size:22px;color:#B3F945">{{ d.icon }}</span></button>
+          <sc-if value="{{ d.open }}" hint-placeholder-val="{{ false }}"><ul style="list-style:none;margin:0;padding:0 0 16px;display:flex;flex-direction:column"><sc-for list="{{ d.items }}" as="it" hint-placeholder-count="4"><li><a href="{{ it.h }}" onClick="{{ it.go }}" style="display:flex;align-items:center;gap:8px;padding:11px 4px;font-size:15px;color:rgba(255,255,255,.85);text-decoration:none" style-hover="color:#B3F945;text-decoration:none"><span class="material-symbols-outlined" style="font-size:18px;color:#B3F945">chevron_right</span>{{ it.t }}</a></li></sc-for></ul></sc-if>
+        </div>
+      </sc-for>
+    </div>
+    <div style="padding:18px 24px 22px;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-direction:column;gap:12px;background:#152B08">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <a href="#" onClick="{{ closeMenu }}" style="height:48px;border:1px solid rgba(255,255,255,.4);border-radius:999px;display:flex;align-items:center;justify-content:center;gap:6px;font-size:15px;font-weight:700;color:#fff;text-decoration:none" style-hover="color:#fff;background:rgba(255,255,255,.1);text-decoration:none"><span class="material-symbols-outlined" style="font-size:19px">login</span>로그인</a>
+        <a href="#guide" onClick="{{ closeMenu }}" style="height:48px;background:#B3F945;border-radius:999px;display:flex;align-items:center;justify-content:center;gap:6px;font-size:15px;font-weight:700;color:#1E3A0C;text-decoration:none" style-hover="color:#1E3A0C;text-decoration:none"><span class="material-symbols-outlined" style="font-size:19px">support_agent</span>문의하기</a>
+      </div>
+      <div style="display:flex;gap:16px;justify-content:center;font-size:13px"><a href="#" onClick="{{ closeMenu }}" style="color:rgba(255,255,255,.7)">회원가입</a><a href="#guide" onClick="{{ closeMenu }}" style="color:rgba(255,255,255,.7)">이용안내</a><span style="color:rgba(255,255,255,.7)">{{ openLabel }} · 화–일 10:00–20:00</span></div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<main id="main">
+<section data-screen-label="메인 비주얼·서비스" style="max-width:1320px;margin:0 auto;padding:32px 48px 0;display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start">
+  <div style="flex:999 1 600px;min-width:0" data-hero="1">
+    <sc-for list="{{ slideList }}" as="sl" hint-placeholder-count="1">
+      <div data-slide="1" style="border-radius:22px;overflow:hidden;background:{{ sl.bg }};color:{{ sl.fg }};min-height:360px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);position:relative">
+        <div style="padding:44px 52px 76px;display:flex;flex-direction:column;justify-content:center;gap:16px">
+          <span style="font-size:13px;font-weight:700;letter-spacing:.04em;color:{{ sl.kickerFg }};display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;border-radius:50%;background:{{ sl.kickerFg }}"></span>{{ sl.kicker }}</span>
+          <span data-stitle="1" style="font-size:34px;font-weight:800;line-height:1.28;letter-spacing:-.03em;word-break:keep-all;text-wrap:pretty">{{ sl.title }}</span>
+          <sc-if value="{{ sl.isEvent }}" hint-placeholder-val="{{ false }}"><span style="display:flex;gap:16px;flex-wrap:wrap;font-size:15px;opacity:.9"><span style="display:flex;align-items:center;gap:6px"><span class="material-symbols-outlined" style="font-size:19px">calendar_today</span>{{ sl.date }}</span><span style="display:flex;align-items:center;gap:6px"><span class="material-symbols-outlined" style="font-size:19px">location_on</span>{{ sl.place }}</span><span style="display:flex;align-items:center;gap:6px"><span class="material-symbols-outlined" style="font-size:19px">sell</span>{{ sl.fee }}</span></span></sc-if>
+          <sc-if value="{{ sl.isBrand }}" hint-placeholder-val="{{ true }}"><span style="font-size:16px;line-height:1.6;opacity:.85">{{ sl.sub }}</span></sc-if>
+          <sc-if value="{{ sl.isEvent }}" hint-placeholder-val="{{ false }}"><button onClick="{{ sl.open }}" style="align-self:flex-start;margin-top:6px;font:inherit;font-size:15px;font-weight:700;background:{{ sl.btnBg }};color:{{ sl.btnFg }};border:0;border-radius:999px;padding:12px 24px;cursor:pointer;display:flex;align-items:center;gap:6px">자세히 보기<span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span></button></sc-if>
+          <sc-if value="{{ sl.isBrand }}" hint-placeholder-val="{{ true }}"><a href="#events" style="align-self:flex-start;margin-top:6px;font-size:15px;font-weight:700;background:#1E3A0C;color:#fff;border-radius:999px;padding:12px 24px;text-decoration:none;display:flex;align-items:center;gap:6px" style-hover="text-decoration:none;background:#2F5D0B;color:#fff">이달의 행사 보기<span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span></a></sc-if>
+        </div>
+        <div data-sart="1" style="position:relative;display:flex;align-items:center;justify-content:center;padding:32px 32px 60px">
+          <sc-if value="{{ sl.hasImg }}" hint-placeholder-val="{{ true }}"><img src="{{ sl.img }}" alt="{{ sl.title }}" style="max-height:260px;max-width:100%;border-radius:12px;display:block;box-shadow:0 16px 36px rgba(0,0,0,.25)"></sc-if>
+          <sc-if value="{{ sl.noImg }}" hint-placeholder-val="{{ false }}"><span style="width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:76px">{{ sl.icon }}</span></span></sc-if>
+        </div>
+        <div data-sctrl="1" style="position:absolute;left:52px;right:32px;bottom:22px;display:flex;align-items:center;gap:14px">
+          <div style="display:flex;gap:6px"><sc-for list="{{ dots }}" as="d" hint-placeholder-count="4"><button onClick="{{ d.go }}" aria-label="{{ d.label }}" style="font:inherit;width:{{ d.w }};height:8px;border-radius:4px;border:0;background:{{ d.bg }};cursor:pointer;padding:0;transition:width .25s"></button></sc-for></div>
+          <span style="font-size:13px;opacity:.8"><b>{{ slideNo }}</b> / {{ slideTotal }}</span>
+          <span style="margin-left:auto;display:flex;gap:4px">
+            <button onClick="{{ prevSlide }}" aria-label="이전" style="font:inherit;width:36px;height:36px;border:1px solid {{ sl.ctrlBd }};border-radius:50%;background:transparent;color:inherit;cursor:pointer;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:20px">chevron_left</span></button>
+            <button onClick="{{ togglePause }}" aria-label="{{ pauseLabel }}" style="font:inherit;width:36px;height:36px;border:1px solid {{ sl.ctrlBd }};border-radius:50%;background:transparent;color:inherit;cursor:pointer;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:20px">{{ pauseIcon }}</span></button>
+            <button onClick="{{ nextSlide }}" aria-label="다음" style="font:inherit;width:36px;height:36px;border:1px solid {{ sl.ctrlBd }};border-radius:50%;background:transparent;color:inherit;cursor:pointer;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:20px">chevron_right</span></button>
+          </span>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+  <div data-screen-label="서비스 바로가기" style="flex:1 1 340px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px">
+    <a data-tile="1" href="#events" style="grid-column:span 2;border-radius:18px;background:#1E3A0C;color:#fff;padding:18px 20px;display:flex;align-items:center;gap:12px;min-height:142px;text-decoration:none"><span class="material-symbols-outlined" style="font-size:40px;color:#B3F945">confirmation_number</span><span style="font-size:18px;font-weight:800;line-height:1.35">이달의 행사<br>한눈에 보기</span></a>
+    <a data-tile="1" href="#programs" style="position:relative;border-radius:18px;background:#2F5D0B;color:#fff;padding:20px;display:flex;flex-direction:column;justify-content:space-between;min-height:142px;text-decoration:none"><span style="font-size:15px;font-weight:700;line-height:1.35">프로그램<br>참여자 모집</span><span style="align-self:flex-end;font-size:12px;font-weight:800;color:#1E3A0C;background:#B3F945;border-radius:999px;padding:3px 10px">접수중</span></a>
+    <a data-tile="1" href="#calendar" style="border-radius:18px;background:#F3F5EF;padding:26px 10px 22px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;text-decoration:none"><span class="material-symbols-outlined" style="font-size:42px;color:#1E3A0C">calendar_month</span><span style="font-size:15px;font-weight:700;line-height:1.35">문화캘린더</span></a>
+    <a data-tile="1" href="#events" style="border-radius:18px;background:#F3F5EF;padding:26px 10px 22px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;text-decoration:none"><span class="material-symbols-outlined" style="font-size:42px;color:#1E3A0C">search</span><span style="font-size:15px;font-weight:700;line-height:1.35">행사<br>통합검색</span></a>
+    <a data-tile="1" href="#notice" style="border-radius:18px;background:#F3F5EF;padding:26px 10px 22px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;text-decoration:none"><span class="material-symbols-outlined" style="font-size:42px;color:#1E3A0C">campaign</span><span style="font-size:15px;font-weight:700;line-height:1.35">공지사항</span></a>
+    <a data-tile="1" href="#programs" style="position:relative;border-radius:18px;background:#F3F5EF;padding:26px 10px 22px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;text-decoration:none"><span style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);font-size:12px;font-weight:700;color:#1E3A0C;background:#B3F945;border-radius:999px;padding:3px 10px;white-space:nowrap">모집중</span><span class="material-symbols-outlined" style="font-size:42px;color:#1E3A0C">how_to_reg</span><span style="font-size:15px;font-weight:700;line-height:1.35">프로그램<br>신청</span></a>
+    <a data-tile="1" href="#about" style="border-radius:18px;background:#F3F5EF;padding:26px 10px 22px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;text-decoration:none"><span class="material-symbols-outlined" style="font-size:42px;color:#1E3A0C">location_on</span><span style="font-size:15px;font-weight:700;line-height:1.35">오시는 길</span></a>
+    <a data-tile="1" href="#guide" style="border-radius:18px;background:#F3F5EF;padding:26px 10px 22px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;text-decoration:none"><span class="material-symbols-outlined" style="font-size:42px;color:#1E3A0C">schedule</span><span style="font-size:15px;font-weight:700;line-height:1.35">운영시간<br>안내</span></a>
+  </div>
+</section>
+
+<section id="events" data-screen-label="이달의 문화콘텐츠·공지" style="max-width:1320px;margin:0 auto;padding:120px 48px 0;scroll-margin-top:24px;display:flex;flex-wrap:wrap;gap:64px;align-items:flex-start">
+  <div style="flex:999 1 600px;min-width:0">
+    <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:22px;padding-bottom:18px;border-bottom:2px solid #1A1A1A">
+      <h2 style="margin:0;font-size:30px;font-weight:800;letter-spacing:-.04em">부산 문화콘텐츠</h2>
+      <span style="margin-left:auto;display:flex;align-items:center;gap:6px;font-size:16px;color:#777"><span class="material-symbols-outlined" style="font-size:22px">today</span>부산시 공공데이터 · {{ updatedLabel }} · {{ count }}건</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid #CFCFCF;border-radius:4px;overflow:hidden;margin-bottom:40px">
+      <label style="position:relative;display:flex;align-items:center;border-right:1px solid #CFCFCF;min-width:0"><span style="position:absolute;left:-9999px">분류</span><select value="{{ catSel }}" onChange="{{ setCatSel }}" style="font:inherit;font-size:17px;color:#444;appearance:none;-webkit-appearance:none;border:0;background:transparent;width:100%;height:60px;padding:0 48px 0 22px;cursor:pointer;outline:none"><option value="전체">전체</option><option value="공연">공연</option><option value="전시">전시</option><option value="행사">행사</option><option value="교육">교육</option><option value="모임">모임</option></select><span class="material-symbols-outlined" style="position:absolute;right:16px;pointer-events:none;color:#444">expand_more</span></label>
+      <label style="position:relative;display:flex;align-items:center;border-right:1px solid #CFCFCF;min-width:0"><span style="position:absolute;left:-9999px">요금</span><select value="{{ fee }}" onChange="{{ setFee }}" style="font:inherit;font-size:17px;color:#444;appearance:none;-webkit-appearance:none;border:0;background:transparent;width:100%;height:60px;padding:0 48px 0 22px;cursor:pointer;outline:none"><option value="전체 요금">전체 요금</option><option value="무료">무료</option><option value="유료">유료</option></select><span class="material-symbols-outlined" style="position:absolute;right:16px;pointer-events:none;color:#444">expand_more</span></label>
+      <label style="position:relative;display:flex;align-items:center;border-right:1px solid #CFCFCF;min-width:0"><span style="position:absolute;left:-9999px">기간</span><select value="{{ period }}" onChange="{{ setPeriod }}" style="font:inherit;font-size:17px;color:#444;appearance:none;-webkit-appearance:none;border:0;background:transparent;width:100%;height:60px;padding:0 48px 0 22px;cursor:pointer;outline:none"><option value="2개월">앞으로 2개월</option><option value="이번 달">이번 달</option><option value="이번 주">이번 주</option><option value="전체 기간">전체 기간</option></select><span class="material-symbols-outlined" style="position:absolute;right:16px;pointer-events:none;color:#444">expand_more</span></label>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr));gap:52px 28px">
+      <sc-for list="{{ cards }}" as="e" hint-placeholder-count="4">
+        <button onClick="{{ e.open }}" style="font:inherit;text-align:left;border:0;background:transparent;padding:0;cursor:pointer;display:flex;flex-direction:column;gap:14px;color:#1A1A1A;transition:transform .25s ease" style-hover="transform:translateY(-4px)">
+          <span style="position:relative;display:block;border-radius:4px;overflow:hidden;border:1px solid #E6E8E2">
+            <sc-if value="{{ e.hasPoster }}" hint-placeholder-val="{{ false }}"><img src="{{ e.poster }}" alt="{{ e.title }}" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block"></sc-if>
+            <sc-if value="{{ e.noPoster }}" hint-placeholder-val="{{ true }}"><span style="width:100%;aspect-ratio:3/4;background:repeating-linear-gradient(135deg,#F1F2EE 0 12px,#E6E8E2 12px 24px);display:flex;align-items:flex-end;padding:12px;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#555">포스터</span></sc-if>
+          </span>
+          <span style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;font-size:13px;margin-top:4px"><b style="font-weight:600;color:#fff;background:#2F5D0B;border-radius:2px;padding:4px 10px">{{ e.cat }}</b><span style="color:#2F5D0B;border:1px solid #2F5D0B;border-radius:2px;padding:3px 9px">{{ e.fee }}</span><span style="color:#555;border:1px solid #CFCFCF;border-radius:2px;padding:3px 9px">{{ e.status }}</span></span>
+          <span style="font-size:19px;font-weight:700;line-height:1.42;letter-spacing:-.02em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:54px">{{ e.title }}</span>
+          <span style="font-size:15px;color:#444;line-height:1.55;margin-top:-6px">{{ e.dateText }}<br><span style="color:#888">{{ e.place }}</span></span>
+        </button>
+      </sc-for>
+    </div>
+    <sc-if value="{{ noCards }}" hint-placeholder-val="{{ false }}"><div style="padding:56px 0;text-align:center;color:#666;border-top:1px solid #DADADA;border-bottom:1px solid #DADADA">조건에 맞는 행사가 없습니다.</div></sc-if>
+  </div>
+  <aside id="notice" data-screen-label="공지사항" style="flex:1 1 360px;min-width:0;scroll-margin-top:24px">
+    <div style="display:flex;align-items:center;padding-bottom:18px;border-bottom:2px solid #1A1A1A"><h2 style="margin:0;font-size:30px;font-weight:800;letter-spacing:-.04em">공지사항</h2><a href="#" aria-label="공지사항 더보기" style="margin-left:auto;display:flex;color:#1A1A1A;text-decoration:none"><span class="material-symbols-outlined" style="font-size:34px">add</span></a></div>
+    <ul style="list-style:none;margin:0;padding:6px 0 0">
+      <li style="padding:20px 0;border-bottom:1px solid #EDEDED"><a href="#" style="display:block;font-size:17px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">10월 운영시간 변경 안내 (매주 월요일 휴관)</a><span style="display:block;font-size:15px;color:#777;margin-top:6px">2026-10-10</span></li>
+      <li style="padding:20px 0;border-bottom:1px solid #EDEDED"><a href="#" style="display:block;font-size:17px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">[모집] 2026 하반기 정기 프로그램 참여자 모집 (~11.14)</a><span style="display:block;font-size:15px;color:#777;margin-top:6px">2026-10-08</span></li>
+      <li style="padding:20px 0;border-bottom:1px solid #EDEDED"><a href="#" style="display:block;font-size:17px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">그린라이트 공식 홈페이지 개편 안내</a><span style="display:block;font-size:15px;color:#777;margin-top:6px">2026-10-01</span></li>
+      <li style="padding:20px 0;border-bottom:1px solid #EDEDED"><a href="#" style="display:block;font-size:17px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">추석 연휴 휴관 안내 (10.5–10.7)</a><span style="display:block;font-size:15px;color:#777;margin-top:6px">2026-09-22</span></li>
+      <li style="padding:20px 0"><a href="#" style="display:block;font-size:17px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">개인정보처리방침 개정 안내</a><span style="display:block;font-size:15px;color:#777;margin-top:6px">2026-09-15</span></li>
+    </ul>
+    <div style="margin-top:64px">
+      <div style="display:flex;align-items:center;padding-bottom:18px;border-bottom:2px solid #1A1A1A"><h2 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-.04em">무료로 즐기는 행사</h2><a href="#events" aria-label="무료 행사 더보기" style="margin-left:auto;display:flex;color:#1A1A1A;text-decoration:none"><span class="material-symbols-outlined" style="font-size:30px">add</span></a></div>
+      <sc-for list="{{ freeList }}" as="e" hint-placeholder-count="3">
+        <button onClick="{{ e.open }}" style="font:inherit;width:100%;text-align:left;border:0;background:transparent;padding:18px 0 0;cursor:pointer;display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:start;color:#1A1A1A">
+          <span style="font-size:13px;font-weight:700;color:#fff;background:#1E3A0C;border-radius:2px;padding:5px 12px;margin-top:2px">{{ e.cat }}</span>
+          <span style="min-width:0"><span style="display:block;font-size:17px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ e.title }}</span><span style="display:block;font-size:15px;color:#777;margin-top:4px">{{ e.dateText }}</span></span>
+        </button>
+      </sc-for>
+    </div>
+    <div data-screen-label="스튜디오 아카이브" style="margin-top:64px;background:#F3F5EF;border-radius:6px;padding:32px 30px">
+      <a href="#about" style="display:flex;align-items:center;text-decoration:none"><b style="font-size:26px;letter-spacing:-.04em">스튜디오 아카이브</b><span class="material-symbols-outlined" style="margin-left:auto;font-size:30px">chevron_right</span></a>
+      <p style="margin:10px 0 22px;font-size:16px;line-height:1.6;color:#555">지난 행사의 사진과 기록을 한데 모아 보여드립니다.</p>
+      <div style="display:flex;align-items:center;background:#fff;border:1px solid #1E3A0C;border-radius:4px;height:50px;padding:0 8px 0 18px"><input placeholder="기록을 검색해 보세요" style="font:inherit;font-size:16px;flex:1;min-width:0;border:0;outline:none;background:transparent"><span class="material-symbols-outlined" style="font-size:28px;color:#1E3A0C;padding:0 8px">search</span></div>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:24px;text-align:center">
+        <a href="#" style="display:flex;flex-direction:column;align-items:center;gap:10px;text-decoration:none"><span style="width:76px;height:76px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:36px;color:#1E3A0C">photo_library</span></span><span style="font-size:15px;font-weight:700;color:#1E3A0C">행사 사진</span></a>
+        <a href="#" style="display:flex;flex-direction:column;align-items:center;gap:10px;text-decoration:none"><span style="width:76px;height:76px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:36px;color:#1E3A0C">movie</span></span><span style="font-size:15px;font-weight:700;color:#1E3A0C">영상 기록</span></a>
+        <a href="#" style="display:flex;flex-direction:column;align-items:center;gap:10px;text-decoration:none"><span style="width:76px;height:76px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:36px;color:#1E3A0C">description</span></span><span style="font-size:15px;font-weight:700;color:#1E3A0C">결과 자료</span></a>
+      </div>
+    </div>
+  </aside>
+</section>
+
+<section id="calendar" data-screen-label="문화캘린더" style="max-width:1320px;margin:0 auto;padding:120px 48px 0;scroll-margin-top:100px">
+  <div style="display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:20px">
+    <h2 style="margin:0;font-size:30px;font-weight:800;letter-spacing:-.04em">문화캘린더</h2>
+    <span style="font-size:14px;color:#666">날짜를 선택하면 해당일 일정을 보여드립니다.</span>
+  </div>
+  <div style="border-top:2px solid #1A1A1A;border-bottom:1px solid #DADADA;padding:18px 0;display:flex;align-items:center;gap:10px">
+    <button onClick="{{ prevWeek }}" style="font:inherit;width:36px;height:36px;border:1px solid #DADADA;background:#fff;cursor:pointer;flex:none">‹</button>
+    <div style="flex:1;min-width:0;display:grid;grid-template-columns:repeat(14,minmax(0,1fr));gap:6px">
+      <sc-for list="{{ days }}" as="d" hint-placeholder-count="14">
+        <button onClick="{{ d.set }}" style="font:inherit;cursor:pointer;padding:8px 0;display:flex;flex-direction:column;align-items:center;gap:3px;background:{{ d.bg }};color:{{ d.fg }};border:1px solid {{ d.bd }};min-width:0">
+          <span style="font-size:12px">{{ d.dow }}</span><span style="font-size:17px;font-weight:700">{{ d.d }}</span><span style="width:5px;height:5px;border-radius:50%;background:{{ d.dot }}"></span>
+        </button>
+      </sc-for>
+    </div>
+    <button onClick="{{ nextWeek }}" style="font:inherit;width:36px;height:36px;border:1px solid #DADADA;background:#fff;cursor:pointer;flex:none">›</button>
+    <button onClick="{{ goToday }}" style="font:inherit;height:36px;padding:0 12px;border:1px solid #DADADA;background:#fff;cursor:pointer;font-size:13px;font-weight:700;flex:none">오늘</button>
+  </div>
+  <div style="padding:18px 0 8px;display:flex;align-items:baseline;gap:10px"><b style="font-size:17px">{{ selLabel }}</b><span style="font-size:14px;color:#666">{{ dayCount }}건</span></div>
+  <ul style="list-style:none;margin:0;padding:0;border-top:1px solid #DADADA">
+    <sc-for list="{{ dayList }}" as="e" hint-placeholder-count="2">
+      <li style="border-bottom:1px solid #EDEDED"><button onClick="{{ e.open }}" style="font:inherit;width:100%;text-align:left;border:0;background:#fff;padding:16px 4px;cursor:pointer;display:grid;grid-template-columns:72px 56px minmax(0,1fr) auto;gap:16px;align-items:center;color:#1A1A1A">
+        <b style="font-size:14px;color:#2F5D0B">{{ e.cat }}</b><span style="font-size:13px;color:#666">{{ e.fee }}</span>
+        <span style="min-width:0"><span style="display:block;font-size:16px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ e.title }}</span><span style="display:block;font-size:13px;color:#666;margin-top:3px">{{ e.timeText }} · {{ e.place }}</span></span>
+        <span style="font-size:12px;font-weight:700;padding:4px 8px;background:{{ e.sBg }};color:{{ e.sFg }};border:1px solid {{ e.sBd }}">{{ e.status }}</span>
+      </button></li>
+    </sc-for>
+  </ul>
+  <sc-if value="{{ noDay }}" hint-placeholder-val="{{ false }}"><div style="padding:40px 0;text-align:center;color:#666;border-bottom:1px solid #EDEDED">선택한 날짜에 등록된 일정이 없습니다.</div></sc-if>
+</section>
+
+<section data-screen-label="안내 배너" style="max-width:1320px;margin:120px auto 0;padding:0 48px">
+  <a href="#programs" style="display:flex;align-items:center;gap:28px;flex-wrap:wrap;border-radius:22px;background:#264F3A;color:#fff;padding:34px 44px;text-decoration:none" style-hover="text-decoration:none">
+    <span style="font-size:14px;font-weight:700;color:#B3F945;letter-spacing:.06em">2026 하반기</span>
+    <span style="font-size:26px;font-weight:800;letter-spacing:-.03em;line-height:1.3;flex:1 1 320px">정기 프로그램 참여자를 모집합니다 <span style="font-weight:500;color:rgba(255,255,255,.8);font-size:17px;margin-left:10px">접수 2026.10.08 ~ 11.14</span></span>
+    <span style="font-size:15px;font-weight:700;background:#fff;color:#264F3A;border-radius:999px;padding:12px 22px;display:flex;align-items:center;gap:6px">신청 안내<span class="material-symbols-outlined" style="font-size:20px">arrow_forward</span></span>
+  </a>
+</section>
+
+<section id="programs" data-screen-label="프로그램 모집" style="max-width:1320px;margin:0 auto;padding:120px 48px 0;scroll-margin-top:24px">
+  <div style="display:flex;align-items:center;padding-bottom:18px;border-bottom:2px solid #1A1A1A"><h2 style="margin:0;font-size:30px;font-weight:800;letter-spacing:-.04em">프로그램 모집</h2><a href="#" aria-label="프로그램 더보기" style="margin-left:auto;display:flex;color:#1A1A1A;text-decoration:none"><span class="material-symbols-outlined" style="font-size:34px">add</span></a></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px;padding-top:22px">
+    <a href="#" style="border:1px solid #DADADA;border-radius:4px;padding:20px 22px;display:flex;flex-direction:column;gap:8px;text-decoration:none"><span style="align-self:flex-start;font-size:13px;font-weight:700;background:#2F5D0B;color:#fff;border-radius:2px;padding:2px 8px">접수중</span><b style="font-size:17px;line-height:1.4">2026 하반기 정기 프로그램 참여자 모집</b><span style="font-size:14px;color:#666">접수 2026.10.08 ~ 11.14 · 분야별 12명</span></a>
+    <a href="#" style="border:1px solid #DADADA;border-radius:4px;padding:20px 22px;display:flex;flex-direction:column;gap:8px;text-decoration:none"><span style="align-self:flex-start;font-size:13px;font-weight:700;background:#2F5D0B;color:#fff;border-radius:2px;padding:2px 8px">접수중</span><b style="font-size:17px;line-height:1.4">사진 워크숍 「일상 기록」 (6회 과정)</b><span style="font-size:14px;color:#666">접수 ~ 11.14 · 매주 토 14:00</span></a>
+    <a href="#" style="border:1px solid #DADADA;border-radius:4px;padding:20px 22px;display:flex;flex-direction:column;gap:8px;text-decoration:none"><span style="align-self:flex-start;font-size:13px;font-weight:700;border:1px solid #2F5D0B;color:#2F5D0B;border-radius:2px;padding:1px 7px">접수예정</span><b style="font-size:17px;line-height:1.4">겨울 특강 「공간을 켜다」</b><span style="font-size:14px;color:#666">접수 2026.11.16 ~ 12.03 · 정원 30명</span></a>
+  </div>
+</section>
+
+<section id="about" data-screen-label="스튜디오 소개" style="max-width:1320px;margin:0 auto;padding:120px 48px 120px;scroll-margin-top:100px">
+  <div style="display:flex;align-items:center;padding-bottom:18px;border-bottom:2px solid #1A1A1A;margin-bottom:0"><h2 style="margin:0;font-size:30px;font-weight:800;letter-spacing:-.04em">스튜디오 안내</h2></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:0;border:1px solid #DADADA;border-top:0">
+    <div style="padding:32px 34px;border-right:1px solid #EDEDED">
+      <h3 style="margin:0 0 12px;font-size:20px;font-weight:800">스튜디오 소개</h3>
+      <p style="margin:0;font-size:16px;line-height:1.75;color:#333;text-wrap:pretty">그린라이트 스튜디오는 지역 청년과 주민이 문화를 만들고 나누는 공간입니다. 전시, 공연, 워크숍, 모임을 통해 일상 속 작은 즐거움을 만들어 갑니다.</p>
+    </div>
+    <div id="guide" style="padding:32px 34px;display:grid;grid-template-columns:90px minmax(0,1fr);gap:10px 16px;font-size:15px;line-height:1.6;align-content:start">
+      <b>운영시간</b><span>화–일 10:00–20:00 (월요일·공휴일 휴관)</span>
+      <b>주소</b><span>경상남도 진주시 ○○로 00 그린라이트 스튜디오</span>
+      <b>문의</b><span>055-000-0000 · hello@greenlight.kr</span>
+      <b>교통</b><span>버스 ○○번 「○○정류장」 하차 후 도보 ○분</span>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer data-screen-label="푸터" style="background:#F6F7F4;border-top:1px solid #DADADA;color:#555">
+  <div style="border-bottom:1px solid #DADADA">
+    <div style="max-width:1320px;margin:0 auto;padding:22px 48px;display:flex;gap:16px;flex-wrap:wrap;align-items:center">
+      <div style="display:flex;gap:28px;flex-wrap:wrap;font-size:15px;font-weight:700;flex:1 1 420px"><a href="#" style="color:#2F5D0B">개인정보처리방침</a><a href="#">이용약관</a><a href="#">이메일무단수집거부</a><a href="#guide">이용안내</a><a href="#about">오시는 길</a></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <label style="position:relative;display:flex;align-items:center"><span style="position:absolute;left:-9999px">관련 기관</span><select style="font:inherit;font-size:14px;color:#333;appearance:none;-webkit-appearance:none;border:1px solid #CFCFCF;background:#fff;height:42px;padding:0 40px 0 14px;min-width:180px;cursor:pointer;outline:none"><option>관련 기관</option><option>진주시청</option><option>진주문화관광재단</option><option>경남문화예술진흥원</option></select><span class="material-symbols-outlined" style="position:absolute;right:10px;pointer-events:none;color:#444">expand_more</span></label>
+        <label style="position:relative;display:flex;align-items:center"><span style="position:absolute;left:-9999px">문화시설</span><select style="font:inherit;font-size:14px;color:#333;appearance:none;-webkit-appearance:none;border:1px solid #CFCFCF;background:#fff;height:42px;padding:0 40px 0 14px;min-width:180px;cursor:pointer;outline:none"><option>문화시설 바로가기</option><option>경남문화예술회관</option><option>진주시립도서관</option><option>국립진주박물관</option></select><span class="material-symbols-outlined" style="position:absolute;right:10px;pointer-events:none;color:#444">expand_more</span></label>
+        <label style="position:relative;display:flex;align-items:center"><span style="position:absolute;left:-9999px">소셜 채널</span><select style="font:inherit;font-size:14px;color:#333;appearance:none;-webkit-appearance:none;border:1px solid #CFCFCF;background:#fff;height:42px;padding:0 40px 0 14px;min-width:160px;cursor:pointer;outline:none"><option>소셜 채널</option><option>인스타그램</option><option>유튜브</option><option>블로그</option></select><span class="material-symbols-outlined" style="position:absolute;right:10px;pointer-events:none;color:#444">expand_more</span></label>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:1320px;margin:0 auto;padding:40px 48px 44px;display:flex;gap:28px;flex-wrap:wrap;align-items:flex-start;font-size:13px;line-height:1.8">
+    <img src="assets/logo.jpg" alt="그린라이트 로고" style="width:52px;height:52px;object-fit:cover;display:block;border-radius:8px;filter:grayscale(1)">
+    <div style="flex:1 1 400px"><b style="color:#1A1A1A;font-size:16px">그린라이트 스튜디오</b><br>(52000) 경상남도 진주시 ○○로 00 그린라이트 스튜디오 · 대표 000 · 사업자등록번호 000-00-00000<br>대표전화 055-000-0000 (화–일 10:00–20:00, 월요일·공휴일 휴관) · hello@greenlight.kr<br>© 2026 GREENLIGHT STUDIO. All rights reserved.</div>
+    <div style="display:flex;flex-direction:column;gap:6px;font-size:13px;color:#777;flex:1 1 300px"><span>본 사이트의 행사 정보는 스튜디오 운영 일정에 따라 변경될 수 있습니다.</span><span>최종 업데이트 {{ todayLabel }}</span></div>
+  </div>
+  <div data-screen-label="관리자" style="background:#1E3A0C;color:#fff">
+    <div style="max-width:1320px;margin:0 auto;padding:14px 48px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;font-size:13px">
+      <sc-if value="{{ notAdmin }}" hint-placeholder-val="{{ true }}"><button onClick="{{ adminOn }}" style="font:inherit;font-size:13px;display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.7);background:transparent;border:0;padding:0;cursor:pointer" style-hover="color:#fff"><span class="material-symbols-outlined" style="font-size:18px">admin_panel_settings</span>관리자 로그인</button></sc-if>
+      <sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ false }}"><b style="color:#B3F945;display:flex;align-items:center;gap:6px"><span class="material-symbols-outlined" style="font-size:18px">admin_panel_settings</span>관리자 모드</b><span style="color:rgba(255,255,255,.7)">등록한 일정은 이 브라우저에 저장됩니다.</span><span style="margin-left:auto;display:flex;gap:8px"><button onClick="{{ openNew }}" style="font:inherit;font-size:13px;font-weight:700;background:#B3F945;color:#1E3A0C;border:0;border-radius:999px;padding:6px 14px;cursor:pointer">일정 등록</button><button onClick="{{ adminOff }}" style="font:inherit;font-size:13px;background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:5px 14px;cursor:pointer">관리자 모드 종료</button></span></sc-if>
+    </div>
+  </div>
+</footer>
+
+<div data-screen-label="플로팅 버튼" style="position:fixed;right:24px;bottom:24px;z-index:40;display:flex;flex-direction:column;gap:10px">
+  <sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ false }}"><button onClick="{{ openNew }}" aria-label="일정 등록" style="font:inherit;width:52px;height:52px;border:0;border-radius:50%;background:#2F5D0B;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(0,0,0,.2)"><span class="material-symbols-outlined" style="font-size:28px">add</span></button></sc-if>
+  <a href="#main" aria-label="맨 위로" style="width:52px;height:52px;border-radius:50%;background:#fff;color:#1E3A0C;border:1px solid #DADADA;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 6px 16px rgba(0,0,0,.12)"><span class="material-symbols-outlined" style="font-size:26px">arrow_upward</span></a>
+</div>
+
+<sc-for list="{{ modal }}" as="m" hint-placeholder-count="0">
+<div style="position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;padding:24px">
+  <div onClick="{{ closeModal }}" style="position:absolute;inset:0;background:rgba(0,0,0,.5)"></div>
+  <div data-screen-label="행사 상세" style="position:relative;width:min(820px,100%);max-height:100%;overflow:auto;background:#fff;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))">
+    <sc-if value="{{ m.hasPoster }}" hint-placeholder-val="{{ false }}"><img src="{{ m.poster }}" alt="{{ m.title }}" style="width:100%;height:100%;min-height:320px;object-fit:cover;display:block;background:#F1F2EE"></sc-if>
+    <sc-if value="{{ m.noPoster }}" hint-placeholder-val="{{ true }}"><div style="min-height:320px;background:repeating-linear-gradient(135deg,#F1F2EE 0 12px,#E6E8E2 12px 24px);display:flex;align-items:flex-end;padding:14px;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#555">포스터 미등록</div></sc-if>
+    <div style="padding:28px 30px;display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:8px;align-items:center"><span style="font-size:12px;font-weight:700;padding:4px 8px;background:{{ m.sBg }};color:{{ m.sFg }};border:1px solid {{ m.sBd }}">{{ m.status }}</span><b style="font-size:13px;color:#2F5D0B">{{ m.cat }}</b><button onClick="{{ closeModal }}" style="margin-left:auto;font:inherit;font-size:20px;border:0;background:transparent;cursor:pointer;line-height:1">✕</button></div>
+      <h3 style="margin:0;font-size:24px;font-weight:800;line-height:1.35;letter-spacing:-.02em">{{ m.title }}</h3>
+      <div style="display:grid;grid-template-columns:64px minmax(0,1fr);gap:8px 12px;font-size:14px;padding:14px 0;border-top:1px solid #EDEDED;border-bottom:1px solid #EDEDED"><b>일시</b><span>{{ m.dateText }}<br>{{ m.timeText }}</span><b>장소</b><span>{{ m.place }}</span><b>요금</b><span>{{ m.feeLine }}</span><b>문의</b><span>{{ m.tel }}</span><b>출처</b><span>{{ m.srcText }}</span></div>
+      <p style="margin:0;font-size:15px;line-height:1.75;color:#333;white-space:pre-line">{{ m.desc }}</p>
+      <sc-if value="{{ m.canEdit }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:8px;margin-top:auto;padding-top:8px"><button onClick="{{ editModal }}" style="font:inherit;font-size:14px;font-weight:700;padding:10px 16px;border:0;background:#1A1A1A;color:#fff;cursor:pointer">수정</button><button onClick="{{ delModal }}" style="font:inherit;font-size:14px;font-weight:700;padding:10px 16px;border:1px solid #E0B4AC;background:#fff;color:#C0392B;cursor:pointer">삭제</button></div></sc-if>
+    </div>
+  </div>
+</div>
+</sc-for>
+
+<sc-if value="{{ formOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:60;display:flex;justify-content:flex-end">
+  <div onClick="{{ closeForm }}" style="position:absolute;inset:0;background:rgba(0,0,0,.45)"></div>
+  <div data-screen-label="일정 등록 폼" style="position:relative;width:min(480px,100%);height:100%;background:#fff;display:flex;flex-direction:column">
+    <div style="padding:20px 28px;border-bottom:2px solid #1A1A1A;display:flex;align-items:center"><h3 style="margin:0;font-size:20px;font-weight:800">{{ formTitle }}</h3><button onClick="{{ closeForm }}" style="margin-left:auto;font:inherit;font-size:20px;border:0;background:transparent;cursor:pointer">✕</button></div>
+    <div style="padding:22px 28px;display:flex;flex-direction:column;gap:16px;overflow:auto;flex:1;font-size:14px">
+      <label style="display:flex;flex-direction:column;gap:6px;font-weight:700">행사명 *<input value="{{ f.title }}" onChange="{{ setTitle }}" placeholder="예) 청년 버스킹 나이트 Vol.4" style="font:inherit;font-weight:400;padding:12px 14px;border:1px solid #CCCCCC"></label>
+      <div style="display:flex;flex-direction:column;gap:8px;font-weight:700">분류<div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ fcats }}" as="c" hint-placeholder-count="5"><button onClick="{{ c.set }}" style="font:inherit;font-size:13px;font-weight:600;padding:7px 13px;cursor:pointer;background:{{ c.bg }};color:{{ c.fg }};border:1px solid {{ c.bd }}">{{ c.t }}</button></sc-for></div></div>
+      <div style="display:flex;flex-direction:column;gap:8px;font-weight:700">요금<div style="display:flex;gap:6px"><sc-for list="{{ ffees }}" as="c" hint-placeholder-count="2"><button onClick="{{ c.set }}" style="font:inherit;font-size:13px;font-weight:600;padding:7px 13px;cursor:pointer;background:{{ c.bg }};color:{{ c.fg }};border:1px solid {{ c.bd }}">{{ c.t }}</button></sc-for></div></div>
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px">
+        <label style="display:flex;flex-direction:column;gap:6px;font-weight:700">시작 일시 *<input type="datetime-local" value="{{ f.start }}" onChange="{{ setStart }}" style="font:inherit;font-weight:400;padding:11px 10px;border:1px solid #CCCCCC;min-width:0;width:100%"></label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-weight:700">종료 일시<input type="datetime-local" value="{{ f.end }}" onChange="{{ setEnd }}" style="font:inherit;font-weight:400;padding:11px 10px;border:1px solid #CCCCCC;min-width:0;width:100%"></label>
+      </div>
+      <label style="display:flex;flex-direction:column;gap:6px;font-weight:700">장소<input value="{{ f.place }}" onChange="{{ setPlace }}" placeholder="예) 야외무대" style="font:inherit;font-weight:400;padding:12px 14px;border:1px solid #CCCCCC"></label>
+      <label style="display:flex;flex-direction:column;gap:6px;font-weight:700">소개<textarea value="{{ f.desc }}" onChange="{{ setDesc }}" rows="5" placeholder="행사 소개, 참여 방법, 유의사항" style="font:inherit;font-weight:400;padding:12px 14px;border:1px solid #CCCCCC;resize:vertical;line-height:1.6"></textarea></label>
+      <div style="display:flex;flex-direction:column;gap:8px;font-weight:700">포스터
+        <sc-if value="{{ fNoPoster }}" hint-placeholder-val="{{ true }}"><label style="border:1px dashed #B5B5B5;padding:20px;text-align:center;font-weight:400;color:#666;background:#FAFAFA;cursor:pointer">클릭하여 이미지 업로드 (세로형 권장)<input type="file" accept="image/*" onChange="{{ onFile }}" style="display:none"></label></sc-if>
+        <sc-if value="{{ fHasPoster }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:12px;align-items:flex-end"><img src="{{ f.poster }}" alt="포스터 미리보기" style="width:90px;aspect-ratio:3/4;object-fit:cover;border:1px solid #DADADA"><button onClick="{{ rmPoster }}" style="font:inherit;font-size:12px;font-weight:700;padding:7px 10px;border:1px solid #CCCCCC;background:#fff;color:#C0392B;cursor:pointer">이미지 제거</button></div></sc-if>
+      </div>
+      <sc-if value="{{ hasErr }}" hint-placeholder-val="{{ false }}"><div style="background:#FBEDEA;color:#A32D1C;font-weight:700;padding:10px 14px">{{ err }}</div></sc-if>
+    </div>
+    <div style="padding:16px 28px;border-top:1px solid #DADADA;display:flex;gap:8px;justify-content:flex-end">
+      <button onClick="{{ closeForm }}" style="font:inherit;font-size:14px;font-weight:700;padding:12px 18px;border:1px solid #CCCCCC;background:#fff;cursor:pointer">취소</button>
+      <button onClick="{{ submit }}" style="font:inherit;font-size:14px;font-weight:700;padding:12px 22px;border:0;background:#2F5D0B;color:#fff;cursor:pointer">저장</button>
+    </div>
+  </div>
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;sampleData&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;부산 데이터&quot;}}">
+class Component extends DCLogic {
+  KEY = 'gl.busan.local.v1'; AKEY = 'gl.one.admin';
+  MENU = [
+    { id: 'events', t: '행사 일정', en: 'EVENTS', desc: '부산에서 열리는 공연, 전시, 축제를 매주 새로 모아 안내합니다.', items: [{ t: '앞으로 2개월 행사', h: '#events', period: '2개월' }, { t: '무료로 즐기는 행사', h: '#events', fee: '무료' }, { t: '공연', h: '#events', cat: '공연' }, { t: '전시', h: '#events', cat: '전시' }, { t: '행사', h: '#events', cat: '행사' }, { t: '모임', h: '#events', cat: '모임' }] },
+    { id: 'calendar', t: '문화캘린더', en: 'CALENDAR', desc: '날짜별 일정을 확인하고 원하는 행사를 찾아보세요.', items: [{ t: '오늘의 일정', h: '#calendar', today: true }, { t: '이번 주 일정', h: '#events', period: '이번 주' }, { t: '이번 달 일정', h: '#events', period: '이번 달' }, { t: '전체 기간 보기', h: '#events', period: '전체 기간' }] },
+    { id: 'programs', t: '프로그램', en: 'PROGRAMS', desc: '정기 프로그램과 워크숍에 참여해 함께 만들어 가세요.', items: [{ t: '참여자 모집', h: '#programs' }, { t: '교육 프로그램', h: '#events', cat: '교육' }, { t: '워크숍 신청', h: '#programs' }, { t: '겨울 특강', h: '#programs' }] },
+    { id: 'notice', t: '소식 공지', en: 'NEWS', desc: '운영 변경, 모집 소식 등 스튜디오의 새 소식을 알려드립니다.', items: [{ t: '공지사항', h: '#notice' }, { t: '무료 행사 소식', h: '#notice' }, { t: '스튜디오 아카이브', h: '#notice' }, { t: '행사 사진·영상', h: '#notice' }] },
+    { id: 'about', t: '스튜디오 안내', en: 'ABOUT', desc: '그린라이트 스튜디오의 공간과 운영 정보를 안내합니다.', items: [{ t: '스튜디오 소개', h: '#about' }, { t: '운영시간', h: '#guide' }, { t: '오시는 길', h: '#guide' }, { t: '대관·문의', h: '#guide' }] },
+  ];
+  state = { events: [], api: [], updatedAt: null, loadErr: false, isAdmin: false, menuOpen: false, scrolled: false, active: '', mega: -1, acc: 0, fs: 1, lang: 'KOR', cat: '전체', fee: '전체 요금', period: '2개월', q: '', sel: '', off: 0, slide: 0, paused: false, modalId: null, formOpen: false, f: null, err: '' };
+  componentWillUnmount() { clearInterval(this.timer); window.removeEventListener('scroll', this.onScroll); }
+  componentDidUpdate() { const want = this.props.sampleData ? 'data/busan-events.sample.json' : 'data/busan-events.json'; if (this._src && this._src !== want) this.loadApi(); const z = [0.9, 1, 1.12][this.state.fs]; if (this._fs !== z) { this._fs = z; document.body.style.zoom = z; } }
+  onScroll = () => {
+    const sc = window.scrollY > 40; let act = '';
+    for (const id of ['events', 'calendar', 'programs', 'about']) { const el = document.getElementById(id); if (el && el.getBoundingClientRect().top <= 160) act = id; }
+    if (sc !== this.state.scrolled || act !== this.state.active) this.setState({ scrolled: sc, active: act });
+  };
+  componentDidMount() {
+    let ev = null; try { ev = JSON.parse(localStorage.getItem(this.KEY)); } catch (e) {}
+    const a = localStorage.getItem(this.AKEY);
+    this.setState({ events: Array.isArray(ev) ? ev : [], isAdmin: a === '1', sel: this.iso(new Date()) });
+    this.loadApi();
+    window.addEventListener('scroll', this.onScroll, { passive: true }); this.onScroll();
+    this.timer = setInterval(() => { if (!this.state.paused && !this.state.modalId && !this.state.formOpen) this.setState(s => ({ slide: s.slide + 1 })); }, 6000);
+  }
+  loadApi() {
+    const url = this.props.sampleData ? 'data/busan-events.sample.json' : 'data/busan-events.json';
+    this._src = url;
+    fetch(url + '?v=' + Date.now()).then(r => r.json()).then(j => { if (this._src === url) this.setState({ api: Array.isArray(j.events) ? j.events : [], updatedAt: j.generatedAt || null, loadErr: false }); }).catch(() => this.setState({ api: [], loadErr: true }));
+  }
+  p2(n) { return String(n).padStart(2, '0'); }
+  iso(d) { return `${d.getFullYear()}-${this.p2(d.getMonth() + 1)}-${this.p2(d.getDate())}`; }
+  local(d) { return `${this.iso(d)}T${this.p2(d.getHours())}:${this.p2(d.getMinutes())}`; }
+  persist(list) { try { localStorage.setItem(this.KEY, JSON.stringify(list)); } catch (e) { alert('저장 공간이 부족합니다. 포스터 이미지 용량을 줄여 주세요.'); } this.setState({ events: list }); }
+  setAdmin(on) { localStorage.setItem(this.AKEY, on ? '1' : '0'); this.setState({ isAdmin: on }); }
+  blank() { const s = new Date(); s.setDate(s.getDate() + 7); s.setHours(14, 0, 0, 0); const e = new Date(s); e.setHours(16); return { title: '', cat: '행사', fee: '무료', start: this.local(s), end: this.local(e), place: '', desc: '', poster: null }; }
+  status(e, now) { const a = new Date(e.start), b = new Date(e.end || e.start); return now > b ? '종료' : now >= a ? '진행중' : '예정'; }
+  dec(e, now) {
+    const D = ['일', '월', '화', '수', '목', '금', '토'], a = new Date(e.start), b = new Date(e.end || e.start), st = this.status(e, now);
+    const md = d => `${d.getFullYear()}.${this.p2(d.getMonth() + 1)}.${this.p2(d.getDate())}`;
+    const multi = this.iso(a) !== this.iso(b);
+    const S = { '진행중': ['#2F5D0B', '#fff'], '예정': ['#fff', '#2F5D0B'], '종료': ['#EDEDED', '#666'] }[st];
+    return { ...e, status: st, sBg: S[0], sFg: S[1], sBd: st === '예정' ? '#2F5D0B' : S[0], sTxt: st === '종료' ? '#999' : '#2F5D0B', dateText: multi ? `${md(a)} ~ ${md(b)}` : `${md(a)} (${D[a.getDay()]})`,
+      timeText: `${this.p2(a.getHours())}:${this.p2(a.getMinutes())} ~ ${this.p2(b.getHours())}:${this.p2(b.getMinutes())}`, hasPoster: !!e.poster, noPoster: !e.poster,
+      open: () => this.setState({ modalId: e.id }), dim: st === '종료' ? 0.55 : 1 };
+  }
+  onFile(ev) {
+    const file = ev.target.files && ev.target.files[0]; if (!file) return;
+    const r = new FileReader();
+    r.onload = () => { const img = new Image(); img.onload = () => { const sc = Math.min(1, 800 / Math.max(img.width, img.height)); const c = document.createElement('canvas'); c.width = Math.round(img.width * sc); c.height = Math.round(img.height * sc); c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); this.setState(s => ({ f: { ...s.f, poster: c.toDataURL('image/jpeg', 0.8) } })); }; img.src = r.result; };
+    r.readAsDataURL(file);
+  }
+  submit() {
+    const f = this.state.f, ev = this.state.events;
+    if (!f.title.trim()) return this.setState({ err: '행사명을 입력해 주세요.' });
+    if (!f.start) return this.setState({ err: '시작 일시를 입력해 주세요.' });
+    const item = { ...f, title: f.title.trim(), end: f.end && f.end >= f.start ? f.end : f.start };
+    this.persist(item.id ? ev.map(x => x.id === item.id ? item : x) : [...ev, { ...item, id: ev.reduce((m, x) => Math.max(m, x.id), 0) + 1 }]);
+    this.setState({ formOpen: false, err: '', sel: item.start.slice(0, 10) });
+  }
+  renderVals() {
+    const s = this.state, now = new Date();
+    const setF = k => e => { const v = e.target.value; this.setState(st => ({ f: { ...st.f, [k]: v }, err: '' })); };
+    const all = [...s.api, ...s.events].sort((a, b) => a.start < b.start ? -1 : 1).map(e => this.dec(e, now));
+    const ql = s.q.trim().toLowerCase();
+    const t0 = this.iso(now), wk = new Date(now); wk.setDate(wk.getDate() + 7); const t7 = this.iso(wk), m0 = t0.slice(0, 7) + '-01', m1 = this.iso(new Date(now.getFullYear(), now.getMonth() + 1, 0));
+    const inP = e => { const a = e.start.slice(0, 10), b = (e.end || e.start).slice(0, 10); return s.period === '2개월' ? b >= t0 : s.period === '이번 주' ? (a <= t7 && b >= t0) : s.period === '이번 달' ? (a <= m1 && b >= m0) : true; };
+    const filtered = all.filter(e => (s.cat === '전체' || e.cat === s.cat) && (s.fee === '전체 요금' || e.fee === s.fee) && inP(e) && (!ql || `${e.title} ${e.place}`.toLowerCase().includes(ql)));
+    const live = all.filter(e => e.status !== '종료');
+    const feats = [...live].sort((a, b) => (b.hasPoster ? 1 : 0) - (a.hasPoster ? 1 : 0)).slice(0, 3);
+    const ICON = { '공연': 'music_note', '전시': 'palette', '행사': 'celebration', '교육': 'school', '모임': 'groups' };
+    const BG = ['#2F5D0B', '#F3F5EF', '#264F3A', '#E6F7C9'];
+    const slides = [{ key: 'brand', isBrand: true, isEvent: false, bg: '#B3F945', fg: '#1E3A0C', kickerFg: '#1E3A0C', ctrlBd: 'rgba(30,58,12,.4)', kicker: 'GREENLIGHT STUDIO', title: '일상에 재미를 켜다.', sub: '부산에서 열리는 공연·전시·축제를 매주 일요일 새로 모아 안내합니다.', img: 'assets/logo.jpg', hasImg: true, noImg: false },
+      ...feats.map((e, i) => { const bg = BG[i % BG.length], light = bg === '#F3F5EF' || bg === '#E6F7C9'; return { key: 'e' + e.id, isBrand: false, isEvent: true, bg, fg: light ? '#1E3A0C' : '#fff', kickerFg: light ? '#2F5D0B' : '#B3F945', ctrlBd: light ? 'rgba(30,58,12,.4)' : 'rgba(255,255,255,.5)', btnBg: light ? '#1E3A0C' : '#fff', btnFg: light ? '#fff' : '#1E3A0C', kicker: `${e.cat} · ${e.status}`, title: e.title, date: e.dateText, place: e.place, fee: e.fee, img: e.poster, hasImg: !!e.poster, noImg: !e.poster, icon: ICON[e.cat] || 'event', open: e.open }; })];
+    const si = ((s.slide % slides.length) + slides.length) % slides.length;
+    const base = new Date(now); base.setHours(0, 0, 0, 0); base.setDate(base.getDate() - base.getDay() + s.off * 7);
+    const D = ['일', '월', '화', '수', '목', '금', '토'];
+    const days = Array.from({ length: 14 }, (_, i) => { const d = new Date(base); d.setDate(base.getDate() + i); const k = this.iso(d), sel = k === s.sel, today = k === this.iso(now), n = all.filter(e => e.start.slice(0, 10) <= k && (e.end || e.start).slice(0, 10) >= k).length;
+      return { key: k, d: d.getDate(), dow: D[d.getDay()], bg: sel ? '#2F5D0B' : '#fff', fg: sel ? '#fff' : d.getDay() === 0 ? '#C0392B' : d.getDay() === 6 ? '#2C5AA0' : '#1A1A1A', bd: sel ? '#2F5D0B' : today ? '#1A1A1A' : '#DADADA', dot: n ? (sel ? '#B3F945' : '#2F5D0B') : 'transparent', set: () => this.setState({ sel: k }) }; });
+    const dayList = all.filter(e => e.start.slice(0, 10) <= s.sel && (e.end || e.start).slice(0, 10) >= s.sel);
+    const selD = s.sel ? new Date(s.sel + 'T00:00') : now;
+    const m = all.find(e => e.id === s.modalId);
+    const f = s.f || this.blank();
+    const go = it => () => { const p = { mega: -1, menuOpen: false }; if (it.cat) Object.assign(p, { cat: it.cat, fee: '전체 요금' }); if (it.fee) Object.assign(p, { fee: it.fee, cat: '전체' }); if (it.period) p.period = it.period; if (it.today) Object.assign(p, { off: 0, sel: this.iso(now) }); this.setState(p); };
+    const pool = [...live].sort((a, b) => (b.hasPoster ? 1 : 0) - (a.hasPoster ? 1 : 0));
+    const recFor = i => { const e = (i === 2 && live.find(x => x.cat === '교육')) || pool[i % Math.max(pool.length, 1)]; return e ? { ...e, icon: ICON[e.cat] || 'event', open: () => { this.setState({ mega: -1 }); e.open(); } } : null; };
+    const mi = s.mega, mm = this.MENU[mi];
+    const megaList = mm ? [{ key: 'mega', no: `0${mi + 1}`, en: mm.en, t: mm.t, desc: mm.desc, h: '#' + mm.id, items: mm.items.map(it => ({ ...it, key: it.t, go: go(it) })), rec: recFor(mi) || {}, hasRec: !!recFor(mi) }] : [];
+    const hr = now.getHours() + now.getMinutes() / 60, dw = now.getDay(), isOpen = dw !== 1 && hr >= 10 && hr < 20;
+    return {
+      scrolled: String(s.scrolled), closeMega: () => { if (this.state.mega !== -1) this.setState({ mega: -1 }); },
+      gnb: this.MENU.map((m, i) => ({ key: m.id, t: m.t, h: '#' + m.id, active: String(mi === i || (mi < 0 && s.active === m.id)), enter: () => { if (this.state.mega !== i) this.setState({ mega: i }); }, click: () => this.setState({ mega: -1 }) })),
+      megaList,
+      drawerMenu: this.MENU.map((m, i) => ({ key: m.id, t: m.t, open: s.acc === i, icon: s.acc === i ? 'remove' : 'add', toggle: () => this.setState({ acc: s.acc === i ? -1 : i }), items: m.items.map(it => ({ ...it, key: it.t, go: go(it) })) })),
+      openState: isOpen ? 'on' : 'off', openLabel: dw === 1 ? '오늘 휴관' : isOpen ? '운영중' : '운영 종료',
+      fsDown: () => this.setState({ fs: Math.max(0, s.fs - 1) }), fsUp: () => this.setState({ fs: Math.min(2, s.fs + 1) }),
+      isKor: String(s.lang === 'KOR'), isEng: String(s.lang === 'ENG'), setKor: () => this.setState({ lang: 'KOR' }), setEng: () => this.setState({ lang: 'ENG' }),
+      isAdmin: s.isAdmin, notAdmin: !s.isAdmin, adminOn: () => this.setAdmin(true), adminOff: () => this.setAdmin(false),
+      menuOpen: s.menuOpen, menuIcon: s.menuOpen ? 'close' : 'menu', toggleMenu: () => this.setState({ menuOpen: !s.menuOpen, mega: -1 }), closeMenu: () => this.setState({ menuOpen: false }),
+      q: s.q, setQ: e => this.setState({ q: e.target.value }),
+      hotWords: ['버스킹', '사진전', '보드게임', '워크숍', '플리마켓'].map(t => ({ t, set: () => { this.setState({ q: t, cat: '전체' }); const el = document.getElementById('events'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 100, behavior: 'smooth' }); } })),
+      cats: ['전체', '공연', '전시', '행사', '교육', '모임'].map(t => ({ t, bg: t === s.cat ? '#1A1A1A' : '#fff', fg: t === s.cat ? '#fff' : '#444', bd: t === s.cat ? '#1A1A1A' : '#DADADA', set: () => this.setState({ cat: t }) })),
+      freeList: live.filter(e => e.fee === '무료').slice(0, 3), cards: filtered.slice(0, 8), count: filtered.length, noCards: filtered.length === 0,
+      catSel: s.cat, fee: s.fee, period: s.period, setCatSel: e => this.setState({ cat: e.target.value }), setFee: e => this.setState({ fee: e.target.value }), setPeriod: e => this.setState({ period: e.target.value }),
+      updatedLabel: s.loadErr ? '데이터를 불러오지 못했습니다' : s.updatedAt ? (d => `${d.getFullYear()}.${this.p2(d.getMonth() + 1)}.${this.p2(d.getDate())} 갱신`)(new Date(s.updatedAt)) : '첫 수집 대기 중',
+      todayLabel: `${now.getFullYear()}.${this.p2(now.getMonth() + 1)}.${this.p2(now.getDate())}`,
+      slideList: [slides[si]], slideNo: String(si + 1), slideTotal: String(slides.length), slidePct: `${((si + 1) / slides.length) * 100}%`,
+      dots: slides.map((sl, i) => ({ key: sl.key, w: i === si ? '28px' : '8px', bg: i === si ? (sl.fg === '#fff' ? '#B3F945' : '#1E3A0C') : (slides[si].fg === '#fff' ? 'rgba(255,255,255,.4)' : 'rgba(30,58,12,.25)'), label: `${i + 1}번 슬라이드`, go: () => this.setState({ slide: i }) })),
+      prevSlide: () => this.setState({ slide: s.slide - 1 }), nextSlide: () => this.setState({ slide: s.slide + 1 }), togglePause: () => this.setState({ paused: !s.paused }), pauseIcon: s.paused ? 'play_arrow' : 'pause', pauseLabel: s.paused ? '재생' : '일시정지',
+      days, prevWeek: () => this.setState({ off: s.off - 1 }), nextWeek: () => this.setState({ off: s.off + 1 }), goToday: () => this.setState({ off: 0, sel: this.iso(now) }),
+      selLabel: `${selD.getFullYear()}년 ${selD.getMonth() + 1}월 ${selD.getDate()}일 (${D[selD.getDay()]})`, weekLabel: `${base.getFullYear()}.${this.p2(base.getMonth() + 1)}`,
+      dayList, noDay: dayList.length === 0, dayCount: dayList.length,
+      modal: m ? [{ ...m, canEdit: s.isAdmin && !m.src, srcText: m.src ? `부산시 공공데이터 (${m.src})` : '그린라이트 등록', tel: m.tel || '-', feeLine: m.feeText && m.feeText !== m.fee ? `${m.fee} · ${m.feeText}` : m.fee }] : [], closeModal: () => this.setState({ modalId: null }),
+      editModal: () => this.setState({ modalId: null, formOpen: true, f: { ...s.events.find(e => e.id === s.modalId) }, err: '' }),
+      delModal: () => { if (confirm('이 일정을 삭제할까요?')) { this.persist(s.events.filter(e => e.id !== s.modalId)); this.setState({ modalId: null }); } },
+      formOpen: s.formOpen, f, isEdit: !!f.id, formTitle: f.id ? '일정 수정' : '일정 등록',
+      openNew: () => this.setState({ formOpen: true, f: this.blank(), err: '' }), closeForm: () => this.setState({ formOpen: false, err: '' }),
+      setTitle: setF('title'), setStart: setF('start'), setEnd: setF('end'), setPlace: setF('place'), setDesc: setF('desc'),
+      fcats: ['공연', '전시', '행사', '교육', '모임'].map(t => ({ t, bg: f.cat === t ? '#2F5D0B' : '#fff', fg: f.cat === t ? '#fff' : '#1A1A1A', bd: f.cat === t ? '#2F5D0B' : '#CCCCCC', set: () => this.setState(st => ({ f: { ...st.f, cat: t } })) })),
+      ffees: ['무료', '유료'].map(t => ({ t, bg: f.fee === t ? '#2F5D0B' : '#fff', fg: f.fee === t ? '#fff' : '#1A1A1A', bd: f.fee === t ? '#2F5D0B' : '#CCCCCC', set: () => this.setState(st => ({ f: { ...st.f, fee: t } })) })),
+      onFile: e => this.onFile(e), fHasPoster: !!f.poster, fNoPoster: !f.poster, rmPoster: () => this.setState(st => ({ f: { ...st.f, poster: null } })),
+      hasErr: !!s.err, err: s.err, submit: () => this.submit(),
+    };
+  }
+}
+</script>
+</body>
+</html>

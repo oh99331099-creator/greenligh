@@ -1,0 +1,6 @@
+{"generatedAt":"2026-10-25T21:00:00.000Z","range":{"from":"2026-10-26","to":"2026-12-26"},"sources":[{"name":"샘플","ok":true}],"events":[
+{"id":"sample-1","src":"샘플","cat":"행사","title":"(샘플) 해변 불빛 축제","start":"2026-11-07T18:00","end":"2026-11-08T22:00","place":"수영구 · 광안리해수욕장","gugun":"수영구","fee":"무료","feeText":"무료","desc":"화면 확인용 샘플 데이터입니다. 실제 데이터는 매주 일요일 자동으로 교체됩니다.","poster":"assets/poster.jpg","tel":"","homepage":""},
+{"id":"sample-2","src":"샘플","cat":"공연","title":"(샘플) 가을 클래식 콘서트","start":"2026-11-14T19:30","end":"2026-11-14T21:30","place":"부산문화회관 대극장","gugun":"","fee":"유료","feeText":"R석 50,000원","desc":"관람회차: 19:30\n관람연령: 8세 이상","poster":null,"tel":"","homepage":""},
+{"id":"sample-3","src":"샘플","cat":"전시","title":"(샘플) 바다를 담은 사진전","start":"2026-10-28T10:00","end":"2026-12-20T23:59","place":"영화의전당 전시실","gugun":"","fee":"무료","feeText":"무료","desc":"화면 확인용 샘플 데이터입니다.","poster":null,"tel":"","homepage":""},
+{"id":"sample-4","src":"샘플","cat":"공연","title":"(샘플) 소극장 연극 「등대」","start":"2026-11-21T15:00","end":"2026-11-30T23:59","place":"중구 소극장","gugun":"중구","fee":"요금 문의","feeText":"","desc":"관람회차: 15:00, 19:00","poster":null,"tel":"","homepage":""}
+]}
