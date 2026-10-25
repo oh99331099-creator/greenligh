@@ -47,7 +47,7 @@ header[data-scrolled="true"] [data-hrow]{height:56px!important}
 [data-chip]:focus-visible,[data-tile]:focus-visible{outline:2px solid #B3F945;outline-offset:2px}
 [data-tile]{transition:transform .2s ease,box-shadow .2s ease}[data-tile]:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(30,58,12,.12);text-decoration:none}
 @media (max-width:1200px){[data-gen]{display:none}}
-@media (max-width:1100px){[data-mega],[data-dim]{display:none!important}[data-gnb] a{padding:0 12px!important}[data-gnb] [data-caret]{display:none}[data-hlabel]{display:none}}
+@media (max-width:1100px){[data-mega],[data-dim]{display:none!important}[data-gnb] a{padding:0 10px!important;min-width:0!important;font-size:14.5px!important}[data-gnb] [data-caret]{display:none}[data-hlabel]{display:none}}
 @media (max-width:760px){[data-hen],[data-hsep]{display:none}}
 @media (max-width:760px){[data-gnb]{display:none!important}}
 @media (max-width:760px){[data-uopt],[data-ulinks]{display:none!important}[data-hrow],[data-urow]{padding:0 20px!important}}
@@ -81,7 +81,7 @@ header[data-scrolled="true"] [data-hrow]{height:56px!important}
       </a>
     </div>
     <nav data-gnb="1" aria-label="주 메뉴" style="display:flex;align-self:stretch;flex:none">
-      <sc-for list="{{ gnb }}" as="n" hint-placeholder-count="3"><a href="{{ n.h }}" data-active="{{ n.active }}" onMouseEnter="{{ n.enter }}" onFocus="{{ n.enter }}" onClick="{{ n.click }}" style="display:flex;align-items:center;gap:6px;padding:0 16px;font-size:15px;line-height:1;font-weight:500;letter-spacing:-.01em;color:rgba(237,237,232,.9);text-decoration:none;white-space:nowrap" style-hover="color:#FFFFFF;text-decoration:none"><span>{{ n.t }}</span><span data-gen="1" style="font-size:9.5px;font-weight:500;letter-spacing:.08em;color:rgba(237,237,232,.4);transform:translateY(-6px)">{{ n.en }}</span><span class="material-symbols-outlined" data-caret="1" style="font-size:16px;opacity:.5;transition:transform .2s ease">expand_more</span></a></sc-for>
+      <sc-for list="{{ gnb }}" as="n" hint-placeholder-count="4"><a href="{{ n.h }}" data-active="{{ n.active }}" onMouseEnter="{{ n.enter }}" onFocus="{{ n.enter }}" onClick="{{ n.click }}" style="display:flex;align-items:center;justify-content:center;gap:6px;min-width:120px;padding:0 20px;font-size:15px;line-height:1;font-weight:500;letter-spacing:-.01em;color:rgba(237,237,232,.9);text-decoration:none;white-space:nowrap" style-hover="color:#FFFFFF;text-decoration:none"><span>{{ n.t }}</span><span data-gen="1" style="font-size:9.5px;font-weight:500;letter-spacing:.08em;color:rgba(237,237,232,.4);transform:translateY(-6px)">{{ n.en }}</span><span class="material-symbols-outlined" data-caret="1" style="font-size:16px;opacity:.5;transition:transform .2s ease">expand_more</span></a></sc-for>
     </nav>
     <div onMouseEnter="{{ closeMega }}" style="flex:1 1 0;min-width:0;display:flex;align-items:center;justify-content:flex-end;gap:16px">
       <sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ false }}"><button onClick="{{ openSite }}" aria-label="사이트 관리" title="사이트 관리" style="font:inherit;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px;height:32px;color:#EDEDE8;background:transparent;border:1px solid rgba(237,237,232,.35);border-radius:6px;padding:0 12px;cursor:pointer;white-space:nowrap" style-hover="border-color:#EDEDE8"><span class="material-symbols-outlined" style="font-size:17px">tune</span><span data-hlabel="1">사이트 관리</span></button></sc-if>
@@ -200,7 +200,7 @@ header[data-scrolled="true"] [data-hrow]{height:56px!important}
     <div data-filters="1" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid #CFCFCF;border-radius:4px;overflow:hidden;margin-bottom:40px">
       <label style="position:relative;display:flex;align-items:center;border-right:1px solid #CFCFCF;min-width:0"><span style="position:absolute;left:-9999px">분류</span><select value="{{ catSel }}" onChange="{{ setCatSel }}" style="font:inherit;font-size:17px;color:#444;appearance:none;-webkit-appearance:none;border:0;background:transparent;width:100%;height:60px;padding:0 48px 0 22px;cursor:pointer;outline:none"><option value="전체">전체</option><option value="공연">공연</option><option value="전시">전시</option><option value="행사">행사</option><option value="교육">교육</option><option value="모임">모임</option></select><span class="material-symbols-outlined" style="position:absolute;right:16px;pointer-events:none;color:#444">expand_more</span></label>
       <label style="position:relative;display:flex;align-items:center;border-right:1px solid #CFCFCF;min-width:0"><span style="position:absolute;left:-9999px">요금</span><select value="{{ fee }}" onChange="{{ setFee }}" style="font:inherit;font-size:17px;color:#444;appearance:none;-webkit-appearance:none;border:0;background:transparent;width:100%;height:60px;padding:0 48px 0 22px;cursor:pointer;outline:none"><option value="전체 요금">전체 요금</option><option value="무료">무료</option><option value="유료">유료</option></select><span class="material-symbols-outlined" style="position:absolute;right:16px;pointer-events:none;color:#444">expand_more</span></label>
-      <label style="position:relative;display:flex;align-items:center;border-right:1px solid #CFCFCF;min-width:0"><span style="position:absolute;left:-9999px">기간</span><select value="{{ period }}" onChange="{{ setPeriod }}" style="font:inherit;font-size:17px;color:#444;appearance:none;-webkit-appearance:none;border:0;background:transparent;width:100%;height:60px;padding:0 48px 0 22px;cursor:pointer;outline:none"><option value="2개월">앞으로 2개월</option><option value="이번 달">이번 달</option><option value="이번 주">이번 주</option><option value="전체 기간">전체 기간</option></select><span class="material-symbols-outlined" style="position:absolute;right:16px;pointer-events:none;color:#444">expand_more</span></label>
+      <label style="position:relative;display:flex;align-items:center;border-right:1px solid #CFCFCF;min-width:0"><span style="position:absolute;left:-9999px">기간</span><select value="{{ period }}" onChange="{{ setPeriod }}" style="font:inherit;font-size:17px;color:#444;appearance:none;-webkit-appearance:none;border:0;background:transparent;width:100%;height:60px;padding:0 48px 0 22px;cursor:pointer;outline:none"><option value="2개월">앞으로 2개월</option><option value="이번 달">이번 달</option><option value="이번 주">이번 주</option></select><span class="material-symbols-outlined" style="position:absolute;right:16px;pointer-events:none;color:#444">expand_more</span></label>
     </div>
     <div data-cards="1" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr));gap:52px 28px">
       <sc-for list="{{ cards }}" as="e" hint-placeholder-count="4">
@@ -256,21 +256,43 @@ header[data-scrolled="true"] [data-hrow]{height:56px!important}
   </div>
 </section>
 
-<section data-sec="1" id="notice" data-screen-label="공지사항" style="order:{{ ordNotice }};width:100%;max-width:1320px;margin:0 auto;padding:120px 48px 0;scroll-margin-top:80px;display:flex;flex-wrap:wrap;gap:48px;align-items:flex-start">
-  <div style="flex:1 1 100%;min-width:0">
-    <div style="display:flex;align-items:center;padding-bottom:18px;border-bottom:2px solid #1A1A1A"><h2 style="margin:0;font-size:30px;font-weight:800;letter-spacing:-.04em">공지사항</h2><a href="#" aria-label="공지사항 더보기" style="margin-left:auto;display:flex;color:#1A1A1A;text-decoration:none"><span class="material-symbols-outlined" style="font-size:34px">add</span></a></div>
-    <ul style="list-style:none;margin:0;padding:6px 0 0">
-      <li style="padding:20px 0;border-bottom:1px solid #EDEDED"><a href="#" style="display:block;font-size:17px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">10월 운영시간 변경 안내 (매주 월요일 휴관)</a><span style="display:block;font-size:15px;color:#777;margin-top:6px">2026-10-10</span></li>
-      <li style="padding:20px 0;border-bottom:1px solid #EDEDED"><a href="#" style="display:block;font-size:17px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">[모집] 2026 하반기 정기 프로그램 참여자 모집 (~11.14)</a><span style="display:block;font-size:15px;color:#777;margin-top:6px">2026-10-08</span></li>
-      <li style="padding:20px 0;border-bottom:1px solid #EDEDED"><a href="#" style="display:block;font-size:17px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">그린라이트 공식 홈페이지 개편 안내</a><span style="display:block;font-size:15px;color:#777;margin-top:6px">2026-10-01</span></li>
-      <li style="padding:20px 0;border-bottom:1px solid #EDEDED"><a href="#" style="display:block;font-size:17px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">추석 연휴 휴관 안내 (10.5–10.7)</a><span style="display:block;font-size:15px;color:#777;margin-top:6px">2026-09-22</span></li>
-      <li style="padding:20px 0"><a href="#" style="display:block;font-size:17px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">개인정보처리방침 개정 안내</a><span style="display:block;font-size:15px;color:#777;margin-top:6px">2026-09-15</span></li>
-    </ul>
+<section data-sec="1" id="notice" data-screen-label="공지사항" style="order:{{ ordNotice }};width:100%;max-width:1320px;margin:0 auto;padding:120px 48px 0;scroll-margin-top:80px">
+  <div style="display:flex;align-items:center;gap:12px;padding-bottom:18px;border-bottom:2px solid #1A1A1A">
+    <h2 style="margin:0;font-size:30px;font-weight:800;letter-spacing:-.04em">공지사항</h2>
+    <sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ false }}"><button onClick="{{ newNotice }}" style="font:inherit;margin-left:8px;display:flex;align-items:center;gap:4px;height:32px;padding:0 12px;border:1px solid #1A1A1A;border-radius:6px;background:#fff;font-size:13px;font-weight:600;cursor:pointer"><span class="material-symbols-outlined" style="font-size:16px">edit</span>공지 작성</button></sc-if>
+    <a href="#notices" onClick="{{ openNoticePage }}" aria-label="공지사항 전체 보기" style="margin-left:auto;display:flex;align-items:center;gap:4px;color:#1A1A1A;text-decoration:none;font-size:14px;font-weight:600" style-hover="text-decoration:none;color:#1A1A1A"><span class="material-symbols-outlined" style="font-size:30px">add</span></a>
   </div>
+  <ul style="list-style:none;margin:0;padding:6px 0 0">
+    <sc-for list="{{ noticeTop }}" as="n" hint-placeholder-count="3">
+      <li style="border-bottom:1px solid #EDEDED"><button onClick="{{ n.open }}" style="font:inherit;width:100%;text-align:left;border:0;background:transparent;padding:20px 0;cursor:pointer;display:flex;align-items:center;gap:16px;color:#1A1A1A">
+        <sc-if value="{{ n.pinned }}" hint-placeholder-val="{{ false }}"><span style="font-size:11px;font-weight:700;color:#fff;background:#1A1A1A;border-radius:3px;padding:3px 7px;flex:none">공지</span></sc-if>
+        <span style="flex:1;min-width:0;font-size:17px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ n.title }}</span>
+        <sc-if value="{{ n.hasImg }}" hint-placeholder-val="{{ false }}"><span class="material-symbols-outlined" style="font-size:18px;color:#777;flex:none">image</span></sc-if>
+        <span style="font-size:14px;color:#777;flex:none;font-variant-numeric:tabular-nums">{{ n.date }}</span>
+      </button></li>
+    </sc-for>
+  </ul>
+  <sc-if value="{{ noNotices }}" hint-placeholder-val="{{ false }}"><div style="padding:48px 0;text-align:center;color:#777;font-size:14px;border-bottom:1px solid #EDEDED">등록된 공지가 없습니다.</div></sc-if>
 </section>
 
 
 
+<section data-sec="1" id="about" data-screen-label="소개" style="order:98;width:100%;max-width:1320px;margin:0 auto;padding:120px 48px 0;scroll-margin-top:80px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:48px;padding-top:28px;border-top:2px solid #1A1A1A">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <span style="font-size:12px;font-weight:600;letter-spacing:.14em;color:#777">ABOUT</span>
+      <h2 style="margin:0;font-size:30px;font-weight:800;letter-spacing:-.04em;line-height:1.25">그린라이트 스튜디오</h2>
+      <p style="margin:0;font-size:16px;line-height:1.75;color:#333;word-break:keep-all;max-width:520px">부산에서 열리는 공연·전시·축제·교육 프로그램 소식을 매주 모아 한곳에서 안내합니다. 공공데이터로 수집한 행사와 스튜디오가 직접 소개하는 콘텐츠를 함께 보여드립니다.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <span style="font-size:12px;font-weight:600;letter-spacing:.14em;color:#777">VISIT</span>
+      <dl style="margin:0;display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px 16px;font-size:15px;line-height:1.6">
+        <dt style="color:#777">주소</dt><dd style="margin:0;color:#1A1A1A">부산광역시 수영구 무학로22번길 47</dd>
+        <dt style="color:#777">운영</dt><dd style="margin:0;color:#1A1A1A">비-씬 (사업자번호 235-01-04273)</dd>
+      </dl>
+    </div>
+  </div>
+</section>
 <div aria-hidden="true" style="order:99;height:120px"></div>
 </main>
 
@@ -288,19 +310,23 @@ header[data-scrolled="true"] [data-hrow]{height:56px!important}
         <p style="margin:8px 0 0;font-size:12px;color:#777;max-width:280px;word-break:keep-all">행사 정보는 운영 일정에 따라 변경될 수 있습니다.</p>
       </div>
       <div>
-        <span data-flabel="1">CONTACT</span>
+        <span data-flabel="1" style="display:flex;align-items:center;gap:8px">CONTACT<sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ false }}"><button onClick="{{ openSiteLinks }}" aria-label="연락처 편집" title="연락처 편집" style="font:inherit;border:0;background:transparent;padding:0;cursor:pointer;color:#777;display:flex" style-hover="color:#1A1A1A"><span class="material-symbols-outlined" style="font-size:15px">edit</span></button></sc-if></span>
         <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;color:#1A1A1A">
           <li style="display:flex;gap:10px;align-items:flex-start"><span class="material-symbols-outlined" style="font-size:16px;color:#777;flex:none;margin-top:2px">location_on</span><span>부산광역시 수영구<br>무학로22번길 47</span></li>
-          <li style="display:flex;gap:10px;align-items:flex-start"><span class="material-symbols-outlined" style="font-size:16px;color:#777;flex:none;margin-top:2px">call</span><a href="tel:0550000000" data-flink="1" style="color:#1A1A1A;font-weight:600">055-000-0000</a></li>
-          <li style="display:flex;gap:10px;align-items:flex-start"><span class="material-symbols-outlined" style="font-size:16px;color:#777;flex:none;margin-top:2px">mail</span><span style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><a href="mailto:hello@greenlight.kr" data-flink="1" style="color:#1A1A1A;font-weight:600">hello@greenlight.kr</a><button onClick="{{ copyEmail }}" style="font:inherit;font-size:11px;color:#555;background:transparent;border:1px solid #CFCFCF;border-radius:4px;padding:1px 7px;cursor:pointer" style-hover="border-color:#1A1A1A;color:#1A1A1A">{{ copyLabel }}</button></span></li>
+          <sc-if value="{{ fHasEmail }}" hint-placeholder-val="{{ false }}"><li style="display:flex;gap:10px;align-items:flex-start"><span class="material-symbols-outlined" style="font-size:16px;color:#777;flex:none;margin-top:2px">mail</span><a href="{{ fEmailHref }}" data-flink="1" style="color:#1A1A1A;font-weight:600;word-break:break-all">{{ fEmail }}</a></li></sc-if>
+          <sc-if value="{{ fHasSocial }}" hint-placeholder-val="{{ false }}"><li style="display:flex;gap:10px;align-items:center;margin-top:4px">
+            <sc-if value="{{ fHasInsta }}" hint-placeholder-val="{{ false }}"><a href="{{ fInsta }}" target="_blank" rel="noopener" aria-label="인스타그램" title="인스타그램" style="width:36px;height:36px;border-radius:50%;border:1px solid #CFCFCF;display:flex;align-items:center;justify-content:center;color:#1A1A1A;background:#fff;transition:border-color .2s ease" style-hover="border-color:#1A1A1A"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg></a></sc-if>
+            <sc-if value="{{ fHasKakao }}" hint-placeholder-val="{{ false }}"><a href="{{ fKakao }}" target="_blank" rel="noopener" aria-label="카카오톡 채널" title="카카오톡 채널" style="width:36px;height:36px;border-radius:50%;border:1px solid #CFCFCF;display:flex;align-items:center;justify-content:center;color:#1A1A1A;background:#fff;transition:border-color .2s ease" style-hover="border-color:#1A1A1A"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.48 3 2 6.58 2 11c0 2.83 1.84 5.31 4.62 6.73L5.6 21.5a.4.4 0 0 0 .6.44l4.35-2.9c.47.05.95.08 1.45.08 5.52 0 10-3.58 10-8.12S17.52 3 12 3Z"></path></svg></a></sc-if>
+          </li></sc-if>
         </ul>
       </div>
       <div>
         <span data-flabel="1">MENU</span>
         <nav aria-label="사이트 메뉴" style="display:flex;flex-direction:column;gap:8px;align-items:flex-start">
-          <a href="#events" data-flink="1" style="color:#1A1A1A">부산 문화콘텐츠</a>
+          <a href="#events" data-flink="1" style="color:#1A1A1A">문화콘텐츠</a>
           <a href="#calendar" data-flink="1" style="color:#1A1A1A">행사 캘린더</a>
-          <a href="#notice" data-flink="1" style="color:#1A1A1A">공지 사항</a>
+          <a href="#notice" data-flink="1" style="color:#1A1A1A">공지사항</a>
+          <a href="#about" data-flink="1" style="color:#1A1A1A">소개</a>
         </nav>
         <span data-flabel="1" style="margin-top:20px">POLICY</span>
         <nav aria-label="정책" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12px">
@@ -341,6 +367,71 @@ header[data-scrolled="true"] [data-hrow]{height:56px!important}
 </div>
 </sc-for>
 
+<sc-if value="{{ noticePage }}" hint-placeholder-val="{{ false }}">
+<div data-screen-label="공지사항 페이지" style="position:fixed;inset:0;z-index:55;background:#fff;overflow:auto">
+  <div data-sec="1" style="max-width:1120px;margin:0 auto;padding:40px 48px 120px">
+    <button onClick="{{ closeNoticePage }}" style="font:inherit;display:flex;align-items:center;gap:4px;font-size:14px;font-weight:600;color:#555;background:transparent;border:0;padding:0;cursor:pointer" style-hover="color:#1A1A1A"><span class="material-symbols-outlined" style="font-size:18px">arrow_back</span>홈으로</button>
+    <div style="display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-top:28px;padding-bottom:18px;border-bottom:2px solid #1A1A1A">
+      <h1 style="margin:0;font-size:34px;font-weight:800;letter-spacing:-.04em">공지사항</h1>
+      <span style="font-size:14px;color:#777;padding-bottom:6px">{{ noticeCount }}건</span>
+      <sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ false }}"><button onClick="{{ newNotice }}" style="font:inherit;margin-left:auto;display:flex;align-items:center;gap:4px;height:36px;padding:0 14px;border:0;border-radius:6px;background:#1A1A1A;color:#fff;font-size:13px;font-weight:600;cursor:pointer"><span class="material-symbols-outlined" style="font-size:16px">edit</span>공지 작성</button></sc-if>
+    </div>
+    <sc-if value="{{ noticeListMode }}" hint-placeholder-val="{{ true }}">
+      <ul style="list-style:none;margin:0;padding:0">
+        <sc-for list="{{ noticeAll }}" as="n" hint-placeholder-count="5">
+          <li style="border-bottom:1px solid #EDEDED"><button onClick="{{ n.open }}" style="font:inherit;width:100%;text-align:left;border:0;background:transparent;padding:22px 0;cursor:pointer;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px;align-items:center;color:#1A1A1A">
+            <span style="width:48px;font-size:13px;color:#999;font-variant-numeric:tabular-nums">{{ n.no }}</span>
+            <span style="min-width:0"><span style="display:flex;align-items:center;gap:8px"><sc-if value="{{ n.pinned }}" hint-placeholder-val="{{ false }}"><span style="font-size:11px;font-weight:700;color:#fff;background:#1A1A1A;border-radius:3px;padding:3px 7px;flex:none">공지</span></sc-if><b style="font-size:17px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ n.title }}</b><sc-if value="{{ n.hasImg }}" hint-placeholder-val="{{ false }}"><span class="material-symbols-outlined" style="font-size:18px;color:#777;flex:none">image</span></sc-if></span><span style="display:block;margin-top:6px;font-size:14px;color:#777;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ n.preview }}</span></span>
+            <span style="font-size:14px;color:#777;font-variant-numeric:tabular-nums">{{ n.date }}</span>
+          </button></li>
+        </sc-for>
+      </ul>
+      <sc-if value="{{ noNotices }}" hint-placeholder-val="{{ false }}"><div style="padding:64px 0;text-align:center;color:#777">등록된 공지가 없습니다.</div></sc-if>
+    </sc-if>
+    <sc-for list="{{ noticeCur }}" as="n" hint-placeholder-count="0">
+      <article style="padding-top:28px">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><sc-if value="{{ n.pinned }}" hint-placeholder-val="{{ false }}"><span style="font-size:11px;font-weight:700;color:#fff;background:#1A1A1A;border-radius:3px;padding:3px 7px">공지</span></sc-if><span style="font-size:14px;color:#777">{{ n.date }}</span></div>
+        <h2 style="margin:10px 0 0;font-size:28px;font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:keep-all">{{ n.title }}</h2>
+        <div style="margin-top:28px;padding-top:28px;border-top:1px solid #EDEDED;font-size:16px;line-height:1.85;color:#333;white-space:pre-line;word-break:keep-all">{{ n.body }}</div>
+        <sc-if value="{{ n.hasImg }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:16px;margin-top:28px"><sc-for list="{{ n.gallery }}" as="g" hint-placeholder-count="1"><img src="{{ g.src }}" alt="공지 이미지" style="width:100%;max-width:820px;height:auto;display:block;border-radius:8px"></sc-for></div></sc-if>
+        <div style="display:flex;gap:8px;margin-top:40px;padding-top:20px;border-top:1px solid #EDEDED;flex-wrap:wrap">
+          <button onClick="{{ backToList }}" style="font:inherit;font-size:14px;font-weight:600;height:40px;padding:0 16px;border:1px solid #CFCFCF;border-radius:6px;background:#fff;cursor:pointer">목록</button>
+          <sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ false }}"><span style="margin-left:auto;display:flex;gap:8px"><button onClick="{{ n.edit }}" style="font:inherit;font-size:14px;font-weight:600;height:40px;padding:0 16px;border:0;border-radius:6px;background:#1A1A1A;color:#fff;cursor:pointer">수정</button><button onClick="{{ n.del }}" style="font:inherit;font-size:14px;font-weight:600;height:40px;padding:0 16px;border:1px solid #E0B4AC;border-radius:6px;background:#fff;color:#C0392B;cursor:pointer">삭제</button></span></sc-if>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ nFormOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:66;display:flex;justify-content:flex-end">
+  <div onClick="{{ closeNForm }}" style="position:absolute;inset:0;background:rgba(0,0,0,.45)"></div>
+  <div data-screen-label="공지 작성 폼" role="dialog" aria-label="공지 작성" style="position:relative;width:min(520px,100%);height:100%;background:#fff;display:flex;flex-direction:column">
+    <div style="padding:20px 28px;border-bottom:2px solid #1A1A1A;display:flex;align-items:center"><h3 style="margin:0;font-size:20px;font-weight:800">{{ nFormTitle }}</h3><button onClick="{{ closeNForm }}" aria-label="닫기" style="margin-left:auto;font:inherit;font-size:20px;border:0;background:transparent;cursor:pointer">✕</button></div>
+    <div style="padding:22px 28px;display:flex;flex-direction:column;gap:16px;overflow:auto;flex:1;font-size:14px">
+      <label style="display:flex;flex-direction:column;gap:6px;font-weight:700">제목 *<input value="{{ nf.title }}" onChange="{{ nSetTitle }}" placeholder="예) 11월 운영시간 안내" style="font:inherit;font-weight:400;padding:12px 14px;border:1px solid #CCCCCC"></label>
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:end">
+        <label style="display:flex;flex-direction:column;gap:6px;font-weight:700">날짜<input type="date" value="{{ nf.date }}" onChange="{{ nSetDate }}" style="font:inherit;font-weight:400;padding:11px 12px;border:1px solid #CCCCCC;min-width:0;width:100%"></label>
+        <label style="display:flex;align-items:center;gap:8px;height:44px;font-weight:600;cursor:pointer"><input type="checkbox" checked="{{ nf.pinned }}" onChange="{{ nSetPinned }}" style="width:16px;height:16px;accent-color:#1A1A1A">상단 고정</label>
+      </div>
+      <label style="display:flex;flex-direction:column;gap:6px;font-weight:700">본문 *<textarea value="{{ nf.body }}" onChange="{{ nSetBody }}" rows="12" placeholder="공지 내용을 입력하세요. 줄바꿈이 그대로 표시됩니다." style="font:inherit;font-weight:400;padding:12px 14px;border:1px solid #CCCCCC;resize:vertical;line-height:1.7"></textarea></label>
+      <div style="display:flex;flex-direction:column;gap:8px;font-weight:700">사진 <span style="font-weight:400;color:#777;font-size:12px">최대 6장 · 본문 아래에 원본 비율로 표시됩니다</span>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px">
+          <sc-for list="{{ nImages }}" as="g" hint-placeholder-count="0"><div style="position:relative"><img src="{{ g.src }}" alt="공지 이미지" style="width:100%;aspect-ratio:4/3;object-fit:contain;background:#F3F5EF;display:block;border:1px solid #DADADA"><button onClick="{{ g.rm }}" aria-label="이미지 삭제" style="font:inherit;position:absolute;top:4px;right:4px;width:22px;height:22px;border:0;border-radius:50%;background:rgba(0,0,0,.65);color:#fff;font-size:12px;cursor:pointer;line-height:1">✕</button></div></sc-for>
+          <sc-if value="{{ nCanAddImg }}" hint-placeholder-val="{{ true }}"><label style="aspect-ratio:4/3;border:1px dashed #B5B5B5;background:#FAFAFA;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-weight:400;color:#666;font-size:12px;cursor:pointer"><span class="material-symbols-outlined" style="font-size:22px">add_photo_alternate</span>추가<input type="file" accept="image/*" multiple="{{ true }}" onChange="{{ onNImg }}" style="display:none"></label></sc-if>
+        </div>
+      </div>
+      <sc-if value="{{ hasNErr }}" hint-placeholder-val="{{ false }}"><div style="background:#FBEDEA;color:#A32D1C;font-weight:700;padding:10px 14px">{{ nErr }}</div></sc-if>
+    </div>
+    <div style="padding:16px 28px;border-top:1px solid #DADADA;display:flex;gap:8px;justify-content:flex-end">
+      <button onClick="{{ closeNForm }}" style="font:inherit;font-size:14px;font-weight:700;padding:12px 18px;border:1px solid #CCCCCC;background:#fff;cursor:pointer">취소</button>
+      <button onClick="{{ submitNotice }}" style="font:inherit;font-size:14px;font-weight:700;padding:12px 22px;border:0;background:#1A1A1A;color:#fff;cursor:pointer">{{ nSaveLabel }}</button>
+    </div>
+  </div>
+</div>
+</sc-if>
+
 <sc-if value="{{ siteOpen }}" hint-placeholder-val="{{ false }}">
 <div style="position:fixed;inset:0;z-index:65;display:flex;justify-content:flex-end">
   <div onClick="{{ closeSite }}" style="position:absolute;inset:0;background:rgba(0,0,0,.45)"></div>
@@ -355,10 +446,11 @@ header[data-scrolled="true"] [data-hrow]{height:56px!important}
       <sc-if value="{{ tabSlides }}" hint-placeholder-val="{{ true }}">
         <label style="display:flex;align-items:center;gap:10px;cursor:pointer"><input type="checkbox" checked="{{ sAuto }}" onChange="{{ toggleAuto }}" style="width:16px;height:16px;accent-color:#1A1A1A">자동 수집 행사 슬라이드도 함께 보여주기</label>
         <div style="display:flex;flex-direction:column;border-top:1px solid #EDEDED">
+          <div style="display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 4px;border-bottom:1px solid #EDEDED;opacity:.7"><span style="width:56px;height:40px;border-radius:6px;background:#B3F945"></span><span style="min-width:0"><span style="display:block;font-size:11px;color:#777">1번 · 고정</span><b style="display:block;font-size:14px;font-weight:600">일상에 재미를 켜다.</b></span><span style="font-size:11px;color:#777;display:flex;align-items:center;gap:4px"><span class="material-symbols-outlined" style="font-size:14px">lock</span>고정</span></div>
           <sc-for list="{{ sSlides }}" as="x" hint-placeholder-count="0">
             <div style="display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 4px;border-bottom:1px solid #EDEDED;background:{{ x.bg }}">
               <span style="width:56px;height:40px;border-radius:6px;overflow:hidden;background:{{ x.sw }};display:flex;align-items:center;justify-content:center"><sc-if value="{{ x.hasImg }}" hint-placeholder-val="{{ false }}"><img src="{{ x.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></sc-if></span>
-              <button onClick="{{ x.edit }}" style="font:inherit;text-align:left;border:0;background:transparent;cursor:pointer;min-width:0;padding:0"><span style="display:block;font-size:11px;color:#777">{{ x.kicker }}</span><b style="display:block;font-size:14px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ x.title }}</b></button>
+              <button onClick="{{ x.edit }}" style="font:inherit;text-align:left;border:0;background:transparent;cursor:pointer;min-width:0;padding:0"><span style="display:block;font-size:11px;color:#777">{{ x.no }} · {{ x.kicker }}</span><b style="display:block;font-size:14px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ x.title }}</b></button>
               <span style="display:flex;gap:2px">
                 <button onClick="{{ x.up }}" aria-label="위로" style="font:inherit;width:30px;height:30px;border:1px solid #DADADA;border-radius:4px;background:#fff;cursor:pointer"><span class="material-symbols-outlined" style="font-size:18px">arrow_upward</span></button>
                 <button onClick="{{ x.down }}" aria-label="아래로" style="font:inherit;width:30px;height:30px;border:1px solid #DADADA;border-radius:4px;background:#fff;cursor:pointer"><span class="material-symbols-outlined" style="font-size:18px">arrow_downward</span></button>
@@ -367,7 +459,7 @@ header[data-scrolled="true"] [data-hrow]{height:56px!important}
             </div>
           </sc-for>
         </div>
-        <sc-if value="{{ sNoSlides }}" hint-placeholder-val="{{ false }}"><p style="margin:0;color:#777;font-size:13px;line-height:1.6">직접 만든 슬라이드가 없으면 기본 슬라이드(브랜드 문구)가 보입니다.</p></sc-if>
+        <sc-if value="{{ sNoSlides }}" hint-placeholder-val="{{ false }}"><p style="margin:0;color:#777;font-size:13px;line-height:1.6">1번 슬라이드 '일상에 재미를 켜다.'는 항상 고정이며, 여기서 추가한 슬라이드가 2번부터 이어집니다.</p></sc-if>
         <div style="display:flex;flex-direction:column;gap:10px;padding-top:6px">
           <b style="font-size:15px;font-weight:700">문화콘텐츠에서 고르기</b>
           <span style="font-size:12px;color:#777;margin-top:-4px">'추가'를 누르면 바로 메인 슬라이드에 올라갑니다.</span>
@@ -404,6 +496,13 @@ header[data-scrolled="true"] [data-hrow]{height:56px!important}
           </div>
         </sc-for>
       </sc-if>
+      <sc-if value="{{ tabLinks }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:0;color:#555;font-size:13px;line-height:1.6">푸터에 표시되는 연락처와 SNS 링크입니다. 비워 두면 해당 항목은 보이지 않습니다.</p>
+        <label style="display:flex;flex-direction:column;gap:6px;font-weight:700">이메일<input type="email" value="{{ lEmail }}" onChange="{{ setLEmail }}" placeholder="hello@greenlight.kr" style="font:inherit;font-weight:400;padding:12px 14px;border:1px solid #CCCCCC"></label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-weight:700">인스타그램 주소<input type="url" value="{{ lInsta }}" onChange="{{ setLInsta }}" placeholder="https://www.instagram.com/계정이름" style="font:inherit;font-weight:400;padding:12px 14px;border:1px solid #CCCCCC"></label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-weight:700">카카오톡 채널 주소<input type="url" value="{{ lKakao }}" onChange="{{ setLKakao }}" placeholder="https://pf.kakao.com/_채널ID" style="font:inherit;font-weight:400;padding:12px 14px;border:1px solid #CCCCCC"></label>
+        <p style="margin:0;color:#777;font-size:12px;line-height:1.6">카카오톡 채널 주소는 카카오톡 채널 관리자센터 → 채널 정보 → '채널 URL'에서 복사할 수 있습니다.</p>
+      </sc-if>
       <sc-if value="{{ tabOrder }}" hint-placeholder-val="{{ false }}">
         <p style="margin:0;color:#555;font-size:13px;line-height:1.6">메인 슬라이드 아래에 보이는 영역의 순서를 바꿉니다.</p>
         <div style="display:flex;flex-direction:column;border-top:1px solid #EDEDED">
@@ -420,7 +519,7 @@ header[data-scrolled="true"] [data-hrow]{height:56px!important}
       <sc-if value="{{ hasSiteErr }}" hint-placeholder-val="{{ false }}"><div style="background:#FBEDEA;color:#A32D1C;font-weight:700;padding:10px 14px">{{ siteErr }}</div></sc-if>
     </div>
     <div style="padding:16px 28px;border-top:1px solid #DADADA;display:flex;gap:8px;justify-content:flex-end;align-items:center">
-      <span style="margin-right:auto;font-size:12px;color:#777"><sc-if value="{{ hasSiteMsg }}" hint-placeholder-val="{{ false }}"><b style="color:#2F5D0B;font-weight:600">{{ siteMsg }} </b></sc-if>직접 만든 슬라이드 내용은 저장을 눌러 반영합니다.</span>
+      <span style="margin-right:auto;font-size:12px;color:#777"><sc-if value="{{ hasSiteMsg }}" hint-placeholder-val="{{ false }}"><b style="color:#2F5D0B;font-weight:600">{{ siteMsg }} </b></sc-if>직접 만든 슬라이드와 연락처는 저장을 눌러 반영합니다.</span>
       <button onClick="{{ closeSite }}" style="font:inherit;font-size:14px;font-weight:700;padding:12px 18px;border:1px solid #CCCCCC;background:#fff;cursor:pointer">취소</button>
       <button onClick="{{ saveSite }}" style="font:inherit;font-size:14px;font-weight:700;padding:12px 22px;border:0;background:#1A1A1A;color:#fff;cursor:pointer">{{ siteSaveLabel }}</button>
     </div>
@@ -501,30 +600,34 @@ header[data-scrolled="true"] [data-hrow]{height:56px!important}
 class Component extends DCLogic {
   KEY = 'gl.busan.local.v1'; AKEY = 'gl.one.admin';
   MENU = [
-    { id: 'calendar', t: '행사 캘린더', en: 'CALENDAR', desc: '자동으로 모은 부산 문화콘텐츠와 직접 등록한 행사를 한 달력에서 확인하세요.', items: [{ t: '이번 달 캘린더', h: '#calendar', today: true }, { t: '부산 문화콘텐츠 목록', h: '#events', period: '2개월' }, { t: '이번 주 행사', h: '#events', period: '이번 주' }, { t: '공연', h: '#events', cat: '공연' }, { t: '전시', h: '#events', cat: '전시' }, { t: '축제·행사', h: '#events', cat: '행사' }] },
-    { id: 'notice', t: '공지 사항', en: 'NEWS', desc: '운영 변경, 모집 소식 등 스튜디오의 새 소식을 알려드립니다.', items: [{ t: '공지사항', h: '#notice' }] },
+    { id: 'events', t: '문화콘텐츠', en: 'CONTENTS', desc: '부산에서 열리는 공연, 전시, 축제, 교육 프로그램을 매주 새로 모아 안내합니다.', items: [{ t: '앞으로 2개월 행사', h: '#events', period: '2개월' }, { t: '이번 주 행사', h: '#events', period: '이번 주' }, { t: '공연', h: '#events', cat: '공연' }, { t: '전시', h: '#events', cat: '전시' }, { t: '축제·행사', h: '#events', cat: '행사' }, { t: '교육·체험', h: '#events', cat: '교육' }] },
+    { id: 'calendar', t: '행사 캘린더', en: 'CALENDAR', desc: '자동으로 모은 부산 문화콘텐츠와 직접 등록한 행사를 한 달력에서 확인하세요.', items: [{ t: '이번 달 캘린더', h: '#calendar', today: true }, { t: '다음 달 캘린더', h: '#calendar', nextMonth: true }] },
+    { id: 'notice', t: '공지사항', en: 'NOTICE', desc: '운영 변경, 모집 소식 등 스튜디오의 새 소식을 알려드립니다.', items: [{ t: '최근 공지', h: '#notice' }, { t: '공지사항 전체 보기', h: '#notices', page: true }] },
+    { id: 'about', t: '소개', en: 'ABOUT', desc: '그린라이트 스튜디오는 부산의 문화 소식을 모아 전하는 공간입니다.', items: [{ t: '그린라이트 소개', h: '#about' }, { t: '오시는 길', h: '#about' }] },
   ];
-  state = { pickQ: '', siteMsg: '', settings: null, siteOpen: false, siteTab: 'slides', sEdit: null, sIdx: null, siteSaving: false, siteErr: '', dayPop: false, remote: false, loginOpen: false, pw: '', loginErr: '', saving: false, calM: 0, calSrc: '전체', pub: [], copied: false, searchOpen: false, events: [], api: [], updatedAt: null, loadErr: false, isAdmin: false, menuOpen: false, scrolled: false, active: '', mega: -1, acc: 0, fs: 1, lang: 'KOR', cat: '전체', fee: '전체 요금', period: '2개월', q: '', sel: '', off: 0, slide: 0, paused: false, modalId: null, formOpen: false, f: null, err: '' };
+  state = { notices: [], noticePage: false, noticeId: null, nFormOpen: false, nf: null, nErr: '', nSaving: false, pickQ: '', siteMsg: '', settings: null, siteOpen: false, siteTab: 'slides', sEdit: null, sIdx: null, siteSaving: false, siteErr: '', dayPop: false, remote: false, loginOpen: false, pw: '', loginErr: '', saving: false, calM: 0, calSrc: '전체', pub: [], copied: false, searchOpen: false, events: [], api: [], updatedAt: null, loadErr: false, isAdmin: false, menuOpen: false, scrolled: false, active: '', mega: -1, acc: 0, fs: 1, lang: 'KOR', cat: '전체', fee: '전체 요금', period: '2개월', q: '', sel: '', off: 0, slide: 0, paused: false, modalId: null, formOpen: false, f: null, err: '' };
   componentWillUnmount() { clearInterval(this.timer); window.removeEventListener('scroll', this.onScroll); }
   applyFont() { const f = { 'Wanted Sans': 'wanted', '제목 명조(에디토리얼)': 'editorial', 'Pretendard': 'pretendard' }[this.props.fontStyle ?? 'Wanted Sans'] || 'wanted'; if (document.body.dataset.font !== f) document.body.dataset.font = f; }
   componentDidUpdate() { this.applyFont(); const want = this.props.sampleData ? 'data/busan-events.sample.json' : 'data/busan-events.json'; if (this._src && this._src !== want) this.loadApi(); const z = [0.9, 1, 1.12][this.state.fs]; if (this._fs !== z) { this._fs = z; document.body.style.zoom = z; } }
   onScroll = () => {
     const sc = window.scrollY > 40; let act = '';
-    for (const id of ['events', 'calendar', 'notice']) { const el = document.getElementById(id); if (el && el.getBoundingClientRect().top <= 160) act = id === 'events' ? 'calendar' : id; }
-    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 40) { const last = this.siteSettings().order.slice(-1)[0]; act = last === 'events' ? 'calendar' : last; }
+    for (const id of ['events', 'calendar', 'notice', 'about']) { const el = document.getElementById(id); if (el && el.getBoundingClientRect().top <= 160) act = id; }
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 40) { act = 'about'; }
     if (sc !== this.state.scrolled || act !== this.state.active) this.setState({ scrolled: sc, active: act });
   };
   componentDidMount() {
     let ev = null; try { ev = JSON.parse(localStorage.getItem(this.KEY)); } catch (e) {}
     this._pw = sessionStorage.getItem('gl.pw') || '';
     try { const ls = JSON.parse(localStorage.getItem('gl.busan.settings')); if (ls) this.setState({ settings: ls }); } catch (e) {}
+    try { const ln = JSON.parse(localStorage.getItem('gl.busan.notices')); if (Array.isArray(ln)) this.setState({ notices: ln }); } catch (e) {}
+    if (location.hash === '#notices') this.setState({ noticePage: true });
     this._hasLocal = Array.isArray(ev);
     this.setState({ events: Array.isArray(ev) ? ev : [], isAdmin: !!this._pw || sessionStorage.getItem('gl.localAdmin') === '1', sel: this.iso(new Date()) });
-    fetch('/api/content', { cache: 'no-store' }).then(r => { if (!r.ok) throw new Error(); return r.json(); }).then(j => { if (!Array.isArray(j.events)) throw new Error(); this.setState({ remote: true, events: j.events, settings: j.settings || null }); })
+    fetch('/api/content', { cache: 'no-store' }).then(r => { if (!r.ok) throw new Error(); return r.json(); }).then(j => { if (!Array.isArray(j.events)) throw new Error(); this.setState({ remote: true, events: j.events, settings: j.settings || null, notices: Array.isArray(j.notices) ? j.notices : [] }); })
       .catch(() => fetch('data/manual-events.json?v=' + Date.now()).then(r => r.json()).then(j => { const list = Array.isArray(j) ? j : Array.isArray(j.events) ? j.events : []; this.setState(this._hasLocal ? { pub: list } : { pub: list, events: list }); }).catch(() => {}));
     this.loadApi(); this.applyFont();
     window.addEventListener('scroll', this.onScroll, { passive: true }); this.onScroll();
-    this.timer = setInterval(() => { if (!this.state.paused && !this.state.modalId && !this.state.formOpen && !this.state.siteOpen) this.setState(s => ({ slide: s.slide + 1 })); }, 6000);
+    this.timer = setInterval(() => { if (!this.state.paused && !this.state.modalId && !this.state.formOpen && !this.state.siteOpen && !this.state.noticePage && !this.state.nFormOpen) this.setState(s => ({ slide: s.slide + 1 })); }, 6000);
   }
   loadApi() {
     const url = this.props.sampleData ? 'data/busan-events.sample.json' : 'data/busan-events.json';
@@ -545,7 +648,7 @@ class Component extends DCLogic {
     if (!r.ok) throw new Error(j.error || '저장 서버에 연결하지 못했습니다.');
     return j;
   }
-  siteSettings(src) { const s = src || this.state.settings || {}; const ord = Array.isArray(s.order) && s.order.length === 3 ? s.order : ['events', 'calendar', 'notice']; return { slides: Array.isArray(s.slides) ? s.slides : [], autoSlides: s.autoSlides !== false, order: ord }; }
+  siteSettings(src) { const s = src || this.state.settings || {}; const ord = Array.isArray(s.order) && s.order.length === 3 ? s.order : ['events', 'calendar', 'notice']; return { slides: Array.isArray(s.slides) ? s.slides : [], autoSlides: s.autoSlides !== false, order: ord, links: { email: '', instagram: '', kakao: '', ...(s.links || {}) } }; }
   openSite(tab) { const s = this.siteSettings(); this.setState({ siteOpen: true, siteMsg: '', pickQ: '', siteTab: tab || 'slides', sEdit: JSON.parse(JSON.stringify(s)), sIdx: s.slides.length ? 0 : null, siteErr: '', mega: -1, menuOpen: false }); }
   editS(fn) { this.setState(st => { const e = JSON.parse(JSON.stringify(st.sEdit)); fn(e, st); return { sEdit: e }; }); }
   async saveSite(keep) {
@@ -561,6 +664,30 @@ class Component extends DCLogic {
     this.setState({ settings: se, siteOpen: !!keep, slide: 0, siteMsg: keep ? '사이트에 바로 적용되었습니다.' : '' });
   }
   applyS(fn) { const se = JSON.parse(JSON.stringify(this.state.sEdit)); fn(se); this.setState({ sEdit: se, siteErr: '' }, () => this.saveSite(true)); }
+  sortNotices(list) { return [...list].sort((a, b) => (!!b.pinned - !!a.pinned) || (b.date > a.date ? 1 : b.date < a.date ? -1 : 0)); }
+  blankNotice() { return { title: '', body: '', date: this.iso(new Date()), pinned: false, images: [] }; }
+  onNImg(ev) { const files = [...(ev.target.files || [])]; ev.target.value = ''; files.forEach(file => this.compress(file, 1600, url => this.setState(st => ({ nf: { ...st.nf, images: [...(st.nf.images || []), url].slice(0, 6) } })))); }
+  async submitNotice() {
+    const n = this.state.nf; if (!n) return;
+    if (!n.title.trim()) return this.setState({ nErr: '제목을 입력해 주세요.' });
+    if (!n.body.trim()) return this.setState({ nErr: '본문을 입력해 주세요.' });
+    const item = { ...n, title: n.title.trim(), body: n.body.trim() };
+    if (this.state.remote) {
+      this.setState({ nSaving: true, nErr: '' });
+      try { const j = await this.api('saveNotice', { notice: item }); this.setState({ notices: j.notices, nSaving: false, nFormOpen: false, noticeId: item.id || (j.notices[0] && j.notices[0].id) || null }); }
+      catch (e) { this.setState({ nSaving: false, nErr: e.message }); }
+      return;
+    }
+    const list = item.id ? this.state.notices.map(x => x.id === item.id ? item : x) : [{ ...item, id: 'n-' + Date.now().toString(36) }, ...this.state.notices];
+    try { localStorage.setItem('gl.busan.notices', JSON.stringify(list)); } catch (e) { return this.setState({ nErr: '저장 공간이 부족합니다. 사진 수를 줄여 주세요.' }); }
+    this.setState({ notices: list, nFormOpen: false, nErr: '', noticeId: item.id || list[0].id });
+  }
+  deleteNotice(id) {
+    if (!confirm('이 공지를 삭제할까요?')) return;
+    if (this.state.remote) { this.api('deleteNotice', { id }).then(j => this.setState({ notices: j.notices, noticeId: null })).catch(e => alert(e.message)); return; }
+    const list = this.state.notices.filter(x => x.id !== id); try { localStorage.setItem('gl.busan.notices', JSON.stringify(list)); } catch (e) {}
+    this.setState({ notices: list, noticeId: null });
+  }
   async login() {
     const pw = this.state.pw;
     if (!this.state.remote) { sessionStorage.setItem('gl.localAdmin', '1'); return this.setState({ isAdmin: true, loginOpen: false, pw: '', loginErr: '' }); }
@@ -620,7 +747,7 @@ class Component extends DCLogic {
     const pickedList = SS.slides.filter(x => x.type === 'event').map(x => all.find(e => e.id === x.eventId)).filter(Boolean);
     const picked = evSlides(pickedList); let pi = 0; const ordered = [];
     SS.slides.forEach((x, i) => { if (x.type === 'event') { if (all.some(e => e.id === x.eventId)) ordered.push(picked[pi++]); } else if (String(x.title || '').trim()) ordered.push(customOf(x, i)); });
-    const slides = [...(ordered.length ? ordered : [brandSlide]), ...(SS.autoSlides ? featSlides : [])];
+    const slides = [brandSlide, ...ordered, ...(SS.autoSlides ? featSlides : [])];
     const si = ((s.slide % slides.length) + slides.length) % slides.length;
     const D = ['일', '월', '화', '수', '목', '금', '토'];
     const isAuto = e => !!e.src;
@@ -662,7 +789,7 @@ class Component extends DCLogic {
     const selD = s.sel ? new Date(s.sel + 'T00:00') : now;
     const m = all.find(e => e.id === s.modalId);
     const f = s.f || this.blank();
-    const go = it => () => { const p = { mega: -1, menuOpen: false }; if (it.cat) Object.assign(p, { cat: it.cat, fee: '전체 요금' }); if (it.fee) Object.assign(p, { fee: it.fee, cat: '전체' }); if (it.period) p.period = it.period; if (it.today) Object.assign(p, { calM: 0, sel: this.iso(now) }); this.setState(p); };
+    const go = it => () => { const p = { mega: -1, menuOpen: false }; if (it.cat) Object.assign(p, { cat: it.cat, fee: '전체 요금' }); if (it.fee) Object.assign(p, { fee: it.fee, cat: '전체' }); if (it.period) p.period = it.period; if (it.today) Object.assign(p, { calM: 0, sel: this.iso(now) }); if (it.nextMonth) Object.assign(p, { calM: 1 }); if (it.page) { Object.assign(p, { noticePage: true, noticeId: null }); setTimeout(() => window.scrollTo(0, 0), 0); } this.setState(p); };
     const pool = [...live].sort((a, b) => (b.hasPoster ? 1 : 0) - (a.hasPoster ? 1 : 0));
     const recFor = i => { const e = (i === 2 && live.find(x => x.cat === '교육')) || pool[i % Math.max(pool.length, 1)]; return e ? { ...e, icon: ICON[e.cat] || 'event', open: () => { this.setState({ mega: -1 }); e.open(); } } : null; };
     const mi = s.mega, mm = this.MENU[mi];
@@ -672,12 +799,11 @@ class Component extends DCLogic {
       scrolled: String(s.scrolled), closeMega: () => { if (this.state.mega !== -1) this.setState({ mega: -1 }); },
       gnb: this.MENU.map((m, i) => ({ key: m.id, t: m.t, en: m.en, h: '#' + m.id, active: String(mi === i || (mi < 0 && s.active === m.id)), enter: () => { if (this.state.mega !== i) this.setState({ mega: i }); }, click: () => this.setState({ mega: -1 }) })),
       megaList,
-      copyLabel: s.copied ? '복사됨' : '복사', copyEmail: () => { try { navigator.clipboard.writeText('hello@greenlight.kr'); } catch (e) {} this.setState({ copied: true }); clearTimeout(this._cp); this._cp = setTimeout(() => this.setState({ copied: false }), 1500); },
       megaOpen: String(mi >= 0), megaOpenB: mi >= 0,
       weekCount: all.filter(e => e.start.slice(0, 10) <= t7 && (e.end || e.start).slice(0, 10) >= t0).length, qWeek: go({ period: '이번 주' }),
       searchOpen: s.searchOpen, searchIcon: s.searchOpen ? 'close' : 'search', toggleSearch: () => this.setState({ searchOpen: !s.searchOpen, mega: -1 }),
-      doSearch: () => { this.setState({ searchOpen: false, cat: '전체', fee: '전체 요금', period: '전체 기간' }); const el = document.getElementById('events'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' }); },
-      searchKey: e => { if (e.key === 'Enter') { this.setState({ searchOpen: false, cat: '전체', fee: '전체 요금', period: '전체 기간' }); const el = document.getElementById('events'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' }); } if (e.key === 'Escape') this.setState({ searchOpen: false }); },
+      doSearch: () => { this.setState({ searchOpen: false, cat: '전체', fee: '전체 요금', period: '2개월' }); const el = document.getElementById('events'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' }); },
+      searchKey: e => { if (e.key === 'Enter') { this.setState({ searchOpen: false, cat: '전체', fee: '전체 요금', period: '2개월' }); const el = document.getElementById('events'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' }); } if (e.key === 'Escape') this.setState({ searchOpen: false }); },
       qFree: go({ fee: '무료' }), qShow: go({ cat: '공연' }), qExhibit: go({ cat: '전시' }), qFest: go({ cat: '행사' }),
       drawerMenu: this.MENU.map((m, i) => ({ key: m.id, t: m.t, open: s.acc === i, icon: s.acc === i ? 'remove' : 'add', toggle: () => this.setState({ acc: s.acc === i ? -1 : i }), items: m.items.map(it => ({ ...it, key: it.t, go: go(it) })) })),
       openState: isOpen ? 'on' : 'off', openLabel: dw === 1 ? '오늘 휴관' : isOpen ? '운영중' : '운영 종료',
@@ -696,14 +822,34 @@ class Component extends DCLogic {
       slideList: [slides[si]], slideNo: String(si + 1), slideTotal: String(slides.length), slidePct: `${((si + 1) / slides.length) * 100}%`,
       dots: slides.map((sl, i) => ({ key: sl.key, w: i === si ? '28px' : '8px', bg: i === si ? (sl.fg === '#fff' ? '#B3F945' : '#1E3A0C') : (slides[si].fg === '#fff' ? 'rgba(255,255,255,.4)' : 'rgba(30,58,12,.25)'), label: `${i + 1}번 슬라이드`, go: () => this.setState({ slide: i }) })),
       prevSlide: () => this.setState({ slide: s.slide - 1 }), nextSlide: () => this.setState({ slide: s.slide + 1 }), togglePause: () => this.setState({ paused: !s.paused }), pauseIcon: s.paused ? 'play_arrow' : 'pause', pauseLabel: s.paused ? '재생' : '일시정지',
+      ...(() => {
+        const sorted = this.sortNotices(s.notices), total = sorted.length;
+        const dec = (n, i) => ({ key: n.id, no: String(total - i), title: n.title, date: n.date, pinned: !!n.pinned, hasImg: !!(n.images && n.images.length), preview: (n.body || '').replace(/\s+/g, ' ').slice(0, 90), body: n.body || '', gallery: (n.images || []).map((src, k) => ({ key: String(k), src })),
+          open: () => { this.setState({ noticePage: true, noticeId: n.id }); window.scrollTo(0, 0); }, edit: () => this.setState({ nFormOpen: true, nf: { ...n, images: [...(n.images || [])] }, nErr: '' }), del: () => this.deleteNotice(n.id) });
+        const cur = sorted.find(n => n.id === s.noticeId);
+        const nf = s.nf || this.blankNotice(), setN = k => e => { const v = e.target.type === 'checkbox' ? e.target.checked : e.target.value; this.setState(st => ({ nf: { ...(st.nf || this.blankNotice()), [k]: v }, nErr: '' })); };
+        return { noticeTop: sorted.slice(0, 5).map(dec), noticeAll: sorted.map(dec), noNotices: total === 0, noticeCount: total,
+          noticePage: s.noticePage, noticeListMode: !cur, noticeCur: cur ? [dec(cur, sorted.indexOf(cur))] : [],
+          openNoticePage: e => { if (e && e.preventDefault) e.preventDefault(); this.setState({ noticePage: true, noticeId: null }); history.replaceState(null, '', '#notices'); window.scrollTo(0, 0); },
+          closeNoticePage: () => { this.setState({ noticePage: false, noticeId: null }); history.replaceState(null, '', location.pathname); },
+          backToList: () => this.setState({ noticeId: null }),
+          newNotice: () => this.setState({ nFormOpen: true, nf: this.blankNotice(), nErr: '' }), closeNForm: () => this.setState({ nFormOpen: false, nErr: '' }),
+          nFormOpen: s.nFormOpen, nf, nFormTitle: nf.id ? '공지 수정' : '공지 작성', nSaveLabel: s.nSaving ? '저장 중…' : '게시',
+          nSetTitle: setN('title'), nSetDate: setN('date'), nSetBody: setN('body'), nSetPinned: setN('pinned'),
+          nImages: (nf.images || []).map((src, i) => ({ key: String(i) + src.length, src, rm: () => this.setState(st => ({ nf: { ...st.nf, images: (st.nf.images || []).filter((_, j) => j !== i) } })) })), nCanAddImg: (nf.images || []).length < 6, onNImg: e => this.onNImg(e),
+          submitNotice: () => this.submitNotice(), hasNErr: !!s.nErr, nErr: s.nErr };
+      })(),
+      fEmail: SS.links.email, fEmailHref: 'mailto:' + SS.links.email, fHasEmail: !!SS.links.email, fInsta: SS.links.instagram, fHasInsta: !!SS.links.instagram, fKakao: SS.links.kakao, fHasKakao: !!SS.links.kakao, fHasSocial: !!(SS.links.instagram || SS.links.kakao),
       ordEvents: String(SS.order.indexOf('events') + 1), ordCalendar: String(SS.order.indexOf('calendar') + 1), ordNotice: String(SS.order.indexOf('notice') + 1),
-      openSite: () => this.openSite('slides'), openSiteSlides: () => this.openSite('slides'), closeSite: () => this.setState({ siteOpen: false }), saveSite: () => this.saveSite(),
+      openSite: () => this.openSite('slides'), openSiteLinks: () => this.openSite('links'), openSiteSlides: () => this.openSite('slides'), closeSite: () => this.setState({ siteOpen: false }), saveSite: () => this.saveSite(),
       siteOpen: s.siteOpen && !!s.sEdit, siteSaveLabel: s.siteSaving ? '저장 중…' : '저장', hasSiteErr: !!s.siteErr, siteErr: s.siteErr,
-      siteTabs: [['slides', '메인 슬라이드'], ['order', '섹션 순서']].map(([k, t]) => ({ key: k, t, fw: s.siteTab === k ? 700 : 500, fg: s.siteTab === k ? '#1A1A1A' : '#777', bd: s.siteTab === k ? '#1A1A1A' : 'transparent', set: () => this.setState({ siteTab: k }) })),
-      tabSlides: s.siteTab === 'slides', tabOrder: s.siteTab === 'order',
+      siteTabs: [['slides', '메인 슬라이드'], ['order', '섹션 순서'], ['links', '연락처·SNS']].map(([k, t]) => ({ key: k, t, fw: s.siteTab === k ? 700 : 500, fg: s.siteTab === k ? '#1A1A1A' : '#777', bd: s.siteTab === k ? '#1A1A1A' : 'transparent', set: () => this.setState({ siteTab: k }) })),
+      tabSlides: s.siteTab === 'slides', tabOrder: s.siteTab === 'order', tabLinks: s.siteTab === 'links',
+      lEmail: s.sEdit ? (s.sEdit.links || {}).email || '' : '', lInsta: s.sEdit ? (s.sEdit.links || {}).instagram || '' : '', lKakao: s.sEdit ? (s.sEdit.links || {}).kakao || '' : '',
+      setLEmail: e => { const v = e.target.value; this.editS(x => { x.links = { ...(x.links || {}), email: v.trim() }; }); }, setLInsta: e => { const v = e.target.value; this.editS(x => { x.links = { ...(x.links || {}), instagram: v.trim() }; }); }, setLKakao: e => { const v = e.target.value; this.editS(x => { x.links = { ...(x.links || {}), kakao: v.trim() }; }); },
       sAuto: !!(s.sEdit && s.sEdit.autoSlides !== false), toggleAuto: e => { const v = e.target.checked; this.applyS(x => { x.autoSlides = v; }); },
       sNoSlides: !!(s.sEdit && !s.sEdit.slides.length),
-      sSlides: (s.sEdit ? s.sEdit.slides : []).map((x, i, arr) => { const ev = x.type === 'event' ? all.find(e => e.id === x.eventId) : null; return { key: (x.id || '') + i, kicker: x.type === 'event' ? (ev ? '문화콘텐츠 · ' + ev.cat : '문화콘텐츠 · 종료/삭제됨') : (x.kicker || '직접 만든 슬라이드'), title: x.type === 'event' ? (ev ? ev.title : '(찾을 수 없는 콘텐츠)') : (x.title || '(제목 없음)'), img: x.type === 'event' ? ((ev && ev.poster) || '') : (x.img || ''), hasImg: x.type === 'event' ? !!(ev && ev.poster) : !!x.img, sw: x.type === 'event' ? '#E4EADB' : (THEMES[x.theme] || THEMES.dark).bg, bg: s.sIdx === i ? '#F6F7F4' : '#fff',
+      sSlides: (s.sEdit ? s.sEdit.slides : []).map((x, i, arr) => { const ev = x.type === 'event' ? all.find(e => e.id === x.eventId) : null; return { key: (x.id || '') + i, no: (i + 2) + '번', kicker: x.type === 'event' ? (ev ? '문화콘텐츠 · ' + ev.cat : '문화콘텐츠 · 종료/삭제됨') : (x.kicker || '직접 만든 슬라이드'), title: x.type === 'event' ? (ev ? ev.title : '(찾을 수 없는 콘텐츠)') : (x.title || '(제목 없음)'), img: x.type === 'event' ? ((ev && ev.poster) || '') : (x.img || ''), hasImg: x.type === 'event' ? !!(ev && ev.poster) : !!x.img, sw: x.type === 'event' ? '#E4EADB' : (THEMES[x.theme] || THEMES.dark).bg, bg: s.sIdx === i ? '#F6F7F4' : '#fff',
         edit: () => this.setState({ sIdx: x.type === 'event' ? null : i }),
         up: () => { if (i > 0) { this.applyS(e => { [e.slides[i - 1], e.slides[i]] = [e.slides[i], e.slides[i - 1]]; }); this.setState({ sIdx: null }); } },
         down: () => { if (i < arr.length - 1) { this.applyS(e => { [e.slides[i + 1], e.slides[i]] = [e.slides[i], e.slides[i + 1]]; }); this.setState({ sIdx: null }); } },
@@ -712,11 +858,11 @@ class Component extends DCLogic {
       pickList: (() => { const q = s.pickQ.trim().toLowerCase(); const used = new Set((s.sEdit ? s.sEdit.slides : []).filter(x => x.type === 'event').map(x => x.eventId)); return all.filter(e => e.status !== '종료' && (!q || (e.title + ' ' + e.place).toLowerCase().includes(q))).slice(0, 40).map(e => ({ key: e.id, title: e.title, meta: e.cat + ' · ' + e.dateText, poster: e.poster || '', hasPoster: !!e.poster, added: used.has(e.id), notAdded: !used.has(e.id), add: () => this.applyS(se => { se.slides.push({ id: 'p' + Date.now().toString(36), type: 'event', eventId: e.id }); }) })); })(),
       addSlide: () => { const n = s.sEdit ? s.sEdit.slides.length : 0; this.editS(e => { e.slides.push({ id: 's' + Date.now().toString(36), kicker: '', title: '', sub: '', btn: '', link: '#calendar', img: '', theme: 'dark' }); }); this.setState({ sIdx: n }); },
       sCur: (s.sEdit && s.sIdx != null && s.sEdit.slides[s.sIdx]) ? [(() => { const i = s.sIdx, x = s.sEdit.slides[i], set = k => ev => { const v = ev.target.value; this.editS(e => { e.slides[i][k] = v; }); };
-        return { key: 'cur' + i, no: i + 1, kicker: x.kicker || '', title: x.title || '', sub: x.sub || '', btn: x.btn || '', link: x.link || '', img: x.img || '', hasImg: !!x.img, noImg: !x.img,
+        return { key: 'cur' + i, no: i + 2, kicker: x.kicker || '', title: x.title || '', sub: x.sub || '', btn: x.btn || '', link: x.link || '', img: x.img || '', hasImg: !!x.img, noImg: !x.img,
           setKicker: set('kicker'), setTitle: set('title'), setSub: set('sub'), setBtn: set('btn'), setLink: set('link'), rmImg: () => this.editS(e => { e.slides[i].img = ''; }),
           themes: Object.keys(THEMES).map(k => ({ key: k, t: THEMES[k].t, bg: THEMES[k].bg, ring: (x.theme || 'dark') === k ? '0 0 0 2px #fff, 0 0 0 4px #1A1A1A' : 'none', set: () => this.editS(e => { e.slides[i].theme = k; }) })) }; })()] : [],
       onSlideImg: ev => { const file = ev.target.files && ev.target.files[0]; ev.target.value = ''; if (!file || s.sIdx == null) return; const i = s.sIdx; this.compress(file, 1600, url => this.editS(e => { e.slides[i].img = url; })); },
-      sOrder: (s.sEdit ? s.sEdit.order : []).map((id, i, arr) => ({ key: id, no: i + 1, t: { events: '부산 문화콘텐츠', calendar: '행사 캘린더', notice: '공지사항' }[id],
+      sOrder: (s.sEdit ? s.sEdit.order : []).map((id, i, arr) => ({ key: id, no: i + 1, t: { events: '문화콘텐츠', calendar: '행사 캘린더', notice: '공지사항' }[id],
         up: () => { if (i > 0) this.editS(e => { [e.order[i - 1], e.order[i]] = [e.order[i], e.order[i - 1]]; }); },
         down: () => { if (i < arr.length - 1) this.editS(e => { [e.order[i + 1], e.order[i]] = [e.order[i], e.order[i + 1]]; }); } })),
       calWeeks, dayPopOpen: !!s.dayPop, closeDayPop: () => this.setState({ dayPop: false }), weekdays: D.map((t, i) => ({ key: t, t, c: i === 0 ? '#C0392B' : i === 6 ? '#2C5AA0' : '#777' })),
