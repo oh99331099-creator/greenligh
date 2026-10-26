@@ -265,7 +265,6 @@ header[data-scrolled="true"] [data-hrow]{height:56px!important}
   <ul style="list-style:none;margin:0;padding:6px 0 0">
     <sc-for list="{{ noticeTop }}" as="n" hint-placeholder-count="3">
       <li style="border-bottom:1px solid #EDEDED"><button onClick="{{ n.open }}" style="font:inherit;width:100%;text-align:left;border:0;background:transparent;padding:20px 0;cursor:pointer;display:flex;align-items:center;gap:16px;color:#1A1A1A">
-        <sc-if value="{{ n.pinned }}" hint-placeholder-val="{{ false }}"><span style="font-size:11px;font-weight:700;color:#fff;background:#1A1A1A;border-radius:3px;padding:3px 7px;flex:none">공지</span></sc-if>
         <span style="flex:1;min-width:0;font-size:17px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ n.title }}</span>
         <sc-if value="{{ n.hasImg }}" hint-placeholder-val="{{ false }}"><span class="material-symbols-outlined" style="font-size:18px;color:#777;flex:none">image</span></sc-if>
         <span style="font-size:14px;color:#777;flex:none;font-variant-numeric:tabular-nums">{{ n.date }}</span>
@@ -381,7 +380,7 @@ header[data-scrolled="true"] [data-hrow]{height:56px!important}
         <sc-for list="{{ noticeAll }}" as="n" hint-placeholder-count="5">
           <li style="border-bottom:1px solid #EDEDED"><button onClick="{{ n.open }}" style="font:inherit;width:100%;text-align:left;border:0;background:transparent;padding:22px 0;cursor:pointer;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px;align-items:center;color:#1A1A1A">
             <span style="width:48px;font-size:13px;color:#999;font-variant-numeric:tabular-nums">{{ n.no }}</span>
-            <span style="min-width:0"><span style="display:flex;align-items:center;gap:8px"><sc-if value="{{ n.pinned }}" hint-placeholder-val="{{ false }}"><span style="font-size:11px;font-weight:700;color:#fff;background:#1A1A1A;border-radius:3px;padding:3px 7px;flex:none">공지</span></sc-if><b style="font-size:17px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ n.title }}</b><sc-if value="{{ n.hasImg }}" hint-placeholder-val="{{ false }}"><span class="material-symbols-outlined" style="font-size:18px;color:#777;flex:none">image</span></sc-if></span><span style="display:block;margin-top:6px;font-size:14px;color:#777;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ n.preview }}</span></span>
+            <span style="min-width:0"><span style="display:flex;align-items:center;gap:8px"><b style="font-size:17px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ n.title }}</b><sc-if value="{{ n.hasImg }}" hint-placeholder-val="{{ false }}"><span class="material-symbols-outlined" style="font-size:18px;color:#777;flex:none">image</span></sc-if></span><span style="display:block;margin-top:6px;font-size:14px;color:#777;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ n.preview }}</span></span>
             <span style="font-size:14px;color:#777;font-variant-numeric:tabular-nums">{{ n.date }}</span>
           </button></li>
         </sc-for>
@@ -390,7 +389,7 @@ header[data-scrolled="true"] [data-hrow]{height:56px!important}
     </sc-if>
     <sc-for list="{{ noticeCur }}" as="n" hint-placeholder-count="0">
       <article style="padding-top:28px">
-        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><sc-if value="{{ n.pinned }}" hint-placeholder-val="{{ false }}"><span style="font-size:11px;font-weight:700;color:#fff;background:#1A1A1A;border-radius:3px;padding:3px 7px">공지</span></sc-if><span style="font-size:14px;color:#777">{{ n.date }}</span></div>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="font-size:14px;color:#777">{{ n.date }}</span><button onClick="{{ n.copyLink }}" aria-label="공지 링크 복사" style="font:inherit;margin-left:auto;display:flex;align-items:center;gap:4px;height:32px;padding:0 12px;border:1px solid #CFCFCF;border-radius:6px;background:#fff;font-size:13px;font-weight:600;color:#1A1A1A;cursor:pointer" style-hover="background:#F4F4F4"><span class="material-symbols-outlined" style="font-size:16px">link</span>{{ copyLabel }}</button></div>
         <h2 style="margin:10px 0 0;font-size:28px;font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:keep-all">{{ n.title }}</h2>
         <div style="margin-top:28px;padding-top:28px;border-top:1px solid #EDEDED;font-size:16px;line-height:1.85;color:#333;white-space:pre-line;word-break:keep-all">{{ n.body }}</div>
         <sc-if value="{{ n.hasImg }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:16px;margin-top:28px"><sc-for list="{{ n.gallery }}" as="g" hint-placeholder-count="1"><img src="{{ g.src }}" alt="공지 이미지" style="width:100%;max-width:820px;height:auto;display:block;border-radius:8px"></sc-for></div></sc-if>
@@ -619,8 +618,10 @@ class Component extends DCLogic {
     let ev = null; try { ev = JSON.parse(localStorage.getItem(this.KEY)); } catch (e) {}
     this._pw = sessionStorage.getItem('gl.pw') || '';
     try { const ls = JSON.parse(localStorage.getItem('gl.busan.settings')); if (ls) this.setState({ settings: ls }); } catch (e) {}
-    try { const ln = JSON.parse(localStorage.getItem('gl.busan.notices')); if (Array.isArray(ln)) this.setState({ notices: ln }); } catch (e) {}
+    let hasLn = false; try { const ln = JSON.parse(localStorage.getItem('gl.busan.notices')); if (Array.isArray(ln)) { hasLn = true; this.setState({ notices: ln }); } } catch (e) {}
+    if (!hasLn) fetch('data/notices.json?v=' + Date.now()).then(r => r.json()).then(j => { if (Array.isArray(j) && !this.state.remote) this.setState({ notices: j }); }).catch(() => {});
     if (location.hash === '#notices') this.setState({ noticePage: true });
+    const nm = location.hash.match(/^#notice=(.+)$/); if (nm) { this.setState({ noticePage: true, noticeId: decodeURIComponent(nm[1]) }); window.scrollTo(0, 0); }
     this._hasLocal = Array.isArray(ev);
     this.setState({ events: Array.isArray(ev) ? ev : [], isAdmin: !!this._pw || sessionStorage.getItem('gl.localAdmin') === '1', sel: this.iso(new Date()) });
     fetch('/api/content', { cache: 'no-store' }).then(r => { if (!r.ok) throw new Error(); return r.json(); }).then(j => { if (!Array.isArray(j.events)) throw new Error(); this.setState({ remote: true, events: j.events, settings: j.settings || null, notices: Array.isArray(j.notices) ? j.notices : [] }); })
@@ -825,14 +826,15 @@ class Component extends DCLogic {
       ...(() => {
         const sorted = this.sortNotices(s.notices), total = sorted.length;
         const dec = (n, i) => ({ key: n.id, no: String(total - i), title: n.title, date: n.date, pinned: !!n.pinned, hasImg: !!(n.images && n.images.length), preview: (n.body || '').replace(/\s+/g, ' ').slice(0, 90), body: n.body || '', gallery: (n.images || []).map((src, k) => ({ key: String(k), src })),
-          open: () => { this.setState({ noticePage: true, noticeId: n.id }); window.scrollTo(0, 0); }, edit: () => this.setState({ nFormOpen: true, nf: { ...n, images: [...(n.images || [])] }, nErr: '' }), del: () => this.deleteNotice(n.id) });
+          open: () => { this.setState({ noticePage: true, noticeId: n.id }); history.replaceState(null, '', '#notice=' + encodeURIComponent(n.id)); window.scrollTo(0, 0); },
+          copyLink: () => { const url = location.origin + location.pathname + '#notice=' + encodeURIComponent(n.id); const done = () => { this.setState({ copied: true }); clearTimeout(this._cpT); this._cpT = setTimeout(() => this.setState({ copied: false }), 1800); }; if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, () => prompt('링크를 복사하세요', url)); else prompt('링크를 복사하세요', url); }, edit: () => this.setState({ nFormOpen: true, nf: { ...n, images: [...(n.images || [])] }, nErr: '' }), del: () => this.deleteNotice(n.id) });
         const cur = sorted.find(n => n.id === s.noticeId);
         const nf = s.nf || this.blankNotice(), setN = k => e => { const v = e.target.type === 'checkbox' ? e.target.checked : e.target.value; this.setState(st => ({ nf: { ...(st.nf || this.blankNotice()), [k]: v }, nErr: '' })); };
         return { noticeTop: sorted.slice(0, 5).map(dec), noticeAll: sorted.map(dec), noNotices: total === 0, noticeCount: total,
           noticePage: s.noticePage, noticeListMode: !cur, noticeCur: cur ? [dec(cur, sorted.indexOf(cur))] : [],
           openNoticePage: e => { if (e && e.preventDefault) e.preventDefault(); this.setState({ noticePage: true, noticeId: null }); history.replaceState(null, '', '#notices'); window.scrollTo(0, 0); },
           closeNoticePage: () => { this.setState({ noticePage: false, noticeId: null }); history.replaceState(null, '', location.pathname); },
-          backToList: () => this.setState({ noticeId: null }),
+          backToList: () => { this.setState({ noticeId: null }); history.replaceState(null, '', '#notices'); }, copyLabel: s.copied ? '복사됨' : '링크 복사',
           newNotice: () => this.setState({ nFormOpen: true, nf: this.blankNotice(), nErr: '' }), closeNForm: () => this.setState({ nFormOpen: false, nErr: '' }),
           nFormOpen: s.nFormOpen, nf, nFormTitle: nf.id ? '공지 수정' : '공지 작성', nSaveLabel: s.nSaving ? '저장 중…' : '게시',
           nSetTitle: setN('title'), nSetDate: setN('date'), nSetBody: setN('body'), nSetPinned: setN('pinned'),
