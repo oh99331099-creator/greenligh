@@ -55,7 +55,7 @@ header[data-scrolled="true"] [data-hrow]{height:56px!important}
 @media (max-width:760px){h2{font-size:22px!important}[data-slide] [data-stitle]{font-size:26px!important}}
 [data-flink]{background:linear-gradient(currentColor,currentColor) left bottom/0 1px no-repeat;transition:background-size .25s ease;text-decoration:none!important}[data-flink]:hover{background-size:100% 1px}
 [data-flabel]{display:block;font-size:11px;font-weight:600;letter-spacing:.14em;color:#777;margin-bottom:12px}
-@media (max-width:980px){[data-fgrid]{grid-template-columns:1fr 1fr!important}}@media (max-width:760px){[data-fgrid]{grid-template-columns:1fr!important;gap:32px!important}}
+@media (max-width:980px){[data-fgrid]{grid-template-columns:1fr 1fr 1fr!important;gap:32px!important}[data-fgrid]>div:first-child{grid-column:1/-1}}@media (max-width:760px){[data-fgrid]{grid-template-columns:1fr 1fr!important;gap:28px!important}}@media (max-width:480px){[data-fgrid]{grid-template-columns:1fr!important}}
 [data-ccell]:hover{background:#FAFAF7!important}[data-ccell]:focus-visible{outline:2px solid #1A1A1A;outline-offset:-2px}[data-cbar]:hover{filter:brightness(.94)}[data-ccount]{display:none}
 @media (max-width:760px){[data-cweek]{min-height:64px!important;grid-template-rows:64px!important}[data-ccell]{padding:6px 4px!important;flex-direction:column}[data-cbar]{display:none!important}[data-ccount]{display:block}}
 @media (max-width:1100px){[data-sec],header [data-hrow],[data-finner],[data-sinner]{padding-left:32px!important;padding-right:32px!important}}
@@ -301,7 +301,7 @@ header[data-scrolled="true"] [data-hrow]{height:56px!important}
       <p style="margin:0;font-size:clamp(24px,2.6vw,30px);font-weight:700;letter-spacing:-.035em;line-height:1.2;color:#1A1A1A">일상에 재미를 켜다.</p>
       <a href="#main" data-flink="1" style="font-size:13px;font-weight:600;color:#1A1A1A;display:flex;align-items:center;gap:6px;padding-bottom:2px">맨 위로<span class="material-symbols-outlined" style="font-size:16px">arrow_upward</span></a>
     </div>
-    <div data-fgrid="1" style="display:grid;grid-template-columns:1.4fr 1.3fr 1fr;gap:40px;padding-bottom:32px;font-size:13px;line-height:1.7;font-variant-numeric:tabular-nums">
+    <div data-fgrid="1" style="display:grid;grid-template-columns:1.6fr 1.2fr .8fr 1fr;gap:40px;align-items:start;padding-bottom:40px;font-size:13px;line-height:1.7;font-variant-numeric:tabular-nums">
       <div>
         <b style="display:block;font-size:20px;font-weight:600;letter-spacing:-.02em;line-height:1.2;color:#1A1A1A">그린라이트 스튜디오</b>
         <span style="display:block;margin-top:6px;font-size:10px;font-weight:600;letter-spacing:.14em;color:#777">GREENLIGHT STUDIO</span>
@@ -327,14 +327,18 @@ header[data-scrolled="true"] [data-hrow]{height:56px!important}
           <a href="#notice" data-flink="1" style="color:#1A1A1A">공지사항</a>
           <a href="#about" data-flink="1" style="color:#1A1A1A">소개</a>
         </nav>
-        <span data-flabel="1" style="margin-top:20px">POLICY</span>
-        <nav aria-label="정책" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12px">
-          <a href="#" data-flink="1" style="color:#2F5D0B;font-weight:700">개인정보처리방침</a><span style="width:1px;height:10px;background:#CFCFCF"></span><a href="#" data-flink="1" style="color:#555">이용약관</a><span style="width:1px;height:10px;background:#CFCFCF"></span><a href="#" data-flink="1" style="color:#555">이메일무단수집거부</a>
+      </div>
+      <div>
+        <span data-flabel="1">POLICY</span>
+        <nav aria-label="정책" style="display:flex;flex-direction:column;gap:8px;align-items:flex-start">
+          <a href="#" data-flink="1" style="color:#2F5D0B;font-weight:700">개인정보처리방침</a>
+          <a href="#" data-flink="1" style="color:#1A1A1A">이용약관</a>
+          <a href="#" data-flink="1" style="color:#1A1A1A">이메일무단수집거부</a>
         </nav>
       </div>
     </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px 24px;flex-wrap:wrap;padding:16px 0 20px;border-top:1px solid #DADADA;font-size:12px;color:#777;font-variant-numeric:tabular-nums">
-      <span style="display:flex;flex-wrap:wrap;gap:4px 14px"><span>© 2026 GREENLIGHT STUDIO</span><span>사업자이름 : 비-씬</span><span>사업자번호 : 235-01-04273</span><span>등록 주소 : 부산광역시 수영구 무학로22번길 47</span></span>
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px 24px;flex-wrap:wrap;padding:20px 0 24px;border-top:1px solid #DADADA;font-size:12px;line-height:1.7;color:#777;font-variant-numeric:tabular-nums">
+      <span style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="color:#555;font-weight:600">© 2026 GREENLIGHT STUDIO</span><span style="display:flex;flex-wrap:wrap;gap:0 14px"><span>사업자이름 : 비-씬</span><span>사업자번호 : 235-01-04273</span><span>등록 주소 : 부산광역시 수영구 무학로22번길 47</span></span></span>
       <span data-screen-label="관리자" style="display:flex;gap:16px;flex-wrap:wrap;align-items:center">
                 <sc-if value="{{ notAdmin }}" hint-placeholder-val="{{ true }}"><button onClick="{{ adminOn }}" style="font:inherit;font-size:12px;color:#999;background:transparent;border:0;padding:0;cursor:pointer" style-hover="color:#1A1A1A">관리자</button></sc-if>
         <sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ false }}"><span title="저장하면 바로 모든 방문자에게 공개됩니다." style="color:#1A1A1A;font-weight:600">관리자 모드</span><button onClick="{{ openSite }}" style="font:inherit;font-size:12px;color:#1A1A1A;background:transparent;border:0;padding:0;cursor:pointer;text-decoration:underline">사이트 관리</button><sc-if value="{{ localAdmin }}" hint-placeholder-val="{{ false }}"><button onClick="{{ exportManual }}" title="data/manual-events.json으로 GitHub에 올리면 모든 방문자에게 보입니다" style="font:inherit;font-size:12px;color:#1A1A1A;background:transparent;border:0;padding:0;cursor:pointer;text-decoration:underline">공개 파일 내보내기 ({{ manualCount }}건)</button></sc-if><button onClick="{{ openNew }}" style="font:inherit;font-size:12px;color:#1A1A1A;background:transparent;border:0;padding:0;cursor:pointer;text-decoration:underline">문화콘텐츠 등록</button><button onClick="{{ adminOff }}" style="font:inherit;font-size:12px;color:#777;background:transparent;border:0;padding:0;cursor:pointer;text-decoration:underline">종료</button></sc-if>
