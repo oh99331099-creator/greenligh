@@ -200,7 +200,7 @@ header[data-scrolled="true"] [data-hrow]{height:56px!important}
     <div data-filters="1" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid #CFCFCF;border-radius:4px;overflow:hidden;margin-bottom:40px">
       <label style="position:relative;display:flex;align-items:center;border-right:1px solid #CFCFCF;min-width:0"><span style="position:absolute;left:-9999px">분류</span><select value="{{ catSel }}" onChange="{{ setCatSel }}" style="font:inherit;font-size:17px;color:#444;appearance:none;-webkit-appearance:none;border:0;background:transparent;width:100%;height:60px;padding:0 48px 0 22px;cursor:pointer;outline:none"><option value="전체">전체</option><option value="공연">공연</option><option value="전시">전시</option><option value="행사">행사</option><option value="교육">교육</option><option value="모임">모임</option></select><span class="material-symbols-outlined" style="position:absolute;right:16px;pointer-events:none;color:#444">expand_more</span></label>
       <label style="position:relative;display:flex;align-items:center;border-right:1px solid #CFCFCF;min-width:0"><span style="position:absolute;left:-9999px">요금</span><select value="{{ fee }}" onChange="{{ setFee }}" style="font:inherit;font-size:17px;color:#444;appearance:none;-webkit-appearance:none;border:0;background:transparent;width:100%;height:60px;padding:0 48px 0 22px;cursor:pointer;outline:none"><option value="전체 요금">전체 요금</option><option value="무료">무료</option><option value="유료">유료</option></select><span class="material-symbols-outlined" style="position:absolute;right:16px;pointer-events:none;color:#444">expand_more</span></label>
-      <label style="position:relative;display:flex;align-items:center;border-right:1px solid #CFCFCF;min-width:0"><span style="position:absolute;left:-9999px">기간</span><select value="{{ period }}" onChange="{{ setPeriod }}" style="font:inherit;font-size:17px;color:#444;appearance:none;-webkit-appearance:none;border:0;background:transparent;width:100%;height:60px;padding:0 48px 0 22px;cursor:pointer;outline:none"><option value="2개월">앞으로 2개월</option><option value="이번 달">이번 달</option><option value="이번 주">이번 주</option></select><span class="material-symbols-outlined" style="position:absolute;right:16px;pointer-events:none;color:#444">expand_more</span></label>
+      <label style="position:relative;display:flex;align-items:center;border-right:1px solid #CFCFCF;min-width:0"><span style="position:absolute;left:-9999px">기간</span><select value="{{ period }}" onChange="{{ setPeriod }}" style="font:inherit;font-size:17px;color:#444;appearance:none;-webkit-appearance:none;border:0;background:transparent;width:100%;height:60px;padding:0 48px 0 22px;cursor:pointer;outline:none"><option value="전체 기간">전체 기간</option><option value="이번 달">이번 달</option><option value="이번 주">이번 주</option></select><span class="material-symbols-outlined" style="position:absolute;right:16px;pointer-events:none;color:#444">expand_more</span></label>
     </div>
     <div data-cards="1" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr));gap:52px 28px">
       <sc-for list="{{ cards }}" as="e" hint-placeholder-count="4">
@@ -277,19 +277,26 @@ header[data-scrolled="true"] [data-hrow]{height:56px!important}
 
 
 <section data-sec="1" id="about" data-screen-label="소개" style="order:98;width:100%;max-width:1320px;margin:0 auto;padding:120px 48px 0;scroll-margin-top:80px">
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:48px;padding-top:28px;border-top:2px solid #1A1A1A">
-    <div style="display:flex;flex-direction:column;gap:14px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:48px 64px;padding-top:28px;border-top:2px solid #1A1A1A">
+    <div style="display:flex;flex-direction:column;gap:18px">
       <span style="font-size:12px;font-weight:600;letter-spacing:.14em;color:#777">ABOUT</span>
-      <h2 style="margin:0;font-size:30px;font-weight:800;letter-spacing:-.04em;line-height:1.25">그린라이트 스튜디오</h2>
-      <p style="margin:0;font-size:16px;line-height:1.75;color:#333;word-break:keep-all;max-width:520px">부산에서 열리는 공연·전시·축제·교육 프로그램 소식을 매주 모아 한곳에서 안내합니다. 공공데이터로 수집한 행사와 스튜디오가 직접 소개하는 콘텐츠를 함께 보여드립니다.</p>
+      <h2 style="margin:0;font-size:38px;font-weight:800;letter-spacing:-.04em;line-height:1.2;word-break:keep-all;text-wrap:pretty">부산의 문화 소식에<br>초록불을 켭니다</h2>
+      <p style="margin:0;font-size:17px;line-height:1.75;color:#333;word-break:keep-all;max-width:520px;text-wrap:pretty">그린라이트 스튜디오는 부산 곳곳에서 열리는 공연·전시·축제·교육 프로그램을 매주 모아 한곳에서 안내합니다. 공공데이터로 수집한 행사에 스튜디오가 직접 찾아낸 콘텐츠를 더해, 이번 주말 어디로 갈지 고민하는 시간을 줄여드립니다.</p>
     </div>
-    <div style="display:flex;flex-direction:column;gap:14px">
-      <span style="font-size:12px;font-weight:600;letter-spacing:.14em;color:#777">VISIT</span>
-      <dl style="margin:0;display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px 16px;font-size:15px;line-height:1.6">
-        <dt style="color:#777">주소</dt><dd style="margin:0;color:#1A1A1A">부산광역시 수영구 무학로22번길 47</dd>
-        <dt style="color:#777">운영</dt><dd style="margin:0;color:#1A1A1A">비-씬 (사업자번호 235-01-04273)</dd>
-      </dl>
-    </div>
+    <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;align-self:end">
+      <li style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:16px;padding:20px 0;border-top:1px solid #DADADA">
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:13px;color:#2F5D0B;padding-top:4px">01</span>
+        <div style="display:flex;flex-direction:column;gap:6px"><b style="font-size:17px;font-weight:700;color:#1A1A1A">매주 새로 모으는 문화콘텐츠</b><span style="font-size:15px;line-height:1.65;color:#555;word-break:keep-all">공연·전시·축제·교육·모임까지, 분류와 요금으로 골라 볼 수 있습니다.</span></div>
+      </li>
+      <li style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:16px;padding:20px 0;border-top:1px solid #DADADA">
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:13px;color:#2F5D0B;padding-top:4px">02</span>
+        <div style="display:flex;flex-direction:column;gap:6px"><b style="font-size:17px;font-weight:700;color:#1A1A1A">한 달력에 담은 행사 일정</b><span style="font-size:15px;line-height:1.65;color:#555;word-break:keep-all">날짜를 누르면 그날 부산에서 열리는 행사를 바로 확인할 수 있습니다.</span></div>
+      </li>
+      <li style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:16px;padding:20px 0;border-top:1px solid #DADADA;border-bottom:1px solid #DADADA">
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:13px;color:#2F5D0B;padding-top:4px">03</span>
+        <div style="display:flex;flex-direction:column;gap:6px"><b style="font-size:17px;font-weight:700;color:#1A1A1A">스튜디오가 직접 전하는 소식</b><span style="font-size:15px;line-height:1.65;color:#555;word-break:keep-all">체험단 모집, 운영 안내 등 새 소식은 공지사항에서 가장 먼저 알려드립니다.</span></div>
+      </li>
+    </ul>
   </div>
 </section>
 <div aria-hidden="true" style="order:99;height:120px"></div>
@@ -331,9 +338,9 @@ header[data-scrolled="true"] [data-hrow]{height:56px!important}
       <div>
         <span data-flabel="1">POLICY</span>
         <nav aria-label="정책" style="display:flex;flex-direction:column;gap:8px;align-items:flex-start">
-          <a href="#" data-flink="1" style="color:#2F5D0B;font-weight:700">개인정보처리방침</a>
-          <a href="#" data-flink="1" style="color:#1A1A1A">이용약관</a>
-          <a href="#" data-flink="1" style="color:#1A1A1A">이메일무단수집거부</a>
+          <a href="#policy=privacy" onClick="{{ openPrivacy }}" data-flink="1" style="color:#2F5D0B;font-weight:700">개인정보처리방침</a>
+          <a href="#policy=terms" onClick="{{ openTerms }}" data-flink="1" style="color:#1A1A1A">이용약관</a>
+          <a href="#policy=email" onClick="{{ openEmailPolicy }}" data-flink="1" style="color:#1A1A1A">이메일무단수집거부</a>
         </nav>
       </div>
     </div>
@@ -370,8 +377,31 @@ header[data-scrolled="true"] [data-hrow]{height:56px!important}
 </div>
 </sc-for>
 
+
+<sc-if value="{{ policyOpen }}" hint-placeholder-val="{{ false }}">
+<div data-overlay="1" data-screen-label="정책 페이지" style="position:fixed;inset:0;z-index:55;background:#fff;overflow:auto">
+  <div data-sec="1" style="max-width:860px;margin:0 auto;padding:40px 48px 120px">
+    <button onClick="{{ closePolicy }}" style="font:inherit;display:flex;align-items:center;gap:4px;font-size:14px;font-weight:600;color:#555;background:transparent;border:0;padding:0;cursor:pointer" style-hover="color:#1A1A1A"><span class="material-symbols-outlined" style="font-size:18px">arrow_back</span>홈으로</button>
+    <nav aria-label="정책 선택" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:28px">
+      <sc-for list="{{ policyTabs }}" as="t" hint-placeholder-count="3"><button onClick="{{ t.go }}" style="font:inherit;height:36px;padding:0 14px;border:1px solid {{ t.bd }};border-radius:999px;background:{{ t.bg }};color:{{ t.fg }};font-size:13px;font-weight:600;cursor:pointer">{{ t.t }}</button></sc-for>
+    </nav>
+    <h1 style="margin:28px 0 0;font-size:34px;font-weight:800;letter-spacing:-.04em;padding-bottom:18px;border-bottom:2px solid #1A1A1A">{{ policyTitle }}</h1>
+    <p style="margin:18px 0 0;font-size:13px;color:#777">시행일 {{ policyDate }}</p>
+    <sc-for list="{{ policySections }}" as="sec" hint-placeholder-count="4">
+      <section style="margin-top:36px">
+        <h2 style="margin:0 0 12px;font-size:19px;font-weight:800;letter-spacing:-.02em;color:#1A1A1A">{{ sec.h }}</h2>
+        <sc-for list="{{ sec.ps }}" as="p" hint-placeholder-count="2"><p style="margin:0 0 10px;font-size:15px;line-height:1.8;color:#333;word-break:keep-all;text-wrap:pretty">{{ p.t }}</p></sc-for>
+        <sc-if value="{{ sec.hasList }}" hint-placeholder-val="{{ false }}"><ul style="margin:4px 0 0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:15px;line-height:1.7;color:#333;word-break:keep-all"><sc-for list="{{ sec.li }}" as="l" hint-placeholder-count="3"><li>{{ l.t }}</li></sc-for></ul></sc-if>
+      </section>
+    </sc-for>
+    <div style="margin-top:48px;padding:20px 22px;background:#F6F7F4;border-radius:8px;font-size:14px;line-height:1.8;color:#555">
+      <b style="color:#1A1A1A">운영자</b> 비-씬 (그린라이트 스튜디오)<br>사업자등록번호 235-01-04273<br>부산광역시 수영구 무학로22번길 47<br><sc-if value="{{ fHasEmail }}" hint-placeholder-val="{{ false }}">문의 <a href="{{ fEmailHref }}" style="color:#2F5D0B;font-weight:600">{{ fEmail }}</a></sc-if>
+    </div>
+  </div>
+</div>
+</sc-if>
 <sc-if value="{{ noticePage }}" hint-placeholder-val="{{ false }}">
-<div data-screen-label="공지사항 페이지" style="position:fixed;inset:0;z-index:55;background:#fff;overflow:auto">
+<div data-overlay="1" data-screen-label="공지사항 페이지" style="position:fixed;inset:0;z-index:55;background:#fff;overflow:auto">
   <div data-sec="1" style="max-width:1120px;margin:0 auto;padding:40px 48px 120px">
     <button onClick="{{ closeNoticePage }}" style="font:inherit;display:flex;align-items:center;gap:4px;font-size:14px;font-weight:600;color:#555;background:transparent;border:0;padding:0;cursor:pointer" style-hover="color:#1A1A1A"><span class="material-symbols-outlined" style="font-size:18px">arrow_back</span>홈으로</button>
     <div style="display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-top:28px;padding-bottom:18px;border-bottom:2px solid #1A1A1A">
@@ -603,15 +633,73 @@ header[data-scrolled="true"] [data-hrow]{height:56px!important}
 class Component extends DCLogic {
   KEY = 'gl.busan.local.v1'; AKEY = 'gl.one.admin';
   MENU = [
-    { id: 'events', t: '문화콘텐츠', en: 'CONTENTS', desc: '부산에서 열리는 공연, 전시, 축제, 교육 프로그램을 매주 새로 모아 안내합니다.', items: [{ t: '앞으로 2개월 행사', h: '#events', period: '2개월' }, { t: '이번 주 행사', h: '#events', period: '이번 주' }, { t: '공연', h: '#events', cat: '공연' }, { t: '전시', h: '#events', cat: '전시' }, { t: '축제·행사', h: '#events', cat: '행사' }, { t: '교육·체험', h: '#events', cat: '교육' }] },
+    { id: 'events', t: '문화콘텐츠', en: 'CONTENTS', desc: '부산에서 열리는 공연, 전시, 축제, 교육 프로그램을 매주 새로 모아 안내합니다.', items: [{ t: '전체 기간 행사', h: '#events', period: '전체 기간' }, { t: '이번 주 행사', h: '#events', period: '이번 주' }, { t: '공연', h: '#events', cat: '공연' }, { t: '전시', h: '#events', cat: '전시' }, { t: '축제·행사', h: '#events', cat: '행사' }, { t: '교육·체험', h: '#events', cat: '교육' }] },
     { id: 'calendar', t: '행사 캘린더', en: 'CALENDAR', desc: '자동으로 모은 부산 문화콘텐츠와 직접 등록한 행사를 한 달력에서 확인하세요.', items: [{ t: '이번 달 캘린더', h: '#calendar', today: true }, { t: '다음 달 캘린더', h: '#calendar', nextMonth: true }] },
     { id: 'notice', t: '공지사항', en: 'NOTICE', desc: '운영 변경, 모집 소식 등 스튜디오의 새 소식을 알려드립니다.', items: [{ t: '최근 공지', h: '#notice' }, { t: '공지사항 전체 보기', h: '#notices', page: true }] },
-    { id: 'about', t: '소개', en: 'ABOUT', desc: '그린라이트 스튜디오는 부산의 문화 소식을 모아 전하는 공간입니다.', items: [{ t: '그린라이트 소개', h: '#about' }, { t: '오시는 길', h: '#about' }] },
+    { id: 'about', t: '소개', en: 'ABOUT', desc: '그린라이트 스튜디오는 부산의 문화 소식을 모아 전하는 공간입니다.', items: [{ t: '그린라이트 소개', h: '#about' }, { t: '개인정보처리방침', h: '#policy=privacy', policy: 'privacy' }] },
   ];
-  state = { notices: [], noticePage: false, noticeId: null, nFormOpen: false, nf: null, nErr: '', nSaving: false, pickQ: '', siteMsg: '', settings: null, siteOpen: false, siteTab: 'slides', sEdit: null, sIdx: null, siteSaving: false, siteErr: '', dayPop: false, remote: false, loginOpen: false, pw: '', loginErr: '', saving: false, calM: 0, calSrc: '전체', pub: [], copied: false, searchOpen: false, events: [], api: [], updatedAt: null, loadErr: false, isAdmin: false, menuOpen: false, scrolled: false, active: '', mega: -1, acc: 0, fs: 1, lang: 'KOR', cat: '전체', fee: '전체 요금', period: '2개월', q: '', sel: '', off: 0, slide: 0, paused: false, modalId: null, formOpen: false, f: null, err: '' };
-  componentWillUnmount() { clearInterval(this.timer); window.removeEventListener('scroll', this.onScroll); }
+  state = { notices: [], noticePage: false, noticeId: null, policy: null, nFormOpen: false, nf: null, nErr: '', nSaving: false, pickQ: '', siteMsg: '', settings: null, siteOpen: false, siteTab: 'slides', sEdit: null, sIdx: null, siteSaving: false, siteErr: '', dayPop: false, remote: false, loginOpen: false, pw: '', loginErr: '', saving: false, calM: 0, calSrc: '전체', pub: [], copied: false, searchOpen: false, events: [], api: [], updatedAt: null, loadErr: false, isAdmin: false, menuOpen: false, scrolled: false, active: '', mega: -1, acc: 0, fs: 1, lang: 'KOR', cat: '전체', fee: '전체 요금', period: '전체 기간', q: '', sel: '', off: 0, slide: 0, paused: false, modalId: null, formOpen: false, f: null, err: '' };
+  componentWillUnmount() { clearInterval(this.timer); window.removeEventListener('scroll', this.onScroll); window.removeEventListener('popstate', this.onPop); window.removeEventListener('keydown', this.onKey); document.body.style.overflow = ''; }
+  // 주소(hash) → 화면 상태. 뒤로가기/앞으로가기, 공유 링크, 앵커 이동 모두 여기서 처리
+  syncFromHash(initial) {
+    const h = location.hash || '';
+    let nm;
+    const wasOverlay = this.state.noticePage || !!this.state.policy;
+    const closeAll = { noticePage: false, noticeId: null, policy: null, modalId: null, dayPop: false, menuOpen: false, mega: -1, searchOpen: false };
+    const enterOverlay = p => { if (!wasOverlay) this._retY = window.scrollY; this.setState({ ...closeAll, ...p }, () => { const ov = document.querySelector('[data-overlay]'); if (ov) ov.scrollTo(0, 0); }); };
+    if (h === '#notices') { enterOverlay({ noticePage: true }); return; }
+    if ((nm = h.match(/^#notice=(.+)$/))) { enterOverlay({ noticePage: true, noticeId: decodeURIComponent(nm[1]) }); return; }
+    if ((nm = h.match(/^#policy=(privacy|terms|email)$/))) { enterOverlay({ policy: nm[1] }); return; }
+    if ((nm = h.match(/^#event=(.+)$/))) { this.setState({ ...closeAll, modalId: decodeURIComponent(nm[1]) }); return; }
+    const reopenDay = this.state.modalId && this._fromDay; this._fromDay = false;
+    this.setState({ ...closeAll, dayPop: !!reopenDay });
+    if (h.length > 1) { const el = document.getElementById(h.slice(1)); if (el) { const top = el.getBoundingClientRect().top + window.scrollY - 80; if (wasOverlay || initial) setTimeout(() => window.scrollTo({ top, behavior: initial ? 'auto' : 'smooth' }), 0); return; } }
+    if (wasOverlay && this._retY != null) { const y = this._retY; this._retY = null; setTimeout(() => window.scrollTo({ top: y, behavior: 'auto' }), 0); }
+  }
+  // 행사 상세 열기/닫기: 주소에 #event=ID 를 남겨 뒤로가기로 닫히고 공유 링크로 바로 열림
+  openEvent(id, fromDay) { this._fromDay = !!fromDay; this._evFrom = location.hash || ''; this._evPushed = true; this.nav('#event=' + encodeURIComponent(id)); }
+  closeModal() { if (!this.state.modalId) return; if (this._evPushed && /^#event=/.test(location.hash)) { this._evPushed = false; history.back(); } else { this._evPushed = false; this.nav(this._evFrom && !/^#(event|notice|policy)/.test(this._evFrom) ? this._evFrom : ''); } }
+  onKey = e => {
+    if (e.key !== 'Escape') return; const s = this.state;
+    if (s.modalId) return this.closeModal();
+    if (s.dayPop) return this.setState({ dayPop: false });
+    if (s.loginOpen) return this.setState({ loginOpen: false });
+    if (s.formOpen) return this.setState({ formOpen: false, err: '' });
+    if (s.nFormOpen) return this.setState({ nFormOpen: false, nErr: '' });
+    if (s.siteOpen) return this.setState({ siteOpen: false });
+    if (s.searchOpen || s.menuOpen || s.mega >= 0) return this.setState({ searchOpen: false, menuOpen: false, mega: -1 });
+    if (s.noticePage || s.policy) return this.nav('');
+  };
+  nav(hash) { if ((location.hash || '') !== hash) history.pushState(null, '', hash || location.pathname); this.syncFromHash(false); }
+  onPop = () => this.syncFromHash(false);
+  POLICIES = {
+    privacy: { t: '개인정보처리방침', d: '2026.10.01', secs: [
+      { h: '1. 개인정보의 처리 목적', ps: ['그린라이트 스튜디오(운영자 비-씬, 이하 "스튜디오")는 다음 목적을 위해 필요한 최소한의 개인정보를 처리합니다. 처리한 개인정보는 아래 목적 이외의 용도로 이용하지 않으며, 목적이 변경될 경우 별도 동의를 받습니다.'], li: ['체험단·프로그램 참가 신청 접수 및 매칭 결과 안내', '행사 제보, 문의 사항에 대한 확인과 답변', '행사 참여 확정 및 후기 수집 등 참가자 관리'] },
+      { h: '2. 처리하는 개인정보 항목', ps: ['신청·문의 과정에서 아래 항목이 수집될 수 있습니다. 홈페이지 열람만으로는 개인정보를 수집하지 않습니다.'], li: ['필수 : 이름, 연락처(휴대전화 번호 또는 이메일)', '선택 : 참여 희망 분야, 동반 인원, 후기 게시 채널', '자동 수집 : 접속 기록, 브라우저 종류 등 서비스 이용 기록'] },
+      { h: '3. 개인정보의 보유 및 이용 기간', ps: ['개인정보는 수집 목적이 달성되면 지체 없이 파기합니다. 다만 관계 법령에 따라 보존이 필요한 경우 해당 기간 동안 보관합니다.'], li: ['체험단·프로그램 신청 정보 : 해당 행사 종료 후 3개월', '문의·제보 내용 : 답변 완료 후 1년', '전자상거래법 등 법령에 따른 기록 : 법령이 정한 기간'] },
+      { h: '4. 개인정보의 제3자 제공', ps: ['스튜디오는 이용자의 개인정보를 원칙적으로 외부에 제공하지 않습니다. 다만 체험단 매칭 등 행사 참여를 위해 필요한 범위에서 이용자의 동의를 받아 해당 행사 주최 측에 이름과 연락처를 전달할 수 있습니다.'] },
+      { h: '5. 개인정보 처리의 위탁', ps: ['신청 접수에 구글 폼(Google LLC)을 이용하고 있으며, 입력하신 정보는 구글의 개인정보처리방침에 따라 보관됩니다. 홈페이지 운영에는 Netlify, Inc.의 호스팅 서비스를 이용합니다.'] },
+      { h: '6. 정보주체의 권리와 행사 방법', ps: ['이용자는 언제든지 자신의 개인정보에 대한 열람, 정정, 삭제, 처리 정지를 요청할 수 있습니다. 요청은 아래 연락처로 보내주시면 지체 없이 조치합니다.'] },
+      { h: '7. 개인정보의 안전성 확보 조치', ps: ['수집한 개인정보는 접근 권한이 있는 운영자만 열람할 수 있도록 관리하며, 보유 기간이 지난 정보는 복구할 수 없는 방법으로 삭제합니다.'] },
+      { h: '8. 개인정보 보호책임자', ps: ['개인정보 처리에 관한 문의, 불만, 피해 구제는 아래 책임자에게 연락해 주세요.'], li: ['책임자 : 비-씬 대표', '연락처 : 홈페이지 하단 CONTACT 이메일'] },
+      { h: '9. 방침의 변경', ps: ['이 방침은 2026년 10월 1일부터 적용됩니다. 내용이 추가·삭제·수정될 경우 시행 7일 전부터 공지사항을 통해 알려드립니다.'] } ] },
+    terms: { t: '이용약관', d: '2026.10.01', secs: [
+      { h: '제1조 (목적)', ps: ['이 약관은 그린라이트 스튜디오(운영자 비-씬, 이하 "스튜디오")가 운영하는 홈페이지에서 제공하는 서비스의 이용 조건과 절차, 스튜디오와 이용자의 권리·의무를 정하는 것을 목적으로 합니다.'] },
+      { h: '제2조 (서비스의 내용)', ps: ['스튜디오는 다음 서비스를 제공합니다.'], li: ['부산 지역의 공연·전시·축제·교육 등 문화콘텐츠 정보 안내', '행사 일정을 모은 행사 캘린더', '체험단 모집 등 스튜디오가 직접 진행하는 프로그램 안내 및 접수'] },
+      { h: '제3조 (행사 정보의 성격)', ps: ['홈페이지에 게시된 행사 정보는 공공데이터와 주최 측 공개 자료를 바탕으로 수집한 것으로, 주최 측 사정에 따라 일정·장소·요금이 예고 없이 변경되거나 취소될 수 있습니다. 참가 전 주최 측 공식 안내를 확인해 주세요. 스튜디오는 제3자가 주최하는 행사의 운영에 대해 책임지지 않습니다.'] },
+      { h: '제4조 (프로그램 신청과 취소)', ps: ['스튜디오가 직접 진행하는 체험단·프로그램은 각 모집 공지에 안내된 조건에 따라 신청, 매칭, 참가가 이루어집니다. 매칭 후 안내되는 행사 내용과 비용을 확인한 뒤 최종 참여 여부를 결정할 수 있으며, 참여 확정 후 취소 조건은 개별 안내를 따릅니다.'] },
+      { h: '제5조 (이용자의 의무)', ps: ['이용자는 다음 행위를 해서는 안 됩니다.'], li: ['타인의 정보를 도용하거나 허위 정보를 입력하는 행위', '홈페이지의 정보를 무단으로 수집·복제·배포하거나 상업적으로 이용하는 행위', '스튜디오 또는 행사 주최 측의 운영을 방해하는 행위'] },
+      { h: '제6조 (저작권)', ps: ['홈페이지에 게시된 글과 이미지의 저작권은 스튜디오 또는 해당 저작권자에게 있습니다. 행사 포스터와 소개 문구는 주최 측의 자료이며, 출처 안내를 목적으로 게시합니다. 권리자의 요청이 있을 경우 지체 없이 조치합니다.'] },
+      { h: '제7조 (서비스의 변경과 중단)', ps: ['스튜디오는 운영상 필요에 따라 서비스 내용을 변경하거나 중단할 수 있으며, 중요한 변경은 공지사항을 통해 사전에 안내합니다.'] },
+      { h: '제8조 (분쟁 해결)', ps: ['서비스 이용과 관련한 분쟁은 상호 협의로 해결하며, 협의가 이루어지지 않을 경우 관련 법령에 따릅니다.'] },
+      { h: '부칙', ps: ['이 약관은 2026년 10월 1일부터 시행합니다.'] } ] },
+    email: { t: '이메일무단수집거부', d: '2026.10.01', secs: [
+      { h: '이메일 주소 무단 수집을 거부합니다', ps: ['본 홈페이지에 게시된 이메일 주소가 전자우편 수집 프로그램이나 그 밖의 기술적 장치를 이용하여 무단으로 수집되는 것을 거부하며, 이를 위반할 경우 정보통신망 이용촉진 및 정보보호 등에 관한 법률에 의해 처벌받을 수 있습니다.'] },
+      { h: '관련 법령', ps: ['정보통신망 이용촉진 및 정보보호 등에 관한 법률 제50조의2(전자우편주소의 무단 수집행위 등 금지)'], li: ['누구든지 인터넷 홈페이지 운영자 또는 관리자의 사전 동의 없이 인터넷 홈페이지에서 자동으로 전자우편주소를 수집하는 프로그램이나 그 밖의 기술적 장치를 이용하여 전자우편주소를 수집하여서는 아니 된다.', '누구든지 제1항을 위반하여 수집된 전자우편주소를 판매·유통하여서는 아니 된다.', '누구든지 제1항 및 제2항에 따라 수집·판매 및 유통이 금지된 전자우편주소임을 알면서 이를 정보 전송에 이용하여서는 아니 된다.'] },
+      { h: '문의', ps: ['홈페이지에 안내된 이메일은 행사 제보와 문의를 위한 것입니다. 광고성 정보 전송에 이용하지 말아 주세요.'] } ] }
+  };
   applyFont() { const f = { 'Wanted Sans': 'wanted', '제목 명조(에디토리얼)': 'editorial', 'Pretendard': 'pretendard' }[this.props.fontStyle ?? 'Wanted Sans'] || 'wanted'; if (document.body.dataset.font !== f) document.body.dataset.font = f; }
-  componentDidUpdate() { this.applyFont(); const want = this.props.sampleData ? 'data/busan-events.sample.json' : 'data/busan-events.json'; if (this._src && this._src !== want) this.loadApi(); const z = [0.9, 1, 1.12][this.state.fs]; if (this._fs !== z) { this._fs = z; document.body.style.zoom = z; } }
+  componentDidUpdate() { this.applyFont(); const s = this.state; const lock = !!(s.modalId || s.dayPop || s.noticePage || s.policy || s.formOpen || s.nFormOpen || s.loginOpen || s.menuOpen); const want2 = lock ? 'hidden' : ''; if (document.body.style.overflow !== want2) document.body.style.overflow = want2; const want = this.props.sampleData ? 'data/busan-events.sample.json' : 'data/busan-events.json'; if (this._src && this._src !== want) this.loadApi(); const z = [0.9, 1, 1.12][this.state.fs]; if (this._fs !== z) { this._fs = z; document.body.style.zoom = z; } }
   onScroll = () => {
     const sc = window.scrollY > 40; let act = '';
     for (const id of ['events', 'calendar', 'notice', 'about']) { const el = document.getElementById(id); if (el && el.getBoundingClientRect().top <= 160) act = id; }
@@ -624,8 +712,8 @@ class Component extends DCLogic {
     try { const ls = JSON.parse(localStorage.getItem('gl.busan.settings')); if (ls) this.setState({ settings: ls }); } catch (e) {}
     let hasLn = false; try { const ln = JSON.parse(localStorage.getItem('gl.busan.notices')); if (Array.isArray(ln)) { hasLn = true; this.setState({ notices: ln }); } } catch (e) {}
     if (!hasLn) fetch('data/notices.json?v=' + Date.now()).then(r => r.json()).then(j => { if (Array.isArray(j) && !this.state.remote) this.setState({ notices: j }); }).catch(() => {});
-    if (location.hash === '#notices') this.setState({ noticePage: true });
-    const nm = location.hash.match(/^#notice=(.+)$/); if (nm) { this.setState({ noticePage: true, noticeId: decodeURIComponent(nm[1]) }); window.scrollTo(0, 0); }
+    window.addEventListener('popstate', this.onPop); window.addEventListener('keydown', this.onKey);
+    if (location.hash) setTimeout(() => this.syncFromHash(true), 0);
     this._hasLocal = Array.isArray(ev);
     this.setState({ events: Array.isArray(ev) ? ev : [], isAdmin: !!this._pw || sessionStorage.getItem('gl.localAdmin') === '1', sel: this.iso(new Date()) });
     fetch('/api/content', { cache: 'no-store' }).then(r => { if (!r.ok) throw new Error(); return r.json(); }).then(j => { if (!Array.isArray(j.events)) throw new Error(); this.setState({ remote: true, events: j.events, settings: j.settings || null, notices: Array.isArray(j.notices) ? j.notices : [] }); })
@@ -724,7 +812,7 @@ class Component extends DCLogic {
     const S = { '진행중': ['#2F5D0B', '#fff'], '예정': ['#fff', '#2F5D0B'], '종료': ['#EDEDED', '#666'] }[st];
     return { ...e, status: st, sBg: S[0], sFg: S[1], sBd: st === '예정' ? '#2F5D0B' : S[0], sTxt: st === '종료' ? '#999' : '#2F5D0B', dateText: multi ? `${md(a)} ~ ${md(b)}` : `${md(a)} (${D[a.getDay()]})`,
       timeText: `${this.p2(a.getHours())}:${this.p2(a.getMinutes())} ~ ${this.p2(b.getHours())}:${this.p2(b.getMinutes())}`, hasPoster: !!e.poster, noPoster: !e.poster,
-      open: () => this.setState({ modalId: e.id }), dim: st === '종료' ? 0.55 : 1 };
+      open: () => this.openEvent(e.id), dim: st === '종료' ? 0.55 : 1 };
   }
   onFile(ev) {
     const file = ev.target.files && ev.target.files[0]; if (!file) return;
@@ -751,7 +839,7 @@ class Component extends DCLogic {
     const all = [...s.api, ...s.events].sort((a, b) => a.start < b.start ? -1 : 1).map(e => this.dec(e, now));
     const ql = s.q.trim().toLowerCase();
     const t0 = this.iso(now), wk = new Date(now); wk.setDate(wk.getDate() + 7); const t7 = this.iso(wk), m0 = t0.slice(0, 7) + '-01', m1 = this.iso(new Date(now.getFullYear(), now.getMonth() + 1, 0));
-    const inP = e => { const a = e.start.slice(0, 10), b = (e.end || e.start).slice(0, 10); return s.period === '2개월' ? b >= t0 : s.period === '이번 주' ? (a <= t7 && b >= t0) : s.period === '이번 달' ? (a <= m1 && b >= m0) : true; };
+    const inP = e => { const a = e.start.slice(0, 10), b = (e.end || e.start).slice(0, 10); return s.period === '전체 기간' ? b >= t0 : s.period === '이번 주' ? (a <= t7 && b >= t0) : s.period === '이번 달' ? (a <= m1 && b >= m0) : true; };
     const filtered = all.filter(e => (s.cat === '전체' || e.cat === s.cat) && (s.fee === '전체 요금' || e.fee === s.fee) && inP(e) && (!ql || `${e.title} ${e.place}`.toLowerCase().includes(ql)));
     const live = all.filter(e => e.status !== '종료');
     const feats = [...live].sort((a, b) => (b.hasPoster ? 1 : 0) - (a.hasPoster ? 1 : 0)).slice(0, 3);
@@ -799,16 +887,16 @@ class Component extends DCLogic {
         const auto = isAuto(g.e), ok = new Date(gStart.getTime() + (ws + g.s) * 864e5).getMonth() === mFirst.getMonth() || new Date(gStart.getTime() + (ws + g.t) * 864e5).getMonth() === mFirst.getMonth();
         bars.push({ key: g.e.id + '-' + w, col: `${g.s + 1} / ${g.t + 2}`, row: String(li + 2), t: (g.contL ? '‹ ' : '') + g.e.title, full: g.e.title,
           ml: g.contL ? '0' : '6px', mr: g.contR ? '0' : '6px', radius: `${g.contL ? 0 : 4}px ${g.contR ? 0 : 4}px ${g.contR ? 0 : 4}px ${g.contL ? 0 : 4}px`,
-          bg: auto ? '#E4EADB' : '#1A1A1A', fg: auto ? '#1E3A0C' : '#fff', op: ok ? 1 : 0.45, open: ev => { ev.stopPropagation(); this.setState({ modalId: g.e.id }); } });
+          bg: auto ? '#E4EADB' : '#1A1A1A', fg: auto ? '#1E3A0C' : '#fff', op: ok ? 1 : 0.45, open: ev => { ev.stopPropagation(); this.openEvent(g.e.id); } });
       }
       const mores = hidden.map((n, j) => n ? { key: w + '-' + j, col: String(j + 1), n, open: ev => { ev.stopPropagation(); this.setState({ sel: days[j].key, dayPop: true }); } } : null).filter(Boolean);
       return { key: 'w' + w, days, bars, mores };
     });
-    const dayList = calPool.filter(e => e.start.slice(0, 10) <= s.sel && (e.end || e.start).slice(0, 10) >= s.sel).map(e => ({ ...e, open: () => this.setState({ modalId: e.id, dayPop: false }), srcShort: isAuto(e) ? '자동' : '직접', srcBg: isAuto(e) ? '#E4EADB' : '#1A1A1A', srcFg: isAuto(e) ? '#1E3A0C' : '#fff' }));
+    const dayList = calPool.filter(e => e.start.slice(0, 10) <= s.sel && (e.end || e.start).slice(0, 10) >= s.sel).map(e => ({ ...e, open: () => this.openEvent(e.id, true), srcShort: isAuto(e) ? '자동' : '직접', srcBg: isAuto(e) ? '#E4EADB' : '#1A1A1A', srcFg: isAuto(e) ? '#1E3A0C' : '#fff' }));
     const selD = s.sel ? new Date(s.sel + 'T00:00') : now;
     const m = all.find(e => e.id === s.modalId);
     const f = s.f || this.blank();
-    const go = it => () => { const p = { mega: -1, menuOpen: false }; if (it.cat) Object.assign(p, { cat: it.cat, fee: '전체 요금' }); if (it.fee) Object.assign(p, { fee: it.fee, cat: '전체' }); if (it.period) p.period = it.period; if (it.today) Object.assign(p, { calM: 0, sel: this.iso(now) }); if (it.nextMonth) Object.assign(p, { calM: 1 }); if (it.page) { Object.assign(p, { noticePage: true, noticeId: null }); setTimeout(() => window.scrollTo(0, 0), 0); } this.setState(p); };
+    const go = it => () => { const p = { mega: -1, menuOpen: false }; if (it.cat) Object.assign(p, { cat: it.cat, fee: '전체 요금' }); if (it.fee) Object.assign(p, { fee: it.fee, cat: '전체' }); if (it.period) p.period = it.period; if (it.today) Object.assign(p, { calM: 0, sel: this.iso(now) }); if (it.nextMonth) Object.assign(p, { calM: 1 }); this.setState(p); if (it.page) this.nav('#notices'); else if (it.policy) this.nav('#policy=' + it.policy); else if (it.h) this.nav(it.h); };
     const pool = [...live].sort((a, b) => (b.hasPoster ? 1 : 0) - (a.hasPoster ? 1 : 0));
     const recFor = i => { const e = (i === 2 && live.find(x => x.cat === '교육')) || pool[i % Math.max(pool.length, 1)]; return e ? { ...e, icon: ICON[e.cat] || 'event', open: () => { this.setState({ mega: -1 }); e.open(); } } : null; };
     const mi = s.mega, mm = this.MENU[mi];
@@ -821,8 +909,8 @@ class Component extends DCLogic {
       megaOpen: String(mi >= 0), megaOpenB: mi >= 0,
       weekCount: all.filter(e => e.start.slice(0, 10) <= t7 && (e.end || e.start).slice(0, 10) >= t0).length, qWeek: go({ period: '이번 주' }),
       searchOpen: s.searchOpen, searchIcon: s.searchOpen ? 'close' : 'search', toggleSearch: () => this.setState({ searchOpen: !s.searchOpen, mega: -1 }),
-      doSearch: () => { this.setState({ searchOpen: false, cat: '전체', fee: '전체 요금', period: '2개월' }); const el = document.getElementById('events'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' }); },
-      searchKey: e => { if (e.key === 'Enter') { this.setState({ searchOpen: false, cat: '전체', fee: '전체 요금', period: '2개월' }); const el = document.getElementById('events'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' }); } if (e.key === 'Escape') this.setState({ searchOpen: false }); },
+      doSearch: () => { this.setState({ searchOpen: false, cat: '전체', fee: '전체 요금', period: '전체 기간' }); const el = document.getElementById('events'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' }); },
+      searchKey: e => { if (e.key === 'Enter') { this.setState({ searchOpen: false, cat: '전체', fee: '전체 요금', period: '전체 기간' }); const el = document.getElementById('events'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' }); } if (e.key === 'Escape') this.setState({ searchOpen: false }); },
       qFree: go({ fee: '무료' }), qShow: go({ cat: '공연' }), qExhibit: go({ cat: '전시' }), qFest: go({ cat: '행사' }),
       drawerMenu: this.MENU.map((m, i) => ({ key: m.id, t: m.t, open: s.acc === i, icon: s.acc === i ? 'remove' : 'add', toggle: () => this.setState({ acc: s.acc === i ? -1 : i }), items: m.items.map(it => ({ ...it, key: it.t, go: go(it) })) })),
       openState: isOpen ? 'on' : 'off', openLabel: dw === 1 ? '오늘 휴관' : isOpen ? '운영중' : '운영 종료',
@@ -844,21 +932,26 @@ class Component extends DCLogic {
       ...(() => {
         const sorted = this.sortNotices(s.notices), total = sorted.length;
         const dec = (n, i) => ({ key: n.id, no: String(total - i), title: n.title, date: n.date, pinned: !!n.pinned, hasImg: !!(n.images && n.images.length), preview: (n.body || '').replace(/\s+/g, ' ').slice(0, 90), body: n.body || '', bodyRich: this.richBody(n.body || ''), gallery: (n.images || []).map((src, k) => ({ key: String(k), src })),
-          open: () => { this.setState({ noticePage: true, noticeId: n.id }); history.replaceState(null, '', '#notice=' + encodeURIComponent(n.id)); window.scrollTo(0, 0); },
+          open: () => this.nav('#notice=' + encodeURIComponent(n.id)),
           copyLink: () => { const url = location.origin + location.pathname + '#notice=' + encodeURIComponent(n.id); const done = () => { this.setState({ copied: true }); clearTimeout(this._cpT); this._cpT = setTimeout(() => this.setState({ copied: false }), 1800); }; if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, () => prompt('링크를 복사하세요', url)); else prompt('링크를 복사하세요', url); }, edit: () => this.setState({ nFormOpen: true, nf: { ...n, images: [...(n.images || [])] }, nErr: '' }), del: () => this.deleteNotice(n.id) });
         const cur = sorted.find(n => n.id === s.noticeId);
         const nf = s.nf || this.blankNotice(), setN = k => e => { const v = e.target.type === 'checkbox' ? e.target.checked : e.target.value; this.setState(st => ({ nf: { ...(st.nf || this.blankNotice()), [k]: v }, nErr: '' })); };
         return { noticeTop: sorted.slice(0, 5).map(dec), noticeAll: sorted.map(dec), noNotices: total === 0, noticeCount: total,
           noticePage: s.noticePage, noticeListMode: !cur, noticeCur: cur ? [dec(cur, sorted.indexOf(cur))] : [],
-          openNoticePage: e => { if (e && e.preventDefault) e.preventDefault(); this.setState({ noticePage: true, noticeId: null }); history.replaceState(null, '', '#notices'); window.scrollTo(0, 0); },
-          closeNoticePage: () => { this.setState({ noticePage: false, noticeId: null }); history.replaceState(null, '', location.pathname); },
-          backToList: () => { this.setState({ noticeId: null }); history.replaceState(null, '', '#notices'); }, copyLabel: s.copied ? '복사됨' : '링크 복사',
+          openNoticePage: e => { if (e && e.preventDefault) e.preventDefault(); this.nav('#notices'); },
+          closeNoticePage: () => this.nav(''),
+          backToList: () => this.nav('#notices'), copyLabel: s.copied ? '복사됨' : '링크 복사',
           newNotice: () => this.setState({ nFormOpen: true, nf: this.blankNotice(), nErr: '' }), closeNForm: () => this.setState({ nFormOpen: false, nErr: '' }),
           nFormOpen: s.nFormOpen, nf, nFormTitle: nf.id ? '공지 수정' : '공지 작성', nSaveLabel: s.nSaving ? '저장 중…' : '게시',
           nSetTitle: setN('title'), nSetDate: setN('date'), nSetBody: setN('body'), nSetPinned: setN('pinned'),
           nImages: (nf.images || []).map((src, i) => ({ key: String(i) + src.length, src, rm: () => this.setState(st => ({ nf: { ...st.nf, images: (st.nf.images || []).filter((_, j) => j !== i) } })) })), nCanAddImg: (nf.images || []).length < 6, onNImg: e => this.onNImg(e),
           submitNotice: () => this.submitNotice(), hasNErr: !!s.nErr, nErr: s.nErr };
       })(),
+      ...(() => { const P = this.POLICIES[s.policy]; const open = k => e => { if (e && e.preventDefault) e.preventDefault(); this.nav('#policy=' + k); };
+        return { policyOpen: !!P, policyTitle: P ? P.t : '', policyDate: P ? P.d : '', closePolicy: () => this.nav(''),
+          openPrivacy: open('privacy'), openTerms: open('terms'), openEmailPolicy: open('email'),
+          policyTabs: ['privacy', 'terms', 'email'].map(k => ({ key: k, t: this.POLICIES[k].t, go: open(k), bg: k === s.policy ? '#1A1A1A' : '#fff', fg: k === s.policy ? '#fff' : '#444', bd: k === s.policy ? '#1A1A1A' : '#DADADA' })),
+          policySections: P ? P.secs.map((x, i) => ({ key: String(i), h: x.h, ps: x.ps.map((t, j) => ({ key: String(j), t })), hasList: !!(x.li && x.li.length), li: (x.li || []).map((t, j) => ({ key: String(j), t })) })) : [] }; })(),
       fEmail: SS.links.email, fEmailHref: 'mailto:' + SS.links.email, fHasEmail: !!SS.links.email, fInsta: SS.links.instagram, fHasInsta: !!SS.links.instagram, fKakao: SS.links.kakao, fHasKakao: !!SS.links.kakao, fHasSocial: !!(SS.links.instagram || SS.links.kakao),
       ordEvents: String(SS.order.indexOf('events') + 1), ordCalendar: String(SS.order.indexOf('calendar') + 1), ordNotice: String(SS.order.indexOf('notice') + 1),
       openSite: () => this.openSite('slides'), openSiteLinks: () => this.openSite('links'), openSiteSlides: () => this.openSite('slides'), closeSite: () => this.setState({ siteOpen: false }), saveSite: () => this.saveSite(),
@@ -891,9 +984,9 @@ class Component extends DCLogic {
       exportManual: () => this.exportManual(), manualCount: s.events.length,
       selLabel: `${selD.getFullYear()}년 ${selD.getMonth() + 1}월 ${selD.getDate()}일 (${D[selD.getDay()]})`, 
       dayList, noDay: dayList.length === 0, dayCount: dayList.length,
-      modal: m ? [{ ...m, gallery: (m.images || []).map((src, i) => ({ key: String(i), src })), hasGallery: !!(m.images && m.images.length), canEdit: s.isAdmin && !m.src, srcText: m.src ? `${m.src} 공공데이터` : '그린라이트 등록', tel: m.tel || '-', feeLine: m.feeText && m.feeText !== m.fee ? `${m.fee} · ${m.feeText}` : m.fee }] : [], closeModal: () => this.setState({ modalId: null }),
-      editModal: () => this.setState({ modalId: null, formOpen: true, f: { ...s.events.find(e => e.id === s.modalId) }, err: '' }),
-      delModal: () => { if (!confirm('이 콘텐츠를 삭제할까요?')) return; if (s.remote) { this.api('delete', { id: s.modalId }).then(j => this.setState({ events: j.events, modalId: null })).catch(e => alert(e.message)); } else { this.persist(s.events.filter(e => e.id !== s.modalId)); this.setState({ modalId: null }); } },
+      modal: m ? [{ ...m, gallery: (m.images || []).map((src, i) => ({ key: String(i), src })), hasGallery: !!(m.images && m.images.length), canEdit: s.isAdmin && !m.src, srcText: m.src ? `${m.src} 공공데이터` : '그린라이트 등록', tel: m.tel || '-', feeLine: m.feeText && m.feeText !== m.fee ? `${m.fee} · ${m.feeText}` : m.fee }] : [], closeModal: () => this.closeModal(),
+      editModal: () => { const f = { ...s.events.find(e => e.id === s.modalId) }; this._evPushed = false; if (/^#event=/.test(location.hash)) history.replaceState(null, '', this._evFrom || location.pathname); this.setState({ modalId: null, formOpen: true, f, err: '' }); },
+      delModal: () => { if (!confirm('이 콘텐츠를 삭제할까요?')) return; this._evPushed = false; if (/^#event=/.test(location.hash)) history.replaceState(null, '', this._evFrom || location.pathname); if (s.remote) { this.api('delete', { id: s.modalId }).then(j => this.setState({ events: j.events, modalId: null })).catch(e => alert(e.message)); } else { this.persist(s.events.filter(e => e.id !== s.modalId)); this.setState({ modalId: null }); } },
       formOpen: s.formOpen, f, isEdit: !!f.id, formTitle: f.id ? '문화콘텐츠 수정' : '문화콘텐츠 등록', fImages: (f.images || []).map((src, i) => ({ key: String(i) + src.length, src, rm: () => this.setState(st => ({ f: { ...st.f, images: (st.f.images || []).filter((_, j) => j !== i) } })) })), fCanAddImg: (f.images || []).length < 4, onGallery: e => this.onGallery(e),
       openNew: () => this.setState({ formOpen: true, f: this.blank(), err: '' }), closeForm: () => this.setState({ formOpen: false, err: '' }),
       setTitle: setF('title'), setStart: setF('start'), setEnd: setF('end'), setPlace: setF('place'), setDesc: setF('desc'),
