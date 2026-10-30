@@ -1,11 +1,1223 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
 <meta charset="utf-8">
-<meta http-equiv="refresh" content="0; url=greenlight.dc.html">
-<title>그린라이트</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
 <body>
-<a href="greenlight.dc.html">그린라이트 홈페이지로 이동</a>
+<x-dc>
+<helmet>
+<link rel="icon" href="assets/logo.png">
+<meta property="og:title" content="그린라이트 스튜디오 공식 홈페이지">
+<meta property="og:image" content="assets/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<style>
+@font-face{font-family:Pretendard;font-weight:400;font-style:normal;font-display:swap;src:url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/woff2/Pretendard-Regular.woff2") format("woff2")}
+@font-face{font-family:Pretendard;font-weight:500;font-style:normal;font-display:swap;src:url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/woff2/Pretendard-Medium.woff2") format("woff2")}
+@font-face{font-family:Pretendard;font-weight:600;font-style:normal;font-display:swap;src:url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/woff2/Pretendard-SemiBold.woff2") format("woff2")}
+@font-face{font-family:Pretendard;font-weight:700;font-style:normal;font-display:swap;src:url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/woff2/Pretendard-Bold.woff2") format("woff2")}
+@font-face{font-family:Pretendard;font-weight:800;font-style:normal;font-display:swap;src:url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/woff2/Pretendard-ExtraBold.woff2") format("woff2")}
+*{box-sizing:border-box}
+html,body{height:auto!important}body>div,body>div>div,x-dc,x-dc>div{height:auto!important;min-height:100%;overflow:visible!important}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:#fff;color:#1A1A1A;font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-feature-settings:"ss01","tnum";font-variant-numeric:tabular-nums}
+header[data-scrolled="true"]{background:rgba(14,14,14,.86)!important;backdrop-filter:saturate(1.3) blur(14px);-webkit-backdrop-filter:saturate(1.3) blur(14px)}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:3px solid #B3F945;outline-offset:1px;box-shadow:0 0 0 1px #1E3A0C}
+[data-cards]{animation:glFade .35s ease}[data-cards] button:hover [data-cposter]{box-shadow:0 14px 28px rgba(30,58,12,.14)}
+@keyframes glPop{from{opacity:0;transform:translateY(10px) scale(.985)}to{opacity:1;transform:none}}@keyframes glSheet{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}@keyframes glToast{from{opacity:0;transform:translate(-50%,10px)}to{opacity:1;transform:translate(-50%,0)}}
+[data-mbox]{animation:glPop .2s ease}[data-mwrap]>div:first-child{animation:glDim .2s ease}[data-toast]{animation:glToast .25s ease}[data-drawer] ul,[data-mega] ul{animation:glIn .22s ease}
+@media (max-width:760px){[data-mwrap]{align-items:flex-end!important;padding:0!important}[data-mbox]{width:100%!important;max-height:92vh!important;border-radius:16px 16px 0 0!important;animation:glSheet .28s cubic-bezier(.2,.7,.2,1)}}
+a{color:#1A1A1A;text-decoration:none}a:hover{color:#1E3A0C;text-decoration:underline}
+@keyframes glFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes glSlide{from{opacity:0}to{opacity:1}}[data-hero] [data-slide]{animation:glSlide .6s ease}
+@keyframes glArt{from{opacity:0}to{opacity:1}}[data-sart]>*{animation:glArt .8s ease .1s both}
+@keyframes glUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}@keyframes glPoster{from{opacity:0;transform:translateY(28px) scale(.97)}to{opacity:1;transform:none}}@keyframes glFillBar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+[data-stext]>*{animation:glUp .7s cubic-bezier(.2,.7,.2,1) both}[data-stext]>*:nth-child(2){animation-delay:.08s}[data-stext]>*:nth-child(3){animation-delay:.16s}[data-sposter] img{animation:glPoster .9s cubic-bezier(.2,.7,.2,1) .12s both}
+[data-sfillbar]{transform-origin:left center;animation:glFillBar 6s linear both}[data-slide][data-paused="true"] [data-sfillbar]{animation-play-state:paused}[data-slide]{touch-action:pan-y}
+[data-tile]:hover [data-ticon]{background:#1E3A0C!important;color:#B3F945!important}[data-tile]:hover [data-tarrow]{opacity:1!important;transform:none!important}
+@media (prefers-reduced-motion:reduce){[data-stext]>*,[data-sposter] img,[data-hero] [data-slide],[data-sart]>*{animation:none!important}[data-sfillbar]{animation:none!important;transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){[data-hero] [data-slide],[data-sart]>*{animation:none!important}}
+@keyframes glMega{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+@keyframes glDrawer{from{transform:translateX(100%)}to{transform:none}}
+[data-mega]{animation:glMega .22s ease}[data-drawer]{animation:glDrawer .28s cubic-bezier(.2,.7,.2,1)}
+@keyframes glIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}@keyframes glDim{from{opacity:0}to{opacity:1}}
+[data-gnb] a{transition:color .2s ease}[data-gnb] a[data-active="true"]{color:#EDEDE8!important;font-weight:700!important}[data-gnb] a[data-active="true"] [data-caret]{transform:rotate(180deg)}
+header[data-mega-open="true"]{border-bottom-color:rgba(255,255,255,.2)!important}
+[data-hrow]{transition:height .25s ease}[data-hlogo]{transition:opacity .2s ease}[data-hlogo]:hover{opacity:.78}
+header[data-scrolled="true"] [data-hrow]{height:56px!important}
+[data-burger] span{display:block;width:18px;height:1.5px;background:#EDEDE8;border-radius:1px;transition:transform .25s ease,opacity .2s ease}
+.material-symbols-outlined{font-variation-settings:'wght' 400,'FILL' 0,'GRAD' 0,'opsz' 24}header .material-symbols-outlined{font-variation-settings:'wght' 400,'FILL' 0,'GRAD' 0,'opsz' 24}
+@media (min-width:1440px){header [data-hrow]{padding:0 64px!important;max-width:1352px!important}}
+[data-dim]{animation:glDim .2s ease}
+
+[data-status="on"]{background:#B3F945;box-shadow:0 0 0 3px rgba(179,249,69,.22)}[data-status="off"]{background:#7A8275}
+[data-lang]{font:inherit;font-size:12px;background:transparent;border:0;padding:0;cursor:pointer;color:rgba(255,255,255,.55)}[data-lang][data-on="true"]{color:#fff;font-weight:700}
+[data-fs]{font:inherit;font-size:12px;width:24px;height:22px;border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;border-radius:4px;cursor:pointer;padding:0}[data-fs]:hover{background:rgba(255,255,255,.12)}
+[data-burger][data-open="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}[data-burger][data-open="true"] span:nth-child(2){opacity:0}[data-burger][data-open="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+[data-gnb] a:focus-visible,[data-burger]:focus-visible,[data-hicon]:focus-visible,[data-hlogo]:focus-visible,[data-mega] a:focus-visible,[data-drawer] a:focus-visible,[data-drawer] button:focus-visible{outline:2px solid #B3F945;outline-offset:-4px;border-radius:8px}
+[data-chip]:hover,[data-chip]:focus-visible{background:#B3F945!important;color:#1E3A0C!important;border-color:#B3F945!important}
+[data-chip]:focus-visible,[data-tile]:focus-visible{outline:2px solid #B3F945;outline-offset:2px}
+[data-tile]:last-child{border-right:0!important}
+@media (max-width:1200px){[data-gen]{display:none}}
+@media (max-width:1100px){[data-mega],[data-dim]{display:none!important}[data-gnb] a{padding:0 10px!important;min-width:0!important;font-size:14px!important}[data-gnb] [data-caret]{display:none}[data-hlabel]{display:none}}
+@media (max-width:760px){[data-hen],[data-hsep]{display:none}}
+@media (max-width:760px){[data-gnb]{display:none!important}}
+@media (max-width:760px){[data-uopt],[data-ulinks]{display:none!important}[data-hrow],[data-urow]{padding:0 20px!important}}
+@media (max-width:980px){[data-slide]{display:flex!important;flex-direction:column!important;height:auto!important}[data-slide] [data-sart]{order:0;min-height:200px;border-left:0!important;border-bottom:1px solid rgba(128,128,128,.2)}[data-slide] [data-sart]:has([data-sposter]){width:100%;aspect-ratio:auto;height:min(100vw,520px);min-height:0}[data-sposter]{padding:32px!important}[data-slide]:has([data-sbrand]) [data-stext]{order:0}[data-slide]:has([data-sbrand]) [data-sart]{order:1;min-height:0;border-bottom:0!important;border-top:1px solid rgba(128,128,128,.2)}[data-sbrand]{padding:20px 28px!important}[data-slide] [data-stext]{order:1;padding:32px 28px!important;gap:28px!important}[data-slide] [data-sctrl]{order:2;height:56px}[data-sfill]{height:auto!important;padding:28px!important}[data-smark]{padding-bottom:18px!important}[data-smark] b{font-size:36px!important}[data-sctrl]{grid-template-columns:1fr auto!important}[data-sctrl]>div:first-child{padding:0 28px!important}[data-sctrl]>div:last-child{grid-template-columns:auto auto auto!important}[data-sctrl]>div:last-child button{padding:0 16px}[data-sctrl]{justify-content:center!important}}
+@media (max-width:760px){h2{font-size:20px!important}[data-smeta]{font-size:14px!important}}
+[data-flink]{background:linear-gradient(currentColor,currentColor) left bottom/0 1px no-repeat;transition:background-size .25s ease;text-decoration:none!important}[data-flink]:hover{background-size:100% 1px}
+[data-flabel]{display:block;font-size:12px;font-weight:600;letter-spacing:.14em;color:#777;margin-bottom:12px}
+@media (max-width:980px){[data-fgrid]{grid-template-columns:1fr 1fr 1fr!important;gap:32px!important}[data-fgrid]>div:first-child{grid-column:1/-1}}@media (max-width:760px){[data-fgrid]{grid-template-columns:1fr 1fr!important;gap:28px!important}}@media (max-width:480px){[data-fgrid]{grid-template-columns:1fr!important}}
+[data-ccell]:hover{background:#F3F5EF!important}[data-ccell]:focus-visible{outline:1.5px solid #1A1A1A;outline-offset:-2px}[data-cbar]:hover{filter:brightness(.94)}[data-ccount]{display:none}
+@media (max-width:760px){[data-cweek]{min-height:64px!important;grid-template-rows:64px!important}[data-ccell]{padding:6px 4px!important;flex-direction:column}[data-cbar]{display:none!important}[data-ccount]{display:block}}
+@media (max-width:1100px){[data-sec],header [data-hrow],[data-finner],[data-sinner]{padding-left:32px!important;padding-right:32px!important}}
+@media (max-width:980px){[data-tiles]{grid-template-columns:repeat(3,minmax(0,1fr))!important}[data-tile]:nth-child(3){border-right:0!important}[data-tile]:nth-child(-n+3){border-bottom:1px solid #E3E4DF}}
+@media (max-width:760px){[data-sec],header [data-hrow],[data-finner],[data-sinner]{padding-left:20px!important;padding-right:20px!important}[data-sec]:not(:first-child){padding-top:72px!important}[data-sec]:first-child{padding-top:20px!important}main>div[aria-hidden]{height:72px!important}
+[data-slide] [data-stext]{padding:24px 20px!important;gap:22px!important}[data-sctrl]>div:first-child{padding:0 20px!important}[data-sctrl]>div:first-child>div{display:none!important}[data-slide] [data-stitle]{font-size:34px!important}[data-sbrand]{padding:18px 20px!important}
+[data-tiles]{grid-template-columns:repeat(2,minmax(0,1fr))!important}[data-tile]{padding:16px!important;gap:10px!important}[data-tile]:nth-child(3){border-right:1px solid #E3E4DF!important}[data-tile]:nth-child(even){border-right:0!important}[data-tile]:nth-child(-n+4){border-bottom:1px solid #E3E4DF}[data-tdesc]{display:none!important}[data-tile] span:last-child{font-size:14px!important}
+[data-filters]{grid-template-columns:1fr!important}[data-filters] label{border-right:0!important;border-bottom:1px solid #CFCFCF}[data-filters] label:last-child{border-bottom:0}[data-filters] select{height:44px!important}
+[data-mbody]{padding:20px!important}[data-mposter]{max-height:52vh!important;min-height:220px!important}}
+@media (max-width:560px){[data-cards]{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:28px 12px!important}[data-ctitle]{font-size:16px!important}[data-cmeta]{font-size:12px!important}[data-cards] b,[data-cards] [data-cards-badge]{font-size:12px}}
+@keyframes gl-shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}[data-skel]{background:linear-gradient(90deg,#F3F5EF 25%,#E3E4DF 50%,#F3F5EF 75%);background-size:200% 100%;animation:gl-shimmer 1.4s linear infinite}
+@media (min-width:1700px){[data-sec],header [data-hrow]{max-width:1440px!important}}
+@media (max-width:1100px){header [data-hrow]>div:last-child{gap:10px!important;min-width:max-content!important}header [data-hrow]>div:last-child button{padding-left:8px!important;padding-right:8px!important}[data-gnb] a{padding:0 10px!important}}
+</style>
+</helmet>
+<a href="#main" style="position:absolute;left:-9999px;top:0;background:#1A1A1A;color:#fff;padding:8px 14px;font-size:14px;z-index:100" style-focus="left:0">본문 바로가기</a>
+
+<header data-screen-label="헤더" data-scrolled="{{ scrolled }}" data-mega-open="{{ megaOpen }}" onMouseLeave="{{ closeMega }}" style="position:sticky;top:0;z-index:50;background:#0E0E0E;color:#EDEDE8;border-bottom:1px solid rgba(255,255,255,.12);transition:border-color .25s ease">
+  <div data-hrow="1" style="max-width:1320px;margin:0 auto;padding:0 48px;height:64px;display:flex;align-items:center;gap:24px">
+    <div onMouseEnter="{{ closeMega }}" style="flex:1 1 0;min-width:0;display:flex;align-items:center">
+      <a data-hlogo="1" href="#main" style="display:flex;align-items:center;gap:12px;color:#EDEDE8;text-decoration:none" style-hover="text-decoration:none;color:#EDEDE8">
+        <img src="assets/logo.png" alt="그린라이트 로고" style="width:30px;height:30px;object-fit:cover;display:block;border-radius:8px">
+        <span style="display:flex;flex-direction:column;justify-content:center;line-height:1;white-space:nowrap"><span style="font-size:18px;font-weight:600;letter-spacing:-.02em">그린라이트</span><span data-hen="1" style="font-size:10px;font-weight:500;letter-spacing:.08em;color:rgba(237,237,232,.5);margin-top:4px">GREENLIGHT</span></span>
+      </a>
+    </div>
+    <nav data-gnb="1" aria-label="주 메뉴" style="display:flex;align-self:stretch;flex:none">
+      <sc-for list="{{ gnb }}" as="n" hint-placeholder-count="4"><a href="{{ n.h }}" data-active="{{ n.active }}" onMouseEnter="{{ n.enter }}" onFocus="{{ n.enter }}" onClick="{{ n.click }}" style="display:flex;align-items:center;justify-content:center;gap:6px;min-width:120px;padding:0 20px;font-size:16px;line-height:1;font-weight:500;letter-spacing:-.01em;color:rgba(237,237,232,.9);text-decoration:none;white-space:nowrap" style-hover="color:#FFFFFF;text-decoration:none"><span>{{ n.t }}</span><span data-gen="1" style="font-size:10px;font-weight:500;letter-spacing:.08em;color:rgba(237,237,232,.4);transform:translateY(-6px)">{{ n.en }}</span><span class="material-symbols-outlined" data-caret="1" style="font-size:16px;opacity:.5;transition:transform .2s ease">expand_more</span></a></sc-for>
+    </nav>
+    <div onMouseEnter="{{ closeMega }}" style="flex:1 1 0;min-width:0;display:flex;align-items:center;justify-content:flex-end;gap:16px">
+      <sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ false }}"><button onClick="{{ openSite }}" aria-label="사이트 관리" title="사이트 관리" style="font:inherit;font-size:14px;font-weight:600;display:flex;align-items:center;gap:6px;height:36px;color:#EDEDE8;background:transparent;border:1px solid rgba(237,237,232,.35);border-radius:8px;padding:0 12px;cursor:pointer;white-space:nowrap" style-hover="border-color:#EDEDE8"><span class="material-symbols-outlined" style="font-size:16px">tune</span><span data-hlabel="1">사이트 관리</span></button></sc-if>
+      <sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ false }}"><button onClick="{{ openBulk }}" aria-label="행사 일괄 등록" title="행사 일괄 등록 (CSV)" style="font:inherit;font-size:14px;font-weight:600;height:36px;padding:0 12px;border:1px solid rgba(237,237,232,.35);border-radius:8px;background:transparent;color:#EDEDE8;cursor:pointer;display:flex;align-items:center;gap:4px;white-space:nowrap" style-hover="background:rgba(255,255,255,.08)"><span class="material-symbols-outlined" style="font-size:18px">upload_file</span>일괄 등록</button></sc-if>
+      <sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ false }}"><button onClick="{{ openNew }}" aria-label="문화콘텐츠 등록" title="문화콘텐츠 등록" style="font:inherit;font-size:14px;font-weight:600;display:flex;align-items:center;gap:6px;height:36px;color:#EDEDE8;background:transparent;border:1px solid rgba(237,237,232,.35);border-radius:8px;padding:0 12px;cursor:pointer;white-space:nowrap" style-hover="border-color:#EDEDE8"><span class="material-symbols-outlined" style="font-size:16px">edit_calendar</span><span data-hlabel="1">문화콘텐츠 등록</span></button></sc-if>
+      <button data-hicon="1" onClick="{{ toggleSearch }}" aria-label="검색" aria-expanded="{{ searchOpen }}" style="font:inherit;height:44px;border:0;background:transparent;color:rgba(237,237,232,.9);cursor:pointer;display:flex;align-items:center;gap:6px;padding:0 4px;font-size:14px;font-weight:500" style-hover="color:#FFFFFF"><span class="material-symbols-outlined" style="font-size:20px">{{ searchIcon }}</span><span data-hlabel="1">검색</span></button>
+      <span style="width:1px;height:16px;background:rgba(237,237,232,.22)"></span>
+      <button data-hicon="1" onClick="{{ toggleMenu }}" aria-label="전체메뉴" aria-expanded="{{ menuOpen }}" style="font:inherit;height:44px;border:0;background:transparent;color:rgba(237,237,232,.9);cursor:pointer;display:flex;align-items:center;gap:8px;padding:0 4px;font-size:14px;font-weight:500" style-hover="color:#FFFFFF"><span data-burger="1" data-open="{{ menuOpen }}" style="display:flex;flex-direction:column;gap:5px"><span></span><span></span><span></span></span><span data-hlabel="1">전체메뉴</span></button>
+    </div>
+  </div>
+  <sc-if value="{{ searchOpen }}" hint-placeholder-val="{{ false }}">
+  <div data-hsearch="1" style="border-top:1px solid rgba(255,255,255,.08);background:#111">
+    <div data-sinner="1" style="max-width:1320px;margin:0 auto;padding:14px 48px;display:flex;align-items:center;gap:14px">
+      <span class="material-symbols-outlined" style="font-size:24px;color:#B3F945">search</span>
+      <input value="{{ q }}" onChange="{{ setQ }}" onKeyDown="{{ searchKey }}" autofocus="{{ true }}" placeholder="행사명, 장소를 검색하세요" style="font:inherit;flex:1;min-width:0;height:44px;background:transparent;border:0;outline:none;color:#F4F4EF;font-size:18px;letter-spacing:-.01em">
+      <button onClick="{{ doSearch }}" style="font:inherit;height:44px;padding:0 18px;border-radius:999px;border:0;background:#B3F945;color:#0A0A0A;font-size:14px;font-weight:700;cursor:pointer">검색</button>
+    </div>
+  </div>
+  </sc-if>
+  <sc-for list="{{ megaList }}" as="mg" hint-placeholder-count="0">
+  <div data-mega="1" data-screen-label="메가 메뉴" style="position:absolute;left:0;right:0;top:calc(100% + 1px);background:#111;color:#F4F4EF;box-shadow:0 24px 48px rgba(0,0,0,.35)">
+    <div style="max-width:1320px;margin:0 auto;padding:36px 48px 40px;display:grid;grid-template-columns:240px minmax(0,1fr) 300px;gap:48px">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <span style="font-size:12px;font-weight:700;letter-spacing:.14em;color:#B3F945">{{ mg.no }} · {{ mg.en }}</span>
+        <b style="font-size:28px;font-weight:800;letter-spacing:-.025em">{{ mg.t }}</b>
+        <p style="margin:0;font-size:14px;line-height:1.65;color:rgba(244,244,239,.62);word-break:keep-all">{{ mg.desc }}</p>
+        <a href="{{ mg.h }}" onClick="{{ closeMega }}" style="margin-top:auto;padding-top:16px;display:inline-flex;align-items:center;gap:4px;font-size:14px;font-weight:700;color:#B3F945;text-decoration:none" style-hover="color:#D4FF8A;text-decoration:none">전체 보기<span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span></a>
+      </div>
+      <ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px;align-content:start">
+        <sc-for list="{{ mg.items }}" as="it" hint-placeholder-count="4"><li><a href="{{ it.h }}" onClick="{{ it.go }}" style="display:flex;align-items:center;gap:8px;padding:15px 4px;border-bottom:1px solid rgba(255,255,255,.1);font-size:16px;font-weight:600;color:#F4F4EF;text-decoration:none" style-hover="color:#B3F945;text-decoration:none;border-bottom-color:#B3F945"><span class="material-symbols-outlined" style="font-size:18px;color:#B3F945">chevron_right</span>{{ it.t }}</a></li></sc-for>
+      </ul>
+      <sc-if value="{{ mg.hasRec }}" hint-placeholder-val="{{ true }}">
+        <button onClick="{{ mg.rec.open }}" style="font:inherit;align-self:start;display:grid;grid-template-columns:92px minmax(0,1fr);gap:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:16px;text-align:left;cursor:pointer;color:#F4F4EF" style-hover="background:rgba(255,255,255,.1)">
+          <sc-if value="{{ mg.rec.hasPoster }}" hint-placeholder-val="{{ false }}"><img src="{{ mg.rec.poster }}" alt="{{ mg.rec.title }}" style="width:92px;aspect-ratio:3/4;object-fit:contain;background:#1C1C1C;border-radius:8px;display:block"></sc-if>
+          <sc-if value="{{ mg.rec.noPoster }}" hint-placeholder-val="{{ true }}"><span style="width:92px;aspect-ratio:3/4;border-radius:8px;background:#1C1C1C;color:#B3F945;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:36px">{{ mg.rec.icon }}</span></span></sc-if>
+          <span style="display:flex;flex-direction:column;gap:6px;min-width:0">
+            <span style="align-self:flex-start;font-size:12px;font-weight:800;color:#1E3A0C;background:#B3F945;border-radius:999px;padding:3px 9px">추천 {{ mg.rec.cat }}</span>
+            <b style="font-size:16px;line-height:1.4;letter-spacing:-.02em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;word-break:keep-all">{{ mg.rec.title }}</b>
+            <span style="font-size:14px;color:rgba(244,244,239,.6);line-height:1.5">{{ mg.rec.dateText }}<br>{{ mg.rec.place }}</span>
+          </span>
+        </button>
+      </sc-if>
+    </div>
+  </div>
+  </sc-for>
+</header>
+<sc-if value="{{ megaOpenB }}" hint-placeholder-val="{{ false }}"><div data-dim="1" style="position:fixed;inset:0;z-index:45;background:rgba(0,0,0,.3);pointer-events:none"></div></sc-if>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:80;display:flex;justify-content:flex-end">
+  <div onClick="{{ closeMenu }}" style="position:absolute;inset:0;background:rgba(0,0,0,.6)"></div>
+  <div data-drawer="1" data-screen-label="전체메뉴" role="dialog" aria-label="전체메뉴" style="position:relative;width:min(440px,100%);height:100%;background:#0E0E0E;color:#EDEDE8;display:flex;flex-direction:column;box-shadow:-12px 0 40px rgba(0,0,0,.5)">
+    <div style="height:64px;padding:0 24px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(237,237,232,.14)">
+      <img src="assets/logo.png" alt="" style="width:34px;height:34px;object-fit:cover;border-radius:8px;display:block">
+      <b style="font-size:18px;letter-spacing:-.025em;color:#EDEDE8">전체메뉴</b>
+      <button data-burger="1" data-open="true" onClick="{{ closeMenu }}" aria-label="전체메뉴 닫기" style="font:inherit;margin-left:auto;width:44px;height:44px;border:0;background:transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:0"><span></span><span></span><span></span></button>
+    </div>
+    <div style="flex:1;overflow:auto;padding:4px 24px 16px">
+      <sc-for list="{{ drawerMenu }}" as="d" hint-placeholder-count="5">
+        <div style="border-bottom:1px solid rgba(237,237,232,.14)">
+          <button onClick="{{ d.toggle }}" aria-expanded="{{ d.open }}" style="font:inherit;width:100%;display:flex;align-items:center;justify-content:space-between;padding:20px 0;font-size:20px;font-weight:700;letter-spacing:-.02em;color:{{ d.fg }};background:transparent;border:0;cursor:pointer;text-align:left" style-hover="color:#B3F945">{{ d.t }}<span class="material-symbols-outlined" style="font-size:24px;color:#B3F945">{{ d.icon }}</span></button>
+          <sc-if value="{{ d.open }}" hint-placeholder-val="{{ false }}"><ul style="list-style:none;margin:0 0 18px;padding:6px 0;display:flex;flex-direction:column;gap:2px;background:#1A1A1A;border-radius:8px"><sc-for list="{{ d.items }}" as="it" hint-placeholder-count="4"><li><a href="{{ it.h }}" onClick="{{ it.go }}" style="display:flex;align-items:center;gap:10px;padding:12px 14px;font-size:16px;font-weight:500;color:#EDEDE8;text-decoration:none;border-radius:8px" style-hover="color:#B3F945;background:rgba(179,249,69,.08);text-decoration:none"><span class="material-symbols-outlined" style="font-size:18px;color:#B3F945">chevron_right</span>{{ it.t }}</a></li></sc-for></ul></sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<main id="main" style="display:flex;flex-direction:column">
+<section data-sec="1" data-screen-label="메인 비주얼·서비스" style="order:0;width:100%;max-width:1320px;margin:0 auto;padding:28px 48px 0;display:flex;flex-direction:column;gap:0">
+  <div style="min-width:0" data-hero="1">
+    <sc-for list="{{ slideList }}" as="sl" hint-placeholder-count="1">
+      <div data-slide="1" data-paused="{{ slidePausedAttr }}" onTouchStart="{{ swipeStart }}" onTouchEnd="{{ swipeEnd }}" style="overflow:hidden;background:{{ sl.bg }};color:{{ sl.fg }};height:560px;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);grid-template-rows:minmax(0,1fr) 64px;position:relative">
+        <div data-stext="1" style="grid-column:1;grid-row:1;position:relative;z-index:1;padding:48px 56px 40px;display:flex;flex-direction:column;justify-content:space-between;gap:32px;min-width:0">
+          <div style="display:flex;align-items:center;gap:12px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase">
+            <span aria-hidden="true" style="width:8px;height:8px;background:{{ sl.accent }};flex:none"></span>
+            <span style="color:{{ sl.kickerFg }}">{{ sl.kicker }}</span>
+            <sc-if value="{{ sl.isEvent }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="width:1px;height:10px;background:currentColor;opacity:.35"></span><span style="opacity:.7">{{ sl.fee }}</span></sc-if>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:24px;min-width:0">
+            <span data-stitle="1" style="font-size:clamp(40px,4.6vw,64px);font-weight:800;line-height:1.1;letter-spacing:-.04em;word-break:keep-all;text-wrap:balance;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden">{{ sl.title }}</span>
+            <sc-if value="{{ sl.isBrand }}" hint-placeholder-val="{{ true }}"><span style="font-size:17px;line-height:1.7;opacity:.72;max-width:38ch;word-break:keep-all;text-wrap:pretty">{{ sl.sub }}</span></sc-if>
+            <sc-if value="{{ sl.hasSub }}" hint-placeholder-val="{{ false }}"><span style="font-size:17px;line-height:1.7;opacity:.72;max-width:38ch;word-break:keep-all;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;white-space:pre-line">{{ sl.sub }}</span></sc-if>
+            <sc-if value="{{ sl.isEvent }}" hint-placeholder-val="{{ false }}">
+              <dl data-smeta="1" style="margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:24px;font-size:15px;max-width:460px">
+                <dt style="padding:14px 0;border-top:1px solid {{ sl.rule }};opacity:.55;font-weight:600;font-size:13px;letter-spacing:.04em">일시</dt><dd style="margin:0;padding:14px 0;border-top:1px solid {{ sl.rule }};font-weight:600;font-variant-numeric:tabular-nums;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ sl.date }}</dd>
+                <dt style="padding:14px 0;border-top:1px solid {{ sl.rule }};border-bottom:1px solid {{ sl.rule }};opacity:.55;font-weight:600;font-size:13px;letter-spacing:.04em">장소</dt><dd style="margin:0;padding:14px 0;border-top:1px solid {{ sl.rule }};border-bottom:1px solid {{ sl.rule }};font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ sl.place }}</dd>
+              </dl>
+            </sc-if>
+          </div>
+          <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+            <sc-if value="{{ sl.hasBtn }}" hint-placeholder-val="{{ false }}"><a href="{{ sl.link }}" style="font-size:15px;font-weight:700;background:{{ sl.btnBg }};color:{{ sl.btnFg }};height:52px;padding:0 26px;text-decoration:none;display:inline-flex;align-items:center;gap:12px" style-hover="text-decoration:none;color:{{ sl.btnFg }};opacity:.9">{{ sl.btn }}<span aria-hidden="true">→</span></a></sc-if>
+            <sc-if value="{{ sl.isEvent }}" hint-placeholder-val="{{ false }}"><button onClick="{{ sl.open }}" style="font:inherit;font-size:15px;font-weight:700;background:{{ sl.btnBg }};color:{{ sl.btnFg }};border:0;height:54px;padding:0 28px;letter-spacing:-.01em;cursor:pointer;display:inline-flex;align-items:center;gap:12px" style-hover="opacity:.9">자세히 보기<span aria-hidden="true">→</span></button></sc-if>
+            <sc-if value="{{ sl.isBrand }}" hint-placeholder-val="{{ true }}"><a href="#events" style="font-size:15px;font-weight:700;background:{{ sl.accent }};color:#0A0A0A;height:52px;padding:0 26px;text-decoration:none;display:inline-flex;align-items:center;gap:12px" style-hover="text-decoration:none;color:#0A0A0A;opacity:.9">이달의 행사 보기<span aria-hidden="true">→</span></a></sc-if>
+            <sc-if value="{{ sl.isBrand }}" hint-placeholder-val="{{ true }}"><a href="#calendar" style="font-size:15px;font-weight:600;color:inherit;text-decoration:none;border-bottom:1px solid {{ sl.rule }};padding-bottom:3px;opacity:.85" style-hover="text-decoration:none;color:inherit;opacity:1;border-color:currentColor">행사 캘린더 보기</a></sc-if>
+          </div>
+        </div>
+        <div data-sart="1" style="grid-column:2;grid-row:1;position:relative;z-index:1;min-width:0;border-left:1px solid {{ sl.rule }};overflow:hidden">
+          <sc-if value="{{ brandHasList }}" hint-placeholder-val="{{ false }}">
+            <div data-sfill="1" data-sbrand="1" style="width:100%;height:100%;display:grid;grid-template-rows:auto 1fr;padding:44px 48px 32px;gap:20px;min-width:0">
+              <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;min-width:0"><span style="display:flex;flex-direction:column;gap:6px;min-width:0"><span style="font-size:12px;font-weight:700;letter-spacing:.12em;opacity:.55">THIS WEEK</span><b style="font-size:22px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums;white-space:nowrap">{{ weekRange }}</b></span><span style="font-size:13px;font-weight:600;opacity:.6;white-space:nowrap">진행·예정 <b style="color:{{ sl.accent }};font-variant-numeric:tabular-nums">{{ liveCountLabel }}</b>건</span></div>
+              <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;min-width:0;align-self:start">
+                <sc-for list="{{ brandList }}" as="u" hint-placeholder-count="3">
+                  <li style="border-top:1px solid {{ sl.rule }}"><button onClick="{{ u.open }}" style="font:inherit;width:100%;text-align:left;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:16px;align-items:baseline;padding:18px 0;border:0;background:transparent;color:inherit;cursor:pointer;min-width:0" style-hover="color:#B3F945">
+                    <span style="font-size:13px;font-weight:600;opacity:.45;font-variant-numeric:tabular-nums">{{ u.no }}</span>
+                    <span style="min-width:0;display:flex;flex-direction:column;gap:4px"><b style="font-size:16px;font-weight:700;letter-spacing:-.01em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ u.title }}</b><span style="font-size:13px;opacity:.55;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ u.place }}</span></span>
+                    <span style="font-size:13px;font-weight:600;opacity:.7;white-space:nowrap;font-variant-numeric:tabular-nums">{{ u.when }}</span>
+                  </button></li>
+                </sc-for>
+                <li style="border-top:1px solid {{ sl.rule }}"></li>
+              </ul>
+            </div>
+          </sc-if>
+          <sc-if value="{{ brandNoList }}" hint-placeholder-val="{{ true }}">
+            <div data-sfill="1" data-sbrand="1" style="width:100%;height:100%;display:grid;grid-template-rows:1fr auto;padding:44px 48px 32px">
+              <div data-smark="1" style="display:flex;flex-direction:column;justify-content:space-between;gap:24px;min-height:0;padding-bottom:28px">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px"><span style="font-size:12px;font-weight:700;letter-spacing:.12em;opacity:.55">THIS WEEK</span><img src="assets/logo-mark.png" alt="" style="width:40px;height:40px;object-fit:contain;display:block;opacity:.9"></div>
+                <div style="display:flex;flex-direction:column;gap:10px"><b style="font-size:clamp(40px,4vw,56px);font-weight:800;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums">{{ weekRange }}</b><span style="font-size:14px;font-weight:600;opacity:.6">{{ weekTag }}</span></div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;border-top:1px solid {{ sl.rule }};padding-top:16px;font-size:13px;line-height:1.5">
+                <span style="display:flex;flex-direction:column;gap:2px"><b style="font-weight:700;opacity:.5;letter-spacing:.08em;font-size:11px">BUSAN</b><span style="opacity:.85">부산 전역의 문화 소식</span></span>
+                <span style="display:flex;flex-direction:column;gap:2px"><b style="font-weight:700;opacity:.5;letter-spacing:.08em;font-size:11px">WEEKLY</b><span style="opacity:.85">매주 일요일 갱신</span></span>
+                <span style="display:flex;flex-direction:column;gap:2px"><b style="font-weight:700;opacity:.5;letter-spacing:.08em;font-size:11px">{{ liveCountLabel }}</b><span style="opacity:.85">진행·예정 행사</span></span>
+              </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ sl.hasImg }}" hint-placeholder-val="{{ false }}"><div data-sposter="1" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:48px 56px;background:{{ sl.bg }}"><img src="{{ sl.img }}" alt="{{ sl.title }}" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px;box-shadow:0 1px 2px rgba(30,58,12,.10),0 12px 24px -8px rgba(30,58,12,.18),0 40px 64px -24px rgba(30,58,12,.32)"></div></sc-if>
+          <sc-if value="{{ sl.noImg }}" hint-placeholder-val="{{ false }}"><div data-sfill="1" style="width:100%;height:100%;display:grid;place-items:center;padding:40px"><span style="font-size:clamp(72px,10vw,150px);font-weight:800;letter-spacing:-.05em;line-height:1;opacity:.12;text-transform:uppercase">{{ sl.watermark }}</span></div></sc-if>
+        </div>
+        <div data-sctrl="1" style="grid-column:1 / -1;grid-row:2;position:relative;z-index:2;border-top:1px solid {{ sl.rule }};display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);align-items:stretch">
+          <div style="display:flex;align-items:center;gap:20px;padding:0 56px;min-width:0">
+            <span style="display:flex;align-items:baseline;gap:6px;font-variant-numeric:tabular-nums;font-size:13px;font-weight:600"><b style="font-size:16px;font-weight:700">{{ slideNo2 }}</b><span style="opacity:.4">/ {{ slideTotal2 }}</span></span>
+            <div style="display:flex;gap:6px;flex:1;max-width:320px"><sc-for list="{{ dots }}" as="d" hint-placeholder-count="4"><button onClick="{{ d.go }}" aria-label="{{ d.label }}" style="font:inherit;flex:1;height:20px;border:0;background:transparent;cursor:pointer;padding:0;display:flex;align-items:center"><span style="position:relative;display:block;width:100%;height:2px;background:{{ sl.dotOff }};overflow:hidden"><sc-if value="{{ d.past }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;inset:0;background:{{ sl.accent }}"></span></sc-if><sc-if value="{{ d.cur }}" hint-placeholder-val="{{ false }}"><span data-sfillbar="1" style="position:absolute;inset:0;background:{{ sl.accent }}"></span></sc-if></span></button></sc-for></div>
+            <sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ false }}"><button onClick="{{ openSiteSlides }}" style="font:inherit;margin-left:auto;display:flex;align-items:center;gap:6px;height:32px;padding:0 10px;border:1px solid {{ sl.rule }};background:transparent;color:inherit;font-size:12px;font-weight:600;cursor:pointer;opacity:.8" style-hover="opacity:1"><span class="material-symbols-outlined" style="font-size:16px">edit</span>슬라이드 편집</button></sc-if>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr auto;border-left:1px solid {{ sl.rule }}">
+            <button onClick="{{ prevSlide }}" aria-label="이전 슬라이드" style="font:inherit;border:0;border-right:1px solid {{ sl.rule }};background:transparent;color:inherit;cursor:pointer;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px" style-hover="background:{{ sl.hov }}">← 이전</button>
+            <button onClick="{{ nextSlide }}" aria-label="다음 슬라이드" style="font:inherit;border:0;border-right:1px solid {{ sl.rule }};background:transparent;color:inherit;cursor:pointer;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px" style-hover="background:{{ sl.hov }}">다음 →</button>
+            <button onClick="{{ togglePause }}" aria-label="{{ pauseLabel }}" style="font:inherit;width:64px;border:0;background:transparent;color:inherit;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:{{ sl.hov }}"><span class="material-symbols-outlined" style="font-size:20px">{{ pauseIcon }}</span></button>
+          </div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+  <div data-tiles="1" data-screen-label="서비스 바로가기" style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));border:1px solid #E3E4DF;border-top:0">
+    <a data-tile="1" href="#calendar" style="position:relative;display:flex;align-items:center;gap:16px;padding:24px 24px;border-right:1px solid #E3E4DF;text-decoration:none;color:#1A1A1A;min-width:0;transition:background .25s ease" style-hover="background:#FAFBF7;text-decoration:none;color:#1A1A1A"><span data-ticon="1" class="material-symbols-outlined" style="width:44px;height:44px;border-radius:999px;background:#F3F5EF;color:#1E3A0C;display:grid;place-items:center;font-size:22px;flex:none;transition:background .25s ease,color .25s ease;font-variation-settings:'wght' 300">calendar_month</span><span style="display:flex;flex-direction:column;gap:3px;min-width:0"><b style="font-size:15px;font-weight:700;letter-spacing:-.02em;white-space:nowrap">문화캘린더</b><span data-tdesc="1" style="font-size:12px;color:#6B6F66;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">날짜별 행사 일정</span></span><span data-tarrow="1" aria-hidden="true" style="margin-left:auto;font-size:14px;color:#1E3A0C;opacity:0;transform:translateX(-4px);transition:opacity .25s ease,transform .25s ease">→</span></a>
+    <a data-tile="1" href="#events" style="position:relative;display:flex;align-items:center;gap:16px;padding:24px 24px;border-right:1px solid #E3E4DF;text-decoration:none;color:#1A1A1A;min-width:0;transition:background .25s ease" style-hover="background:#FAFBF7;text-decoration:none;color:#1A1A1A"><span data-ticon="1" class="material-symbols-outlined" style="width:44px;height:44px;border-radius:999px;background:#F3F5EF;color:#1E3A0C;display:grid;place-items:center;font-size:22px;flex:none;transition:background .25s ease,color .25s ease;font-variation-settings:'wght' 300">search</span><span style="display:flex;flex-direction:column;gap:3px;min-width:0"><b style="font-size:15px;font-weight:700;letter-spacing:-.02em;white-space:nowrap">행사 통합검색</b><span data-tdesc="1" style="font-size:12px;color:#6B6F66;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">공연·전시·축제 한 번에</span></span><span data-tarrow="1" aria-hidden="true" style="margin-left:auto;font-size:14px;color:#1E3A0C;opacity:0;transform:translateX(-4px);transition:opacity .25s ease,transform .25s ease">→</span></a>
+    <a data-tile="1" href="#notice" style="position:relative;display:flex;align-items:center;gap:16px;padding:24px 24px;border-right:1px solid #E3E4DF;text-decoration:none;color:#1A1A1A;min-width:0;transition:background .25s ease" style-hover="background:#FAFBF7;text-decoration:none;color:#1A1A1A"><span data-ticon="1" class="material-symbols-outlined" style="width:44px;height:44px;border-radius:999px;background:#F3F5EF;color:#1E3A0C;display:grid;place-items:center;font-size:22px;flex:none;transition:background .25s ease,color .25s ease;font-variation-settings:'wght' 300">campaign</span><span style="display:flex;flex-direction:column;gap:3px;min-width:0"><b style="font-size:15px;font-weight:700;letter-spacing:-.02em;white-space:nowrap">공지사항</b><span data-tdesc="1" style="font-size:12px;color:#6B6F66;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">스튜디오 소식</span></span><span data-tarrow="1" aria-hidden="true" style="margin-left:auto;font-size:14px;color:#1E3A0C;opacity:0;transform:translateX(-4px);transition:opacity .25s ease,transform .25s ease">→</span></a>
+    <a data-tile="1" href="#events" onClick="{{ qShow }}" style="position:relative;display:flex;align-items:center;gap:16px;padding:24px 24px;border-right:1px solid #E3E4DF;text-decoration:none;color:#1A1A1A;min-width:0;transition:background .25s ease" style-hover="background:#FAFBF7;text-decoration:none;color:#1A1A1A"><span data-ticon="1" class="material-symbols-outlined" style="width:44px;height:44px;border-radius:999px;background:#F3F5EF;color:#1E3A0C;display:grid;place-items:center;font-size:22px;flex:none;transition:background .25s ease,color .25s ease;font-variation-settings:'wght' 300">theater_comedy</span><span style="display:flex;flex-direction:column;gap:3px;min-width:0"><b style="font-size:15px;font-weight:700;letter-spacing:-.02em;white-space:nowrap">공연</b><span data-tdesc="1" style="font-size:12px;color:#6B6F66;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">콘서트·연극·뮤지컬</span></span><span data-tarrow="1" aria-hidden="true" style="margin-left:auto;font-size:14px;color:#1E3A0C;opacity:0;transform:translateX(-4px);transition:opacity .25s ease,transform .25s ease">→</span></a>
+    <a data-tile="1" href="#events" onClick="{{ qExhibit }}" style="position:relative;display:flex;align-items:center;gap:16px;padding:24px 24px;border-right:1px solid #E3E4DF;text-decoration:none;color:#1A1A1A;min-width:0;transition:background .25s ease" style-hover="background:#FAFBF7;text-decoration:none;color:#1A1A1A"><span data-ticon="1" class="material-symbols-outlined" style="width:44px;height:44px;border-radius:999px;background:#F3F5EF;color:#1E3A0C;display:grid;place-items:center;font-size:22px;flex:none;transition:background .25s ease,color .25s ease;font-variation-settings:'wght' 300">palette</span><span style="display:flex;flex-direction:column;gap:3px;min-width:0"><b style="font-size:15px;font-weight:700;letter-spacing:-.02em;white-space:nowrap">전시</b><span data-tdesc="1" style="font-size:12px;color:#6B6F66;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">미술·사진·기획전</span></span><span data-tarrow="1" aria-hidden="true" style="margin-left:auto;font-size:14px;color:#1E3A0C;opacity:0;transform:translateX(-4px);transition:opacity .25s ease,transform .25s ease">→</span></a>
+    <a data-tile="1" href="#events" onClick="{{ qFest }}" style="position:relative;display:flex;align-items:center;gap:16px;padding:24px 24px;border-right:1px solid #E3E4DF;text-decoration:none;color:#1A1A1A;min-width:0;transition:background .25s ease" style-hover="background:#FAFBF7;text-decoration:none;color:#1A1A1A"><span data-ticon="1" class="material-symbols-outlined" style="width:44px;height:44px;border-radius:999px;background:#F3F5EF;color:#1E3A0C;display:grid;place-items:center;font-size:22px;flex:none;transition:background .25s ease,color .25s ease;font-variation-settings:'wght' 300">celebration</span><span style="display:flex;flex-direction:column;gap:3px;min-width:0"><b style="font-size:15px;font-weight:700;letter-spacing:-.02em;white-space:nowrap">축제·행사</b><span data-tdesc="1" style="font-size:12px;color:#6B6F66;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">지역 축제·마켓</span></span><span data-tarrow="1" aria-hidden="true" style="margin-left:auto;font-size:14px;color:#1E3A0C;opacity:0;transform:translateX(-4px);transition:opacity .25s ease,transform .25s ease">→</span></a>
+  </div>
+</section>
+
+<section data-sec="1" id="events" data-screen-label="부산 문화콘텐츠" style="order:{{ ordEvents }};width:100%;max-width:1320px;margin:0 auto;padding:clamp(72px,10vw,120px) 48px 0;scroll-margin-top:24px;display:flex;flex-wrap:wrap;gap:64px;align-items:flex-start">
+  <div style="flex:999 1 600px;min-width:0">
+    <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:24px;padding-bottom:16px;border-bottom:1.5px solid #1A1A1A">
+      <h2 style="margin:0;font-size:28px;font-weight:800;letter-spacing:-.025em">부산 문화콘텐츠</h2>
+    </div>
+    <div data-filters="1" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid #CFCFCF;border-radius:4px;overflow:hidden;margin-bottom:40px">
+      <label style="position:relative;display:flex;align-items:center;border-right:1px solid #CFCFCF;min-width:0"><span style="position:absolute;left:-9999px">분류</span><select value="{{ catSel }}" onChange="{{ setCatSel }}" style="font:inherit;font-size:16px;color:#555;appearance:none;-webkit-appearance:none;border:0;background:transparent;width:100%;height:52px;padding:0 48px 0 20px;cursor:pointer"><option value="전체">전체</option><option value="공연">공연</option><option value="전시">전시</option><option value="행사">행사</option><option value="교육">교육</option><option value="모임">모임</option></select><span class="material-symbols-outlined" style="position:absolute;right:16px;pointer-events:none;color:#555">expand_more</span></label>
+      <label style="position:relative;display:flex;align-items:center;border-right:1px solid #CFCFCF;min-width:0"><span style="position:absolute;left:-9999px">요금</span><select value="{{ fee }}" onChange="{{ setFee }}" style="font:inherit;font-size:16px;color:#555;appearance:none;-webkit-appearance:none;border:0;background:transparent;width:100%;height:52px;padding:0 48px 0 20px;cursor:pointer"><option value="전체 요금">전체 요금</option><option value="무료">무료</option><option value="유료">유료</option></select><span class="material-symbols-outlined" style="position:absolute;right:16px;pointer-events:none;color:#555">expand_more</span></label>
+      <label style="position:relative;display:flex;align-items:center;border-right:1px solid #CFCFCF;min-width:0"><span style="position:absolute;left:-9999px">기간</span><select value="{{ period }}" onChange="{{ setPeriod }}" style="font:inherit;font-size:16px;color:#555;appearance:none;-webkit-appearance:none;border:0;background:transparent;width:100%;height:52px;padding:0 48px 0 20px;cursor:pointer"><option value="전체 기간">전체 기간</option><option value="이번 달">이번 달</option><option value="이번 주">이번 주</option></select><span class="material-symbols-outlined" style="position:absolute;right:16px;pointer-events:none;color:#555">expand_more</span></label>
+    </div>
+    <sc-if value="{{ apiLoading }}" hint-placeholder-val="{{ true }}">
+      <div data-cards="1" aria-hidden="true" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr));gap:40px 28px">
+        <sc-for list="{{ skel }}" as="k" hint-placeholder-count="4">
+          <div style="display:flex;flex-direction:column;gap:14px"><span data-skel="1" style="display:block;width:100%;aspect-ratio:3/4;border-radius:4px"></span><span data-skel="1" style="display:block;width:40%;height:22px;border-radius:4px"></span><span data-skel="1" style="display:block;width:90%;height:20px;border-radius:4px"></span><span data-skel="1" style="display:block;width:60%;height:16px;border-radius:4px"></span></div>
+        </sc-for>
+      </div>
+    </sc-if>
+    <sc-for list="{{ cardsWrap }}" as="cw" hint-placeholder-count="1">
+    <div data-cards="1" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr));gap:40px 28px">
+      <sc-for list="{{ cards }}" as="e" hint-placeholder-count="4">
+        <button onClick="{{ e.open }}" style="font:inherit;text-align:left;border:0;background:transparent;padding:0;cursor:pointer;display:flex;flex-direction:column;gap:14px;color:#1A1A1A;transition:transform .25s ease" style-hover="transform:translateY(-4px)">
+          <span data-cposter="1" style="position:relative;display:block;border-radius:8px;overflow:hidden;transition:box-shadow .25s ease">
+            <sc-if value="{{ e.hasPoster }}" hint-placeholder-val="{{ false }}"><img src="{{ e.poster }}" alt="{{ e.title }}" loading="lazy" decoding="async" onError="{{ imgFallback }}" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block;background:#F3F5EF"></sc-if>
+            <sc-if value="{{ e.noPoster }}" hint-placeholder-val="{{ true }}"><span style="width:100%;aspect-ratio:3/4;background:repeating-linear-gradient(135deg,#F3F5EF 0 12px,#E3E4DF 12px 24px);display:flex;align-items:flex-end;padding:12px;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#555">포스터</span></sc-if>
+          </span>
+          <span style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;font-size:12px;margin-top:4px"><b style="font-weight:700;color:#fff;background:#2F5D0B;border-radius:4px;padding:4px 9px">{{ e.cat }}</b><span style="font-weight:600;background:{{ e.sBg }};color:{{ e.sFg }};border-radius:4px;padding:4px 9px">{{ e.status }}</span><span style="color:#555;border:1px solid #CFCFCF;border-radius:4px;padding:3px 8px">{{ e.fee }}</span><sc-if value="{{ e.isManual }}" hint-placeholder-val="{{ false }}"><span style="color:#555;border:1px solid #CFCFCF;border-radius:4px;padding:3px 8px">직접 등록</span></sc-if></span>
+          <span data-ctitle="1" style="font-size:18px;font-weight:700;line-height:1.42;letter-spacing:-.02em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ e.title }}</span>
+          <span data-cmeta="1" style="font-size:14px;color:#555;line-height:1.55;margin-top:-4px">{{ e.dateText }}<br><span style="color:#777">{{ e.place }}</span></span>
+        </button>
+      </sc-for>
+    </div>
+    </sc-for>
+    <sc-if value="{{ noCards }}" hint-placeholder-val="{{ false }}"><div style="padding:56px 0;display:flex;flex-direction:column;align-items:center;gap:16px;color:#555;border-top:1px solid #E3E4DF;border-bottom:1px solid #E3E4DF"><span>조건에 맞는 행사가 없습니다.</span><button onClick="{{ resetFilters }}" style="font:inherit;height:36px;padding:0 16px;border:1px solid #CFCFCF;border-radius:8px;background:#fff;font-size:14px;font-weight:600;color:#1A1A1A;cursor:pointer" style-hover="background:#F3F5EF">필터 초기화</button></div></sc-if>
+    <sc-if value="{{ hasMore }}" hint-placeholder-val="{{ false }}"><div style="display:flex;justify-content:center;margin-top:48px"><button onClick="{{ toggleMore }}" style="font:inherit;display:flex;align-items:center;gap:6px;height:44px;padding:0 28px;border:1px solid #1A1A1A;border-radius:999px;background:#fff;color:#1A1A1A;font-size:16px;font-weight:700;cursor:pointer" style-hover="background:#1A1A1A;color:#fff">{{ moreLabel }}<span class="material-symbols-outlined" style="font-size:20px">{{ moreIcon }}</span></button></div></sc-if>
+  </div>
+</section>
+
+<section data-sec="1" id="calendar" data-screen-label="행사 캘린더" style="order:{{ ordCalendar }};width:100%;max-width:1320px;margin:0 auto;padding:clamp(72px,10vw,120px) 48px 0;scroll-margin-top:80px">
+  <div style="display:flex;align-items:flex-end;gap:16px 24px;flex-wrap:wrap;padding-bottom:16px;border-bottom:1.5px solid #1A1A1A">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <h2 style="margin:0;font-size:28px;font-weight:800;letter-spacing:-.025em">행사 캘린더</h2>
+    </div>
+    <div style="margin-left:auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:4px">
+        <button onClick="{{ prevMonth }}" aria-label="이전 달" style="font:inherit;width:36px;height:36px;border:0;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#1A1A1A"><span class="material-symbols-outlined" style="font-size:20px">chevron_left</span></button>
+        <b style="min-width:112px;text-align:center;font-size:18px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums">{{ monthLabel }}</b>
+        <button onClick="{{ nextMonth }}" aria-label="다음 달" style="font:inherit;width:36px;height:36px;border:0;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#1A1A1A"><span class="material-symbols-outlined" style="font-size:20px">chevron_right</span></button>
+        <button onClick="{{ goToday }}" style="font:inherit;height:36px;padding:0 12px;margin-left:6px;border:1px solid #CFCFCF;border-radius:8px;background:#fff;cursor:pointer;font-size:14px;font-weight:600">오늘</button>
+      </div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-bottom:1px solid #E3E4DF">
+    <sc-for list="{{ weekdays }}" as="w" hint-placeholder-count="7"><span style="padding:12px 10px;font-size:12px;font-weight:600;color:{{ w.c }}">{{ w.t }}</span></sc-for>
+  </div>
+  <div data-cgrid="1" style="border-left:1px solid #E3E4DF">
+    <sc-for list="{{ calWeeks }}" as="wk" hint-placeholder-count="5">
+      <div data-cweek="1" style="position:relative;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));grid-template-rows:36px repeat(3,26px) 24px;min-height:118px;border-bottom:1px solid #E3E4DF">
+        <sc-for list="{{ wk.days }}" as="c" hint-placeholder-count="7">
+          <div data-ccell="1" role="button" tabindex="0" onClick="{{ c.open }}" aria-label="{{ c.aria }}" style="grid-column:{{ c.col }};grid-row:1 / -1;border-right:1px solid #E3E4DF;background:{{ c.bg }};padding:8px;cursor:pointer;min-width:0;display:flex;justify-content:space-between;align-items:flex-start">
+            <span style="width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:{{ c.fw }};color:{{ c.fg }};background:{{ c.numBg }};opacity:{{ c.op }};font-variant-numeric:tabular-nums">{{ c.d }}</span>
+            <span data-ccount="1" style="font-size:12px;color:#555">{{ c.countLabel }}</span>
+          </div>
+        </sc-for>
+        <sc-for list="{{ wk.bars }}" as="b" hint-placeholder-count="0">
+          <button data-cbar="1" onClick="{{ b.open }}" title="{{ b.full }}" style="font:inherit;position:relative;z-index:1;grid-column:{{ b.col }};grid-row:{{ b.row }};margin:2px {{ b.mr }} 2px {{ b.ml }};padding:0 8px;height:22px;border:0;border-radius:{{ b.radius }};background:{{ b.bg }};color:{{ b.fg }};opacity:{{ b.op }};font-size:12px;font-weight:500;line-height:22px;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;min-width:0">{{ b.t }}</button>
+        </sc-for>
+        <sc-for list="{{ wk.mores }}" as="mo" hint-placeholder-count="0">
+          <button data-cbar="1" onClick="{{ mo.open }}" style="font:inherit;position:relative;z-index:1;grid-column:{{ mo.col }};grid-row:5;justify-self:start;margin:0 6px;padding:0 4px;height:20px;border:0;background:transparent;color:#555;font-size:12px;font-weight:600;cursor:pointer">+{{ mo.n }}건</button>
+        </sc-for>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section data-sec="1" id="notice" data-screen-label="공지사항" style="order:{{ ordNotice }};width:100%;max-width:1320px;margin:0 auto;padding:clamp(72px,10vw,120px) 48px 0;scroll-margin-top:80px">
+  <div style="display:flex;align-items:center;gap:12px;padding-bottom:16px;border-bottom:1.5px solid #1A1A1A">
+    <h2 style="margin:0;font-size:28px;font-weight:800;letter-spacing:-.025em">공지사항</h2>
+    <sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ false }}"><button onClick="{{ newNotice }}" style="font:inherit;margin-left:8px;display:flex;align-items:center;gap:4px;height:36px;padding:0 12px;border:1px solid #1A1A1A;border-radius:8px;background:#fff;font-size:14px;font-weight:600;cursor:pointer"><span class="material-symbols-outlined" style="font-size:16px">edit</span>공지 작성</button></sc-if>
+    <a href="#notices" onClick="{{ openNoticePage }}" aria-label="공지사항 전체 보기" style="margin-left:auto;display:flex;align-items:center;gap:4px;color:#1A1A1A;text-decoration:none;font-size:14px;font-weight:600" style-hover="text-decoration:none;color:#1A1A1A"><span class="material-symbols-outlined" style="font-size:28px">add</span></a>
+  </div>
+  <ul style="list-style:none;margin:0;padding:6px 0 0">
+    <sc-for list="{{ noticeTop }}" as="n" hint-placeholder-count="3">
+      <li style="border-bottom:1px solid #E3E4DF"><button onClick="{{ n.open }}" style="font:inherit;width:100%;text-align:left;border:0;background:transparent;padding:18px 0;cursor:pointer;display:flex;align-items:center;gap:12px;color:#1A1A1A">
+        <span style="flex:none;font-size:12px;font-weight:700;color:{{ n.catFg }}">{{ n.catLabel }}</span>
+        <span style="flex:1;min-width:0;font-size:16px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ n.title }}</span>
+        <sc-if value="{{ n.hasRecruit }}" hint-placeholder-val="{{ false }}"><span style="flex:none;font-size:12px;font-weight:700;padding:3px 8px;border-radius:999px;background:{{ n.rBg }};color:{{ n.rFg }}">{{ n.rLabel }}</span></sc-if>
+        <sc-if value="{{ n.hasImg }}" hint-placeholder-val="{{ false }}"><span class="material-symbols-outlined" style="font-size:18px;color:#777;flex:none">image</span></sc-if>
+        <span style="font-size:14px;color:#777;flex:none;font-variant-numeric:tabular-nums">{{ n.date }}</span>
+      </button></li>
+    </sc-for>
+  </ul>
+  <sc-if value="{{ noNotices }}" hint-placeholder-val="{{ false }}"><div style="padding:48px 0;text-align:center;color:#777;font-size:14px;border-bottom:1px solid #E3E4DF">등록된 공지가 없습니다.</div></sc-if>
+</section>
+
+
+
+<section data-sec="1" id="about" data-screen-label="소개" style="order:98;width:100%;max-width:1320px;margin:0 auto;padding:clamp(72px,10vw,120px) 48px 0;scroll-margin-top:80px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:48px 64px;padding-top:28px;border-top:1.5px solid #1A1A1A">
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <span style="font-size:12px;font-weight:600;letter-spacing:.14em;color:#777">ABOUT</span>
+      <h2 style="margin:0;font-size:36px;font-weight:800;letter-spacing:-.025em;line-height:1.2;word-break:keep-all;text-wrap:pretty">부산의 문화 소식에<br>초록불을 켭니다</h2>
+      <p style="margin:0;font-size:16px;line-height:1.65;color:#333;word-break:keep-all;max-width:520px;text-wrap:pretty">그린라이트 스튜디오는 부산 곳곳에서 열리는 공연·전시·축제·교육 프로그램을 매주 모아 한곳에서 안내합니다. 공공데이터로 수집한 행사에 스튜디오가 직접 찾아낸 콘텐츠를 더해, 이번 주말 어디로 갈지 고민하는 시간을 줄여드립니다.</p>
+    </div>
+    <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;align-self:end">
+      <li style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:16px;padding:20px 0;border-top:1px solid #E3E4DF">
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:14px;color:#2F5D0B;padding-top:4px">01</span>
+        <div style="display:flex;flex-direction:column;gap:6px"><b style="font-size:16px;font-weight:700;color:#1A1A1A">매주 새로 모으는 문화콘텐츠</b><span style="font-size:16px;line-height:1.65;color:#555;word-break:keep-all">공연·전시·축제·교육·모임까지, 분류와 요금으로 골라 볼 수 있습니다.</span></div>
+      </li>
+      <li style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:16px;padding:20px 0;border-top:1px solid #E3E4DF">
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:14px;color:#2F5D0B;padding-top:4px">02</span>
+        <div style="display:flex;flex-direction:column;gap:6px"><b style="font-size:16px;font-weight:700;color:#1A1A1A">한 달력에 담은 행사 일정</b><span style="font-size:16px;line-height:1.65;color:#555;word-break:keep-all">날짜를 누르면 그날 부산에서 열리는 행사를 바로 확인할 수 있습니다.</span></div>
+      </li>
+      <li style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:16px;padding:20px 0;border-top:1px solid #E3E4DF;border-bottom:1px solid #E3E4DF">
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:14px;color:#2F5D0B;padding-top:4px">03</span>
+        <div style="display:flex;flex-direction:column;gap:6px"><b style="font-size:16px;font-weight:700;color:#1A1A1A">스튜디오가 직접 전하는 소식</b><span style="font-size:16px;line-height:1.65;color:#555;word-break:keep-all">체험단 모집, 운영 안내 등 새 소식은 공지사항에서 가장 먼저 알려드립니다.</span></div>
+      </li>
+    </ul>
+  </div>
+</section>
+<div aria-hidden="true" style="order:99;height:clamp(72px,10vw,120px)"></div>
+</main>
+
+<footer data-screen-label="푸터" style="background:#F3F5EF;border-top:1px solid #1A1A1A;color:#555;overflow:hidden">
+  <div data-finner="1" style="max-width:1120px;margin:0 auto;padding:48px 48px 0">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:32px">
+      <p style="margin:0;font-size:clamp(24px,2.6vw,30px);font-weight:700;letter-spacing:-.025em;line-height:1.2;color:#1A1A1A">일상에 재미를 켜다.</p>
+      <a href="#main" data-flink="1" style="font-size:14px;font-weight:600;color:#1A1A1A;display:flex;align-items:center;gap:6px;padding-bottom:2px">맨 위로<span class="material-symbols-outlined" style="font-size:16px">arrow_upward</span></a>
+    </div>
+    <div data-fgrid="1" style="display:grid;grid-template-columns:1.6fr 1.2fr .8fr 1fr;gap:clamp(24px,4vw,40px);align-items:start;padding-bottom:40px;font-size:14px;line-height:1.7;font-variant-numeric:tabular-nums">
+      <div>
+        <b style="display:block;font-size:20px;font-weight:600;letter-spacing:-.02em;line-height:1.2;color:#1A1A1A">그린라이트 스튜디오</b>
+        <span style="display:block;margin-top:6px;font-size:10px;font-weight:600;letter-spacing:.14em;color:#777">GREENLIGHT STUDIO</span>
+        <p style="margin:18px 0 0;color:#555;max-width:280px;word-break:keep-all">부산의 공연·전시·축제 소식을 매주 모아 안내합니다.</p>
+        <p style="margin:8px 0 0;font-size:12px;color:#777;max-width:280px;word-break:keep-all">행사 정보는 운영 일정에 따라 변경될 수 있습니다.</p>
+      </div>
+      <div>
+        <span data-flabel="1" style="display:flex;align-items:center;gap:8px">CONTACT<sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ false }}"><button onClick="{{ openSiteLinks }}" aria-label="연락처 편집" title="연락처 편집" style="font:inherit;border:0;background:transparent;padding:0;cursor:pointer;color:#777;display:flex" style-hover="color:#1A1A1A"><span class="material-symbols-outlined" style="font-size:16px">edit</span></button></sc-if></span>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;color:#1A1A1A">
+          <li style="display:flex;gap:10px;align-items:flex-start"><span class="material-symbols-outlined" style="font-size:16px;color:#777;flex:none;margin-top:2px">location_on</span><span>부산광역시 수영구<br>무학로22번길 47</span></li>
+          <sc-if value="{{ fHasEmail }}" hint-placeholder-val="{{ false }}"><li style="display:flex;gap:10px;align-items:flex-start"><span class="material-symbols-outlined" style="font-size:16px;color:#777;flex:none;margin-top:2px">mail</span><a href="{{ fEmailHref }}" data-flink="1" style="color:#1A1A1A;font-weight:600;word-break:break-all">{{ fEmail }}</a></li></sc-if>
+          <sc-if value="{{ fHasSocial }}" hint-placeholder-val="{{ false }}"><li style="display:flex;gap:10px;align-items:center;margin-top:4px">
+            <sc-if value="{{ fHasInsta }}" hint-placeholder-val="{{ false }}"><a href="{{ fInsta }}" target="_blank" rel="noopener" aria-label="인스타그램" title="인스타그램" style="width:36px;height:36px;border-radius:50%;border:1px solid #CFCFCF;display:flex;align-items:center;justify-content:center;color:#1A1A1A;background:#fff;transition:border-color .2s ease" style-hover="border-color:#1A1A1A"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg></a></sc-if>
+            <sc-if value="{{ fHasKakao }}" hint-placeholder-val="{{ false }}"><a href="{{ fKakao }}" target="_blank" rel="noopener" aria-label="카카오톡 채널" title="카카오톡 채널" style="width:36px;height:36px;border-radius:50%;border:1px solid #CFCFCF;display:flex;align-items:center;justify-content:center;color:#1A1A1A;background:#fff;transition:border-color .2s ease" style-hover="border-color:#1A1A1A"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.48 3 2 6.58 2 11c0 2.83 1.84 5.31 4.62 6.73L5.6 21.5a.4.4 0 0 0 .6.44l4.35-2.9c.47.05.95.08 1.45.08 5.52 0 10-3.58 10-8.12S17.52 3 12 3Z"></path></svg></a></sc-if>
+          </li></sc-if>
+        </ul>
+      </div>
+      <div>
+        <span data-flabel="1">MENU</span>
+        <nav aria-label="사이트 메뉴" style="display:flex;flex-direction:column;gap:8px;align-items:flex-start">
+          <a href="#events" data-flink="1" style="color:#1A1A1A">문화콘텐츠</a>
+          <a href="#calendar" data-flink="1" style="color:#1A1A1A">행사 캘린더</a>
+          <a href="#notice" data-flink="1" style="color:#1A1A1A">공지사항</a>
+          <a href="#about" data-flink="1" style="color:#1A1A1A">소개</a>
+        </nav>
+      </div>
+      <div>
+        <span data-flabel="1">POLICY</span>
+        <nav aria-label="정책" style="display:flex;flex-direction:column;gap:8px;align-items:flex-start">
+          <a href="#policy=privacy" onClick="{{ openPrivacy }}" data-flink="1" style="color:#2F5D0B;font-weight:700">개인정보처리방침</a>
+          <a href="#policy=terms" onClick="{{ openTerms }}" data-flink="1" style="color:#1A1A1A">이용약관</a>
+          <a href="#policy=email" onClick="{{ openEmailPolicy }}" data-flink="1" style="color:#1A1A1A">이메일무단수집거부</a>
+        </nav>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px 24px;flex-wrap:wrap;padding:20px 0 24px;border-top:1px solid #E3E4DF;font-size:12px;line-height:1.7;color:#777;font-variant-numeric:tabular-nums">
+      <span style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="color:#555;font-weight:600">© 2026 GREENLIGHT STUDIO</span><span style="display:flex;flex-wrap:wrap;gap:0 14px"><span>사업자이름 : 비-씬</span><span>사업자번호 : 235-01-04273</span><span>등록 주소 : 부산광역시 수영구 무학로22번길 47</span></span></span>
+      <span data-screen-label="관리자" style="display:flex;gap:16px;flex-wrap:wrap;align-items:center">
+                <sc-if value="{{ notAdmin }}" hint-placeholder-val="{{ true }}"><button onClick="{{ adminOn }}" style="font:inherit;font-size:12px;color:#777;background:transparent;border:0;padding:0;cursor:pointer" style-hover="color:#1A1A1A">관리자</button></sc-if>
+        <sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ false }}"><span title="저장하면 바로 모든 방문자에게 공개됩니다." style="color:#1A1A1A;font-weight:600">관리자 모드</span><button onClick="{{ openSite }}" style="font:inherit;font-size:12px;color:#1A1A1A;background:transparent;border:0;padding:0;cursor:pointer;text-decoration:underline">사이트 관리</button><sc-if value="{{ localAdmin }}" hint-placeholder-val="{{ false }}"><button onClick="{{ exportManual }}" title="data/manual-events.json으로 GitHub에 올리면 모든 방문자에게 보입니다" style="font:inherit;font-size:12px;color:#1A1A1A;background:transparent;border:0;padding:0;cursor:pointer;text-decoration:underline">공개 파일 내보내기 ({{ manualCount }}건)</button></sc-if><button onClick="{{ openNew }}" style="font:inherit;font-size:12px;color:#1A1A1A;background:transparent;border:0;padding:0;cursor:pointer;text-decoration:underline">문화콘텐츠 등록</button><button onClick="{{ adminOff }}" style="font:inherit;font-size:12px;color:#777;background:transparent;border:0;padding:0;cursor:pointer;text-decoration:underline">종료</button></sc-if>
+      </span>
+    </div>
+  </div>
+  <div aria-hidden="true" style="font-size:clamp(48px,9vw,140px);font-weight:800;letter-spacing:-.05em;line-height:.78;color:#E9EAE5;text-align:center;white-space:nowrap;user-select:none;margin-bottom:-.1em;padding:0 24px">GREENLIGHT</div>
+</footer>
+
+<sc-if value="{{ toastOpen }}" hint-placeholder-val="{{ false }}"><div data-toast="1" role="status" style="position:fixed;left:50%;bottom:28px;transform:translateX(-50%);z-index:95;display:flex;align-items:center;gap:8px;background:#1A1A1A;color:#fff;padding:0 18px;height:44px;border-radius:999px;font-size:14px;font-weight:600;box-shadow:0 10px 24px rgba(0,0,0,.2);white-space:nowrap"><span class="material-symbols-outlined" style="font-size:20px;color:#B3F945">check_circle</span>{{ toast }}</div></sc-if>
+<div data-screen-label="플로팅 버튼" style="position:fixed;right:24px;bottom:24px;z-index:40;display:flex;flex-direction:column;gap:10px">
+  <sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ false }}"><button onClick="{{ openNew }}" aria-label="문화콘텐츠 등록" style="font:inherit;width:52px;height:52px;border:0;border-radius:50%;background:#2F5D0B;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(0,0,0,.2)"><span class="material-symbols-outlined" style="font-size:28px">add</span></button></sc-if>
+</div>
+
+<sc-for list="{{ modal }}" as="m" hint-placeholder-count="0">
+<div data-mwrap="1" style="position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;padding:24px">
+  <div onClick="{{ closeModal }}" style="position:absolute;inset:0;background:rgba(0,0,0,.5)"></div>
+  <div data-mbox="1" data-screen-label="행사 상세" style="border-radius:16px;position:relative;width:min(820px,100%);max-height:100%;overflow:auto;background:#fff;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))">
+    <sc-if value="{{ m.hasPoster }}" hint-placeholder-val="{{ false }}"><img data-mposter="1" src="{{ m.poster }}" alt="{{ m.title }}" loading="lazy" decoding="async" onError="{{ imgFallback }}" style="width:100%;height:100%;min-height:320px;max-height:86vh;object-fit:contain;display:block;background:#F3F5EF"></sc-if>
+    <sc-if value="{{ m.noPoster }}" hint-placeholder-val="{{ true }}"><div style="min-height:320px;background:repeating-linear-gradient(135deg,#F3F5EF 0 12px,#E3E4DF 12px 24px);display:flex;align-items:flex-end;padding:14px;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#555">포스터 미등록</div></sc-if>
+    <div data-mbody="1" style="padding:32px;display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:8px;align-items:center"><span style="font-size:12px;font-weight:700;padding:4px 8px;background:{{ m.sBg }};color:{{ m.sFg }};border:1px solid {{ m.sBd }}">{{ m.status }}</span><b style="font-size:14px;color:#2F5D0B">{{ m.cat }}</b><button onClick="{{ closeModal }}" aria-label="닫기" style="margin-left:auto;font:inherit;width:36px;height:36px;border:0;border-radius:50%;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#1A1A1A" style-hover="background:#F3F5EF"><span class="material-symbols-outlined" style="font-size:20px">close</span></button></div>
+      <h3 style="margin:0;font-size:24px;font-weight:800;line-height:1.35;letter-spacing:-.02em">{{ m.title }}</h3>
+      <div style="display:grid;grid-template-columns:64px minmax(0,1fr);gap:8px 12px;font-size:14px;padding:14px 0;border-top:1px solid #E3E4DF;border-bottom:1px solid #E3E4DF"><b>일시</b><span>{{ m.dateText }}<br>{{ m.timeText }}</span><b>장소</b><span>{{ m.place }}</span><b>요금</b><span>{{ m.feeLine }}</span><b>문의</b><span>{{ m.tel }}</span><b>출처</b><span>{{ m.srcText }}</span></div>
+      <p style="margin:0;font-size:16px;line-height:1.65;color:#333;white-space:pre-line">{{ m.desc }}</p>
+      <sc-if value="{{ m.hasGallery }}" hint-placeholder-val="{{ false }}"><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px"><sc-for list="{{ m.gallery }}" as="g" hint-placeholder-count="2"><a href="{{ g.src }}" target="_blank" rel="noopener" style="display:block"><img src="{{ g.src }}" alt="{{ m.title }} 이미지" style="width:100%;aspect-ratio:1;object-fit:contain;display:block;border-radius:8px;background:#F3F5EF"></a></sc-for></div></sc-if>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;padding-top:4px">
+        <button onClick="{{ shareEvent }}" style="font:inherit;display:flex;align-items:center;gap:6px;height:44px;padding:0 14px;border:1px solid #CFCFCF;border-radius:8px;background:#fff;font-size:14px;font-weight:600;color:#1A1A1A;cursor:pointer" style-hover="background:#F3F5EF"><span class="material-symbols-outlined" style="font-size:18px">share</span>{{ evShareLabel }}</button>
+        <a href="{{ kakaoShareUrl }}" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:6px;height:44px;padding:0 14px;border-radius:8px;background:#FEE500;font-size:14px;font-weight:700;color:#191919;text-decoration:none" style-hover="text-decoration:none;color:#191919;background:#F5DD00"><span class="material-symbols-outlined" style="font-size:18px">chat_bubble</span>카카오톡</a>
+      </div>
+      <sc-if value="{{ hasRelated }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:10px;padding-top:14px;border-top:1px solid #E3E4DF">
+          <b style="font-size:14px;font-weight:700;color:#777;letter-spacing:.04em">비슷한 행사</b>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px">
+            <sc-for list="{{ related }}" as="r" hint-placeholder-count="0">
+              <li><button onClick="{{ r.open }}" style="font:inherit;width:100%;text-align:left;display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;align-items:center;padding:8px;border:0;border-radius:8px;background:transparent;cursor:pointer;color:#1A1A1A" style-hover="background:#F3F5EF">
+                <span style="width:40px;height:52px;border-radius:4px;overflow:hidden;background:#F3F5EF;display:flex;align-items:center;justify-content:center"><sc-if value="{{ r.hasPoster }}" hint-placeholder-val="{{ false }}"><img src="{{ r.poster }}" alt="" loading="lazy" onError="{{ imgFallback }}" style="width:100%;height:100%;object-fit:cover;display:block"></sc-if><sc-if value="{{ r.noPoster }}" hint-placeholder-val="{{ true }}"><span class="material-symbols-outlined" style="font-size:18px;color:#2F5D0B">{{ r.icon }}</span></sc-if></span>
+                <span style="min-width:0"><b style="display:block;font-size:14px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ r.title }}</b><span style="display:block;margin-top:2px;font-size:12px;color:#777;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ r.dateText }} · {{ r.place }}</span></span>
+              </button></li>
+            </sc-for>
+          </ul>
+        </div>
+      </sc-if>
+      <sc-if value="{{ m.canEdit }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:8px;margin-top:auto;padding-top:8px"><button onClick="{{ editModal }}" style="font:inherit;font-size:14px;font-weight:700;height:44px;padding:0 18px;border:0;border-radius:8px;background:#1A1A1A;color:#fff;cursor:pointer">수정</button><button onClick="{{ delModal }}" style="font:inherit;font-size:14px;font-weight:700;height:44px;padding:0 18px;border:1px solid #E0B4AC;border-radius:8px;background:#fff;color:#C0392B;cursor:pointer">삭제</button></div></sc-if>
+    </div>
+  </div>
+</div>
+</sc-for>
+
+
+<sc-if value="{{ policyOpen }}" hint-placeholder-val="{{ false }}">
+<div data-overlay="1" data-screen-label="정책 페이지" style="position:fixed;inset:0;z-index:55;background:#fff;overflow:auto">
+  <div style="position:sticky;top:0;z-index:2;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #E3E4DF">
+    <div data-sec="1" style="max-width:860px;margin:0 auto;padding:0 48px;height:56px;display:flex;align-items:center">
+      <button onClick="{{ closePolicy }}" style="font:inherit;display:flex;align-items:center;gap:6px;height:36px;padding:0 12px 0 6px;border-radius:8px;font-size:14px;font-weight:600;color:#555;background:transparent;border:0;cursor:pointer" style-hover="color:#1A1A1A;background:#F3F5EF"><span class="material-symbols-outlined" style="font-size:20px">arrow_back</span>홈으로</button>
+    </div>
+  </div>
+  <div data-sec="1" style="max-width:860px;margin:0 auto;padding:32px 48px 120px">
+    <nav aria-label="정책 선택" style="display:flex;gap:6px;flex-wrap:wrap">
+      <sc-for list="{{ policyTabs }}" as="t" hint-placeholder-count="3"><button onClick="{{ t.go }}" style="font:inherit;height:36px;padding:0 14px;border:1px solid {{ t.bd }};border-radius:999px;background:{{ t.bg }};color:{{ t.fg }};font-size:14px;font-weight:600;cursor:pointer">{{ t.t }}</button></sc-for>
+    </nav>
+    <h1 style="margin:28px 0 0;font-size:36px;font-weight:800;letter-spacing:-.025em;padding-bottom:16px;border-bottom:1.5px solid #1A1A1A">{{ policyTitle }}</h1>
+    <p style="margin:18px 0 0;font-size:14px;color:#777">시행일 {{ policyDate }}</p>
+    <sc-for list="{{ policySections }}" as="sec" hint-placeholder-count="4">
+      <section style="margin-top:36px">
+        <h2 style="margin:0 0 12px;font-size:18px;font-weight:800;letter-spacing:-.02em;color:#1A1A1A">{{ sec.h }}</h2>
+        <sc-for list="{{ sec.ps }}" as="p" hint-placeholder-count="2"><p style="margin:0 0 10px;font-size:16px;line-height:1.8;color:#333;word-break:keep-all;text-wrap:pretty">{{ p.t }}</p></sc-for>
+        <sc-if value="{{ sec.hasList }}" hint-placeholder-val="{{ false }}"><ul style="margin:4px 0 0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:16px;line-height:1.7;color:#333;word-break:keep-all"><sc-for list="{{ sec.li }}" as="l" hint-placeholder-count="3"><li>{{ l.t }}</li></sc-for></ul></sc-if>
+      </section>
+    </sc-for>
+    <div style="margin-top:48px;padding:20px 22px;background:#F3F5EF;border-radius:8px;font-size:14px;line-height:1.8;color:#555">
+      <b style="color:#1A1A1A">운영자</b> 비-씬 (그린라이트 스튜디오)<br>사업자등록번호 235-01-04273<br>부산광역시 수영구 무학로22번길 47<br><sc-if value="{{ fHasEmail }}" hint-placeholder-val="{{ false }}">문의 <a href="{{ fEmailHref }}" style="color:#2F5D0B;font-weight:600">{{ fEmail }}</a></sc-if>
+    </div>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{ noticePage }}" hint-placeholder-val="{{ false }}">
+<div data-overlay="1" data-screen-label="공지사항 페이지" style="position:fixed;inset:0;z-index:55;background:#fff;overflow:auto">
+  <div style="position:sticky;top:0;z-index:2;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #E3E4DF">
+    <div data-sec="1" style="max-width:1120px;margin:0 auto;padding:0 48px;height:56px;display:flex;align-items:center">
+      <button onClick="{{ closeNoticePage }}" style="font:inherit;display:flex;align-items:center;gap:6px;height:36px;padding:0 12px 0 6px;border-radius:8px;font-size:14px;font-weight:600;color:#555;background:transparent;border:0;cursor:pointer" style-hover="color:#1A1A1A;background:#F3F5EF"><span class="material-symbols-outlined" style="font-size:20px">arrow_back</span>홈으로</button>
+    </div>
+  </div>
+  <div data-sec="1" style="max-width:1120px;margin:0 auto;padding:32px 48px 120px">
+    <div style="display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;padding-bottom:16px;border-bottom:1.5px solid #1A1A1A">
+      <h1 style="margin:0;font-size:36px;font-weight:800;letter-spacing:-.025em">공지사항</h1>
+      <span style="font-size:14px;color:#777;padding-bottom:6px">{{ noticeCount }}건</span>
+      <sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ false }}"><button onClick="{{ newNotice }}" style="font:inherit;margin-left:auto;display:flex;align-items:center;gap:4px;height:36px;padding:0 14px;border:0;border-radius:8px;background:#1A1A1A;color:#fff;font-size:14px;font-weight:600;cursor:pointer"><span class="material-symbols-outlined" style="font-size:16px">edit</span>공지 작성</button></sc-if>
+    </div>
+    <sc-if value="{{ noticeListMode }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:20px">
+        <sc-for list="{{ nCats }}" as="c" hint-placeholder-count="4"><button onClick="{{ c.set }}" style="font:inherit;height:36px;padding:0 14px;border:1px solid {{ c.bd }};border-radius:999px;background:{{ c.bg }};color:{{ c.fg }};font-size:14px;font-weight:600;cursor:pointer">{{ c.t }}<span style="margin-left:6px;opacity:.6">{{ c.n }}</span></button></sc-for>
+      </div>
+      <ul style="list-style:none;margin:0;padding:0">
+        <sc-for list="{{ noticeAll }}" as="n" hint-placeholder-count="5">
+          <li style="border-bottom:1px solid #E3E4DF"><button onClick="{{ n.open }}" style="font:inherit;width:100%;text-align:left;border:0;background:transparent;padding:18px 0;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center;color:#1A1A1A">
+            <span style="min-width:0"><span style="display:flex;align-items:center;gap:8px"><span style="flex:none;font-size:12px;font-weight:700;color:{{ n.catFg }}">{{ n.catLabel }}</span><b style="font-size:16px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ n.title }}</b><sc-if value="{{ n.hasRecruit }}" hint-placeholder-val="{{ false }}"><span style="flex:none;font-size:12px;font-weight:700;padding:3px 8px;border-radius:999px;background:{{ n.rBg }};color:{{ n.rFg }}">{{ n.rLabel }}</span></sc-if><sc-if value="{{ n.hasImg }}" hint-placeholder-val="{{ false }}"><span class="material-symbols-outlined" style="font-size:18px;color:#777;flex:none">image</span></sc-if></span><span style="display:block;margin-top:6px;font-size:14px;color:#777;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ n.preview }}</span></span>
+            <span style="font-size:14px;color:#777;font-variant-numeric:tabular-nums">{{ n.date }}</span>
+          </button></li>
+        </sc-for>
+      </ul>
+      <sc-if value="{{ noNotices }}" hint-placeholder-val="{{ false }}"><div style="padding:64px 0;display:flex;flex-direction:column;align-items:center;gap:16px;color:#555"><span>해당 분류의 공지가 없습니다.</span><button onClick="{{ nCatAll }}" style="font:inherit;height:36px;padding:0 16px;border:1px solid #CFCFCF;border-radius:8px;background:#fff;font-size:14px;font-weight:600;color:#1A1A1A;cursor:pointer" style-hover="background:#F3F5EF">전체 공지 보기</button></div></sc-if>
+    </sc-if>
+    <sc-for list="{{ noticeCur }}" as="n" hint-placeholder-count="0">
+      <article style="padding-top:28px">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="font-size:14px;font-weight:700;color:{{ n.catFg }}">{{ n.catLabel }}</span><sc-if value="{{ n.hasRecruit }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;background:{{ n.rBg }};color:{{ n.rFg }}">{{ n.rLabel }}</span></sc-if><span style="font-size:14px;color:#777">{{ n.date }}</span><button onClick="{{ n.copyLink }}" aria-label="공지 링크 복사" style="font:inherit;margin-left:auto;display:flex;align-items:center;gap:4px;height:36px;padding:0 12px;border:1px solid #CFCFCF;border-radius:8px;background:#fff;font-size:14px;font-weight:600;color:#1A1A1A;cursor:pointer" style-hover="background:#F3F5EF"><span class="material-symbols-outlined" style="font-size:16px">link</span>{{ copyLabel }}</button></div>
+        <h2 style="margin:10px 0 0;font-size:28px;font-weight:800;letter-spacing:-.025em;line-height:1.3;word-break:keep-all">{{ n.title }}</h2>
+        <div style="margin-top:28px;padding-top:28px;border-top:1px solid #E3E4DF;font-size:16px;line-height:1.8;color:#333;white-space:pre-line;word-break:keep-all">{{ n.bodyRich }}</div>
+        <sc-if value="{{ n.hasImg }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:16px;margin-top:28px"><sc-for list="{{ n.gallery }}" as="g" hint-placeholder-count="1"><img src="{{ g.src }}" alt="공지 이미지" style="width:100%;max-width:820px;height:auto;display:block;border-radius:8px"></sc-for></div></sc-if>
+        <div style="display:flex;gap:8px;margin-top:40px;padding-top:20px;border-top:1px solid #E3E4DF;flex-wrap:wrap">
+          <button onClick="{{ backToList }}" style="font:inherit;font-size:14px;font-weight:600;height:44px;padding:0 16px;border:1px solid #CFCFCF;border-radius:8px;background:#fff;cursor:pointer">목록</button>
+          <sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ false }}"><span style="margin-left:auto;display:flex;gap:8px"><button onClick="{{ n.edit }}" style="font:inherit;font-size:14px;font-weight:600;height:44px;padding:0 16px;border:0;border-radius:8px;background:#1A1A1A;color:#fff;cursor:pointer">수정</button><button onClick="{{ n.del }}" style="font:inherit;font-size:14px;font-weight:600;height:44px;padding:0 16px;border:1px solid #E0B4AC;border-radius:8px;background:#fff;color:#C0392B;cursor:pointer">삭제</button></span></sc-if>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ nFormOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:66;display:flex;justify-content:flex-end">
+  <div onClick="{{ closeNForm }}" style="position:absolute;inset:0;background:rgba(0,0,0,.45)"></div>
+  <div data-screen-label="공지 작성 폼" role="dialog" aria-label="공지 작성" style="position:relative;width:min(560px,100%);height:100%;background:#fff;display:flex;flex-direction:column">
+    <div style="padding:20px 28px;border-bottom:1.5px solid #1A1A1A;display:flex;align-items:center"><h3 style="margin:0;font-size:20px;font-weight:800">{{ nFormTitle }}</h3><button onClick="{{ closeNForm }}" aria-label="닫기" style="margin-left:auto;font:inherit;width:36px;height:36px;border:0;border-radius:50%;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#1A1A1A" style-hover="background:#F3F5EF"><span class="material-symbols-outlined" style="font-size:20px">close</span></button></div>
+    <div style="padding:22px 28px;display:flex;flex-direction:column;gap:16px;overflow:auto;flex:1;font-size:14px">
+      <label style="display:flex;flex-direction:column;gap:6px;font-weight:700">제목 *<input value="{{ nf.title }}" onChange="{{ nSetTitle }}" placeholder="예) 11월 운영시간 안내" style="font:inherit;font-weight:400;padding:12px 14px;border:1px solid #CFCFCF;border-radius:8px"></label>
+      <div style="display:flex;flex-direction:column;gap:8px;font-weight:700">분류<div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ nfCats }}" as="c" hint-placeholder-count="3"><button onClick="{{ c.set }}" style="font:inherit;font-size:14px;font-weight:600;height:36px;padding:0 14px;border-radius:999px;cursor:pointer;background:{{ c.bg }};color:{{ c.fg }};border:1px solid {{ c.bd }}">{{ c.t }}</button></sc-for></div></div>
+      <sc-if value="{{ nfIsRecruit }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:8px;font-weight:700">모집 기간 <span style="font-weight:400;color:#777;font-size:12px">입력하면 목록에 '모집중 / 마감' 배지가 자동으로 붙습니다</span>
+          <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px">
+            <input type="date" value="{{ nf.recruitStart }}" onChange="{{ nSetRStart }}" aria-label="모집 시작일" style="font:inherit;font-weight:400;padding:11px 12px;border:1px solid #CFCFCF;border-radius:8px;min-width:0;width:100%">
+            <input type="date" value="{{ nf.recruitEnd }}" onChange="{{ nSetREnd }}" aria-label="모집 마감일" style="font:inherit;font-weight:400;padding:11px 12px;border:1px solid #CFCFCF;border-radius:8px;min-width:0;width:100%">
+          </div>
+          <label style="display:flex;align-items:center;gap:8px;height:36px;font-weight:600;cursor:pointer;font-size:14px"><input type="checkbox" checked="{{ nf.closed }}" onChange="{{ nSetClosed }}" style="width:16px;height:16px;accent-color:#1A1A1A">조기 마감 처리</label>
+        </div>
+      </sc-if>
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:end">
+        <label style="display:flex;flex-direction:column;gap:6px;font-weight:700">날짜<input type="date" value="{{ nf.date }}" onChange="{{ nSetDate }}" style="font:inherit;font-weight:400;padding:11px 12px;border:1px solid #CFCFCF;border-radius:8px;min-width:0;width:100%"></label>
+        <label style="display:flex;align-items:center;gap:8px;height:44px;font-weight:600;cursor:pointer"><input type="checkbox" checked="{{ nf.pinned }}" onChange="{{ nSetPinned }}" style="width:16px;height:16px;accent-color:#1A1A1A">상단 고정</label>
+      </div>
+      <label style="display:flex;flex-direction:column;gap:6px;font-weight:700">본문 *<textarea value="{{ nf.body }}" onChange="{{ nSetBody }}" rows="12" placeholder="공지 내용을 입력하세요. 줄바꿈이 그대로 표시됩니다. 주소(https://…)는 자동으로 링크가 되고, [보여줄 글자](https://주소) 형식으로 쓰면 글자에 링크가 걸립니다." style="font:inherit;font-weight:400;padding:12px 14px;border:1px solid #CFCFCF;border-radius:8px;resize:vertical;line-height:1.7"></textarea></label>
+      <div style="display:flex;flex-direction:column;gap:8px;font-weight:700">사진 <span style="font-weight:400;color:#777;font-size:12px">최대 6장 · 본문 아래에 원본 비율로 표시됩니다</span>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px">
+          <sc-for list="{{ nImages }}" as="g" hint-placeholder-count="0"><div style="position:relative"><img src="{{ g.src }}" alt="공지 이미지" style="width:100%;aspect-ratio:4/3;object-fit:contain;background:#F3F5EF;display:block;border:1px solid #E3E4DF"><button onClick="{{ g.rm }}" aria-label="이미지 삭제" style="font:inherit;position:absolute;top:4px;right:4px;width:22px;height:22px;border:0;border-radius:50%;background:rgba(0,0,0,.65);color:#fff;font-size:12px;cursor:pointer;line-height:1">✕</button></div></sc-for>
+          <sc-if value="{{ nCanAddImg }}" hint-placeholder-val="{{ true }}"><label style="aspect-ratio:4/3;border:1px dashed #B5B5B5;background:#F3F5EF;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-weight:400;color:#555;font-size:12px;cursor:pointer"><span class="material-symbols-outlined" style="font-size:20px">add_photo_alternate</span>추가<input type="file" accept="image/*" multiple="{{ true }}" onChange="{{ onNImg }}" style="display:none"></label></sc-if>
+        </div>
+      </div>
+      <sc-if value="{{ hasNErr }}" hint-placeholder-val="{{ false }}"><div style="background:#FBEDEA;color:#A32D1C;font-weight:700;padding:10px 14px">{{ nErr }}</div></sc-if>
+    </div>
+    <div style="padding:16px 28px;border-top:1px solid #E3E4DF;display:flex;gap:8px;justify-content:flex-end">
+      <button onClick="{{ closeNForm }}" style="font:inherit;font-size:14px;font-weight:700;height:44px;padding:0 18px;border:1px solid #CFCFCF;border-radius:8px;background:#fff;cursor:pointer" style-hover="background:#F3F5EF">취소</button>
+      <button onClick="{{ submitNotice }}" style="font:inherit;font-size:14px;font-weight:700;height:44px;padding:0 22px;border:0;border-radius:8px;background:#1A1A1A;color:#fff;cursor:pointer">{{ nSaveLabel }}</button>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ siteOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:65;display:flex;justify-content:flex-end">
+  <div onClick="{{ closeSite }}" style="position:absolute;inset:0;background:rgba(0,0,0,.45)"></div>
+  <div data-screen-label="사이트 관리" role="dialog" aria-label="사이트 관리" style="position:relative;width:min(560px,100%);height:100%;background:#fff;display:flex;flex-direction:column">
+    <div style="padding:20px 28px 0;border-bottom:1px solid #E3E4DF">
+      <div style="display:flex;align-items:center"><h3 style="margin:0;font-size:20px;font-weight:800;letter-spacing:-.02em">사이트 관리</h3><button onClick="{{ closeSite }}" aria-label="닫기" style="margin-left:auto;font:inherit;width:36px;height:36px;border:0;border-radius:50%;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#1A1A1A" style-hover="background:#F3F5EF"><span class="material-symbols-outlined" style="font-size:20px">close</span></button></div>
+      <div style="display:flex;gap:24px;margin-top:14px">
+        <sc-for list="{{ siteTabs }}" as="t" hint-placeholder-count="2"><button onClick="{{ t.set }}" style="font:inherit;font-size:14px;font-weight:{{ t.fw }};color:{{ t.fg }};background:transparent;border:0;border-bottom:2px solid {{ t.bd }};padding:0 0 12px;cursor:pointer">{{ t.t }}</button></sc-for>
+      </div>
+    </div>
+    <div style="flex:1;overflow:auto;padding:22px 28px;display:flex;flex-direction:column;gap:18px;font-size:14px">
+      <sc-if value="{{ tabSlides }}" hint-placeholder-val="{{ true }}">
+        <label style="display:flex;align-items:center;gap:10px;cursor:pointer"><input type="checkbox" checked="{{ sAuto }}" onChange="{{ toggleAuto }}" style="width:16px;height:16px;accent-color:#1A1A1A">자동 수집 행사 슬라이드도 함께 보여주기</label>
+        <div style="display:flex;flex-direction:column;border-top:1px solid #E3E4DF">
+          <div style="display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 4px;border-bottom:1px solid #E3E4DF;opacity:.7"><span style="width:56px;height:44px;border-radius:8px;background:#B3F945"></span><span style="min-width:0"><span style="display:block;font-size:12px;color:#777">1번 · 고정</span><b style="display:block;font-size:14px;font-weight:600">일상에 재미를 켜다.</b></span><span style="font-size:12px;color:#777;display:flex;align-items:center;gap:4px"><span class="material-symbols-outlined" style="font-size:14px">lock</span>고정</span></div>
+          <sc-for list="{{ sSlides }}" as="x" hint-placeholder-count="0">
+            <div style="display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 4px;border-bottom:1px solid #E3E4DF;background:{{ x.bg }}">
+              <span style="width:56px;height:44px;border-radius:8px;overflow:hidden;background:{{ x.sw }};display:flex;align-items:center;justify-content:center"><sc-if value="{{ x.hasImg }}" hint-placeholder-val="{{ false }}"><img src="{{ x.img }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></sc-if></span>
+              <button onClick="{{ x.edit }}" style="font:inherit;text-align:left;border:0;background:transparent;cursor:pointer;min-width:0;padding:0"><span style="display:block;font-size:12px;color:#777">{{ x.no }} · {{ x.kicker }}</span><b style="display:block;font-size:14px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ x.title }}</b></button>
+              <span style="display:flex;gap:2px">
+                <button onClick="{{ x.up }}" aria-label="위로" style="font:inherit;width:30px;height:30px;border:1px solid #E3E4DF;border-radius:4px;background:#fff;cursor:pointer"><span class="material-symbols-outlined" style="font-size:18px">arrow_upward</span></button>
+                <button onClick="{{ x.down }}" aria-label="아래로" style="font:inherit;width:30px;height:30px;border:1px solid #E3E4DF;border-radius:4px;background:#fff;cursor:pointer"><span class="material-symbols-outlined" style="font-size:18px">arrow_downward</span></button>
+                <button onClick="{{ x.del }}" aria-label="삭제" style="font:inherit;width:30px;height:30px;border:1px solid #E0B4AC;border-radius:4px;background:#fff;color:#C0392B;cursor:pointer"><span class="material-symbols-outlined" style="font-size:18px">delete</span></button>
+              </span>
+            </div>
+          </sc-for>
+        </div>
+        <sc-if value="{{ sNoSlides }}" hint-placeholder-val="{{ false }}"><p style="margin:0;color:#777;font-size:14px;line-height:1.6">1번 슬라이드 '일상에 재미를 켜다.'는 항상 고정이며, 여기서 추가한 슬라이드가 2번부터 이어집니다.</p></sc-if>
+        <div style="display:flex;flex-direction:column;gap:10px;padding-top:6px">
+          <b style="font-size:16px;font-weight:700">문화콘텐츠에서 고르기</b>
+          <span style="font-size:12px;color:#777;margin-top:-4px">'추가'를 누르면 바로 메인 슬라이드에 올라갑니다.</span>
+          <input value="{{ pickQ }}" onChange="{{ setPickQ }}" placeholder="제목, 장소로 찾기" style="font:inherit;font-size:14px;height:44px;padding:0 12px;border:1px solid #CFCFCF;border-radius:8px;outline:none">
+          <div style="max-height:300px;overflow:auto;border:1px solid #E3E4DF;border-radius:8px">
+            <sc-for list="{{ pickList }}" as="p" hint-placeholder-count="4">
+              <div style="display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px 10px;border-bottom:1px solid #F0F0EC">
+                <span style="width:40px;height:52px;border-radius:4px;overflow:hidden;background:#F3F5EF;display:flex;align-items:center;justify-content:center"><sc-if value="{{ p.hasPoster }}" hint-placeholder-val="{{ false }}"><img src="{{ p.poster }}" alt="" style="width:100%;height:100%;object-fit:contain;display:block"></sc-if></span>
+                <span style="min-width:0"><b style="display:block;font-size:14px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ p.title }}</b><span style="display:block;font-size:12px;color:#777;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ p.meta }}</span></span>
+                <sc-if value="{{ p.notAdded }}" hint-placeholder-val="{{ true }}"><button onClick="{{ p.add }}" style="font:inherit;height:30px;padding:0 12px;border:0;border-radius:8px;background:#1A1A1A;color:#fff;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap">추가</button></sc-if>
+                <sc-if value="{{ p.added }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:#2F5D0B;font-weight:600;white-space:nowrap">추가됨</span></sc-if>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <button onClick="{{ addSlide }}" style="font:inherit;align-self:flex-start;display:flex;align-items:center;gap:6px;height:36px;padding:0 14px;border:1px solid #1A1A1A;border-radius:8px;background:#fff;font-size:14px;font-weight:600;cursor:pointer"><span class="material-symbols-outlined" style="font-size:18px">add</span>직접 슬라이드 만들기</button>
+        <sc-for list="{{ sCur }}" as="c" hint-placeholder-count="0">
+          <div style="display:flex;flex-direction:column;gap:14px;padding:18px;border:1px solid #E3E4DF;border-radius:8px;background:#FAFAF8">
+            <b style="font-size:14px;color:#555">{{ c.no }}번 슬라이드 편집</b>
+            <label style="display:flex;flex-direction:column;gap:6px;font-weight:700">작은 제목<input value="{{ c.kicker }}" onChange="{{ c.setKicker }}" placeholder="예) GREENLIGHT STUDIO · 공지" style="font:inherit;font-weight:400;padding:11px 12px;border:1px solid #CFCFCF;border-radius:8px;background:#fff"></label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-weight:700">제목 *<input value="{{ c.title }}" onChange="{{ c.setTitle }}" placeholder="예) 11월 부산 문화 행사 총정리" style="font:inherit;font-weight:400;padding:11px 12px;border:1px solid #CFCFCF;border-radius:8px;background:#fff"></label>
+            <label style="display:flex;flex-direction:column;gap:6px;font-weight:700">설명<textarea value="{{ c.sub }}" onChange="{{ c.setSub }}" rows="3" placeholder="두 줄 이내 권장" style="font:inherit;font-weight:400;padding:11px 12px;border:1px solid #CFCFCF;border-radius:8px;background:#fff;resize:vertical;line-height:1.6"></textarea></label>
+            <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:10px">
+              <label style="display:flex;flex-direction:column;gap:6px;font-weight:700">버튼 문구<input value="{{ c.btn }}" onChange="{{ c.setBtn }}" placeholder="예) 자세히 보기" style="font:inherit;font-weight:400;padding:11px 12px;border:1px solid #CFCFCF;border-radius:8px;background:#fff;min-width:0"></label>
+              <label style="display:flex;flex-direction:column;gap:6px;font-weight:700">버튼 링크<input value="{{ c.link }}" onChange="{{ c.setLink }}" placeholder="#calendar 또는 https://…" style="font:inherit;font-weight:400;padding:11px 12px;border:1px solid #CFCFCF;border-radius:8px;background:#fff;min-width:0"></label>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px;font-weight:700">배경
+              <div style="display:flex;gap:8px"><sc-for list="{{ c.themes }}" as="th" hint-placeholder-count="4"><button onClick="{{ th.set }}" aria-label="{{ th.t }}" title="{{ th.t }}" style="font:inherit;width:40px;height:44px;border-radius:8px;border:1px solid #CFCFCF;background:{{ th.bg }};box-shadow:{{ th.ring }};cursor:pointer"></button></sc-for></div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px;font-weight:700">이미지
+              <sc-if value="{{ c.noImg }}" hint-placeholder-val="{{ true }}"><label style="border:1px dashed #B5B5B5;padding:18px;text-align:center;font-weight:400;color:#555;background:#fff;cursor:pointer">클릭하여 이미지 업로드<input type="file" accept="image/*" onChange="{{ onSlideImg }}" style="display:none"></label></sc-if>
+              <sc-if value="{{ c.hasImg }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:12px;align-items:flex-end"><img src="{{ c.img }}" alt="슬라이드 이미지" style="width:120px;height:80px;object-fit:cover;border:1px solid #E3E4DF;display:block"><button onClick="{{ c.rmImg }}" style="font:inherit;font-size:12px;font-weight:700;padding:7px 10px;border:1px solid #CFCFCF;background:#fff;color:#C0392B;cursor:pointer">이미지 제거</button></div></sc-if>
+            </div>
+          </div>
+        </sc-for>
+      </sc-if>
+      <sc-if value="{{ tabLinks }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:0;color:#555;font-size:14px;line-height:1.6">푸터에 표시되는 연락처와 SNS 링크입니다. 비워 두면 해당 항목은 보이지 않습니다.</p>
+        <label style="display:flex;flex-direction:column;gap:6px;font-weight:700">이메일<input type="email" value="{{ lEmail }}" onChange="{{ setLEmail }}" placeholder="hello@greenlight.kr" style="font:inherit;font-weight:400;padding:12px 14px;border:1px solid #CFCFCF;border-radius:8px"></label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-weight:700">인스타그램 주소<input type="url" value="{{ lInsta }}" onChange="{{ setLInsta }}" placeholder="https://www.instagram.com/계정이름" style="font:inherit;font-weight:400;padding:12px 14px;border:1px solid #CFCFCF;border-radius:8px"></label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-weight:700">카카오톡 채널 주소<input type="url" value="{{ lKakao }}" onChange="{{ setLKakao }}" placeholder="https://pf.kakao.com/_채널ID" style="font:inherit;font-weight:400;padding:12px 14px;border:1px solid #CFCFCF;border-radius:8px"></label>
+        <p style="margin:0;color:#777;font-size:12px;line-height:1.6">카카오톡 채널 주소는 카카오톡 채널 관리자센터 → 채널 정보 → '채널 URL'에서 복사할 수 있습니다.</p>
+      </sc-if>
+      <sc-if value="{{ tabOrder }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:0;color:#555;font-size:14px;line-height:1.6">메인 슬라이드 아래에 보이는 영역의 순서를 바꿉니다.</p>
+        <div style="display:flex;flex-direction:column;border-top:1px solid #E3E4DF">
+          <sc-for list="{{ sOrder }}" as="o" hint-placeholder-count="3">
+            <div style="display:flex;align-items:center;gap:12px;padding:14px 4px;border-bottom:1px solid #E3E4DF">
+              <span style="width:24px;height:24px;border-radius:50%;background:#1A1A1A;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center">{{ o.no }}</span>
+              <b style="flex:1;font-size:16px;font-weight:600">{{ o.t }}</b>
+              <button onClick="{{ o.up }}" aria-label="위로" style="font:inherit;width:32px;height:36px;border:1px solid #E3E4DF;border-radius:4px;background:#fff;cursor:pointer"><span class="material-symbols-outlined" style="font-size:18px">arrow_upward</span></button>
+              <button onClick="{{ o.down }}" aria-label="아래로" style="font:inherit;width:32px;height:36px;border:1px solid #E3E4DF;border-radius:4px;background:#fff;cursor:pointer"><span class="material-symbols-outlined" style="font-size:18px">arrow_downward</span></button>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+      <sc-if value="{{ hasSiteErr }}" hint-placeholder-val="{{ false }}"><div style="background:#FBEDEA;color:#A32D1C;font-weight:700;padding:10px 14px">{{ siteErr }}</div></sc-if>
+    </div>
+    <div style="padding:16px 28px;border-top:1px solid #E3E4DF;display:flex;gap:8px;justify-content:flex-end;align-items:center">
+      <span style="margin-right:auto;font-size:12px;color:#777"><sc-if value="{{ hasSiteMsg }}" hint-placeholder-val="{{ false }}"><b style="color:#2F5D0B;font-weight:600">{{ siteMsg }} </b></sc-if>직접 만든 슬라이드와 연락처는 저장을 눌러 반영합니다.</span>
+      <button onClick="{{ closeSite }}" style="font:inherit;font-size:14px;font-weight:700;height:44px;padding:0 18px;border:1px solid #CFCFCF;border-radius:8px;background:#fff;cursor:pointer" style-hover="background:#F3F5EF">취소</button>
+      <button onClick="{{ saveSite }}" style="font:inherit;font-size:14px;font-weight:700;height:44px;padding:0 22px;border:0;border-radius:8px;background:#1A1A1A;color:#fff;cursor:pointer">{{ siteSaveLabel }}</button>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ dayPopOpen }}" hint-placeholder-val="{{ false }}">
+<div data-mwrap="1" style="position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;padding:24px">
+  <div onClick="{{ closeDayPop }}" style="position:absolute;inset:0;background:rgba(0,0,0,.4)"></div>
+  <div data-mbox="1" data-screen-label="날짜별 행사" role="dialog" aria-label="{{ selLabel }}" style="border-radius:16px;overflow:hidden;position:relative;width:min(520px,100%);max-height:80vh;display:flex;flex-direction:column;background:#fff;border-radius:8px;box-shadow:0 24px 60px rgba(0,0,0,.25);overflow:hidden">
+    <div style="display:flex;align-items:baseline;gap:10px;padding:20px 22px 14px;border-bottom:1px solid #E3E4DF"><b style="font-size:18px;letter-spacing:-.02em">{{ selLabel }}</b><span style="font-size:14px;color:#777">{{ dayCount }}건</span><button onClick="{{ closeDayPop }}" aria-label="닫기" style="font:inherit;margin-left:auto;border:0;background:transparent;font-size:18px;cursor:pointer;line-height:1">✕</button></div>
+    <ul style="list-style:none;margin:0;padding:6px 0;overflow:auto">
+      <sc-for list="{{ dayList }}" as="e" hint-placeholder-count="3">
+        <li><button onClick="{{ e.open }}" style="font:inherit;width:100%;text-align:left;border:0;background:#fff;padding:12px 22px;cursor:pointer;display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:center;color:#1A1A1A" style-hover="background:#F3F5EF">
+          <span style="width:8px;height:36px;border-radius:4px;background:{{ e.srcBg }}"></span>
+          <span style="min-width:0"><span style="display:block;font-size:16px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ e.title }}</span><span style="display:block;font-size:12px;color:#777;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ e.cat }} · {{ e.dateText }} · {{ e.place }}</span></span>
+        </button></li>
+      </sc-for>
+    </ul>
+    <sc-if value="{{ noDay }}" hint-placeholder-val="{{ false }}"><div style="padding:32px 22px;text-align:center;color:#777;font-size:14px">이 날짜에 등록된 행사가 없습니다.</div></sc-if>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ loginOpen }}" hint-placeholder-val="{{ false }}">
+<div data-mwrap="1" style="position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;padding:24px">
+  <div onClick="{{ closeLogin }}" style="position:absolute;inset:0;background:rgba(0,0,0,.45)"></div>
+  <div data-mbox="1" data-screen-label="관리자 로그인" role="dialog" aria-label="관리자 로그인" style="border-radius:16px;position:relative;width:min(380px,100%);background:#fff;padding:28px;display:flex;flex-direction:column;gap:14px;border-radius:8px;box-shadow:0 24px 60px rgba(0,0,0,.25)">
+    <b style="font-size:20px;font-weight:700;letter-spacing:-.02em">관리자 로그인</b>
+    <input type="password" value="{{ pw }}" onChange="{{ setPw }}" onKeyDown="{{ loginKey }}" autofocus="{{ true }}" placeholder="비밀번호" style="font:inherit;font-size:16px;height:46px;padding:0 14px;border:1px solid #CFCFCF;border-radius:8px;outline:none">
+    <sc-if value="{{ localMode }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:#777;line-height:1.5">미리보기에서는 비밀번호 없이 들어가며, 등록한 내용은 이 브라우저에만 저장됩니다.</span></sc-if>
+    <sc-if value="{{ hasLoginErr }}" hint-placeholder-val="{{ false }}"><span style="font-size:14px;color:#A32D1C;font-weight:600">{{ loginErr }}</span></sc-if>
+    <div style="display:flex;gap:8px;justify-content:flex-end">
+      <button onClick="{{ closeLogin }}" style="font:inherit;font-size:14px;font-weight:600;height:44px;padding:0 16px;border:1px solid #CFCFCF;border-radius:8px;background:#fff;cursor:pointer">취소</button>
+      <button onClick="{{ doLogin }}" style="font:inherit;font-size:14px;font-weight:700;height:44px;padding:0 18px;border:0;border-radius:8px;background:#1A1A1A;color:#fff;cursor:pointer">로그인</button>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ bulkOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:62;display:flex;justify-content:flex-end">
+  <div onClick="{{ closeBulk }}" style="position:absolute;inset:0;background:rgba(0,0,0,.45)"></div>
+  <div data-screen-label="행사 일괄 등록" role="dialog" aria-label="행사 일괄 등록" style="position:relative;width:min(760px,100%);height:100%;background:#fff;display:flex;flex-direction:column">
+    <div style="padding:20px 28px;border-bottom:1.5px solid #1A1A1A;display:flex;align-items:center"><h3 style="margin:0;font-size:20px;font-weight:800">행사 일괄 등록</h3><button onClick="{{ closeBulk }}" aria-label="닫기" style="margin-left:auto;font:inherit;width:36px;height:36px;border:0;border-radius:50%;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#1A1A1A" style-hover="background:#F3F5EF"><span class="material-symbols-outlined" style="font-size:20px">close</span></button></div>
+    <div style="padding:22px 28px;display:flex;flex-direction:column;gap:18px;overflow:auto;flex:1;font-size:14px">
+      <div style="display:flex;flex-direction:column;gap:8px;line-height:1.7;color:#333">
+        <b style="font-size:16px">1. 양식을 내려받아 엑셀·스프레드시트에서 채웁니다</b>
+        <span>열 순서: <code style="font-family:ui-monospace,Menlo,monospace;background:#F3F5EF;padding:2px 6px;border-radius:4px">제목, 분류, 요금, 시작일시, 종료일시, 장소, 설명, 문의</code></span>
+        <span style="color:#777;font-size:14px">분류는 공연·전시·행사·교육·모임 중 하나, 요금은 무료·유료, 일시는 <code style="font-family:ui-monospace,Menlo,monospace">2026-11-03 14:00</code> 형식. 종료일시·설명·문의는 비워도 됩니다. 포스터는 등록 후 각 행사에서 추가하세요.</span>
+        <button onClick="{{ dlTemplate }}" style="font:inherit;align-self:flex-start;display:flex;align-items:center;gap:6px;height:36px;padding:0 14px;border:1px solid #1A1A1A;border-radius:8px;background:#fff;font-size:14px;font-weight:700;cursor:pointer"><span class="material-symbols-outlined" style="font-size:18px">download</span>CSV 양식 내려받기</button>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <b style="font-size:16px">2. 채운 CSV 파일을 올립니다</b>
+        <label style="border:1px dashed #B5B5B5;padding:22px;text-align:center;color:#555;background:#F3F5EF;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px"><span class="material-symbols-outlined" style="font-size:28px">upload_file</span><span>{{ bulkFileLabel }}</span><input type="file" accept=".csv,text/csv" onChange="{{ onBulkFile }}" style="display:none"></label>
+      </div>
+      <sc-if value="{{ hasBulkRows }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <b style="font-size:16px">3. 확인 후 등록 <span style="font-weight:400;color:#777;font-size:14px">{{ bulkOk }}건 등록 가능 · {{ bulkBad }}건 오류</span></b>
+          <div style="border:1px solid #E3E4DF;border-radius:8px;overflow:auto;max-height:46vh">
+            <table style="width:100%;border-collapse:collapse;font-size:14px;min-width:640px">
+              <thead><tr style="background:#F3F5EF;text-align:left"><th style="padding:8px 10px;font-weight:700;border-bottom:1px solid #E3E4DF">#</th><th style="padding:8px 10px;font-weight:700;border-bottom:1px solid #E3E4DF">제목</th><th style="padding:8px 10px;font-weight:700;border-bottom:1px solid #E3E4DF">분류</th><th style="padding:8px 10px;font-weight:700;border-bottom:1px solid #E3E4DF">요금</th><th style="padding:8px 10px;font-weight:700;border-bottom:1px solid #E3E4DF">일시</th><th style="padding:8px 10px;font-weight:700;border-bottom:1px solid #E3E4DF">장소</th><th style="padding:8px 10px;font-weight:700;border-bottom:1px solid #E3E4DF">상태</th></tr></thead>
+              <tbody>
+                <sc-for list="{{ bulkRows }}" as="r" hint-placeholder-count="3">
+                  <tr style="background:{{ r.bg }}"><td style="padding:8px 10px;border-bottom:1px solid #E3E4DF;color:#777">{{ r.no }}</td><td style="padding:8px 10px;border-bottom:1px solid #E3E4DF;font-weight:600">{{ r.title }}</td><td style="padding:8px 10px;border-bottom:1px solid #E3E4DF">{{ r.cat }}</td><td style="padding:8px 10px;border-bottom:1px solid #E3E4DF">{{ r.fee }}</td><td style="padding:8px 10px;border-bottom:1px solid #E3E4DF;white-space:nowrap">{{ r.when }}</td><td style="padding:8px 10px;border-bottom:1px solid #E3E4DF">{{ r.place }}</td><td style="padding:8px 10px;border-bottom:1px solid #E3E4DF;color:{{ r.stFg }};font-weight:600">{{ r.st }}</td></tr>
+                </sc-for>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ hasBulkErr }}" hint-placeholder-val="{{ false }}"><div style="background:#FBEDEA;color:#A32D1C;font-weight:700;padding:10px 14px">{{ bulkErr }}</div></sc-if>
+    </div>
+    <div style="padding:16px 28px;border-top:1px solid #E3E4DF;display:flex;gap:8px;justify-content:flex-end">
+      <button onClick="{{ closeBulk }}" style="font:inherit;font-size:14px;font-weight:700;height:44px;padding:0 18px;border:1px solid #CFCFCF;border-radius:8px;background:#fff;cursor:pointer" style-hover="background:#F3F5EF">취소</button>
+      <button onClick="{{ submitBulk }}" disabled="{{ bulkDisabled }}" style="font:inherit;font-size:14px;font-weight:700;height:44px;padding:0 22px;border:0;border-radius:8px;background:{{ bulkBg }};color:#fff;cursor:pointer">{{ bulkSaveLabel }}</button>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ formOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:60;display:flex;justify-content:flex-end">
+  <div onClick="{{ closeForm }}" style="position:absolute;inset:0;background:rgba(0,0,0,.45)"></div>
+  <div data-screen-label="문화콘텐츠 등록 폼" style="position:relative;width:min(480px,100%);height:100%;background:#fff;display:flex;flex-direction:column">
+    <div style="padding:20px 28px;border-bottom:1.5px solid #1A1A1A;display:flex;align-items:center"><h3 style="margin:0;font-size:20px;font-weight:800">{{ formTitle }}</h3><button onClick="{{ closeForm }}" aria-label="닫기" style="margin-left:auto;font:inherit;width:36px;height:36px;border:0;border-radius:50%;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#1A1A1A" style-hover="background:#F3F5EF"><span class="material-symbols-outlined" style="font-size:20px">close</span></button></div>
+    <div style="padding:22px 28px;display:flex;flex-direction:column;gap:16px;overflow:auto;flex:1;font-size:14px">
+      <label style="display:flex;flex-direction:column;gap:6px;font-weight:700">제목 *<input value="{{ f.title }}" onChange="{{ setTitle }}" placeholder="예) 청년 버스킹 나이트 Vol.4" style="font:inherit;font-weight:400;padding:12px 14px;border:1px solid #CFCFCF;border-radius:8px"></label>
+      <div style="display:flex;flex-direction:column;gap:8px;font-weight:700">분류<div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ fcats }}" as="c" hint-placeholder-count="5"><button onClick="{{ c.set }}" style="font:inherit;font-size:14px;font-weight:600;height:36px;padding:0 14px;border-radius:999px;cursor:pointer;background:{{ c.bg }};color:{{ c.fg }};border:1px solid {{ c.bd }}">{{ c.t }}</button></sc-for></div></div>
+      <div style="display:flex;flex-direction:column;gap:8px;font-weight:700">요금<div style="display:flex;gap:6px"><sc-for list="{{ ffees }}" as="c" hint-placeholder-count="2"><button onClick="{{ c.set }}" style="font:inherit;font-size:14px;font-weight:600;height:36px;padding:0 14px;border-radius:999px;cursor:pointer;background:{{ c.bg }};color:{{ c.fg }};border:1px solid {{ c.bd }}">{{ c.t }}</button></sc-for></div></div>
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px">
+        <label style="display:flex;flex-direction:column;gap:6px;font-weight:700">시작 일시 *<input type="datetime-local" value="{{ f.start }}" onChange="{{ setStart }}" style="font:inherit;font-weight:400;padding:11px 10px;border:1px solid #CFCFCF;min-width:0;width:100%"></label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-weight:700">종료 일시<input type="datetime-local" value="{{ f.end }}" onChange="{{ setEnd }}" style="font:inherit;font-weight:400;padding:11px 10px;border:1px solid #CFCFCF;min-width:0;width:100%"></label>
+      </div>
+      <label style="display:flex;flex-direction:column;gap:6px;font-weight:700">장소<input value="{{ f.place }}" onChange="{{ setPlace }}" placeholder="예) 야외무대" style="font:inherit;font-weight:400;padding:12px 14px;border:1px solid #CFCFCF;border-radius:8px"></label>
+      <label style="display:flex;flex-direction:column;gap:6px;font-weight:700">본문<textarea value="{{ f.desc }}" onChange="{{ setDesc }}" rows="9" placeholder="행사 소개, 프로그램, 참여 방법, 유의사항 등" style="font:inherit;font-weight:400;padding:12px 14px;border:1px solid #CFCFCF;border-radius:8px;resize:vertical;line-height:1.6"></textarea></label>
+      <div style="display:flex;flex-direction:column;gap:8px;font-weight:700">대표 이미지 (포스터)
+        <sc-if value="{{ fNoPoster }}" hint-placeholder-val="{{ true }}"><label style="border:1px dashed #B5B5B5;padding:20px;text-align:center;font-weight:400;color:#555;background:#F3F5EF;cursor:pointer">클릭하여 이미지 업로드 (세로형 권장)<input type="file" accept="image/*" onChange="{{ onFile }}" style="display:none"></label></sc-if>
+        <sc-if value="{{ fHasPoster }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:12px;align-items:flex-end"><img src="{{ f.poster }}" alt="포스터 미리보기" style="width:90px;aspect-ratio:3/4;object-fit:cover;border:1px solid #E3E4DF"><button onClick="{{ rmPoster }}" style="font:inherit;font-size:12px;font-weight:700;padding:7px 10px;border:1px solid #CFCFCF;background:#fff;color:#C0392B;cursor:pointer">이미지 제거</button></div></sc-if>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;font-weight:700">추가 이미지 <span style="font-weight:400;color:#777;font-size:12px">최대 4장 · 상세 화면에 함께 표시됩니다</span>
+        <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px">
+          <sc-for list="{{ fImages }}" as="g" hint-placeholder-count="0"><div style="position:relative"><img src="{{ g.src }}" alt="추가 이미지" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;border:1px solid #E3E4DF"><button onClick="{{ g.rm }}" aria-label="이미지 삭제" style="font:inherit;position:absolute;top:4px;right:4px;width:22px;height:22px;border:0;border-radius:50%;background:rgba(0,0,0,.65);color:#fff;font-size:12px;cursor:pointer;line-height:1">✕</button></div></sc-for>
+          <sc-if value="{{ fCanAddImg }}" hint-placeholder-val="{{ true }}"><label style="aspect-ratio:1;border:1px dashed #B5B5B5;background:#F3F5EF;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-weight:400;color:#555;font-size:12px;cursor:pointer"><span class="material-symbols-outlined" style="font-size:20px">add_photo_alternate</span>추가<input type="file" accept="image/*" multiple="{{ true }}" onChange="{{ onGallery }}" style="display:none"></label></sc-if>
+        </div>
+      </div>
+      <sc-if value="{{ hasErr }}" hint-placeholder-val="{{ false }}"><div style="background:#FBEDEA;color:#A32D1C;font-weight:700;padding:10px 14px">{{ err }}</div></sc-if>
+    </div>
+    <div style="padding:16px 28px;border-top:1px solid #E3E4DF;display:flex;gap:8px;justify-content:flex-end">
+      <button onClick="{{ closeForm }}" style="font:inherit;font-size:14px;font-weight:700;height:44px;padding:0 18px;border:1px solid #CFCFCF;border-radius:8px;background:#fff;cursor:pointer" style-hover="background:#F3F5EF">취소</button>
+      <button onClick="{{ submit }}" style="font:inherit;font-size:14px;font-weight:700;height:44px;padding:0 22px;border:0;border-radius:8px;background:#1A1A1A;color:#fff;cursor:pointer">{{ saveLabel }}</button>
+    </div>
+  </div>
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;sampleData&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;부산 데이터&quot;}}">
+class Component extends DCLogic {
+  KEY = 'gl.busan.local.v1'; AKEY = 'gl.one.admin';
+  MENU = [
+    { id: 'events', t: '문화콘텐츠', en: 'CONTENTS', desc: '부산에서 열리는 공연, 전시, 축제, 교육 프로그램을 매주 새로 모아 안내합니다.', items: [{ t: '전체 기간 행사', h: '#events', period: '전체 기간' }, { t: '이번 주 행사', h: '#events', period: '이번 주' }, { t: '공연', h: '#events', cat: '공연' }, { t: '전시', h: '#events', cat: '전시' }, { t: '축제·행사', h: '#events', cat: '행사' }, { t: '교육·체험', h: '#events', cat: '교육' }] },
+    { id: 'calendar', t: '행사 캘린더', en: 'CALENDAR', desc: '자동으로 모은 부산 문화콘텐츠와 직접 등록한 행사를 한 달력에서 확인하세요.', items: [{ t: '이번 달 캘린더', h: '#calendar', today: true }, { t: '다음 달 캘린더', h: '#calendar', nextMonth: true }] },
+    { id: 'notice', t: '공지사항', en: 'NOTICE', desc: '운영 변경, 모집 소식 등 스튜디오의 새 소식을 알려드립니다.', items: [{ t: '최근 공지', h: '#notice' }, { t: '공지사항 전체 보기', h: '#notices', page: true }] },
+    { id: 'about', t: '소개', en: 'ABOUT', desc: '그린라이트 스튜디오는 부산의 문화 소식을 모아 전하는 공간입니다.', items: [{ t: '그린라이트 소개', h: '#about' }, { t: '개인정보처리방침', h: '#policy=privacy', policy: 'privacy' }] },
+  ];
+  state = { toast: '', showAll: false, apiLoading: true, nCat: '전체', bulkOpen: false, bulkRows: [], bulkErr: '', bulkSaving: false, bulkName: '', evCopied: false, notices: [], noticePage: false, noticeId: null, policy: null, nFormOpen: false, nf: null, nErr: '', nSaving: false, pickQ: '', siteMsg: '', settings: null, siteOpen: false, siteTab: 'slides', sEdit: null, sIdx: null, siteSaving: false, siteErr: '', dayPop: false, remote: false, loginOpen: false, pw: '', loginErr: '', saving: false, calM: 0, calSrc: '전체', pub: [], copied: false, searchOpen: false, events: [], api: [], updatedAt: null, loadErr: false, isAdmin: false, menuOpen: false, scrolled: false, active: '', mega: -1, acc: 0, fs: 1, lang: 'KOR', cat: '전체', fee: '전체 요금', period: '전체 기간', q: '', sel: '', off: 0, slide: 0, paused: false, modalId: null, formOpen: false, f: null, err: '' };
+  componentWillUnmount() { clearInterval(this.timer); clearInterval(this.clock); window.removeEventListener('scroll', this.onScroll); window.removeEventListener('popstate', this.onPop); window.removeEventListener('keydown', this.onKey); document.body.style.overflow = ''; }
+  // 주소(hash) → 화면 상태. 뒤로가기/앞으로가기, 공유 링크, 앵커 이동 모두 여기서 처리
+  syncFromHash(initial) {
+    const h = location.hash || '';
+    let nm;
+    const wasOverlay = this.state.noticePage || !!this.state.policy;
+    const closeAll = { noticePage: false, noticeId: null, policy: null, modalId: null, dayPop: false, menuOpen: false, mega: -1, searchOpen: false };
+    const enterOverlay = p => { if (!wasOverlay) this._retY = window.scrollY; this.setState({ ...closeAll, ...p }, () => { const ov = document.querySelector('[data-overlay]'); if (ov) ov.scrollTo(0, 0); }); };
+    if (h === '#notices') { enterOverlay({ noticePage: true }); return; }
+    if ((nm = h.match(/^#notice=(.+)$/))) { enterOverlay({ noticePage: true, noticeId: decodeURIComponent(nm[1]) }); return; }
+    if ((nm = h.match(/^#policy=(privacy|terms|email)$/))) { enterOverlay({ policy: nm[1] }); return; }
+    if ((nm = h.match(/^#event=(.+)$/))) { this.setState({ ...closeAll, modalId: decodeURIComponent(nm[1]) }); return; }
+    const reopenDay = this.state.modalId && this._fromDay; this._fromDay = false;
+    this.setState({ ...closeAll, dayPop: !!reopenDay });
+    if (h.length > 1) { const el = document.getElementById(h.slice(1)); if (el) { const top = el.getBoundingClientRect().top + window.scrollY - 80; if (wasOverlay || initial) setTimeout(() => window.scrollTo({ top, behavior: initial ? 'auto' : 'smooth' }), 0); return; } }
+    if (wasOverlay && this._retY != null) { const y = this._retY; this._retY = null; setTimeout(() => window.scrollTo({ top: y, behavior: 'auto' }), 0); }
+  }
+  // 행사 상세 열기/닫기: 주소에 #event=ID 를 남겨 뒤로가기로 닫히고 공유 링크로 바로 열림
+  openEvent(id, fromDay) { this._fromDay = !!fromDay; this._evFrom = location.hash || ''; this._evPushed = true; this.nav('#event=' + encodeURIComponent(id)); }
+  closeModal() { if (!this.state.modalId) return; if (this._evPushed && /^#event=/.test(location.hash)) { this._evPushed = false; history.back(); } else { this._evPushed = false; this.nav(this._evFrom && !/^#(event|notice|policy)/.test(this._evFrom) ? this._evFrom : ''); } }
+  onKey = e => {
+    if (e.key !== 'Escape') return; const s = this.state;
+    if (s.modalId) return this.closeModal();
+    if (s.dayPop) return this.setState({ dayPop: false });
+    if (s.loginOpen) return this.setState({ loginOpen: false });
+    if (s.bulkOpen) return this.setState({ bulkOpen: false, bulkErr: '' });
+    if (s.formOpen) return this.setState({ formOpen: false, err: '' });
+    if (s.nFormOpen) return this.setState({ nFormOpen: false, nErr: '' });
+    if (s.siteOpen) return this.setState({ siteOpen: false });
+    if (s.searchOpen || s.menuOpen || s.mega >= 0) return this.setState({ searchOpen: false, menuOpen: false, mega: -1 });
+    if (s.noticePage || s.policy) return this.nav('');
+  };
+  nav(hash) { if ((location.hash || '') !== hash) history.pushState(null, '', hash || location.pathname); this.syncFromHash(false); }
+  onPop = () => this.syncFromHash(false);
+  POLICIES = {
+    privacy: { t: '개인정보처리방침', d: '2026.10.01', secs: [
+      { h: '1. 개인정보의 처리 목적', ps: ['그린라이트 스튜디오(운영자 비-씬, 이하 "스튜디오")는 다음 목적을 위해 필요한 최소한의 개인정보를 처리합니다. 처리한 개인정보는 아래 목적 이외의 용도로 이용하지 않으며, 목적이 변경될 경우 별도 동의를 받습니다.'], li: ['체험단·프로그램 참가 신청 접수 및 매칭 결과 안내', '행사 제보, 문의 사항에 대한 확인과 답변', '행사 참여 확정 및 후기 수집 등 참가자 관리'] },
+      { h: '2. 처리하는 개인정보 항목', ps: ['신청·문의 과정에서 아래 항목이 수집될 수 있습니다. 홈페이지 열람만으로는 개인정보를 수집하지 않습니다.'], li: ['필수 : 이름, 연락처(휴대전화 번호 또는 이메일)', '선택 : 참여 희망 분야, 동반 인원, 후기 게시 채널', '자동 수집 : 접속 기록, 브라우저 종류 등 서비스 이용 기록'] },
+      { h: '3. 개인정보의 보유 및 이용 기간', ps: ['개인정보는 수집 목적이 달성되면 지체 없이 파기합니다. 다만 관계 법령에 따라 보존이 필요한 경우 해당 기간 동안 보관합니다.'], li: ['체험단·프로그램 신청 정보 : 해당 행사 종료 후 3개월', '문의·제보 내용 : 답변 완료 후 1년', '전자상거래법 등 법령에 따른 기록 : 법령이 정한 기간'] },
+      { h: '4. 개인정보의 제3자 제공', ps: ['스튜디오는 이용자의 개인정보를 원칙적으로 외부에 제공하지 않습니다. 다만 체험단 매칭 등 행사 참여를 위해 필요한 범위에서 이용자의 동의를 받아 해당 행사 주최 측에 이름과 연락처를 전달할 수 있습니다.'] },
+      { h: '5. 개인정보 처리의 위탁', ps: ['신청 접수에 구글 폼(Google LLC)을 이용하고 있으며, 입력하신 정보는 구글의 개인정보처리방침에 따라 보관됩니다. 홈페이지 운영에는 Netlify, Inc.의 호스팅 서비스를 이용합니다.'] },
+      { h: '6. 정보주체의 권리와 행사 방법', ps: ['이용자는 언제든지 자신의 개인정보에 대한 열람, 정정, 삭제, 처리 정지를 요청할 수 있습니다. 요청은 아래 연락처로 보내주시면 지체 없이 조치합니다.'] },
+      { h: '7. 개인정보의 안전성 확보 조치', ps: ['수집한 개인정보는 접근 권한이 있는 운영자만 열람할 수 있도록 관리하며, 보유 기간이 지난 정보는 복구할 수 없는 방법으로 삭제합니다.'] },
+      { h: '8. 개인정보 보호책임자', ps: ['개인정보 처리에 관한 문의, 불만, 피해 구제는 아래 책임자에게 연락해 주세요.'], li: ['책임자 : 비-씬 대표', '연락처 : 홈페이지 하단 CONTACT 이메일'] },
+      { h: '9. 방침의 변경', ps: ['이 방침은 2026년 10월 1일부터 적용됩니다. 내용이 추가·삭제·수정될 경우 시행 7일 전부터 공지사항을 통해 알려드립니다.'] } ] },
+    terms: { t: '이용약관', d: '2026.10.01', secs: [
+      { h: '제1조 (목적)', ps: ['이 약관은 그린라이트 스튜디오(운영자 비-씬, 이하 "스튜디오")가 운영하는 홈페이지에서 제공하는 서비스의 이용 조건과 절차, 스튜디오와 이용자의 권리·의무를 정하는 것을 목적으로 합니다.'] },
+      { h: '제2조 (서비스의 내용)', ps: ['스튜디오는 다음 서비스를 제공합니다.'], li: ['부산 지역의 공연·전시·축제·교육 등 문화콘텐츠 정보 안내', '행사 일정을 모은 행사 캘린더', '체험단 모집 등 스튜디오가 직접 진행하는 프로그램 안내 및 접수'] },
+      { h: '제3조 (행사 정보의 성격)', ps: ['홈페이지에 게시된 행사 정보는 공공데이터와 주최 측 공개 자료를 바탕으로 수집한 것으로, 주최 측 사정에 따라 일정·장소·요금이 예고 없이 변경되거나 취소될 수 있습니다. 참가 전 주최 측 공식 안내를 확인해 주세요. 스튜디오는 제3자가 주최하는 행사의 운영에 대해 책임지지 않습니다.'] },
+      { h: '제4조 (프로그램 신청과 취소)', ps: ['스튜디오가 직접 진행하는 체험단·프로그램은 각 모집 공지에 안내된 조건에 따라 신청, 매칭, 참가가 이루어집니다. 매칭 후 안내되는 행사 내용과 비용을 확인한 뒤 최종 참여 여부를 결정할 수 있으며, 참여 확정 후 취소 조건은 개별 안내를 따릅니다.'] },
+      { h: '제5조 (이용자의 의무)', ps: ['이용자는 다음 행위를 해서는 안 됩니다.'], li: ['타인의 정보를 도용하거나 허위 정보를 입력하는 행위', '홈페이지의 정보를 무단으로 수집·복제·배포하거나 상업적으로 이용하는 행위', '스튜디오 또는 행사 주최 측의 운영을 방해하는 행위'] },
+      { h: '제6조 (저작권)', ps: ['홈페이지에 게시된 글과 이미지의 저작권은 스튜디오 또는 해당 저작권자에게 있습니다. 행사 포스터와 소개 문구는 주최 측의 자료이며, 출처 안내를 목적으로 게시합니다. 권리자의 요청이 있을 경우 지체 없이 조치합니다.'] },
+      { h: '제7조 (서비스의 변경과 중단)', ps: ['스튜디오는 운영상 필요에 따라 서비스 내용을 변경하거나 중단할 수 있으며, 중요한 변경은 공지사항을 통해 사전에 안내합니다.'] },
+      { h: '제8조 (분쟁 해결)', ps: ['서비스 이용과 관련한 분쟁은 상호 협의로 해결하며, 협의가 이루어지지 않을 경우 관련 법령에 따릅니다.'] },
+      { h: '부칙', ps: ['이 약관은 2026년 10월 1일부터 시행합니다.'] } ] },
+    email: { t: '이메일무단수집거부', d: '2026.10.01', secs: [
+      { h: '이메일 주소 무단 수집을 거부합니다', ps: ['본 홈페이지에 게시된 이메일 주소가 전자우편 수집 프로그램이나 그 밖의 기술적 장치를 이용하여 무단으로 수집되는 것을 거부하며, 이를 위반할 경우 정보통신망 이용촉진 및 정보보호 등에 관한 법률에 의해 처벌받을 수 있습니다.'] },
+      { h: '관련 법령', ps: ['정보통신망 이용촉진 및 정보보호 등에 관한 법률 제50조의2(전자우편주소의 무단 수집행위 등 금지)'], li: ['누구든지 인터넷 홈페이지 운영자 또는 관리자의 사전 동의 없이 인터넷 홈페이지에서 자동으로 전자우편주소를 수집하는 프로그램이나 그 밖의 기술적 장치를 이용하여 전자우편주소를 수집하여서는 아니 된다.', '누구든지 제1항을 위반하여 수집된 전자우편주소를 판매·유통하여서는 아니 된다.', '누구든지 제1항 및 제2항에 따라 수집·판매 및 유통이 금지된 전자우편주소임을 알면서 이를 정보 전송에 이용하여서는 아니 된다.'] },
+      { h: '문의', ps: ['홈페이지에 안내된 이메일은 행사 제보와 문의를 위한 것입니다. 광고성 정보 전송에 이용하지 말아 주세요.'] } ] }
+  };
+  applyFont() {}
+  componentDidUpdate() { this.applyFont(); const s = this.state; const lock = !!(s.modalId || s.dayPop || s.noticePage || s.policy || s.formOpen || s.nFormOpen || s.bulkOpen || s.loginOpen || s.menuOpen); const want2 = lock ? 'hidden' : ''; if (document.body.style.overflow !== want2) document.body.style.overflow = want2; const want = this.apiUrl(); if (this._src && this._src !== want) this.loadApi(); const z = [0.9, 1, 1.12][this.state.fs]; if (this._fs !== z) { this._fs = z; document.body.style.zoom = z; } }
+  onScroll = () => {
+    const sc = window.scrollY > 40; let act = '';
+    for (const id of ['events', 'calendar', 'notice', 'about']) { const el = document.getElementById(id); if (el && el.getBoundingClientRect().top <= 160) act = id; }
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 40) { act = 'about'; }
+    if (sc !== this.state.scrolled || act !== this.state.active) this.setState({ scrolled: sc, active: act });
+  };
+  componentDidMount() { this.clock = setInterval(() => this.forceUpdate(), 60000);
+    let ev = null; try { ev = JSON.parse(localStorage.getItem(this.KEY)); } catch (e) {}
+    this._pw = sessionStorage.getItem('gl.pw') || '';
+    try { const ls = JSON.parse(localStorage.getItem('gl.busan.settings')); if (ls) this.setState({ settings: ls }); } catch (e) {}
+    let hasLn = false; try { const ln = JSON.parse(localStorage.getItem('gl.busan.notices')); if (Array.isArray(ln)) { hasLn = true; this.setState({ notices: ln }); } } catch (e) {}
+    if (!hasLn) fetch('data/notices.json?v=' + Date.now()).then(r => r.json()).then(j => { if (Array.isArray(j) && !this.state.remote) this.setState({ notices: j }); }).catch(() => {});
+    window.addEventListener('popstate', this.onPop); window.addEventListener('keydown', this.onKey);
+    if (location.hash) setTimeout(() => this.syncFromHash(true), 0);
+    this._hasLocal = Array.isArray(ev);
+    this.setState({ events: Array.isArray(ev) ? ev : [], isAdmin: !!this._pw || sessionStorage.getItem('gl.localAdmin') === '1', sel: this.iso(new Date()) });
+    fetch('/api/content', { cache: 'no-store' }).then(r => { if (!r.ok) throw new Error(); return r.json(); }).then(j => { if (!Array.isArray(j.events)) throw new Error(); this.setState({ remote: true, events: j.events, settings: j.settings || null, notices: Array.isArray(j.notices) ? j.notices : [] }); })
+      .catch(() => fetch('data/manual-events.json?v=' + Date.now()).then(r => r.json()).then(j => { const list = Array.isArray(j) ? j : Array.isArray(j.events) ? j.events : []; this.setState(this._hasLocal ? { pub: list } : { pub: list, events: list }); }).catch(() => {}));
+    this.loadApi(); this.applyFont();
+    window.addEventListener('scroll', this.onScroll, { passive: true }); this.onScroll();
+    this.elapsed = 0; this.lastSlide = this.state.slide;
+    this.timer = setInterval(() => { const st = this.state; if (st.slide !== this.lastSlide) { this.lastSlide = st.slide; this.elapsed = 0; } if (st.paused || st.modalId || st.formOpen || st.siteOpen || st.noticePage || st.nFormOpen) return; this.elapsed += 100; if (this.elapsed >= 6000) { this.elapsed = 0; this.lastSlide = st.slide + 1; this.setState({ slide: st.slide + 1 }); } }, 100);
+  }
+  apiUrl() { return this.props.sampleData ? 'data/busan-events.sample.json' : 'data/busan-events.json'; }
+  loadApi() {
+    const url = this.apiUrl();
+    this._src = url;
+    if (!this.state.apiLoading) this.setState({ apiLoading: true });
+    fetch(url + '?v=' + Date.now()).then(r => r.json()).then(j => { if (this._src === url) this.setState({ api: Array.isArray(j.events) ? j.events : [], updatedAt: j.generatedAt || null, loadErr: false, apiLoading: false }); }).catch(() => this.setState({ api: [], loadErr: true, apiLoading: false }));
+  }
+  p2(n) { return String(n).padStart(2, '0'); }
+  toast(msg) { this.setState({ toast: msg }); clearTimeout(this._tT); this._tT = setTimeout(() => this.setState({ toast: '' }), 2200); }
+  // 깨진 포스터 → 줄무늬 대체 배경
+  imgFallback = e => { const el = e.currentTarget; if (el.dataset.fb) return; el.dataset.fb = '1'; el.removeAttribute('src'); el.alt = ''; el.style.background = 'repeating-linear-gradient(135deg,#F3F5EF 0 12px,#E3E4DF 12px 24px)'; el.style.objectFit = 'cover'; };
+  iso(d) { return `${d.getFullYear()}-${this.p2(d.getMonth() + 1)}-${this.p2(d.getDate())}`; }
+  local(d) { return `${this.iso(d)}T${this.p2(d.getHours())}:${this.p2(d.getMinutes())}`; }
+  exportManual() { const blob = new Blob([JSON.stringify({ exportedAt: new Date().toISOString(), events: this.state.events }, null, 1)], { type: 'application/json' }); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'manual-events.json'; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 2000); }
+  compress(file, max, cb) { const r = new FileReader(); r.onload = () => { const img = new Image(); img.onload = () => { const sc = Math.min(1, max / Math.max(img.width, img.height)); const c = document.createElement('canvas'); c.width = Math.round(img.width * sc); c.height = Math.round(img.height * sc); c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); cb(c.toDataURL('image/jpeg', 0.8)); }; img.src = r.result; }; r.readAsDataURL(file); }
+  onGallery(ev) { const files = [...(ev.target.files || [])]; ev.target.value = ''; files.forEach(file => this.compress(file, 1200, url => this.setState(st => ({ f: { ...st.f, images: [...(st.f.images || []), url].slice(0, 4) } })))); }
+  persist(list) { try { localStorage.setItem(this.KEY, JSON.stringify(list)); } catch (e) { alert('저장 공간이 부족합니다. 포스터 이미지 용량을 줄여 주세요.'); } this.setState({ events: list }); }
+  setAdmin(on) { if (!on) { this._pw = ''; sessionStorage.removeItem('gl.pw'); sessionStorage.removeItem('gl.localAdmin'); } this.setState({ isAdmin: on }); }
+  async api(action, payload) {
+    const r = await fetch('/api/content', { method: 'POST', headers: { 'content-type': 'application/json', 'x-admin-password': this._pw }, body: JSON.stringify({ action, ...payload }) });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(j.error || '저장 서버에 연결하지 못했습니다.');
+    return j;
+  }
+  siteSettings(src) { const s = src || this.state.settings || {}; const ord = Array.isArray(s.order) && s.order.length === 3 ? s.order : ['events', 'calendar', 'notice']; return { slides: Array.isArray(s.slides) ? s.slides : [], autoSlides: s.autoSlides !== false, order: ord, links: { email: '', instagram: '', kakao: '', ...(s.links || {}) } }; }
+  openSite(tab) { const s = this.siteSettings(); this.setState({ siteOpen: true, siteMsg: '', pickQ: '', siteTab: tab || 'slides', sEdit: JSON.parse(JSON.stringify(s)), sIdx: s.slides.length ? 0 : null, siteErr: '', mega: -1, menuOpen: false }); }
+  editS(fn) { this.setState(st => { const e = JSON.parse(JSON.stringify(st.sEdit)); fn(e, st); return { sEdit: e }; }); }
+  async saveSite(keep) {
+    const se = this.state.sEdit; if (!se) return;
+    if (se.slides.some(x => x.type !== 'event' && !String(x.title || '').trim())) return this.setState({ siteErr: '제목이 비어 있는 슬라이드가 있습니다.' });
+    if (this.state.remote) {
+      this.setState({ siteSaving: true, siteErr: '' });
+      try { const j = await this.api('settings', { settings: se }); this.setState({ settings: j.settings, sEdit: keep ? JSON.parse(JSON.stringify(j.settings)) : se, siteOpen: !!keep, siteSaving: false, slide: 0, siteMsg: keep ? '사이트에 바로 적용되었습니다.' : '' }); }
+      catch (e) { this.setState({ siteErr: e.message, siteSaving: false }); }
+      return;
+    }
+    try { localStorage.setItem('gl.busan.settings', JSON.stringify(se)); } catch (e) { return this.setState({ siteErr: '저장 공간이 부족합니다. 이미지 수를 줄여 주세요.' }); }
+    this.setState({ settings: se, siteOpen: !!keep, slide: 0, siteMsg: keep ? '사이트에 바로 적용되었습니다.' : '' });
+  }
+  applyS(fn) { const se = JSON.parse(JSON.stringify(this.state.sEdit)); fn(se); this.setState({ sEdit: se, siteErr: '' }, () => this.saveSite(true)); }
+  // [텍스트](URL) 와 맨 URL 을 <a> 로 변환
+  richBody(text) {
+    const re = /\[([^\]\n]+)\]\((https?:\/\/[^\s)]+)\)|(https?:\/\/[^\s<>"'\u3131-\uD79D]+)/g;
+    const out = []; let last = 0, m, k = 0;
+    const A = (href, label) => React.createElement('a', { key: 'l' + (k++), href, target: '_blank', rel: 'noopener', style: { color: '#2F5D0B', fontWeight: 600, textDecoration: 'underline', textUnderlineOffset: '3px', wordBreak: 'break-all' } }, label);
+    while ((m = re.exec(text))) {
+      if (m.index > last) out.push(text.slice(last, m.index));
+      if (m[1]) out.push(A(m[2], m[1]));
+      else { let url = m[3]; const trail = url.match(/[.,!?;:]+$/); if (trail) { url = url.slice(0, -trail[0].length); re.lastIndex -= trail[0].length; } out.push(A(url, url)); }
+      last = re.lastIndex;
+    }
+    if (last < text.length) out.push(text.slice(last));
+    return out;
+  }
+  sortNotices(list) { return [...list].sort((a, b) => (!!b.pinned - !!a.pinned) || (b.date > a.date ? 1 : b.date < a.date ? -1 : 0)); }
+  blankNotice() { return { title: '', body: '', date: this.iso(new Date()), pinned: false, images: [], cat: '안내', recruitStart: '', recruitEnd: '', closed: false }; }
+  NCATS = { '모집': '#2F5D0B', '운영': '#8A5A00', '안내': '#555' };
+  recruitOf(n, today) { if (n.cat !== '모집' || (!n.recruitStart && !n.recruitEnd && !n.closed)) return null; if (n.closed) return { rLabel: '마감', rBg: '#E3E4DF', rFg: '#777' }; if (n.recruitStart && today < n.recruitStart) return { rLabel: '모집 예정', rBg: '#F3F5EF', rFg: '#2F5D0B' }; if (n.recruitEnd && today > n.recruitEnd) return { rLabel: '마감', rBg: '#E3E4DF', rFg: '#777' }; const dl = n.recruitEnd ? Math.ceil((new Date(n.recruitEnd + 'T00:00') - new Date(today + 'T00:00')) / 864e5) : null; return { rLabel: dl != null && dl <= 3 ? (dl === 0 ? '오늘 마감' : 'D-' + dl) : '모집중', rBg: '#B3F945', rFg: '#1E3A0C' }; }
+  onNImg(ev) { const files = [...(ev.target.files || [])]; ev.target.value = ''; files.forEach(file => this.compress(file, 1600, url => this.setState(st => ({ nf: { ...st.nf, images: [...(st.nf.images || []), url].slice(0, 6) } })))); }
+  async submitNotice() {
+    const n = this.state.nf; if (!n) return;
+    if (!n.title.trim()) return this.setState({ nErr: '제목을 입력해 주세요.' });
+    if (!n.body.trim()) return this.setState({ nErr: '본문을 입력해 주세요.' });
+    const item = { ...n, title: n.title.trim(), body: n.body.trim() };
+    if (this.state.remote) {
+      this.setState({ nSaving: true, nErr: '' });
+      try { const j = await this.api('saveNotice', { notice: item }); this.setState({ notices: j.notices, nSaving: false, nFormOpen: false, noticeId: item.id || (j.notices[0] && j.notices[0].id) || null }); }
+      catch (e) { this.setState({ nSaving: false, nErr: e.message }); }
+      return;
+    }
+    const list = item.id ? this.state.notices.map(x => x.id === item.id ? item : x) : [{ ...item, id: 'n-' + Date.now().toString(36) }, ...this.state.notices];
+    try { localStorage.setItem('gl.busan.notices', JSON.stringify(list)); } catch (e) { return this.setState({ nErr: '저장 공간이 부족합니다. 사진 수를 줄여 주세요.' }); }
+    this.setState({ notices: list, nFormOpen: false, nErr: '', noticeId: item.id || list[0].id });
+  }
+  deleteNotice(id) {
+    if (!confirm('이 공지를 삭제할까요?')) return;
+    if (this.state.remote) { this.api('deleteNotice', { id }).then(j => this.setState({ notices: j.notices, noticeId: null })).catch(e => alert(e.message)); return; }
+    const list = this.state.notices.filter(x => x.id !== id); try { localStorage.setItem('gl.busan.notices', JSON.stringify(list)); } catch (e) {}
+    this.setState({ notices: list, noticeId: null });
+  }
+  async login() {
+    const pw = this.state.pw;
+    if (!this.state.remote) { sessionStorage.setItem('gl.localAdmin', '1'); return this.setState({ isAdmin: true, loginOpen: false, pw: '', loginErr: '' }); }
+    if (!pw) return this.setState({ loginErr: '비밀번호를 입력해 주세요.' });
+    this._pw = pw;
+    try { await this.api('login', {}); sessionStorage.setItem('gl.pw', pw); this.setState({ isAdmin: true, loginOpen: false, pw: '', loginErr: '' }); }
+    catch (e) { this._pw = ''; this.setState({ loginErr: e.message }); }
+  }
+  blank() { const s = new Date(); s.setDate(s.getDate() + 7); s.setHours(14, 0, 0, 0); const e = new Date(s); e.setHours(16); return { title: '', cat: '행사', fee: '무료', start: this.local(s), end: this.local(e), place: '', desc: '', poster: null, images: [] }; }
+  // CSV 일괄 등록: 파싱 → 검증 → 저장
+  parseCSV(text) {
+    const rows = []; let row = [], cell = '', q = false; text = text.replace(/^\uFEFF/, '');
+    for (let i = 0; i < text.length; i++) { const c = text[i]; if (q) { if (c === '"') { if (text[i + 1] === '"') { cell += '"'; i++; } else q = false; } else cell += c; } else if (c === '"') q = true; else if (c === ',') { row.push(cell); cell = ''; } else if (c === '\n' || c === '\r') { if (c === '\r' && text[i + 1] === '\n') i++; row.push(cell); rows.push(row); row = []; cell = ''; } else cell += c; }
+    if (cell || row.length) { row.push(cell); rows.push(row); }
+    return rows.filter(r => r.some(x => String(x).trim()));
+  }
+  parseWhen(v) { const s = String(v || '').trim().replace(/[.\/]/g, '-').replace(/\s+/g, ' '); const m = s.match(/^(\d{4})-(\d{1,2})-(\d{1,2})(?:[ T](\d{1,2})(?::(\d{2}))?)?$/); if (!m) return null; const d = new Date(+m[1], +m[2] - 1, +m[3], m[4] != null ? +m[4] : 0, m[5] != null ? +m[5] : 0); return isNaN(d) ? null : d; }
+  onBulkFile(ev) {
+    const file = ev.target.files && ev.target.files[0]; ev.target.value = ''; if (!file) return;
+    const r = new FileReader();
+    r.onload = () => {
+      let rows = this.parseCSV(String(r.result || '')); if (rows.length && /제목|title/i.test(rows[0][0] || '')) rows = rows.slice(1);
+      const CATS = ['공연', '전시', '행사', '교육', '모임'];
+      const out = rows.map((c, i) => { const [title, cat, fee, start, end, place, desc, tel] = c.map(x => String(x || '').trim()); const errs = []; if (!title) errs.push('제목 없음'); if (!CATS.includes(cat)) errs.push('분류 오류'); if (!['무료', '유료'].includes(fee)) errs.push('요금 오류'); const sd = this.parseWhen(start); if (!sd) errs.push('시작일시 오류'); const ed = end ? this.parseWhen(end) : null; if (end && !ed) errs.push('종료일시 오류'); const s0 = sd ? this.local(sd) : '', e0 = ed ? this.local(ed) : s0; return { no: String(i + 1), title, cat, fee, place, desc, tel, start: s0, end: e0 >= s0 ? e0 : s0, errs }; });
+      this.setState({ bulkRows: out, bulkName: file.name, bulkErr: out.length ? '' : '읽을 수 있는 행이 없습니다. 양식과 열 순서를 확인해 주세요.' });
+    };
+    r.readAsText(file, 'utf-8');
+  }
+  dlTemplate() { const head = '제목,분류,요금,시작일시,종료일시,장소,설명,문의'; const ex = '"청년 버스킹 나이트 Vol.4",공연,무료,2026-11-07 19:00,2026-11-07 21:00,"광안리 해변 특설무대","매주 토요일 열리는 거리 공연",051-000-0000'; const blob = new Blob(['\uFEFF' + head + '\n' + ex + '\n'], { type: 'text/csv;charset=utf-8' }); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = '그린라이트_행사_일괄등록_양식.csv'; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000); }
+  async submitBulk() {
+    const ok = this.state.bulkRows.filter(r => !r.errs.length); if (!ok.length) return this.setState({ bulkErr: '등록 가능한 행이 없습니다.' });
+    const items = ok.map(r => ({ title: r.title, cat: r.cat, fee: r.fee, start: r.start, end: r.end, place: r.place, desc: r.desc, tel: r.tel, poster: null, images: [] }));
+    if (this.state.remote) {
+      this.setState({ bulkSaving: true, bulkErr: '' });
+      try { const j = await this.api('saveMany', { events: items }); this.setState({ events: j.events, bulkSaving: false, bulkOpen: false, bulkRows: [], bulkName: '' }); this.toast(items.length + '건을 등록했습니다'); }
+      catch (e) { this.setState({ bulkSaving: false, bulkErr: e.message }); }
+      return;
+    }
+    const ev = this.state.events; let next = ev.reduce((m, x) => Math.max(m, Number(x.id) || 0), 0);
+    this.persist([...ev, ...items.map(x => ({ ...x, id: ++next }))]);
+    this.setState({ bulkOpen: false, bulkRows: [], bulkName: '' }); this.toast(items.length + '건을 등록했습니다');
+  }
+  status(e, now) { const a = new Date(e.start), b = new Date(e.end || e.start); return now > b ? '종료' : now >= a ? '진행중' : '예정'; }
+  dec(e, now) {
+    const D = ['일', '월', '화', '수', '목', '금', '토'], a = new Date(e.start), b = new Date(e.end || e.start), st = this.status(e, now);
+    const md = d => `${d.getFullYear()}.${this.p2(d.getMonth() + 1)}.${this.p2(d.getDate())}`;
+    const multi = this.iso(a) !== this.iso(b);
+    const S = { '진행중': ['#B3F945', '#1E3A0C'], '예정': ['#F3F5EF', '#2F5D0B'], '종료': ['#E3E4DF', '#777'] }[st];
+    return { ...e, status: st, sBg: S[0], sFg: S[1], sBd: S[0], sTxt: st === '종료' ? '#777' : '#2F5D0B', dateText: multi ? `${md(a)} ~ ${md(b)}` : `${md(a)} (${D[a.getDay()]})`,
+      timeText: `${this.p2(a.getHours())}:${this.p2(a.getMinutes())} ~ ${this.p2(b.getHours())}:${this.p2(b.getMinutes())}`, hasPoster: !!e.poster, noPoster: !e.poster,
+      open: () => this.openEvent(e.id), dim: st === '종료' ? 0.55 : 1 };
+  }
+  onFile(ev) {
+    const file = ev.target.files && ev.target.files[0]; if (!file) return;
+    const r = new FileReader();
+    r.onload = () => { const img = new Image(); img.onload = () => { const sc = Math.min(1, 800 / Math.max(img.width, img.height)); const c = document.createElement('canvas'); c.width = Math.round(img.width * sc); c.height = Math.round(img.height * sc); c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); this.setState(s => ({ f: { ...s.f, poster: c.toDataURL('image/jpeg', 0.8) } })); }; img.src = r.result; };
+    r.readAsDataURL(file);
+  }
+  submit() {
+    const f = this.state.f, ev = this.state.events;
+    if (!f.title.trim()) return this.setState({ err: '제목을 입력해 주세요.' });
+    if (!f.start) return this.setState({ err: '시작 일시를 입력해 주세요.' });
+    const item = { ...f, title: f.title.trim(), end: f.end && f.end >= f.start ? f.end : f.start };
+    if (this.state.remote) {
+      this.setState({ saving: true, err: '' });
+      this.api('save', { event: item }).then(j => this.setState({ events: j.events, saving: false, formOpen: false, sel: item.start.slice(0, 10) })).catch(e => this.setState({ saving: false, err: e.message }));
+      return;
+    }
+    this.persist(item.id ? ev.map(x => x.id === item.id ? item : x) : [...ev, { ...item, id: ev.reduce((m, x) => Math.max(m, Number(x.id) || 0), 0) + 1 }]);
+    this.setState({ formOpen: false, err: '', sel: item.start.slice(0, 10) });
+  }
+  renderVals() {
+    const s = this.state, now = new Date();
+    const setF = k => e => { const v = e.target.value; this.setState(st => ({ f: { ...st.f, [k]: v }, err: '' })); };
+    const all = [...s.api, ...s.events].sort((a, b) => a.start < b.start ? -1 : 1).map(e => this.dec(e, now));
+    const ql = s.q.trim().toLowerCase();
+    const t0 = this.iso(now), wk = new Date(now); wk.setDate(wk.getDate() + 7); const t7 = this.iso(wk), m0 = t0.slice(0, 7) + '-01', m1 = this.iso(new Date(now.getFullYear(), now.getMonth() + 1, 0));
+    const inP = e => { const a = e.start.slice(0, 10), b = (e.end || e.start).slice(0, 10); return s.period === '전체 기간' ? b >= t0 : s.period === '이번 주' ? (a <= t7 && b >= t0) : s.period === '이번 달' ? (a <= m1 && b >= m0) : true; };
+    const filtered = all.filter(e => (s.cat === '전체' || e.cat === s.cat) && (s.fee === '전체 요금' || e.fee === s.fee) && inP(e) && (!ql || `${e.title} ${e.place}`.toLowerCase().includes(ql)));
+    const live = all.filter(e => e.status !== '종료');
+    // 자동 슬라이드 후보: 종료되지 않은 행사 중 진행중 → 시작 임박 순, 포스터 있는 것 우선. 같은 제목·시작일은 하나만.
+    const seenKey = new Set(); const normKey = e => (e.title || '').replace(/\s+/g, '').toLowerCase() + '|' + String(e.start || '').slice(0, 10);
+    const feats = [...live].sort((a, b) => (a.status === '진행중' ? 0 : 1) - (b.status === '진행중' ? 0 : 1) || (b.hasPoster ? 1 : 0) - (a.hasPoster ? 1 : 0) || String(a.start).localeCompare(String(b.start))).filter(e => { const k = normKey(e); if (seenKey.has(k)) return false; seenKey.add(k); return true; });
+    const ICON = { '공연': 'music_note', '전시': 'palette', '행사': 'celebration', '교육': 'school', '모임': 'groups' };
+    const BG = ['#0A0A0A', '#1E3A0C', '#0A0A0A'];
+    const brandSlide = { key: 'brand', isBrand: true, isEvent: false, bg: '#0A0A0A', fg: '#FFFFFF', accent: '#B3F945', rule: 'rgba(255,255,255,.16)', watermark: 'BUSAN', kickerFg: '#B3F945', ctrlBd: 'rgba(255,255,255,.22)', hov: 'rgba(255,255,255,.06)', dotOff: 'rgba(255,255,255,.22)', kicker: 'GREENLIGHT STUDIO · BUSAN', title: '일상에 재미를 켜다.', sub: '부산에서 열리는 공연·전시·축제를 매주 일요일 새로 모아 안내합니다.', img: '', hasImg: false, noImg: false };
+    const WM = { '공연': 'LIVE', '전시': 'ART', '행사': 'FEST', '교육': 'CLASS', '모임': 'MEET' };
+    const LT = { bg: '#F3F5EF', fg: '#1E3A0C', accent: '#2F5D0B', rule: 'rgba(30,58,12,.14)', kickerFg: '#2F5D0B', ctrlBd: 'rgba(30,58,12,.22)', btnBg: '#1E3A0C', btnFg: '#FFFFFF', hov: 'rgba(30,58,12,.05)', dotOff: 'rgba(30,58,12,.16)' };
+    const evSlides = list => list.map((e, i) => { return { key: 'e' + e.id, isBrand: false, isEvent: true, ...LT, watermark: WM[e.cat] || 'EVENT', kicker: `${e.cat} · ${e.status}`, title: e.title, date: e.dateText, place: e.place, fee: e.fee, img: e.poster, hasImg: !!e.poster, noImg: !e.poster, icon: ICON[e.cat] || 'event', open: e.open }; });
+    const pickedIds = new Set(this.siteSettings().slides.filter(x => x.type === 'event').map(x => x.eventId));
+    const spare = feats.filter(e => !pickedIds.has(e.id));
+    const THEMES = { dark: { t: '짙은 녹색', bg: '#1E3A0C', fg: '#fff', k: '#B3F945', bd: 'rgba(255,255,255,.22)', bbg: '#B3F945', bfg: '#0E0E0E', g: 'rgba(179,249,69,.22)', g2: 'rgba(255,255,255,.06)', cb: 'rgba(179,249,69,.14)', cr: 'rgba(179,249,69,.25)', wm: 'rgba(255,255,255,.12)' }, light: { t: '연한 미색', bg: '#F3F5EF', fg: '#1A1A1A', k: '#2F5D0B', bd: 'rgba(30,58,12,.3)', bbg: '#0E0E0E', bfg: '#B3F945', g: 'rgba(179,249,69,.45)', g2: 'rgba(47,93,11,.12)', cb: 'rgba(47,93,11,.1)', cr: 'rgba(47,93,11,.2)', wm: 'rgba(30,58,12,.14)' }, lime: { t: '라임', bg: '#B3F945', fg: '#0E0E0E', k: '#1E3A0C', bd: 'rgba(14,14,14,.3)', bbg: '#0E0E0E', bfg: '#B3F945', g: 'rgba(255,255,255,.5)', g2: 'rgba(47,93,11,.25)', cb: 'rgba(14,14,14,.1)', cr: 'rgba(14,14,14,.15)', wm: 'rgba(14,14,14,.14)' }, black: { t: '검정', bg: '#0A0A0A', fg: '#fff', k: '#B3F945', bd: 'rgba(255,255,255,.22)', bbg: '#B3F945', bfg: '#0E0E0E', g: 'rgba(179,249,69,.28)', g2: 'rgba(47,93,11,.5)', cb: 'rgba(179,249,69,.14)', cr: 'rgba(179,249,69,.25)', wm: 'rgba(179,249,69,.16)' } };
+    const SS = this.siteSettings();
+    const customOf = (x, i) => { return { key: 'c' + (x.id || i), isBrand: false, isEvent: false, ...LT, watermark: (x.kicker || 'NEWS').replace(/[^A-Za-z0-9 ]/g, '').slice(0, 8).toUpperCase() || 'NEWS', kicker: x.kicker || '', title: x.title, sub: x.sub || '', hasSub: !!x.sub, btn: x.btn || '', hasBtn: !!(x.btn && x.link), link: x.link || '#events', img: x.img || '', hasImg: !!x.img, noImg: !x.img, icon: 'auto_awesome' }; };
+    // 관리자가 고른 행사가 종료되면 같은 자리를 다음 후보 행사로 대체
+    const pickedList = SS.slides.filter(x => x.type === 'event').map(x => { const e = all.find(v => v.id === x.eventId); return e && e.status !== '종료' ? e : spare.shift(); }).filter(Boolean);
+    const picked = evSlides(pickedList); let pi = 0; const ordered = [];
+    SS.slides.forEach((x, i) => { if (x.type === 'event') { if (picked[pi]) ordered.push(picked[pi++]); } else if (String(x.title || '').trim()) ordered.push(customOf(x, i)); });
+    const featSlides = evSlides(spare.slice(0, 4));
+    const slides = [brandSlide, ...ordered, ...(SS.autoSlides ? featSlides : [])];
+    const si = ((s.slide % slides.length) + slides.length) % slides.length;
+    const D = ['일', '월', '화', '수', '목', '금', '토'];
+    const isAuto = e => !!e.src;
+    const calPool = all.filter(e => s.calSrc === '전체' || (s.calSrc === '부산 문화콘텐츠' ? isAuto(e) : !isAuto(e)));
+    const mFirst = new Date(now.getFullYear(), now.getMonth() + s.calM, 1), mDays = new Date(mFirst.getFullYear(), mFirst.getMonth() + 1, 0).getDate();
+    const gStart = new Date(mFirst); gStart.setDate(1 - mFirst.getDay());
+    const nCells = Math.ceil((mFirst.getDay() + mDays) / 7) * 7, todayK = this.iso(now);
+    const span = e => (new Date((e.end || e.start).slice(0, 10)) - new Date(e.start.slice(0, 10))) / 864e5;
+    const dIdx = k => Math.round((new Date(k + 'T00:00') - gStart) / 864e5);
+    const calWeeks = Array.from({ length: nCells / 7 }, (_, w) => {
+      const ws = w * 7, we = ws + 6;
+      const days = Array.from({ length: 7 }, (_, j) => {
+        const d = new Date(gStart); d.setDate(gStart.getDate() + ws + j);
+        const k = this.iso(d), inM = d.getMonth() === mFirst.getMonth(), td = k === todayK, dw = d.getDay();
+        const n = calPool.filter(e => e.start.slice(0, 10) <= k && (e.end || e.start).slice(0, 10) >= k).length;
+        return { key: k, col: String(j + 1), d: d.getDate(), aria: `${d.getMonth() + 1}월 ${d.getDate()}일 행사 ${n}건`, op: inM ? 1 : 0.35,
+          bg: inM ? '#fff' : '#F3F5EF', fw: td ? 700 : 500, fg: td ? '#fff' : dw === 0 ? '#C0392B' : dw === 6 ? '#2C5AA0' : '#1A1A1A', numBg: td ? '#1A1A1A' : 'transparent',
+          countLabel: n ? `${n}건` : '', open: () => this.setState({ sel: k, dayPop: true }) };
+      });
+      const segs = calPool.map(e => {
+        const a = dIdx(e.start.slice(0, 10)), b = dIdx((e.end || e.start).slice(0, 10));
+        if (b < ws || a > we) return null;
+        return { e, s: Math.max(a, ws) - ws, t: Math.min(b, we) - ws, contL: a < ws, contR: b > we, len: b - a };
+      }).filter(Boolean).sort((x, y) => (isAuto(x.e) - isAuto(y.e)) || (x.len - y.len) || (x.s - y.s));
+      const lanes = [[], [], []], hidden = Array(7).fill(0), bars = [];
+      for (const g of segs) {
+        const li = lanes.findIndex(L => L.every(o => g.t < o.s || g.s > o.t));
+        if (li < 0) { for (let j = g.s; j <= g.t; j++) hidden[j]++; continue; }
+        lanes[li].push(g);
+        const auto = isAuto(g.e), ok = new Date(gStart.getTime() + (ws + g.s) * 864e5).getMonth() === mFirst.getMonth() || new Date(gStart.getTime() + (ws + g.t) * 864e5).getMonth() === mFirst.getMonth();
+        bars.push({ key: g.e.id + '-' + w, col: `${g.s + 1} / ${g.t + 2}`, row: String(li + 2), t: (g.contL ? '‹ ' : '') + g.e.title, full: g.e.title,
+          ml: g.contL ? '0' : '6px', mr: g.contR ? '0' : '6px', radius: `${g.contL ? 0 : 4}px ${g.contR ? 0 : 4}px ${g.contR ? 0 : 4}px ${g.contL ? 0 : 4}px`,
+          bg: auto ? '#E4EADB' : '#1A1A1A', fg: auto ? '#1E3A0C' : '#fff', op: ok ? 1 : 0.45, open: ev => { ev.stopPropagation(); this.openEvent(g.e.id); } });
+      }
+      const mores = hidden.map((n, j) => n ? { key: w + '-' + j, col: String(j + 1), n, open: ev => { ev.stopPropagation(); this.setState({ sel: days[j].key, dayPop: true }); } } : null).filter(Boolean);
+      return { key: 'w' + w, days, bars, mores };
+    });
+    const dayList = calPool.filter(e => e.start.slice(0, 10) <= s.sel && (e.end || e.start).slice(0, 10) >= s.sel).map(e => ({ ...e, open: () => this.openEvent(e.id, true), srcShort: isAuto(e) ? '자동' : '직접', srcBg: isAuto(e) ? '#E4EADB' : '#1A1A1A', srcFg: isAuto(e) ? '#1E3A0C' : '#fff' }));
+    const selD = s.sel ? new Date(s.sel + 'T00:00') : now;
+    const m = all.find(e => e.id === s.modalId);
+    const f = s.f || this.blank();
+    const go = it => () => { const p = { mega: -1, menuOpen: false }; if (it.cat) Object.assign(p, { cat: it.cat, fee: '전체 요금' }); if (it.fee) Object.assign(p, { fee: it.fee, cat: '전체' }); if (it.period) p.period = it.period; if (it.today) Object.assign(p, { calM: 0, sel: this.iso(now) }); if (it.nextMonth) Object.assign(p, { calM: 1 }); this.setState(p); if (it.page) this.nav('#notices'); else if (it.policy) this.nav('#policy=' + it.policy); else if (it.h) this.nav(it.h); };
+    const pool = [...live].sort((a, b) => (b.hasPoster ? 1 : 0) - (a.hasPoster ? 1 : 0));
+    const recFor = i => { const e = (i === 2 && live.find(x => x.cat === '교육')) || pool[i % Math.max(pool.length, 1)]; return e ? { ...e, icon: ICON[e.cat] || 'event', open: () => { this.setState({ mega: -1 }); e.open(); } } : null; };
+    const mi = s.mega, mm = this.MENU[mi];
+    const megaList = mm ? [{ key: 'mega', no: `0${mi + 1}`, en: mm.en, t: mm.t, desc: mm.desc, h: '#' + mm.id, items: mm.items.map(it => ({ ...it, key: it.t, go: go(it) })), rec: recFor(mi) || {}, hasRec: !!recFor(mi) }] : [];
+    const hr = now.getHours() + now.getMinutes() / 60, dw = now.getDay(), isOpen = dw !== 1 && hr >= 10 && hr < 20;
+    return {
+      scrolled: String(s.scrolled), closeMega: () => { if (this.state.mega !== -1) this.setState({ mega: -1 }); },
+      gnb: this.MENU.map((m, i) => ({ key: m.id, t: m.t, en: m.en, h: '#' + m.id, active: String(mi === i || (mi < 0 && s.active === m.id)), enter: () => { if (this.state.mega !== i) this.setState({ mega: i }); }, click: () => this.setState({ mega: -1 }) })),
+      megaList,
+      megaOpen: String(mi >= 0), megaOpenB: mi >= 0,
+      weekCount: all.filter(e => e.start.slice(0, 10) <= t7 && (e.end || e.start).slice(0, 10) >= t0).length, qWeek: go({ period: '이번 주' }),
+      searchOpen: s.searchOpen, searchIcon: s.searchOpen ? 'close' : 'search', toggleSearch: () => this.setState({ searchOpen: !s.searchOpen, mega: -1 }),
+      doSearch: () => { this.setState({ searchOpen: false, cat: '전체', fee: '전체 요금', period: '전체 기간' }); const el = document.getElementById('events'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' }); },
+      searchKey: e => { if (e.key === 'Enter') { this.setState({ searchOpen: false, cat: '전체', fee: '전체 요금', period: '전체 기간' }); const el = document.getElementById('events'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' }); } if (e.key === 'Escape') this.setState({ searchOpen: false }); },
+      qFree: go({ fee: '무료' }), qShow: go({ cat: '공연' }), qExhibit: go({ cat: '전시' }), qFest: go({ cat: '행사' }),
+      drawerMenu: this.MENU.map((m, i) => ({ key: m.id, t: m.t, open: s.acc === i, fg: s.acc === i ? '#B3F945' : '#EDEDE8', icon: s.acc === i ? 'remove' : 'add', toggle: () => this.setState({ acc: s.acc === i ? -1 : i }), items: m.items.map(it => ({ ...it, key: it.t, go: go(it) })) })),
+      openState: isOpen ? 'on' : 'off', openLabel: dw === 1 ? '오늘 휴관' : isOpen ? '운영중' : '운영 종료',
+      fsDown: () => this.setState({ fs: Math.max(0, s.fs - 1) }), fsUp: () => this.setState({ fs: Math.min(2, s.fs + 1) }),
+      isKor: String(s.lang === 'KOR'), isEng: String(s.lang === 'ENG'), setKor: () => this.setState({ lang: 'KOR' }), setEng: () => this.setState({ lang: 'ENG' }),
+      isAdmin: s.isAdmin, notAdmin: !s.isAdmin, adminOn: () => this.setState({ loginOpen: true, loginErr: '', pw: '' }), adminOff: () => this.setAdmin(false),
+      loginOpen: s.loginOpen, pw: s.pw, setPw: e => this.setState({ pw: e.target.value, loginErr: '' }), doLogin: () => this.login(), loginKey: e => { if (e.key === 'Enter') this.login(); if (e.key === 'Escape') this.setState({ loginOpen: false }); }, closeLogin: () => this.setState({ loginOpen: false }), loginErr: s.loginErr, hasLoginErr: !!s.loginErr, localMode: !s.remote, localAdmin: s.isAdmin && !s.remote, saveLabel: s.saving ? '저장 중…' : '저장',
+      menuOpen: s.menuOpen, menuIcon: s.menuOpen ? 'close' : 'menu', toggleMenu: () => this.setState({ menuOpen: !s.menuOpen, mega: -1 }), closeMenu: () => this.setState({ menuOpen: false }),
+      q: s.q, setQ: e => this.setState({ q: e.target.value }),
+      hotWords: ['버스킹', '사진전', '보드게임', '워크숍', '플리마켓'].map(t => ({ t, set: () => { this.setState({ q: t, cat: '전체' }); const el = document.getElementById('events'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 100, behavior: 'smooth' }); } })),
+      cats: ['전체', '공연', '전시', '행사', '교육', '모임'].map(t => ({ t, bg: t === s.cat ? '#1A1A1A' : '#fff', fg: t === s.cat ? '#fff' : '#555', bd: t === s.cat ? '#1A1A1A' : '#E3E4DF', set: () => this.setState({ cat: t }) })),
+      freeList: live.filter(e => e.fee === '무료').slice(0, 3), cards: (s.showAll ? filtered : filtered.slice(0, 8)).map(e => ({ ...e, isManual: !e.src })), count: filtered.length, noCards: !s.apiLoading && filtered.length === 0,
+      hasMore: filtered.length > 8, moreLabel: s.showAll ? '접기' : `더 보기 (${filtered.length - 8}건)`, moreIcon: s.showAll ? 'expand_less' : 'expand_more', toggleMore: () => { const was = s.showAll; this.setState({ showAll: !was }); if (was) { const el = document.getElementById('events'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 60, behavior: 'auto' }); } },
+      apiLoading: s.apiLoading && !s.api.length, toastOpen: !!s.toast, toast: s.toast,
+      cardsWrap: [{ key: [s.cat, s.fee, s.period, ql].join('|') }], resetFilters: () => this.setState({ cat: '전체', fee: '전체 요금', period: '전체 기간', q: '', showAll: false }), nCatAll: () => this.setState({ nCat: '전체' }), skel: [1, 2, 3, 4].map(i => ({ key: String(i) })), imgFallback: this.imgFallback,
+      related: (m ? live.filter(e => e.id !== m.id).map(e => ({ e, sc: (e.cat === m.cat ? 3 : 0) + (e.fee === m.fee ? 1 : 0) + (e.place && m.place && e.place.split(' ')[0] === m.place.split(' ')[0] ? 2 : 0) + (Math.abs(new Date(e.start) - new Date(m.start)) < 14 * 864e5 ? 1 : 0) })).sort((a, b) => b.sc - a.sc || (a.e.start < b.e.start ? -1 : 1)).slice(0, 3).map(({ e }) => ({ ...e, icon: ICON[e.cat] || 'event', open: () => this.openEvent(e.id, !!this._fromDay) })) : []),
+      hasRelated: !!m && live.filter(e => e.id !== m.id).length > 0,
+      evShareLabel: '링크 복사', kakaoShareUrl: m ? 'https://sharer.kakao.com/talk/friends/picker/link?url=' + encodeURIComponent(location.origin + location.pathname + '#event=' + encodeURIComponent(m.id)) + '&text=' + encodeURIComponent(m.title) : '#',
+      shareEvent: () => { if (!m) return; const url = location.origin + location.pathname + '#event=' + encodeURIComponent(m.id); const done = () => this.toast('행사 링크를 복사했습니다'); if (navigator.share) navigator.share({ title: m.title, text: `${m.title} · ${m.dateText} · ${m.place}`, url }).catch(() => {}); else if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, () => prompt('링크를 복사하세요', url)); else prompt('링크를 복사하세요', url); },
+      bulkOpen: s.bulkOpen, openBulk: () => this.setState({ bulkOpen: true, bulkRows: [], bulkErr: '', bulkName: '', mega: -1, menuOpen: false }), closeBulk: () => this.setState({ bulkOpen: false, bulkErr: '' }), onBulkFile: e => this.onBulkFile(e), dlTemplate: () => this.dlTemplate(), submitBulk: () => this.submitBulk(),
+      bulkFileLabel: s.bulkName ? s.bulkName + ' · 다른 파일 선택' : 'CSV 파일 선택 (클릭)', hasBulkRows: s.bulkRows.length > 0, hasBulkErr: !!s.bulkErr, bulkErr: s.bulkErr,
+      bulkRows: s.bulkRows.map(r => ({ ...r, key: r.no, when: r.start ? r.start.replace('T', ' ') + (r.end && r.end !== r.start ? ' ~ ' + r.end.replace('T', ' ') : '') : '-', st: r.errs.length ? r.errs.join(', ') : '등록 가능', stFg: r.errs.length ? '#A32D1C' : '#2F5D0B', bg: r.errs.length ? '#FDF5F3' : '#fff' })),
+      bulkOk: String(s.bulkRows.filter(r => !r.errs.length).length), bulkBad: String(s.bulkRows.filter(r => r.errs.length).length), bulkDisabled: s.bulkSaving || !s.bulkRows.some(r => !r.errs.length), bulkBg: s.bulkSaving || !s.bulkRows.some(r => !r.errs.length) ? '#CFCFCF' : '#1A1A1A', bulkSaveLabel: s.bulkSaving ? '등록 중…' : `${s.bulkRows.filter(r => !r.errs.length).length}건 등록`,
+      catSel: s.cat, fee: s.fee, period: s.period, setCatSel: e => this.setState({ cat: e.target.value, showAll: false }), setFee: e => this.setState({ fee: e.target.value, showAll: false }), setPeriod: e => this.setState({ period: e.target.value, showAll: false }),
+      updatedLabel: s.loadErr ? '데이터를 불러오지 못했습니다' : s.updatedAt ? (d => `${d.getFullYear()}.${this.p2(d.getMonth() + 1)}.${this.p2(d.getDate())} 갱신`)(new Date(s.updatedAt)) : '첫 수집 대기 중',
+      todayLabel: `${now.getFullYear()}.${this.p2(now.getMonth() + 1)}.${this.p2(now.getDate())}`,
+      slideList: [slides[si]], slideNo: String(si + 1), slideTotal: String(slides.length), slideNo2: this.p2(si + 1), slideTotal2: this.p2(slides.length), liveCountLabel: String(live.length).padStart(2, '0'),
+      ...(() => { const m = new Date(now); m.setDate(now.getDate() - ((now.getDay() + 6) % 7)); const e = new Date(m); e.setDate(m.getDate() + 6); const f = d => this.p2(d.getMonth() + 1) + '.' + this.p2(d.getDate()); const j = new Date(m.getFullYear(), 0, 1); const wk = Math.ceil(((m - j) / 864e5 + ((j.getDay() + 6) % 7) + 1) / 7); return { weekRange: f(m) + '–' + f(e), weekTag: m.getFullYear() + '년 ' + wk + '주차' }; })(),
+      brandHasList: slides[si].isBrand && feats.length > 0, brandNoList: slides[si].isBrand && feats.length === 0,
+      brandList: slides[si].isBrand ? feats.slice(0, 4).map((e, i) => { const d = new Date(e.start); return { key: e.id, no: this.p2(i + 1), title: e.title, place: e.place || '', when: isNaN(d) ? '' : `${this.p2(d.getMonth() + 1)}.${this.p2(d.getDate())}`, open: e.open }; }) : [], slidePct: `${((si + 1) / slides.length) * 100}%`,
+      slidePausedAttr: String(!!(s.paused || s.modalId || s.formOpen || s.siteOpen || s.noticePage || s.nFormOpen)),
+      swipeStart: e => { const t = e.touches[0]; this.sw = { x: t.clientX, y: t.clientY }; },
+      swipeEnd: e => { if (!this.sw) return; const t = e.changedTouches[0], dx = t.clientX - this.sw.x, dy = t.clientY - this.sw.y; this.sw = null; if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy) * 1.2) this.setState(st => ({ slide: st.slide + (dx < 0 ? 1 : -1) })); },
+      dots: slides.map((sl, i) => ({ key: sl.key, past: i < si, cur: i === si, label: `${i + 1}번 슬라이드`, go: () => this.setState({ slide: i }) })),
+      prevSlide: () => this.setState({ slide: s.slide - 1 }), nextSlide: () => this.setState({ slide: s.slide + 1 }), togglePause: () => this.setState({ paused: !s.paused }), pauseIcon: s.paused ? 'play_arrow' : 'pause', pauseLabel: s.paused ? '재생' : '일시정지',
+      ...(() => {
+        const sorted = this.sortNotices(s.notices), total = sorted.length;
+        const today = this.iso(now); const dec = (n, i) => ({ key: n.id, no: String(total - i), title: n.title, date: n.date, pinned: !!n.pinned, catLabel: n.cat || '안내', catFg: this.NCATS[n.cat] || '#555', hasRecruit: !!this.recruitOf(n, today), ...(this.recruitOf(n, today) || {}), hasImg: !!(n.images && n.images.length), preview: (n.body || '').replace(/\s+/g, ' ').slice(0, 90), body: n.body || '', bodyRich: this.richBody(n.body || ''), gallery: (n.images || []).map((src, k) => ({ key: String(k), src })),
+          open: () => this.nav('#notice=' + encodeURIComponent(n.id)),
+          copyLink: () => { const url = location.origin + location.pathname + '#notice=' + encodeURIComponent(n.id); const done = () => this.toast('공지 링크를 복사했습니다'); if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, () => prompt('링크를 복사하세요', url)); else prompt('링크를 복사하세요', url); }, edit: () => this.setState({ nFormOpen: true, nf: { ...n, images: [...(n.images || [])] }, nErr: '' }), del: () => this.deleteNotice(n.id) });
+        const cur = sorted.find(n => n.id === s.noticeId);
+        const nf = s.nf || this.blankNotice(), setN = k => e => { const v = e.target.type === 'checkbox' ? e.target.checked : e.target.value; this.setState(st => ({ nf: { ...(st.nf || this.blankNotice()), [k]: v }, nErr: '' })); };
+        const inCat = sorted.filter(n => s.nCat === '전체' || (n.cat || '안내') === s.nCat);
+        return { noticeTop: sorted.slice(0, 5).map(dec), noticeAll: inCat.map(n => dec(n, sorted.indexOf(n))), noNotices: inCat.length === 0, noticeCount: total,
+          nCats: ['전체', '모집', '운영', '안내'].map(t => ({ key: t, t, n: String(t === '전체' ? total : sorted.filter(n => (n.cat || '안내') === t).length), bg: s.nCat === t ? '#1A1A1A' : '#fff', fg: s.nCat === t ? '#fff' : '#555', bd: s.nCat === t ? '#1A1A1A' : '#E3E4DF', set: () => this.setState({ nCat: t }) })),
+          nfCats: ['모집', '운영', '안내'].map(t => ({ key: t, t, bg: (nf.cat || '안내') === t ? '#2F5D0B' : '#fff', fg: (nf.cat || '안내') === t ? '#fff' : '#1A1A1A', bd: (nf.cat || '안내') === t ? '#2F5D0B' : '#CFCFCF', set: () => this.setState(st => ({ nf: { ...(st.nf || this.blankNotice()), cat: t } })) })),
+          nfIsRecruit: nf.cat === '모집', nSetRStart: setN('recruitStart'), nSetREnd: setN('recruitEnd'), nSetClosed: setN('closed'),
+          noticePage: s.noticePage, noticeListMode: !cur, noticeCur: cur ? [dec(cur, sorted.indexOf(cur))] : [],
+          openNoticePage: e => { if (e && e.preventDefault) e.preventDefault(); this.nav('#notices'); },
+          closeNoticePage: () => this.nav(''),
+          backToList: () => this.nav('#notices'), copyLabel: '링크 복사',
+          newNotice: () => this.setState({ nFormOpen: true, nf: this.blankNotice(), nErr: '' }), closeNForm: () => this.setState({ nFormOpen: false, nErr: '' }),
+          nFormOpen: s.nFormOpen, nf, nFormTitle: nf.id ? '공지 수정' : '공지 작성', nSaveLabel: s.nSaving ? '저장 중…' : '게시',
+          nSetTitle: setN('title'), nSetDate: setN('date'), nSetBody: setN('body'), nSetPinned: setN('pinned'),
+          nImages: (nf.images || []).map((src, i) => ({ key: String(i) + src.length, src, rm: () => this.setState(st => ({ nf: { ...st.nf, images: (st.nf.images || []).filter((_, j) => j !== i) } })) })), nCanAddImg: (nf.images || []).length < 6, onNImg: e => this.onNImg(e),
+          submitNotice: () => this.submitNotice(), hasNErr: !!s.nErr, nErr: s.nErr };
+      })(),
+      ...(() => { const P = this.POLICIES[s.policy]; const open = k => e => { if (e && e.preventDefault) e.preventDefault(); this.nav('#policy=' + k); };
+        return { policyOpen: !!P, policyTitle: P ? P.t : '', policyDate: P ? P.d : '', closePolicy: () => this.nav(''),
+          openPrivacy: open('privacy'), openTerms: open('terms'), openEmailPolicy: open('email'),
+          policyTabs: ['privacy', 'terms', 'email'].map(k => ({ key: k, t: this.POLICIES[k].t, go: open(k), bg: k === s.policy ? '#1A1A1A' : '#fff', fg: k === s.policy ? '#fff' : '#555', bd: k === s.policy ? '#1A1A1A' : '#E3E4DF' })),
+          policySections: P ? P.secs.map((x, i) => ({ key: String(i), h: x.h, ps: x.ps.map((t, j) => ({ key: String(j), t })), hasList: !!(x.li && x.li.length), li: (x.li || []).map((t, j) => ({ key: String(j), t })) })) : [] }; })(),
+      fEmail: SS.links.email, fEmailHref: 'mailto:' + SS.links.email, fHasEmail: !!SS.links.email, fInsta: SS.links.instagram, fHasInsta: !!SS.links.instagram, fKakao: SS.links.kakao, fHasKakao: !!SS.links.kakao, fHasSocial: !!(SS.links.instagram || SS.links.kakao),
+      ordEvents: String(SS.order.indexOf('events') + 1), ordCalendar: String(SS.order.indexOf('calendar') + 1), ordNotice: String(SS.order.indexOf('notice') + 1),
+      openSite: () => this.openSite('slides'), openSiteLinks: () => this.openSite('links'), openSiteSlides: () => this.openSite('slides'), closeSite: () => this.setState({ siteOpen: false }), saveSite: () => this.saveSite(),
+      siteOpen: s.siteOpen && !!s.sEdit, siteSaveLabel: s.siteSaving ? '저장 중…' : '저장', hasSiteErr: !!s.siteErr, siteErr: s.siteErr,
+      siteTabs: [['slides', '메인 슬라이드'], ['order', '섹션 순서'], ['links', '연락처·SNS']].map(([k, t]) => ({ key: k, t, fw: s.siteTab === k ? 700 : 500, fg: s.siteTab === k ? '#1A1A1A' : '#777', bd: s.siteTab === k ? '#1A1A1A' : 'transparent', set: () => this.setState({ siteTab: k }) })),
+      tabSlides: s.siteTab === 'slides', tabOrder: s.siteTab === 'order', tabLinks: s.siteTab === 'links',
+      lEmail: s.sEdit ? (s.sEdit.links || {}).email || '' : '', lInsta: s.sEdit ? (s.sEdit.links || {}).instagram || '' : '', lKakao: s.sEdit ? (s.sEdit.links || {}).kakao || '' : '',
+      setLEmail: e => { const v = e.target.value; this.editS(x => { x.links = { ...(x.links || {}), email: v.trim() }; }); }, setLInsta: e => { const v = e.target.value; this.editS(x => { x.links = { ...(x.links || {}), instagram: v.trim() }; }); }, setLKakao: e => { const v = e.target.value; this.editS(x => { x.links = { ...(x.links || {}), kakao: v.trim() }; }); },
+      sAuto: !!(s.sEdit && s.sEdit.autoSlides !== false), toggleAuto: e => { const v = e.target.checked; this.applyS(x => { x.autoSlides = v; }); },
+      sNoSlides: !!(s.sEdit && !s.sEdit.slides.length),
+      sSlides: (s.sEdit ? s.sEdit.slides : []).map((x, i, arr) => { const ev = x.type === 'event' ? all.find(e => e.id === x.eventId) : null; return { key: (x.id || '') + i, no: (i + 2) + '번', kicker: x.type === 'event' ? (ev ? '문화콘텐츠 · ' + ev.cat : '문화콘텐츠 · 종료/삭제됨') : (x.kicker || '직접 만든 슬라이드'), title: x.type === 'event' ? (ev ? ev.title : '(찾을 수 없는 콘텐츠)') : (x.title || '(제목 없음)'), img: x.type === 'event' ? ((ev && ev.poster) || '') : (x.img || ''), hasImg: x.type === 'event' ? !!(ev && ev.poster) : !!x.img, sw: x.type === 'event' ? '#E4EADB' : (THEMES[x.theme] || THEMES.dark).bg, bg: s.sIdx === i ? '#F3F5EF' : '#fff',
+        edit: () => this.setState({ sIdx: x.type === 'event' ? null : i }),
+        up: () => { if (i > 0) { this.applyS(e => { [e.slides[i - 1], e.slides[i]] = [e.slides[i], e.slides[i - 1]]; }); this.setState({ sIdx: null }); } },
+        down: () => { if (i < arr.length - 1) { this.applyS(e => { [e.slides[i + 1], e.slides[i]] = [e.slides[i], e.slides[i + 1]]; }); this.setState({ sIdx: null }); } },
+        del: () => { if (confirm('이 슬라이드를 삭제할까요?')) { this.applyS(e => { e.slides.splice(i, 1); }); this.setState({ sIdx: null }); } } }; }),
+      pickQ: s.pickQ, setPickQ: e => this.setState({ pickQ: e.target.value }), siteMsg: s.siteMsg, hasSiteMsg: !!s.siteMsg,
+      pickList: (() => { const q = s.pickQ.trim().toLowerCase(); const used = new Set((s.sEdit ? s.sEdit.slides : []).filter(x => x.type === 'event').map(x => x.eventId)); return all.filter(e => e.status !== '종료' && (!q || (e.title + ' ' + e.place).toLowerCase().includes(q))).slice(0, 40).map(e => ({ key: e.id, title: e.title, meta: e.cat + ' · ' + e.dateText, poster: e.poster || '', hasPoster: !!e.poster, added: used.has(e.id), notAdded: !used.has(e.id), add: () => this.applyS(se => { se.slides.push({ id: 'p' + Date.now().toString(36), type: 'event', eventId: e.id }); }) })); })(),
+      addSlide: () => { const n = s.sEdit ? s.sEdit.slides.length : 0; this.editS(e => { e.slides.push({ id: 's' + Date.now().toString(36), kicker: '', title: '', sub: '', btn: '', link: '#calendar', img: '', theme: 'dark' }); }); this.setState({ sIdx: n }); },
+      sCur: (s.sEdit && s.sIdx != null && s.sEdit.slides[s.sIdx]) ? [(() => { const i = s.sIdx, x = s.sEdit.slides[i], set = k => ev => { const v = ev.target.value; this.editS(e => { e.slides[i][k] = v; }); };
+        return { key: 'cur' + i, no: i + 2, kicker: x.kicker || '', title: x.title || '', sub: x.sub || '', btn: x.btn || '', link: x.link || '', img: x.img || '', hasImg: !!x.img, noImg: !x.img,
+          setKicker: set('kicker'), setTitle: set('title'), setSub: set('sub'), setBtn: set('btn'), setLink: set('link'), rmImg: () => this.editS(e => { e.slides[i].img = ''; }),
+          themes: Object.keys(THEMES).map(k => ({ key: k, t: THEMES[k].t, bg: THEMES[k].bg, ring: (x.theme || 'dark') === k ? '0 0 0 2px #fff, 0 0 0 4px #1A1A1A' : 'none', set: () => this.editS(e => { e.slides[i].theme = k; }) })) }; })()] : [],
+      onSlideImg: ev => { const file = ev.target.files && ev.target.files[0]; ev.target.value = ''; if (!file || s.sIdx == null) return; const i = s.sIdx; this.compress(file, 1600, url => this.editS(e => { e.slides[i].img = url; })); },
+      sOrder: (s.sEdit ? s.sEdit.order : []).map((id, i, arr) => ({ key: id, no: i + 1, t: { events: '문화콘텐츠', calendar: '행사 캘린더', notice: '공지사항' }[id],
+        up: () => { if (i > 0) this.editS(e => { [e.order[i - 1], e.order[i]] = [e.order[i], e.order[i - 1]]; }); },
+        down: () => { if (i < arr.length - 1) this.editS(e => { [e.order[i + 1], e.order[i]] = [e.order[i], e.order[i + 1]]; }); } })),
+      calWeeks, dayPopOpen: !!s.dayPop, closeDayPop: () => this.setState({ dayPop: false }), weekdays: D.map((t, i) => ({ key: t, t, c: i === 0 ? '#C0392B' : i === 6 ? '#2C5AA0' : '#777' })),
+      monthLabel: `${mFirst.getFullYear()}년 ${mFirst.getMonth() + 1}월`, prevMonth: () => this.setState({ calM: s.calM - 1 }), nextMonth: () => this.setState({ calM: s.calM + 1 }), goToday: () => this.setState({ calM: 0, sel: this.iso(now) }),
+      calSrcs: ['전체', '부산 문화콘텐츠', '직접 등록'].map(t => ({ key: t, t, bg: s.calSrc === t ? '#1A1A1A' : 'transparent', fg: s.calSrc === t ? '#fff' : '#555', set: () => this.setState({ calSrc: t }) })),
+      exportManual: () => this.exportManual(), manualCount: s.events.length,
+      selLabel: `${selD.getFullYear()}년 ${selD.getMonth() + 1}월 ${selD.getDate()}일 (${D[selD.getDay()]})`, 
+      dayList, noDay: dayList.length === 0, dayCount: dayList.length,
+      modal: m ? [{ ...m, gallery: (m.images || []).map((src, i) => ({ key: String(i), src })), hasGallery: !!(m.images && m.images.length), canEdit: s.isAdmin && !m.src, srcText: m.src ? `${m.src} 공공데이터` : '그린라이트 등록', tel: m.tel || '-', feeLine: m.feeText && m.feeText !== m.fee ? `${m.fee} · ${m.feeText}` : m.fee }] : [], closeModal: () => this.closeModal(),
+      editModal: () => { const f = { ...s.events.find(e => e.id === s.modalId) }; this._evPushed = false; if (/^#event=/.test(location.hash)) history.replaceState(null, '', this._evFrom || location.pathname); this.setState({ modalId: null, formOpen: true, f, err: '' }); },
+      delModal: () => { if (!confirm('이 콘텐츠를 삭제할까요?')) return; this._evPushed = false; if (/^#event=/.test(location.hash)) history.replaceState(null, '', this._evFrom || location.pathname); if (s.remote) { this.api('delete', { id: s.modalId }).then(j => this.setState({ events: j.events, modalId: null })).catch(e => alert(e.message)); } else { this.persist(s.events.filter(e => e.id !== s.modalId)); this.setState({ modalId: null }); } },
+      formOpen: s.formOpen, f, isEdit: !!f.id, formTitle: f.id ? '문화콘텐츠 수정' : '문화콘텐츠 등록', fImages: (f.images || []).map((src, i) => ({ key: String(i) + src.length, src, rm: () => this.setState(st => ({ f: { ...st.f, images: (st.f.images || []).filter((_, j) => j !== i) } })) })), fCanAddImg: (f.images || []).length < 4, onGallery: e => this.onGallery(e),
+      openNew: () => this.setState({ formOpen: true, f: this.blank(), err: '' }), closeForm: () => this.setState({ formOpen: false, err: '' }),
+      setTitle: setF('title'), setStart: setF('start'), setEnd: setF('end'), setPlace: setF('place'), setDesc: setF('desc'),
+      fcats: ['공연', '전시', '행사', '교육', '모임'].map(t => ({ t, bg: f.cat === t ? '#2F5D0B' : '#fff', fg: f.cat === t ? '#fff' : '#1A1A1A', bd: f.cat === t ? '#2F5D0B' : '#CFCFCF', set: () => this.setState(st => ({ f: { ...st.f, cat: t } })) })),
+      ffees: ['무료', '유료'].map(t => ({ t, bg: f.fee === t ? '#2F5D0B' : '#fff', fg: f.fee === t ? '#fff' : '#1A1A1A', bd: f.fee === t ? '#2F5D0B' : '#CFCFCF', set: () => this.setState(st => ({ f: { ...st.f, fee: t } })) })),
+      onFile: e => this.onFile(e), fHasPoster: !!f.poster, fNoPoster: !f.poster, rmPoster: () => this.setState(st => ({ f: { ...st.f, poster: null } })),
+      hasErr: !!s.err, err: s.err, submit: () => this.submit(),
+    };
+  }
+}
+</script>
 </body>
 </html>
