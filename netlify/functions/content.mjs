@@ -59,6 +59,14 @@ export default async (req) => {
     return json({ ok: true, notices });
   }
 
+  if (body.action === 'reorderNotices') {
+    let notices = (await store.get('notices', { type: 'json' })) || [];
+    const ids = Array.isArray(body.ids) ? body.ids.map(String) : [];
+    notices = notices.map(x => { const i = ids.indexOf(x.id); return i < 0 ? x : { ...x, rank: i }; });
+    await store.setJSON('notices', notices);
+    return json({ ok: true, notices });
+  }
+
   if (body.action === 'deleteNotice') {
     let notices = (await store.get('notices', { type: 'json' })) || [];
     const gone = notices.find(x => x.id === body.id);
