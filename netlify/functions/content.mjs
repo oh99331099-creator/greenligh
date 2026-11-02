@@ -4,6 +4,11 @@
 // POST /api/content            → 로그인·저장·삭제 (헤더 x-admin-password 필요)
 // Netlify 환경변수 ADMIN_PASSWORD 에 관리자 비밀번호를 넣어 주세요.
 import { getStore } from '@netlify/blobs';
+import { createHmac, timingSafeEqual } from 'node:crypto';
+const sign = exp => createHmac('sha256', process.env.ADMIN_PASSWORD + '|gl-admin').update(String(exp)).digest('base64url');
+const makeToken = () => { const exp = Date.now() + 8 * 3600e3; return exp + '.' + sign(exp); };
+const okToken = t => { const [exp, sig] = String(t || '').split('.'); if (!exp || !sig || !(Number(exp) > Date.now())) return false; const a = Buffer.from(sig), b = Buffer.from(sign(exp)); return a.length === b.length && timingSafeEqual(a, b); };
+const okPw = p => { const h = v => createHmac('sha256', 'gl-cmp').update(String(v || '')).digest(); return timingSafeEqual(h(p), h(process.env.ADMIN_PASSWORD)); };
 
 // 블롭 저장소에 공지가 한 번도 저장되지 않았을 때 최초 1회 채워 넣는 기본 공지 (data/notices.json 과 동일)
 const SEED_NOTICES = [{"id":"n-seed-6","date":"2026-10-25","pinned":true,"title":"🎁 부산 랜덤 체험단 모집!","images":[],"body":"🎁 부산 랜덤 체험 프로젝트!\n🎁 부산 랜덤 체험단 모집!\n\n부산에서 특별한 경험을 함께할 체험단을 모집합니다!\n\n매번 똑같은 데이트, 똑같은 주말이 지루했다면?\n\n부산에서 진행되는 다양한 행사와 체험 프로그램 중 어떤 체험에 참여하게 될지 모르는 랜덤 체험단!\n\n평소 접해보지 못했던 새로운 경험을 특별한 가격으로 즐겨보세요.\n\n🎟️ 체험단 혜택\n- 부산의 다양한 행사 중 1개 랜덤 매칭\n- 일반 참가비보다 할인된 체험단 특별가 제공\n- 새로운 행사와 프로그램을 경험할 기회\n\n📌 모집 안내\n- 모집 대상 : 부산에서 새로운 경험을 해보고 싶은 누구나\n- 체험 장소 : 부산광역시 내 행사 및 체험 공간\n- 체험 비용 : 매칭된 행사에 따라 개별 안내\n- 모집 기간 : [모집 기간 입력]\n- 참여 조건 : 체험 후 간단한 후기 작성\n\n📝 참여 방법\n① 구글 폼을 통해 체험단 신청\n② 신청 조건을 바탕으로 체험 행사 랜덤 매칭\n③ 매칭 결과 및 할인된 체험 비용 개별 안내\n④ 참여 확정 후 행사 체험 및 후기 작성\n\n💌 어떤 경험이 기다리고 있을지는 아무도 모릅니다!\n\n이번 주말, 우연히 만난 특별한 경험이 가장 좋은 추억이 될지도 몰라요.\n\n※ 본 체험단은 무료 체험이 아닌 할인형 체험단입니다.\n※ 매칭 후 행사 내용과 비용을 확인하고 최종 참여 여부를 결정할 수 있습니다.\n※ 신청 인원 및 행사 운영 상황에 따라 매칭되지 않을 수 있습니다.\n\n🔗 체험단 신청하기\nhttps://forms.gle/rg4GJfcv8cibNcgNA","cat":"모집","recruitStart":"2026-10-25","recruitEnd":"2026-11-30","closed":false},{"id":"n-seed-5","date":"2026-10-20","pinned":false,"title":"10월 운영시간 변경 안내","images":[],"body":"10월 한 달간 스튜디오 운영시간이 아래와 같이 변경됩니다.\n\n- 평일 : 10:00 ~ 18:00\n- 토요일 : 11:00 ~ 17:00\n- 일요일·공휴일 : 휴무\n\n방문 전 운영시간을 확인해 주세요. 11월부터는 기존 운영시간으로 돌아갑니다.","cat":"운영"},{"id":"n-seed-4","date":"2026-10-13","pinned":false,"title":"행사 캘린더 기능 오픈","images":[],"body":"부산의 공연·전시·축제 일정을 한 달력에서 볼 수 있는 행사 캘린더가 열렸습니다.\n\n자동으로 모은 부산 문화콘텐츠와 그린라이트가 직접 등록한 행사를 날짜별로 확인할 수 있습니다. 날짜를 누르면 그날의 행사 목록이 표시됩니다.","cat":"안내"},{"id":"n-seed-3","date":"2026-10-06","pinned":false,"title":"문화콘텐츠 제보를 받습니다","images":[],"body":"부산에서 열리는 공연, 전시, 축제, 교육 프로그램 소식을 제보해 주세요.\n\n제보해 주신 내용은 확인 후 문화콘텐츠 페이지와 행사 캘린더에 등록됩니다.\n\n- 제보 내용 : 행사명, 일시, 장소, 참가 방법, 포스터 이미지\n- 제보 방법 : 홈페이지 하단 이메일로 전송","cat":"안내"},{"id":"n-seed-2","date":"2026-09-28","pinned":false,"title":"추석 연휴 운영 안내","images":[],"body":"추석 연휴 기간(9월 24일 ~ 9월 27일) 스튜디오는 휴무입니다.\n\n연휴 동안 접수된 문의와 제보는 9월 28일부터 순차적으로 답변드립니다. 풍성한 한가위 보내세요.","cat":"운영"},{"id":"n-seed-1","date":"2026-09-15","pinned":false,"title":"그린라이트 스튜디오 홈페이지 오픈","images":[],"body":"그린라이트 스튜디오 홈페이지가 문을 열었습니다.\n\n부산에서 열리는 다양한 문화 소식을 모아 매주 새로 안내합니다. 문화콘텐츠, 행사 캘린더, 공지사항을 통해 새로운 소식을 확인해 주세요.","cat":"안내"}];
@@ -31,7 +36,18 @@ export default async (req) => {
 
   if (req.method !== 'POST') return json({ error: 'method not allowed' }, 405);
   if (!process.env.ADMIN_PASSWORD) return json({ error: 'Netlify 환경변수 ADMIN_PASSWORD가 설정되지 않았습니다.' }, 500);
-  if ((req.headers.get('x-admin-password') || '') !== process.env.ADMIN_PASSWORD) return json({ error: '비밀번호가 올바르지 않습니다.' }, 401);
+  const tok = req.headers.get('x-admin-token');
+  if (!(tok && okToken(tok))) {
+    const ip = String(req.headers.get('x-nf-client-connection-ip') || (req.headers.get('x-forwarded-for') || '').split(',')[0] || 'x').trim().replace(/[^\w.:-]/g, '');
+    const rk = 'rl/' + ip, LOCK = 15 * 60e3;
+    const rl = (await store.get(rk, { type: 'json' })) || { n: 0, t: 0 };
+    if (rl.n >= 5 && Date.now() - rl.t < LOCK) return json({ error: '로그인 시도가 너무 많습니다. 15분 뒤에 다시 시도해 주세요.' }, 429);
+    if (!okPw(req.headers.get('x-admin-password'))) {
+      await store.setJSON(rk, Date.now() - rl.t > LOCK ? { n: 1, t: Date.now() } : { n: rl.n + 1, t: Date.now() });
+      return json({ error: tok ? '로그인이 만료되었습니다. 다시 로그인해 주세요.' : '비밀번호가 올바르지 않습니다.' }, 401);
+    }
+    if (rl.n) await store.delete(rk);
+  }
 
   const body = await req.json().catch(() => ({}));
   let events = (await store.get('events', { type: 'json' })) || [];
@@ -45,7 +61,7 @@ export default async (req) => {
     return '/api/content?img=' + key;
   };
 
-  if (body.action === 'login') return json({ ok: true });
+  if (body.action === 'login') return json({ ok: true, token: makeToken() });
 
   if (body.action === 'saveNotice') {
     let notices = (await store.get('notices', { type: 'json' })) || [];
@@ -55,14 +71,6 @@ export default async (req) => {
     if (!n.date) n.date = new Date().toISOString().slice(0, 10);
     n.updatedAt = new Date().toISOString();
     notices = notices.some(x => x.id === n.id) ? notices.map(x => (x.id === n.id ? n : x)) : [n, ...notices];
-    await store.setJSON('notices', notices);
-    return json({ ok: true, notices });
-  }
-
-  if (body.action === 'reorderNotices') {
-    let notices = (await store.get('notices', { type: 'json' })) || [];
-    const ids = Array.isArray(body.ids) ? body.ids.map(String) : [];
-    notices = notices.map(x => { const i = ids.indexOf(x.id); return i < 0 ? x : { ...x, rank: i }; });
     await store.setJSON('notices', notices);
     return json({ ok: true, notices });
   }
