@@ -8,6 +8,7 @@
 <body>
 <x-dc>
 <helmet>
+<script>(function(){var adm=function(){try{return !!sessionStorage.getItem('gl.tok')}catch(e){return false}};window.addEventListener('keydown',function(e){if(adm())return;var c=e.ctrlKey||e.metaKey,k=e.code||'';if(e.key==='F12'||k==='F12'||(c&&e.shiftKey&&/^Key[IJC]$/.test(k))||(e.metaKey&&e.altKey&&/^Key[IJCU]$/.test(k))||(c&&!e.shiftKey&&/^Key[US]$/.test(k))){e.preventDefault();e.stopPropagation();}},true);document.addEventListener('contextmenu',function(e){if(adm())return;var t=e.target;if(t&&t.closest&&t.closest('input,textarea,[contenteditable="true"]'))return;e.preventDefault();},true);})();</script>
 <link rel="icon" href="assets/logo-mark.png">
 <link rel="apple-touch-icon" href="assets/logo.png">
 <meta name="theme-color" content="#0E100D">
@@ -140,7 +141,7 @@ html{scrollbar-color:#C9CDC2 transparent;color-scheme:light}
 input,textarea,select{caret-color:#2F5D0B;accent-color:#2F5D0B}input:focus-visible,textarea:focus-visible,select:focus-visible{outline-color:#2F5D0B}[data-hsearch] input{caret-color:#B3F945}
 @media (prefers-reduced-motion:reduce){header{transition:none!important}[data-chip]:active{transform:none}}
 button:hover>[data-dot]{height:3px!important}@media (max-width:760px){[data-cwh]{padding:10px 4px!important}}
-[data-npop]{animation:glPop .4s cubic-bezier(.2,.7,.2,1) both}@media (max-width:760px){[data-npop]{left:12px!important;right:12px!important;bottom:12px!important;width:auto!important}}@media (prefers-reduced-motion:reduce){[data-npop]{animation:none!important}}
+[data-npop]{animation:glPop .4s cubic-bezier(.2,.7,.2,1) both}@media (max-width:1100px){[data-npop]:nth-child(n+3){display:none!important}}@media (max-width:760px){[data-npopwrap]{left:12px!important;right:12px!important;bottom:12px!important;max-width:none!important}[data-npop]{flex:1 1 auto!important;width:auto!important}[data-npop]:not(:first-child){display:none!important}}@media (prefers-reduced-motion:reduce){[data-npop]{animation:none!important}}
 </style>
 </helmet>
 <a href="#main" style="position:absolute;left:-9999px;top:0;background:#1F231C;color:#fff;padding:8px 16px;font-size:14px;z-index:100" style-focus="left:0">본문 바로가기</a>
@@ -508,9 +509,10 @@ button:hover>[data-dot]{height:3px!important}@media (max-width:760px){[data-cwh]
   <div aria-hidden="true" style="font-size:clamp(48px,9vw,140px);font-weight:700;letter-spacing:-.05em;line-height:.78;color:#191919;text-align:center;white-space:nowrap;user-select:none;margin-bottom:-.1em;padding:0 24px">GREENLIGHT</div>
 </footer>
 
+<div data-npopwrap="1" style="position:fixed;right:24px;bottom:88px;z-index:42;display:flex;flex-direction:row-reverse;align-items:flex-end;gap:12px;pointer-events:none;max-width:calc(100vw - 48px)">
 <sc-for list="{{ popList }}" as="p" hint-placeholder-count="0">
-<aside data-npop="1" data-screen-label="공지 팝업" role="dialog" aria-label="공지 팝업" style="position:fixed;right:24px;bottom:88px;z-index:42;width:min(360px,calc(100vw - 24px));background:#fff;color:#1D201B;border-radius:12px;overflow:hidden;box-shadow:0 0 0 .5px rgba(0,0,0,.12),0 2px 4px rgba(30,58,12,.08),0 24px 48px -16px rgba(30,58,12,.35)">
-  <div style="height:44px;padding:0 0 0 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #E3E5DE"><span data-eyebrow="1">NOTICE</span><button onClick="{{ p.close }}" aria-label="팝업 닫기" style="margin-left:auto;font:inherit;width:44px;height:44px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#1A1A1A" style-hover="background:#F3F5EF"><span class="material-symbols-outlined" style="font-size:20px">close</span></button></div>
+<aside data-npop="1" data-screen-label="공지 팝업" role="dialog" aria-label="공지 팝업" style="position:relative;pointer-events:auto;flex:none;width:340px;background:#fff;color:#1D201B;border-radius:12px;overflow:hidden;box-shadow:0 0 0 .5px rgba(0,0,0,.12),0 2px 4px rgba(30,58,12,.08),0 24px 48px -16px rgba(30,58,12,.35)">
+  <div style="height:44px;padding:0 0 0 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #E3E5DE"><span data-eyebrow="1">NOTICE</span><sc-if value="{{ p.multi }}" hint-placeholder-val="{{ false }}"><span data-num="1" style="font-size:12px;font-weight:500;color:#6B6F66">{{ p.pos }}</span></sc-if><button onClick="{{ p.close }}" aria-label="팝업 닫기" style="margin-left:auto;font:inherit;width:44px;height:44px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#1A1A1A" style-hover="background:#F3F5EF"><span class="material-symbols-outlined" style="font-size:20px">close</span></button></div>
   <sc-if value="{{ p.hasVid }}" hint-placeholder-val="{{ false }}"><div style="aspect-ratio:16 / 9;background:#0E100D"><sc-if value="{{ p.vid.isEmbed }}" hint-placeholder-val="{{ true }}"><iframe src="{{ p.vid.src }}" title="{{ p.title }}" loading="lazy" referrerPolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen="{{ true }}" style="width:100%;height:100%;border:0;display:block"></iframe></sc-if><sc-if value="{{ p.vid.isFile }}" hint-placeholder-val="{{ false }}"><video src="{{ p.vid.src }}" controls="{{ true }}" playsInline="{{ true }}" preload="metadata" style="width:100%;height:100%;display:block"></video></sc-if></div></sc-if>
   <sc-if value="{{ p.showImg }}" hint-placeholder-val="{{ false }}"><img src="{{ p.img }}" alt="" style="width:100%;aspect-ratio:16 / 9;object-fit:cover;display:block;background:#F3F5EF"></sc-if>
   <div style="padding:16px 16px 14px;display:flex;flex-direction:column;gap:10px">
@@ -523,6 +525,7 @@ button:hover>[data-dot]{height:3px!important}@media (max-width:760px){[data-cwh]
   </div>
 </aside>
 </sc-for>
+</div>
 <sc-if value="{{ toastOpen }}" hint-placeholder-val="{{ false }}"><div data-toast="1" role="status" style="position:fixed;left:50%;bottom:28px;transform:translateX(-50%);z-index:95;display:flex;align-items:center;gap:8px;background:#1F231C;color:#fff;padding:0 20px;height:44px;border-radius:999px;font-size:14px;font-weight:600;box-shadow:0 1px 2px rgba(20,30,10,.06),0 10px 28px -10px rgba(20,30,10,.22);white-space:nowrap"><span class="material-symbols-outlined" style="font-size:20px;color:#B3F945">check_circle</span>{{ toast }}</div></sc-if>
 <div data-screen-label="플로팅 버튼" style="position:fixed;right:24px;bottom:24px;z-index:40;display:flex;flex-direction:column;gap:10px">
   <sc-if value="{{ topVis }}" hint-placeholder-val="{{ false }}"><button data-totop="1" onClick="{{ toTop }}" aria-label="맨 위로" style="font:inherit;width:48px;height:48px;border-radius:50%;border:1px solid #D5D7D0;background:#fff;color:#1A1A1A;cursor:pointer;display:grid;place-items:center;box-shadow:0 1px 2px rgba(20,30,10,.06),0 10px 28px -10px rgba(20,30,10,.22);transition:background .18s cubic-bezier(.2,.7,.2,1),color .18s cubic-bezier(.2,.7,.2,1)" style-hover="background:#1E3A0C;color:#fff;border-color:#1E3A0C"><span class="material-symbols-outlined" style="font-size:22px">arrow_upward</span></button></sc-if>
@@ -891,7 +894,6 @@ class Component extends DCLogic {
   ];
   state = { saved: (() => { try { return JSON.parse(localStorage.getItem('gl.saved')) || []; } catch (e) { return []; } })(), savedOnly: false, topVis: false, toast: '', showAll: false, apiLoading: true, nCat: '전체', bulkOpen: false, bulkRows: [], bulkErr: '', bulkSaving: false, bulkName: '', evCopied: false, notices: [], noticePage: false, noticeId: null, policy: null, nFormOpen: false, nf: null, nErr: '', nSaving: false, pickQ: '', siteMsg: '', settings: null, siteOpen: false, siteTab: 'slides', sEdit: null, sIdx: null, siteSaving: false, siteErr: '', dayPop: false, remote: false, loginOpen: false, pw: '', loginErr: '', saving: false, calM: 0, calSrc: '전체', pub: [], copied: false, searchOpen: false, events: [], api: [], updatedAt: null, loadErr: false, isAdmin: false, menuOpen: false, scrolled: false, active: '', mega: -1, acc: 0, fs: 1, lang: 'KOR', cat: '전체', fee: '전체 요금', period: '전체 기간', q: '', sel: '', off: 0, slide: 0, paused: false, modalId: null, formOpen: false, f: null, err: '' };
   componentWillUnmount() { if (this.io) this.io.disconnect(); clearInterval(this.timer); clearInterval(this.clock); window.removeEventListener('scroll', this.onScroll); window.removeEventListener('popstate', this.onPop); window.removeEventListener('keydown', this.onKey); document.body.style.overflow = ''; }
-  // 주소(hash) → 화면 상태. 뒤로가기/앞으로가기, 공유 링크, 앵커 이동 모두 여기서 처리
   syncFromHash(initial) {
     const h = location.hash || '';
     let nm;
@@ -907,7 +909,6 @@ class Component extends DCLogic {
     if (h.length > 1) { const el = document.getElementById(h.slice(1)); if (el) { const top = el.getBoundingClientRect().top + window.scrollY - 80; if (wasOverlay || initial) setTimeout(() => window.scrollTo({ top, behavior: initial ? 'auto' : 'smooth' }), 0); return; } }
     if (wasOverlay && this._retY != null) { const y = this._retY; this._retY = null; setTimeout(() => window.scrollTo({ top: y, behavior: 'auto' }), 0); }
   }
-  // 행사 상세 열기/닫기: 주소에 #event=ID 를 남겨 뒤로가기로 닫히고 공유 링크로 바로 열림
   openEvent(id, fromDay) { this._fromDay = !!fromDay; this._evFrom = location.hash || ''; this._evPushed = true; this.nav('#event=' + encodeURIComponent(id)); }
   animOut() { if (this._closing || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) return false; const el = document.querySelector('[data-mbox][data-screen-label="행사 상세"]'); if (!el || !el.animate) return false; this._closing = true; const bg = el.previousElementSibling; el.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateY(8px) scale(.985)' }], { duration: 180, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'forwards' }); if (bg && bg.animate) bg.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 180, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'forwards' }); setTimeout(() => { this._closing = false; this.closeModal(true); }, 170); return true; }
   closeModal(now) { if (!this.state.modalId) return; if (!now && this.animOut()) return; if (this._evPushed && /^#event=/.test(location.hash)) { this._evPushed = false; history.back(); } else { this._evPushed = false; this.nav(this._evFrom && !/^#(event|notice|policy)/.test(this._evFrom) ? this._evFrom : ''); } }
@@ -962,7 +963,7 @@ class Component extends DCLogic {
   };
   componentDidMount() { this.clock = setInterval(() => this.forceUpdate(), 60000);
     let ev = null; try { ev = JSON.parse(localStorage.getItem(this.KEY)); } catch (e) {}
-    this._pw = sessionStorage.getItem('gl.pw') || '';
+    try { sessionStorage.removeItem('gl.pw'); } catch (e) {} this._pw = sessionStorage.getItem('gl.tok') || '';
     try { const ls = JSON.parse(localStorage.getItem('gl.busan.settings')); if (ls) this.setState({ settings: ls }); } catch (e) {}
     let hasLn = false; try { const ln = JSON.parse(localStorage.getItem('gl.busan.notices')); if (Array.isArray(ln)) { hasLn = true; this.setState({ notices: ln }); } } catch (e) {}
     if (!hasLn) fetch('data/notices.json?v=' + Date.now()).then(r => r.json()).then(j => { if (Array.isArray(j) && !this.state.remote) this.setState({ notices: j }); }).catch(() => {});
@@ -970,7 +971,7 @@ class Component extends DCLogic {
     if (location.hash) setTimeout(() => this.syncFromHash(true), 0);
     this._hasLocal = Array.isArray(ev);
     this.setState({ events: Array.isArray(ev) ? ev : [], isAdmin: !!this._pw || sessionStorage.getItem('gl.localAdmin') === '1', sel: this.iso(new Date()) });
-    fetch('/api/content', { cache: 'no-store' }).then(r => { if (!r.ok) throw new Error(); return r.json(); }).then(j => { if (!Array.isArray(j.events)) throw new Error(); this.setState({ remote: true, events: j.events, settings: j.settings || null, notices: Array.isArray(j.notices) ? j.notices : [] }); })
+    fetch('/api/content', { cache: 'no-store' }).then(r => { if (!r.ok) throw new Error(); return r.json(); }).then(j => { if (!Array.isArray(j.events)) throw new Error(); if (!this._pw) sessionStorage.removeItem('gl.localAdmin'); this.setState({ remote: true, isAdmin: !!this._pw, events: j.events, settings: j.settings || null, notices: Array.isArray(j.notices) ? j.notices : [] }); })
       .catch(() => fetch('data/manual-events.json?v=' + Date.now()).then(r => r.json()).then(j => { const list = Array.isArray(j) ? j : Array.isArray(j.events) ? j.events : []; this.setState(this._hasLocal ? { pub: list } : { pub: list, events: list }); }).catch(() => {}));
     this.loadApi(); this.applyFont();
     window.addEventListener('scroll', this.onScroll, { passive: true }); this.onScroll();
@@ -987,7 +988,6 @@ class Component extends DCLogic {
   }
   p2(n) { return String(n).padStart(2, '0'); }
   toast(msg) { this.setState({ toast: msg }); clearTimeout(this._tT); this._tT = setTimeout(() => this.setState({ toast: '' }), 2200); }
-  // 깨진 포스터 → 줄무늬 대체 배경
   imgFallback = e => { const el = e.currentTarget; if (el.dataset.fb) return; el.dataset.fb = '1'; el.removeAttribute('src'); el.alt = ''; el.style.background = 'repeating-linear-gradient(135deg,#F3F5EF 0 12px,#E3E5DE 12px 24px)'; el.style.objectFit = 'cover'; };
   iso(d) { return `${d.getFullYear()}-${this.p2(d.getMonth() + 1)}-${this.p2(d.getDate())}`; }
   local(d) { return `${this.iso(d)}T${this.p2(d.getHours())}:${this.p2(d.getMinutes())}`; }
@@ -995,10 +995,11 @@ class Component extends DCLogic {
   compress(file, max, cb) { const r = new FileReader(); r.onload = () => { const img = new Image(); img.onload = () => { const sc = Math.min(1, max / Math.max(img.width, img.height)); const c = document.createElement('canvas'); c.width = Math.round(img.width * sc); c.height = Math.round(img.height * sc); c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); cb(c.toDataURL('image/jpeg', 0.8)); }; img.src = r.result; }; r.readAsDataURL(file); }
   onGallery(ev) { const files = [...(ev.target.files || [])]; ev.target.value = ''; files.forEach(file => this.compress(file, 1200, url => this.setState(st => ({ f: { ...st.f, images: [...(st.f.images || []), url].slice(0, 4) } })))); }
   persist(list) { try { localStorage.setItem(this.KEY, JSON.stringify(list)); } catch (e) { alert('저장 공간이 부족합니다. 포스터 이미지 용량을 줄여 주세요.'); } this.setState({ events: list }); }
-  setAdmin(on) { if (!on) { this._pw = ''; sessionStorage.removeItem('gl.pw'); sessionStorage.removeItem('gl.localAdmin'); } this.setState({ isAdmin: on }); }
+  setAdmin(on) { if (!on) { this._pw = ''; sessionStorage.removeItem('gl.tok'); sessionStorage.removeItem('gl.localAdmin'); } this.setState({ isAdmin: on }); }
   async api(action, payload) {
-    const r = await fetch('/api/content', { method: 'POST', headers: { 'content-type': 'application/json', 'x-admin-password': this._pw }, body: JSON.stringify({ action, ...payload }) });
+    const r = await fetch('/api/content', { method: 'POST', headers: { 'content-type': 'application/json', 'x-admin-token': this._pw }, body: JSON.stringify({ action, ...payload }) });
     const j = await r.json().catch(() => ({}));
+    if (r.status === 401) { this.setAdmin(false); throw new Error('로그인이 만료되었습니다. 다시 로그인해 주세요.'); }
     if (!r.ok) throw new Error(j.error || '저장 서버에 연결하지 못했습니다.');
     return j;
   }
@@ -1018,7 +1019,6 @@ class Component extends DCLogic {
     this.setState({ settings: se, siteOpen: !!keep, slide: 0, siteMsg: keep ? '사이트에 바로 적용되었습니다.' : '' });
   }
   applyS(fn) { const se = JSON.parse(JSON.stringify(this.state.sEdit)); fn(se); this.setState({ sEdit: se, siteErr: '' }, () => this.saveSite(true)); }
-  // [텍스트](URL) 와 맨 URL 을 <a> 로 변환
   richBody(text) {
     const re = /\[([^\]\n]+)\]\((https?:\/\/[^\s)]+)\)|(https?:\/\/[^\s<>"'\u3131-\uD79D]+)/g;
     const out = []; let last = 0, m, k = 0;
@@ -1036,14 +1036,18 @@ class Component extends DCLogic {
   blankNotice() { return { title: '', body: '', date: this.iso(new Date()), pinned: false, images: [], videos: '', cat: '안내', recruitStart: '', recruitEnd: '', closed: false }; }
   isPopup(n) { return n.popup === true || (n.popup !== false && /홍보영상/.test(n.title || '')); }
   popData(s) {
-    if (!s.popReady || s.popClosed || s.modalId || s.noticePage || s.nFormOpen || s.formOpen || s.siteOpen || s.bulkOpen || s.menuOpen || s.policy) return [];
-    const c = this.sortNotices(s.notices || []).find(n => this.isPopup(n)); if (!c) return [];
-    try { const h = JSON.parse(localStorage.getItem('gl.popup.hide') || 'null'); if (h && h.id === c.id && h.until >= this.iso(new Date())) return []; } catch (e) {}
-    const v = this.vidsOf(c)[0] || null, img = (c.images || [])[0] || '';
-    return [{ key: c.id, title: c.title, vid: v, hasVid: !!v, showImg: !v && !!img, img,
-      open: () => { this.setState({ popClosed: true }); this.nav('#notice=' + encodeURIComponent(c.id)); },
-      close: () => this.setState({ popClosed: true }),
-      hideToday: () => { try { localStorage.setItem('gl.popup.hide', JSON.stringify({ id: c.id, until: this.iso(new Date()) })); } catch (e) {} this.setState({ popClosed: true }); } }];
+    if (!s.popReady || s.modalId || s.noticePage || s.nFormOpen || s.formOpen || s.siteOpen || s.bulkOpen || s.menuOpen || s.policy) return [];
+    const today = this.iso(new Date()), closed = s.popClosedIds || [];
+    let hide = {}; try { hide = JSON.parse(localStorage.getItem('gl.popup.hide2') || '{}') || {}; } catch (e) {}
+    const list = this.sortNotices(s.notices || []).filter(n => this.isPopup(n) && !closed.includes(n.id) && !(hide[n.id] >= today)).slice(0, 3);
+    const shut = id => this.setState(st => ({ popClosedIds: [...(st.popClosedIds || []), id] }));
+    return list.map((c, i) => {
+      const v = this.vidsOf(c)[0] || null, img = (c.images || [])[0] || '';
+      return { key: c.id, title: c.title, vid: v, hasVid: !!v, showImg: !v && !!img, img, multi: list.length > 1, pos: (i + 1) + ' / ' + list.length,
+        open: () => { shut(c.id); this.nav('#notice=' + encodeURIComponent(c.id)); },
+        close: () => shut(c.id),
+        hideToday: () => { try { const h = JSON.parse(localStorage.getItem('gl.popup.hide2') || '{}') || {}; h[c.id] = today; localStorage.setItem('gl.popup.hide2', JSON.stringify(h)); } catch (e) {} shut(c.id); } };
+    });
   }
   vidsOf(n) {
     const out = [];
@@ -1084,12 +1088,15 @@ class Component extends DCLogic {
     const pw = this.state.pw;
     if (!this.state.remote) { sessionStorage.setItem('gl.localAdmin', '1'); return this.setState({ isAdmin: true, loginOpen: false, pw: '', loginErr: '' }); }
     if (!pw) return this.setState({ loginErr: '비밀번호를 입력해 주세요.' });
-    this._pw = pw;
-    try { await this.api('login', {}); sessionStorage.setItem('gl.pw', pw); this.setState({ isAdmin: true, loginOpen: false, pw: '', loginErr: '' }); }
+    try {
+      const r = await fetch('/api/content', { method: 'POST', headers: { 'content-type': 'application/json', 'x-admin-password': pw }, body: JSON.stringify({ action: 'login' }) });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok || !j.token) throw new Error(j.error || '로그인하지 못했습니다.');
+      this._pw = j.token; sessionStorage.setItem('gl.tok', j.token); this.setState({ isAdmin: true, loginOpen: false, pw: '', loginErr: '' });
+    }
     catch (e) { this._pw = ''; this.setState({ loginErr: e.message }); }
   }
   blank() { const s = new Date(); s.setDate(s.getDate() + 7); s.setHours(14, 0, 0, 0); const e = new Date(s); e.setHours(16); return { title: '', cat: '행사', fee: '무료', start: this.local(s), end: this.local(e), place: '', desc: '', poster: null, images: [] }; }
-  // CSV 일괄 등록: 파싱 → 검증 → 저장
   parseCSV(text) {
     const rows = []; let row = [], cell = '', q = false; text = text.replace(/^\uFEFF/, '');
     for (let i = 0; i < text.length; i++) { const c = text[i]; if (q) { if (c === '"') { if (text[i + 1] === '"') { cell += '"'; i++; } else q = false; } else cell += c; } else if (c === '"') q = true; else if (c === ',') { row.push(cell); cell = ''; } else if (c === '\n' || c === '\r') { if (c === '\r' && text[i + 1] === '\n') i++; row.push(cell); rows.push(row); row = []; cell = ''; } else cell += c; }
@@ -1173,7 +1180,6 @@ class Component extends DCLogic {
     const inP = e => { const a = e.start.slice(0, 10), b = (e.end || e.start).slice(0, 10); return s.period === '전체 기간' ? b >= t0 : s.period === '이번 주' ? (a <= t7 && b >= t0) : s.period === '이번 달' ? (a <= m1 && b >= m0) : true; };
     const filtered = all.filter(e => (!s.savedOnly || s.saved.includes(e.id)) && (s.cat === '전체' || e.cat === s.cat) && (s.fee === '전체 요금' || e.fee === s.fee) && inP(e) && (!ql || `${e.title} ${e.place}`.toLowerCase().includes(ql)));
     const live = all.filter(e => e.status !== '종료');
-    // 자동 슬라이드 후보: 종료되지 않은 행사 중 진행중 → 시작 임박 순, 포스터 있는 것 우선. 같은 제목·시작일은 하나만.
     const seenKey = new Set(); const normKey = e => (e.title || '').replace(/\s+/g, '').toLowerCase() + '|' + String(e.start || '').slice(0, 10);
     const feats = [...live].sort((a, b) => (a.status === '진행중' ? 0 : 1) - (b.status === '진행중' ? 0 : 1) || (b.hasPoster ? 1 : 0) - (a.hasPoster ? 1 : 0) || String(a.start).localeCompare(String(b.start))).filter(e => { const k = normKey(e); if (seenKey.has(k)) return false; seenKey.add(k); return true; });
     const ICON = { '공연': 'music_note', '전시': 'palette', '행사': 'celebration', '교육': 'school', '모임': 'groups' };
@@ -1187,7 +1193,6 @@ class Component extends DCLogic {
     const THEMES = { dark: { t: '짙은 녹색', bg: '#1E3A0C', fg: '#fff', k: '#B3F945', bd: 'rgba(255,255,255,.22)', bbg: '#B3F945', bfg: '#0E100D', g: 'rgba(179,249,69,.22)', g2: 'rgba(255,255,255,.06)', cb: 'rgba(179,249,69,.14)', cr: 'rgba(179,249,69,.25)', wm: 'rgba(255,255,255,.12)' }, light: { t: '연한 미색', bg: '#F3F5EF', fg: '#1A1A1A', k: '#2F5D0B', bd: 'rgba(30,58,12,.3)', bbg: '#0E100D', bfg: '#B3F945', g: 'rgba(179,249,69,.45)', g2: 'rgba(47,93,11,.12)', cb: 'rgba(47,93,11,.1)', cr: 'rgba(47,93,11,.2)', wm: 'rgba(30,58,12,.14)' }, lime: { t: '라임', bg: '#B3F945', fg: '#0E100D', k: '#1E3A0C', bd: 'rgba(14,16,13,.3)', bbg: '#0E100D', bfg: '#B3F945', g: 'rgba(255,255,255,.5)', g2: 'rgba(47,93,11,.25)', cb: 'rgba(14,16,13,.1)', cr: 'rgba(14,16,13,.15)', wm: 'rgba(14,16,13,.14)' }, black: { t: '검정', bg: '#0A0A0A', fg: '#fff', k: '#B3F945', bd: 'rgba(255,255,255,.22)', bbg: '#B3F945', bfg: '#0E100D', g: 'rgba(179,249,69,.28)', g2: 'rgba(47,93,11,.5)', cb: 'rgba(179,249,69,.14)', cr: 'rgba(179,249,69,.25)', wm: 'rgba(179,249,69,.16)' } };
     const SS = this.siteSettings();
     const customOf = (x, i) => { return { key: 'c' + (x.id || i), isBrand: false, isEvent: false, ...LT, watermark: (x.kicker || 'NEWS').replace(/[^A-Za-z0-9 ]/g, '').slice(0, 8).toUpperCase() || 'NEWS', kicker: x.kicker || '', title: x.title, sub: x.sub || '', hasSub: !!x.sub, btn: x.btn || '', hasBtn: !!(x.btn && x.link), link: x.link || '#events', img: x.img || '', hasImg: !!x.img, noImg: !x.img, icon: 'auto_awesome' }; };
-    // 관리자가 고른 행사가 종료되면 같은 자리를 다음 후보 행사로 대체
     const pickedList = SS.slides.filter(x => x.type === 'event').map(x => { const e = all.find(v => v.id === x.eventId); return e && e.status !== '종료' ? e : spare.shift(); }).filter(Boolean);
     const picked = evSlides(pickedList); let pi = 0; const ordered = [];
     SS.slides.forEach((x, i) => { if (x.type === 'event') { if (picked[pi]) ordered.push(picked[pi++]); } else if (String(x.title || '').trim()) ordered.push(customOf(x, i)); });
