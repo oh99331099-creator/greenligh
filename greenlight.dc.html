@@ -140,6 +140,7 @@ html{scrollbar-color:#C9CDC2 transparent;color-scheme:light}
 input,textarea,select{caret-color:#2F5D0B;accent-color:#2F5D0B}input:focus-visible,textarea:focus-visible,select:focus-visible{outline-color:#2F5D0B}[data-hsearch] input{caret-color:#B3F945}
 @media (prefers-reduced-motion:reduce){header{transition:none!important}[data-chip]:active{transform:none}}
 button:hover>[data-dot]{height:3px!important}@media (max-width:760px){[data-cwh]{padding:10px 4px!important}}
+[data-npop]{animation:glPop .4s cubic-bezier(.2,.7,.2,1) both}@media (max-width:760px){[data-npop]{left:12px!important;right:12px!important;bottom:12px!important;width:auto!important}}@media (prefers-reduced-motion:reduce){[data-npop]{animation:none!important}}
 </style>
 </helmet>
 <a href="#main" style="position:absolute;left:-9999px;top:0;background:#1F231C;color:#fff;padding:8px 16px;font-size:14px;z-index:100" style-focus="left:0">본문 바로가기</a>
@@ -507,6 +508,21 @@ button:hover>[data-dot]{height:3px!important}@media (max-width:760px){[data-cwh]
   <div aria-hidden="true" style="font-size:clamp(48px,9vw,140px);font-weight:700;letter-spacing:-.05em;line-height:.78;color:#191919;text-align:center;white-space:nowrap;user-select:none;margin-bottom:-.1em;padding:0 24px">GREENLIGHT</div>
 </footer>
 
+<sc-for list="{{ popList }}" as="p" hint-placeholder-count="0">
+<aside data-npop="1" data-screen-label="공지 팝업" role="dialog" aria-label="공지 팝업" style="position:fixed;right:24px;bottom:88px;z-index:42;width:min(360px,calc(100vw - 24px));background:#fff;color:#1D201B;border-radius:12px;overflow:hidden;box-shadow:0 0 0 .5px rgba(0,0,0,.12),0 2px 4px rgba(30,58,12,.08),0 24px 48px -16px rgba(30,58,12,.35)">
+  <div style="height:44px;padding:0 0 0 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #E3E5DE"><span data-eyebrow="1">NOTICE</span><button onClick="{{ p.close }}" aria-label="팝업 닫기" style="margin-left:auto;font:inherit;width:44px;height:44px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#1A1A1A" style-hover="background:#F3F5EF"><span class="material-symbols-outlined" style="font-size:20px">close</span></button></div>
+  <sc-if value="{{ p.hasVid }}" hint-placeholder-val="{{ false }}"><div style="aspect-ratio:16 / 9;background:#0E100D"><sc-if value="{{ p.vid.isEmbed }}" hint-placeholder-val="{{ true }}"><iframe src="{{ p.vid.src }}" title="{{ p.title }}" loading="lazy" referrerPolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen="{{ true }}" style="width:100%;height:100%;border:0;display:block"></iframe></sc-if><sc-if value="{{ p.vid.isFile }}" hint-placeholder-val="{{ false }}"><video src="{{ p.vid.src }}" controls="{{ true }}" playsInline="{{ true }}" preload="metadata" style="width:100%;height:100%;display:block"></video></sc-if></div></sc-if>
+  <sc-if value="{{ p.showImg }}" hint-placeholder-val="{{ false }}"><img src="{{ p.img }}" alt="" style="width:100%;aspect-ratio:16 / 9;object-fit:cover;display:block;background:#F3F5EF"></sc-if>
+  <div style="padding:16px 16px 14px;display:flex;flex-direction:column;gap:10px">
+    <b style="font-size:16px;font-weight:700;line-height:1.4;letter-spacing:-.02em;word-break:keep-all;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ p.title }}</b>
+    <button onClick="{{ p.open }}" style="font:inherit;align-self:flex-start;display:flex;align-items:center;gap:4px;height:32px;padding:0;border:0;background:transparent;color:#2F5D0B;font-size:14px;font-weight:600;cursor:pointer">공지 자세히 보기<span data-arr="1" aria-hidden="true" class="material-symbols-outlined" style="font-size:18px">arrow_forward</span></button>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #E3E5DE">
+    <button onClick="{{ p.hideToday }}" style="font:inherit;height:44px;border:0;border-right:1px solid #E3E5DE;background:#fff;color:#4E5548;font-size:13px;font-weight:500;cursor:pointer" style-hover="background:#F3F5EF">오늘 하루 보지 않기</button>
+    <button onClick="{{ p.close }}" style="font:inherit;height:44px;border:0;background:#fff;color:#1A1A1A;font-size:13px;font-weight:600;cursor:pointer" style-hover="background:#F3F5EF">닫기</button>
+  </div>
+</aside>
+</sc-for>
 <sc-if value="{{ toastOpen }}" hint-placeholder-val="{{ false }}"><div data-toast="1" role="status" style="position:fixed;left:50%;bottom:28px;transform:translateX(-50%);z-index:95;display:flex;align-items:center;gap:8px;background:#1F231C;color:#fff;padding:0 20px;height:44px;border-radius:999px;font-size:14px;font-weight:600;box-shadow:0 1px 2px rgba(20,30,10,.06),0 10px 28px -10px rgba(20,30,10,.22);white-space:nowrap"><span class="material-symbols-outlined" style="font-size:20px;color:#B3F945">check_circle</span>{{ toast }}</div></sc-if>
 <div data-screen-label="플로팅 버튼" style="position:fixed;right:24px;bottom:24px;z-index:40;display:flex;flex-direction:column;gap:10px">
   <sc-if value="{{ topVis }}" hint-placeholder-val="{{ false }}"><button data-totop="1" onClick="{{ toTop }}" aria-label="맨 위로" style="font:inherit;width:48px;height:48px;border-radius:50%;border:1px solid #D5D7D0;background:#fff;color:#1A1A1A;cursor:pointer;display:grid;place-items:center;box-shadow:0 1px 2px rgba(20,30,10,.06),0 10px 28px -10px rgba(20,30,10,.22);transition:background .18s cubic-bezier(.2,.7,.2,1),color .18s cubic-bezier(.2,.7,.2,1)" style-hover="background:#1E3A0C;color:#fff;border-color:#1E3A0C"><span class="material-symbols-outlined" style="font-size:22px">arrow_upward</span></button></sc-if>
@@ -586,27 +602,8 @@ button:hover>[data-dot]{height:3px!important}@media (max-width:760px){[data-cwh]
     <div style="display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;padding-bottom:16px;border-bottom:1px solid #1A1A1A">
       <h1 style="margin:0;font-size:36px;font-weight:700;letter-spacing:-.025em">공지사항</h1>
       <span style="font-size:14px;color:#6B6F66;padding-bottom:6px">{{ noticeCount }}건</span>
-      <sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ false }}"><span style="margin-left:auto;display:flex;gap:8px"><sc-if value="{{ nCanOrder }}" hint-placeholder-val="{{ false }}"><button onClick="{{ nOrderStart }}" style="font:inherit;display:flex;align-items:center;gap:4px;height:38px;padding:0 16px;border:1px solid #D5D7D0;border-radius:8px;background:#fff;color:#1A1A1A;font-size:14px;font-weight:600;cursor:pointer" style-hover="background:#F3F5EF"><span class="material-symbols-outlined" style="font-size:18px">swap_vert</span>순서 편집</button></sc-if><button onClick="{{ newNotice }}" style="font:inherit;display:flex;align-items:center;gap:4px;height:38px;padding:0 16px;border:0;border-radius:8px;background:#1F231C;color:#fff;font-size:14px;font-weight:600;cursor:pointer"><span class="material-symbols-outlined" style="font-size:18px">edit</span>공지 작성</button></span></sc-if>
+      <sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ false }}"><button onClick="{{ newNotice }}" style="font:inherit;margin-left:auto;display:flex;align-items:center;gap:4px;height:38px;padding:0 16px;border:0;border-radius:8px;background:#1F231C;color:#fff;font-size:14px;font-weight:600;cursor:pointer"><span class="material-symbols-outlined" style="font-size:18px">edit</span>공지 작성</button></sc-if>
     </div>
-    <sc-if value="{{ nOrdering }}" hint-placeholder-val="{{ false }}">
-      <p style="margin:20px 0 0;font-size:14px;line-height:1.6;color:#4E5548">화살표로 순서를 바꾼 뒤 저장하세요. 홈 화면 공지 목록에도 같은 순서로 표시됩니다. 상단 고정 공지는 고정 공지끼리만 순서를 바꿀 수 있습니다.</p>
-      <ul style="list-style:none;margin:16px 0 0;padding:0;border-top:1px solid #E3E5DE">
-        <sc-for list="{{ nOrderList }}" as="o" hint-placeholder-count="5">
-          <li style="display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:16px;align-items:center;padding:12px 0;border-bottom:1px solid #E3E5DE">
-            <span data-num="1" style="font-size:14px;font-weight:600;color:#6B6F66;text-align:center">{{ o.pos }}</span>
-            <span style="min-width:0;display:flex;align-items:center;gap:8px"><span style="flex:none;font-size:12px;font-weight:700;color:{{ o.catFg }}">{{ o.catLabel }}</span><b style="font-size:16px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ o.title }}</b><sc-if value="{{ o.pinned }}" hint-placeholder-val="{{ false }}"><span style="flex:none;font-size:12px;font-weight:700;padding:3px 8px;border-radius:999px;background:#E3E5DE;color:#1D201B">고정</span></sc-if></span>
-            <span style="display:flex;gap:4px">
-              <button onClick="{{ o.up }}" disabled="{{ o.noUp }}" aria-label="위로 이동" style="font:inherit;width:44px;height:44px;border:1px solid #D5D7D0;border-radius:8px;background:#fff;color:#1A1A1A;cursor:pointer;display:grid;place-items:center;opacity:{{ o.upOp }}" style-hover="background:#F3F5EF"><span class="material-symbols-outlined" style="font-size:20px">arrow_upward</span></button>
-              <button onClick="{{ o.down }}" disabled="{{ o.noDown }}" aria-label="아래로 이동" style="font:inherit;width:44px;height:44px;border:1px solid #D5D7D0;border-radius:8px;background:#fff;color:#1A1A1A;cursor:pointer;display:grid;place-items:center;opacity:{{ o.downOp }}" style-hover="background:#F3F5EF"><span class="material-symbols-outlined" style="font-size:20px">arrow_downward</span></button>
-            </span>
-          </li>
-        </sc-for>
-      </ul>
-      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:24px">
-        <button onClick="{{ nOrderCancel }}" style="font:inherit;font-size:14px;font-weight:600;height:44px;padding:0 20px;border:1px solid #D5D7D0;border-radius:8px;background:#fff;cursor:pointer" style-hover="background:#F3F5EF">취소</button>
-        <button onClick="{{ nOrderSave }}" style="font:inherit;font-size:14px;font-weight:600;height:44px;padding:0 24px;border:0;border-radius:8px;background:#1F231C;color:#fff;cursor:pointer">{{ nOrderSaveLabel }}</button>
-      </div>
-    </sc-if>
     <sc-if value="{{ noticeListMode }}" hint-placeholder-val="{{ true }}">
       <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:20px">
         <sc-for list="{{ nCats }}" as="c" hint-placeholder-count="4"><button onClick="{{ c.set }}" style="font:inherit;height:38px;padding:0 16px;border:1px solid {{ c.bd }};border-radius:999px;background:{{ c.bg }};color:{{ c.fg }};font-size:14px;font-weight:600;cursor:pointer">{{ c.t }}<span style="margin-left:6px;opacity:.6">{{ c.n }}</span></button></sc-for>
@@ -655,9 +652,10 @@ button:hover>[data-dot]{height:3px!important}@media (max-width:760px){[data-cwh]
           <label style="display:flex;align-items:center;gap:8px;height:38px;font-weight:600;cursor:pointer;font-size:14px"><input type="checkbox" checked="{{ nf.closed }}" onChange="{{ nSetClosed }}" style="width:16px;height:16px;accent-color:#1A1A1A">조기 마감 처리</label>
         </div>
       </sc-if>
-      <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:end">
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:12px 16px;align-items:end">
         <label style="display:flex;flex-direction:column;gap:6px;font-weight:700">날짜<input type="date" value="{{ nf.date }}" onChange="{{ nSetDate }}" style="font:inherit;font-weight:400;padding:11px 12px;border:1px solid #D5D7D0;border-radius:8px;min-width:0;width:100%"></label>
         <label style="display:flex;align-items:center;gap:8px;height:44px;font-weight:600;cursor:pointer"><input type="checkbox" checked="{{ nf.pinned }}" onChange="{{ nSetPinned }}" style="width:16px;height:16px;accent-color:#1A1A1A">상단 고정</label>
+        <label style="display:flex;align-items:center;gap:8px;height:44px;font-weight:600;cursor:pointer"><input type="checkbox" checked="{{ nfPopup }}" onChange="{{ nSetPopup }}" style="width:16px;height:16px;accent-color:#1A1A1A">팝업으로 띄우기</label>
       </div>
       <label style="display:flex;flex-direction:column;gap:6px;font-weight:700">본문 *<textarea value="{{ nf.body }}" onChange="{{ nSetBody }}" rows="12" placeholder="공지 내용을 입력하세요. 줄바꿈이 그대로 표시됩니다. 주소(https://…)는 자동으로 링크가 되고, [보여줄 글자](https://주소) 형식으로 쓰면 글자에 링크가 걸립니다." style="font:inherit;font-weight:400;padding:12px 16px;border:1px solid #D5D7D0;border-radius:8px;resize:vertical;line-height:1.7"></textarea></label>
       <div style="display:flex;flex-direction:column;gap:8px;font-weight:700">사진 <span style="font-weight:400;color:#6B6F66;font-size:12px">최대 6장 · 본문 아래에 원본 비율로 표시됩니다</span>
@@ -977,7 +975,7 @@ class Component extends DCLogic {
     this.loadApi(); this.applyFont();
     window.addEventListener('scroll', this.onScroll, { passive: true }); this.onScroll();
     setTimeout(() => { if (!('IntersectionObserver' in window)) return; this.io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { en.target.setAttribute('data-rv', '1'); this.io.unobserve(en.target); } }), { rootMargin: '0px 0px -8% 0px' }); document.querySelectorAll('main > [data-sec]:not(:first-child), footer').forEach(el => { if (el.getBoundingClientRect().top > window.innerHeight) { el.setAttribute('data-rv', '0'); this.io.observe(el); } }); }, 300);
-    this.elapsed = 0; this.lastSlide = this.state.slide;
+    setTimeout(() => this.setState({ popReady: true }), 900); this.elapsed = 0; this.lastSlide = this.state.slide;
     this.timer = setInterval(() => { const st = this.state; if (st.slide !== this.lastSlide) { this.lastSlide = st.slide; this.elapsed = 0; } if (st.paused || st.modalId || st.formOpen || st.siteOpen || st.noticePage || st.nFormOpen) return; this.elapsed += 100; if (this.elapsed >= 6000) { this.elapsed = 0; this.lastSlide = st.slide + 1; this.setState({ slide: st.slide + 1 }); } }, 100);
   }
   apiUrl() { return this.props.sampleData ? 'data/busan-events.sample.json' : 'data/busan-events.json'; }
@@ -1034,20 +1032,19 @@ class Component extends DCLogic {
     if (last < text.length) out.push(text.slice(last));
     return out;
   }
-  sortNotices(list) { const r = x => typeof x.rank === 'number' ? x.rank : null; const byRank = (ra, rb) => ra === null && rb === null ? 0 : ra === null ? -1 : rb === null ? 1 : ra - rb; return [...list].sort((a, b) => (!!b.pinned - !!a.pinned) || byRank(r(a), r(b)) || (b.date > a.date ? 1 : b.date < a.date ? -1 : 0)); }
-  async saveNoticeOrder() {
-    const ids = this.state.nOrder; if (!ids) return;
-    if (this.state.remote) {
-      this.setState({ nOrderSaving: true });
-      try { const j = await this.api('reorderNotices', { ids }); this.setState({ notices: j.notices, nOrder: null, nOrderSaving: false }); this.toast('공지 순서를 저장했습니다'); }
-      catch (e) { this.setState({ nOrderSaving: false }); alert(e.message); }
-      return;
-    }
-    const list = this.state.notices.map(n => { const i = ids.indexOf(n.id); return i < 0 ? n : { ...n, rank: i }; });
-    try { localStorage.setItem('gl.busan.notices', JSON.stringify(list)); } catch (e) {}
-    this.setState({ notices: list, nOrder: null }); this.toast('공지 순서를 저장했습니다');
-  }
+  sortNotices(list) { return [...list].sort((a, b) => (!!b.pinned - !!a.pinned) || (b.date > a.date ? 1 : b.date < a.date ? -1 : 0)); }
   blankNotice() { return { title: '', body: '', date: this.iso(new Date()), pinned: false, images: [], videos: '', cat: '안내', recruitStart: '', recruitEnd: '', closed: false }; }
+  isPopup(n) { return n.popup === true || (n.popup !== false && /홍보영상/.test(n.title || '')); }
+  popData(s) {
+    if (!s.popReady || s.popClosed || s.modalId || s.noticePage || s.nFormOpen || s.formOpen || s.siteOpen || s.bulkOpen || s.menuOpen || s.policy) return [];
+    const c = this.sortNotices(s.notices || []).find(n => this.isPopup(n)); if (!c) return [];
+    try { const h = JSON.parse(localStorage.getItem('gl.popup.hide') || 'null'); if (h && h.id === c.id && h.until >= this.iso(new Date())) return []; } catch (e) {}
+    const v = this.vidsOf(c)[0] || null, img = (c.images || [])[0] || '';
+    return [{ key: c.id, title: c.title, vid: v, hasVid: !!v, showImg: !v && !!img, img,
+      open: () => { this.setState({ popClosed: true }); this.nav('#notice=' + encodeURIComponent(c.id)); },
+      close: () => this.setState({ popClosed: true }),
+      hideToday: () => { try { localStorage.setItem('gl.popup.hide', JSON.stringify({ id: c.id, until: this.iso(new Date()) })); } catch (e) {} this.setState({ popClosed: true }); } }];
+  }
   vidsOf(n) {
     const out = [];
     String(n.videos || '').split(/\s*\n\s*/).map(x => x.trim()).filter(Boolean).forEach(u => {
@@ -1265,7 +1262,7 @@ class Component extends DCLogic {
       cats: ['전체', '공연', '전시', '행사', '교육', '모임'].map(t => ({ t, bg: t === s.cat ? '#1A1A1A' : '#fff', fg: t === s.cat ? '#fff' : '#4E5548', bd: t === s.cat ? '#1A1A1A' : '#E3E5DE', set: () => this.setState({ cat: t }) })),
       freeList: live.filter(e => e.fee === '무료').slice(0, 3), cards: (s.showAll ? filtered : filtered.slice(0, 9)).map(e => { const sv = s.saved.includes(e.id); return { ...e, isManual: !e.src, savedStr: String(sv), saveLabel: sv ? '관심 행사에서 빼기' : '관심 행사에 담기', saveFg: sv ? '#1E3A0C' : '#4E5548', toggleSave: ev => { ev.stopPropagation(); this.toggleSave(e.id); }, saveKey: ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); ev.stopPropagation(); this.toggleSave(e.id); } } }; }),
       fchips: [...['전체', '공연', '전시', '행사', '교육', '모임'].map(t => ({ key: 'c' + t, t, on: s.cat === t, set: () => this.setState({ cat: t, showAll: false }) })), { key: 's1', sep: true }, ...['무료', '유료'].map(t => ({ key: 'f' + t, t, on: s.fee === t, set: () => this.setState({ fee: s.fee === t ? '전체 요금' : t, showAll: false }) })), { key: 's2', sep: true }, ...['이번 주', '이번 달'].map(t => ({ key: 'p' + t, t, on: s.period === t, set: () => this.setState({ period: s.period === t ? '전체 기간' : t, showAll: false }) })), { key: 's3', sep: true }, { key: 'sv', t: `관심 ${s.saved.length}`, on: s.savedOnly, set: () => this.setState({ savedOnly: !s.savedOnly, showAll: false }) }].map(c => c.sep ? { ...c, btn: false } : { ...c, sep: false, btn: true, on: String(!!c.on), bg: c.on ? '#1E3A0C' : '#fff', fg: c.on ? '#fff' : '#1A1A1A', bd: c.on ? '#1E3A0C' : '#D5D7D0' }),
-      studioImg: 'assets/studio.jpg', topVis: !!s.topVis, toTop: () => window.scrollTo({ top: 0, behavior: 'smooth' }), hideParent: ev => { const p = ev.currentTarget.parentElement; if (p) p.style.display = 'none'; },
+      popList: this.popData(s), studioImg: 'assets/studio.jpg', topVis: !!s.topVis, toTop: () => window.scrollTo({ top: 0, behavior: 'smooth' }), hideParent: ev => { const p = ev.currentTarget.parentElement; if (p) p.style.display = 'none'; },
       posterMove: ev => { const el = ev.currentTarget, r = el.getBoundingClientRect(); el.style.setProperty('--px', ((ev.clientX - r.left) / r.width - .5).toFixed(3)); el.style.setProperty('--py', ((ev.clientY - r.top) / r.height - .5).toFixed(3)); }, posterLeave: ev => { ev.currentTarget.style.setProperty('--px', '0'); ev.currentTarget.style.setProperty('--py', '0'); }, count: filtered.length, noCards: !s.apiLoading && filtered.length === 0,
       hasMore: filtered.length > 9, moreLabel: s.showAll ? '접기' : `더 보기 (${filtered.length - 9}건)`, moreIcon: s.showAll ? 'expand_less' : 'expand_more', toggleMore: () => { const was = s.showAll; this.setState({ showAll: !was }); if (was) { const el = document.getElementById('events'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 60, behavior: 'auto' }); } },
       apiLoading: s.apiLoading && !s.api.length, toastOpen: !!s.toast, toast: s.toast,
@@ -1302,15 +1299,13 @@ class Component extends DCLogic {
           nCats: ['전체', '모집', '운영', '안내'].map(t => ({ key: t, t, n: String(t === '전체' ? total : sorted.filter(n => (n.cat || '안내') === t).length), bg: s.nCat === t ? '#1A1A1A' : '#fff', fg: s.nCat === t ? '#fff' : '#4E5548', bd: s.nCat === t ? '#1A1A1A' : '#E3E5DE', set: () => this.setState({ nCat: t }) })),
           nfCats: ['모집', '운영', '안내'].map(t => ({ key: t, t, bg: (nf.cat || '안내') === t ? '#2F5D0B' : '#fff', fg: (nf.cat || '안내') === t ? '#fff' : '#1A1A1A', bd: (nf.cat || '안내') === t ? '#2F5D0B' : '#D5D7D0', set: () => this.setState(st => ({ nf: { ...(st.nf || this.blankNotice()), cat: t } })) })),
           nfIsRecruit: nf.cat === '모집', nSetRStart: setN('recruitStart'), nSetREnd: setN('recruitEnd'), nSetClosed: setN('closed'),
-          noticePage: s.noticePage, noticeListMode: !cur && !s.nOrder, nOrdering: !cur && !!s.nOrder, nCanOrder: !cur && !s.nOrder && total > 1,
-          nOrderStart: () => this.setState({ nOrder: sorted.map(n => n.id), nCat: '전체' }), nOrderCancel: () => this.setState({ nOrder: null }), nOrderSave: () => this.saveNoticeOrder(), nOrderSaveLabel: s.nOrderSaving ? '저장 중…' : '순서 저장',
-          nOrderList: (() => { const o = (s.nOrder || []).map(id => s.notices.find(n => n.id === id)).filter(Boolean); const mv = (i, d) => () => this.setState(st => { const a = [...st.nOrder], j = i + d; if (j < 0 || j >= a.length) return null; [a[i], a[j]] = [a[j], a[i]]; return { nOrder: a }; }); return o.map((n, i) => { const okUp = i > 0 && !!o[i - 1].pinned === !!n.pinned, okDn = i < o.length - 1 && !!o[i + 1].pinned === !!n.pinned; return { key: n.id, pos: String(i + 1), title: n.title, pinned: !!n.pinned, catLabel: n.cat || '안내', catFg: this.NCATS[n.cat] || '#4E5548', up: mv(i, -1), down: mv(i, 1), noUp: !okUp, noDown: !okDn, upOp: okUp ? '1' : '.35', downOp: okDn ? '1' : '.35' }; }); })(), noticeCur: cur ? [dec(cur, sorted.indexOf(cur))] : [],
+          noticePage: s.noticePage, noticeListMode: !cur, noticeCur: cur ? [dec(cur, sorted.indexOf(cur))] : [],
           openNoticePage: e => { if (e && e.preventDefault) e.preventDefault(); this.nav('#notices'); },
-          closeNoticePage: () => { this.setState({ nOrder: null }); this.nav(''); },
+          closeNoticePage: () => this.nav(''),
           backToList: () => this.nav('#notices'), copyLabel: '링크 복사',
           newNotice: () => this.setState({ nFormOpen: true, nf: this.blankNotice(), nErr: '' }), closeNForm: () => this.setState({ nFormOpen: false, nErr: '' }),
           nFormOpen: s.nFormOpen, nf, nFormTitle: nf.id ? '공지 수정' : '공지 작성', nSaveLabel: s.nSaving ? '저장 중…' : '게시',
-          nSetVideos: setN('videos'), ...this.vidInfo(nf), nSetTitle: setN('title'), nSetDate: setN('date'), nSetBody: setN('body'), nSetPinned: setN('pinned'),
+          nSetVideos: setN('videos'), ...this.vidInfo(nf), nSetPopup: setN('popup'), nfPopup: this.isPopup(nf), nSetTitle: setN('title'), nSetDate: setN('date'), nSetBody: setN('body'), nSetPinned: setN('pinned'),
           nImages: (nf.images || []).map((src, i) => ({ key: String(i) + src.length, src, rm: () => this.setState(st => ({ nf: { ...st.nf, images: (st.nf.images || []).filter((_, j) => j !== i) } })) })), nCanAddImg: (nf.images || []).length < 6, onNImg: e => this.onNImg(e),
           submitNotice: () => this.submitNotice(), hasNErr: !!s.nErr, nErr: s.nErr };
       })(),
