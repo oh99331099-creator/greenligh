@@ -586,8 +586,27 @@ button:hover>[data-dot]{height:3px!important}@media (max-width:760px){[data-cwh]
     <div style="display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;padding-bottom:16px;border-bottom:1px solid #1A1A1A">
       <h1 style="margin:0;font-size:36px;font-weight:700;letter-spacing:-.025em">공지사항</h1>
       <span style="font-size:14px;color:#6B6F66;padding-bottom:6px">{{ noticeCount }}건</span>
-      <sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ false }}"><button onClick="{{ newNotice }}" style="font:inherit;margin-left:auto;display:flex;align-items:center;gap:4px;height:38px;padding:0 16px;border:0;border-radius:8px;background:#1F231C;color:#fff;font-size:14px;font-weight:600;cursor:pointer"><span class="material-symbols-outlined" style="font-size:18px">edit</span>공지 작성</button></sc-if>
+      <sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ false }}"><span style="margin-left:auto;display:flex;gap:8px"><sc-if value="{{ nCanOrder }}" hint-placeholder-val="{{ false }}"><button onClick="{{ nOrderStart }}" style="font:inherit;display:flex;align-items:center;gap:4px;height:38px;padding:0 16px;border:1px solid #D5D7D0;border-radius:8px;background:#fff;color:#1A1A1A;font-size:14px;font-weight:600;cursor:pointer" style-hover="background:#F3F5EF"><span class="material-symbols-outlined" style="font-size:18px">swap_vert</span>순서 편집</button></sc-if><button onClick="{{ newNotice }}" style="font:inherit;display:flex;align-items:center;gap:4px;height:38px;padding:0 16px;border:0;border-radius:8px;background:#1F231C;color:#fff;font-size:14px;font-weight:600;cursor:pointer"><span class="material-symbols-outlined" style="font-size:18px">edit</span>공지 작성</button></span></sc-if>
     </div>
+    <sc-if value="{{ nOrdering }}" hint-placeholder-val="{{ false }}">
+      <p style="margin:20px 0 0;font-size:14px;line-height:1.6;color:#4E5548">화살표로 순서를 바꾼 뒤 저장하세요. 홈 화면 공지 목록에도 같은 순서로 표시됩니다. 상단 고정 공지는 고정 공지끼리만 순서를 바꿀 수 있습니다.</p>
+      <ul style="list-style:none;margin:16px 0 0;padding:0;border-top:1px solid #E3E5DE">
+        <sc-for list="{{ nOrderList }}" as="o" hint-placeholder-count="5">
+          <li style="display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:16px;align-items:center;padding:12px 0;border-bottom:1px solid #E3E5DE">
+            <span data-num="1" style="font-size:14px;font-weight:600;color:#6B6F66;text-align:center">{{ o.pos }}</span>
+            <span style="min-width:0;display:flex;align-items:center;gap:8px"><span style="flex:none;font-size:12px;font-weight:700;color:{{ o.catFg }}">{{ o.catLabel }}</span><b style="font-size:16px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ o.title }}</b><sc-if value="{{ o.pinned }}" hint-placeholder-val="{{ false }}"><span style="flex:none;font-size:12px;font-weight:700;padding:3px 8px;border-radius:999px;background:#E3E5DE;color:#1D201B">고정</span></sc-if></span>
+            <span style="display:flex;gap:4px">
+              <button onClick="{{ o.up }}" disabled="{{ o.noUp }}" aria-label="위로 이동" style="font:inherit;width:44px;height:44px;border:1px solid #D5D7D0;border-radius:8px;background:#fff;color:#1A1A1A;cursor:pointer;display:grid;place-items:center;opacity:{{ o.upOp }}" style-hover="background:#F3F5EF"><span class="material-symbols-outlined" style="font-size:20px">arrow_upward</span></button>
+              <button onClick="{{ o.down }}" disabled="{{ o.noDown }}" aria-label="아래로 이동" style="font:inherit;width:44px;height:44px;border:1px solid #D5D7D0;border-radius:8px;background:#fff;color:#1A1A1A;cursor:pointer;display:grid;place-items:center;opacity:{{ o.downOp }}" style-hover="background:#F3F5EF"><span class="material-symbols-outlined" style="font-size:20px">arrow_downward</span></button>
+            </span>
+          </li>
+        </sc-for>
+      </ul>
+      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:24px">
+        <button onClick="{{ nOrderCancel }}" style="font:inherit;font-size:14px;font-weight:600;height:44px;padding:0 20px;border:1px solid #D5D7D0;border-radius:8px;background:#fff;cursor:pointer" style-hover="background:#F3F5EF">취소</button>
+        <button onClick="{{ nOrderSave }}" style="font:inherit;font-size:14px;font-weight:600;height:44px;padding:0 24px;border:0;border-radius:8px;background:#1F231C;color:#fff;cursor:pointer">{{ nOrderSaveLabel }}</button>
+      </div>
+    </sc-if>
     <sc-if value="{{ noticeListMode }}" hint-placeholder-val="{{ true }}">
       <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:20px">
         <sc-for list="{{ nCats }}" as="c" hint-placeholder-count="4"><button onClick="{{ c.set }}" style="font:inherit;height:38px;padding:0 16px;border:1px solid {{ c.bd }};border-radius:999px;background:{{ c.bg }};color:{{ c.fg }};font-size:14px;font-weight:600;cursor:pointer">{{ c.t }}<span style="margin-left:6px;opacity:.6">{{ c.n }}</span></button></sc-for>
@@ -1015,7 +1034,19 @@ class Component extends DCLogic {
     if (last < text.length) out.push(text.slice(last));
     return out;
   }
-  sortNotices(list) { return [...list].sort((a, b) => (!!b.pinned - !!a.pinned) || (b.date > a.date ? 1 : b.date < a.date ? -1 : 0)); }
+  sortNotices(list) { const r = x => typeof x.rank === 'number' ? x.rank : null; const byRank = (ra, rb) => ra === null && rb === null ? 0 : ra === null ? -1 : rb === null ? 1 : ra - rb; return [...list].sort((a, b) => (!!b.pinned - !!a.pinned) || byRank(r(a), r(b)) || (b.date > a.date ? 1 : b.date < a.date ? -1 : 0)); }
+  async saveNoticeOrder() {
+    const ids = this.state.nOrder; if (!ids) return;
+    if (this.state.remote) {
+      this.setState({ nOrderSaving: true });
+      try { const j = await this.api('reorderNotices', { ids }); this.setState({ notices: j.notices, nOrder: null, nOrderSaving: false }); this.toast('공지 순서를 저장했습니다'); }
+      catch (e) { this.setState({ nOrderSaving: false }); alert(e.message); }
+      return;
+    }
+    const list = this.state.notices.map(n => { const i = ids.indexOf(n.id); return i < 0 ? n : { ...n, rank: i }; });
+    try { localStorage.setItem('gl.busan.notices', JSON.stringify(list)); } catch (e) {}
+    this.setState({ notices: list, nOrder: null }); this.toast('공지 순서를 저장했습니다');
+  }
   blankNotice() { return { title: '', body: '', date: this.iso(new Date()), pinned: false, images: [], videos: '', cat: '안내', recruitStart: '', recruitEnd: '', closed: false }; }
   vidsOf(n) {
     const out = [];
@@ -1271,9 +1302,11 @@ class Component extends DCLogic {
           nCats: ['전체', '모집', '운영', '안내'].map(t => ({ key: t, t, n: String(t === '전체' ? total : sorted.filter(n => (n.cat || '안내') === t).length), bg: s.nCat === t ? '#1A1A1A' : '#fff', fg: s.nCat === t ? '#fff' : '#4E5548', bd: s.nCat === t ? '#1A1A1A' : '#E3E5DE', set: () => this.setState({ nCat: t }) })),
           nfCats: ['모집', '운영', '안내'].map(t => ({ key: t, t, bg: (nf.cat || '안내') === t ? '#2F5D0B' : '#fff', fg: (nf.cat || '안내') === t ? '#fff' : '#1A1A1A', bd: (nf.cat || '안내') === t ? '#2F5D0B' : '#D5D7D0', set: () => this.setState(st => ({ nf: { ...(st.nf || this.blankNotice()), cat: t } })) })),
           nfIsRecruit: nf.cat === '모집', nSetRStart: setN('recruitStart'), nSetREnd: setN('recruitEnd'), nSetClosed: setN('closed'),
-          noticePage: s.noticePage, noticeListMode: !cur, noticeCur: cur ? [dec(cur, sorted.indexOf(cur))] : [],
+          noticePage: s.noticePage, noticeListMode: !cur && !s.nOrder, nOrdering: !cur && !!s.nOrder, nCanOrder: !cur && !s.nOrder && total > 1,
+          nOrderStart: () => this.setState({ nOrder: sorted.map(n => n.id), nCat: '전체' }), nOrderCancel: () => this.setState({ nOrder: null }), nOrderSave: () => this.saveNoticeOrder(), nOrderSaveLabel: s.nOrderSaving ? '저장 중…' : '순서 저장',
+          nOrderList: (() => { const o = (s.nOrder || []).map(id => s.notices.find(n => n.id === id)).filter(Boolean); const mv = (i, d) => () => this.setState(st => { const a = [...st.nOrder], j = i + d; if (j < 0 || j >= a.length) return null; [a[i], a[j]] = [a[j], a[i]]; return { nOrder: a }; }); return o.map((n, i) => { const okUp = i > 0 && !!o[i - 1].pinned === !!n.pinned, okDn = i < o.length - 1 && !!o[i + 1].pinned === !!n.pinned; return { key: n.id, pos: String(i + 1), title: n.title, pinned: !!n.pinned, catLabel: n.cat || '안내', catFg: this.NCATS[n.cat] || '#4E5548', up: mv(i, -1), down: mv(i, 1), noUp: !okUp, noDown: !okDn, upOp: okUp ? '1' : '.35', downOp: okDn ? '1' : '.35' }; }); })(), noticeCur: cur ? [dec(cur, sorted.indexOf(cur))] : [],
           openNoticePage: e => { if (e && e.preventDefault) e.preventDefault(); this.nav('#notices'); },
-          closeNoticePage: () => this.nav(''),
+          closeNoticePage: () => { this.setState({ nOrder: null }); this.nav(''); },
           backToList: () => this.nav('#notices'), copyLabel: '링크 복사',
           newNotice: () => this.setState({ nFormOpen: true, nf: this.blankNotice(), nErr: '' }), closeNForm: () => this.setState({ nFormOpen: false, nErr: '' }),
           nFormOpen: s.nFormOpen, nf, nFormTitle: nf.id ? '공지 수정' : '공지 작성', nSaveLabel: s.nSaving ? '저장 중…' : '게시',
